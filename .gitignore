@@ -5,6 +5,7 @@ __pycache__/
 logs/
 alex_logs_old/
 models/
+models_archive/
 data/
 
 *.out

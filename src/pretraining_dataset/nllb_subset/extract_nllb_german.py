@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Extract a German NLLB subset matched to the 10M English NLLB byte budget.
+"""Extract a German NLLB subset matched to the NLLB byte budget.
 
-Like extract_10m_nllb_trilingual.py this reads local NLLB text and writes a
-10M-scale subset. Sampling follows extract_de_babylm.py: scale the English
+Like extract_nllb_trilingual.py this reads local NLLB text and writes a
+NLLB-scale subset. Sampling follows extract_de_babylm.py: scale the English
 length stats by a byte-premium, then draw sentences from length bins so the
 German subset matches the target log-normal distribution and UTF-8 byte count.
 """
@@ -22,18 +22,18 @@ from datasets import Dataset
 from tqdm import tqdm
 
 
-# this file: Morphological/src/pretraining_dataset/10m_subset/...
+# this file: Morphological/src/pretraining_dataset/nllb_subset/...
 REPO_ROOT = Path(__file__).resolve().parents[3]
 PRETRAINING_DIR = Path(__file__).resolve().parents[1]
 if str(PRETRAINING_DIR) not in sys.path:
     sys.path.insert(0, str(PRETRAINING_DIR))
 
-NLLB_DE_DIR = REPO_ROOT / "data" / "NLLB_german"
-TXT_SAVE_DIR = REPO_ROOT / "data" / "NLLB_10M_subset"
-DEFAULT_OUTPUT_PATH = TXT_SAVE_DIR / "NLLB_10M.de"
+NLLB_DE_DIR = REPO_ROOT / "data" / "NLLB" # / "NLLB.de-tr.de"
+TXT_SAVE_DIR = REPO_ROOT / "data" / "NLLB_100M"
+DEFAULT_OUTPUT_PATH = TXT_SAVE_DIR / "NLLB_100M.de"
 
 # NLLB is already sentence-segmented. Use the same quality floor as the
-# English 10M NLLB extract (MIN_WORDS=10); do not apply BabyLM's 20-word /
+# NLLB extract (MIN_WORDS=10); do not apply BabyLM's 20-word /
 # 100-char cuts, which were for long paragraphs (mean ~219 chars).
 MIN_WORDS = 10
 MAX_CHARS = 1500
@@ -287,7 +287,7 @@ def analyze_german_distribution(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Extract and analyze a German subset of NLLB matched to the 10M English NLLB stats"
+        description="Extract and analyze a German subset of NLLB matched to the NLLB stats"
     )
     parser.add_argument(
         "--token",
@@ -310,7 +310,7 @@ def main() -> None:
         "--original-bytes",
         type=int,
         required=True,
-        help="Original (English 10M NLLB) byte count to scale",
+        help="Original (NLLB) byte count to scale",
     )
     parser.add_argument(
         "--original-mean",
@@ -371,7 +371,7 @@ def main() -> None:
         )
 
     analyze_german_cases(dataset_path=output_path, spacy_model=args.spacy_model)
-    analyze_german_distribution(dataset_path=output_path, dataset_name="NLLB_10M_de")
+    analyze_german_distribution(dataset_path=output_path, dataset_name="NLLB_de")
 
 
 if __name__ == "__main__":
