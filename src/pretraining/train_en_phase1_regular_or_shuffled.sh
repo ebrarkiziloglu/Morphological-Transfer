@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --partition h100
 #SBATCH --gres gpu:1
-#SBATCH --output logs/%j_en_phase1_regular_or_shuffled_seeds_0.out
+#SBATCH --output logs/%j_en_phase1_regular_or_shuffled.out
 #SBATCH --time 24:00:00
-SEEDS=(0)
+SEEDS=(0 1 2 3 4)
 
 # Multi-seed two-phase pretraining
 # --------------------------------
@@ -29,12 +29,13 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 # ---------------------------------------------------------------------------
 
 # REGULAR:
-EN_P1="${ROOT}/data/NLLB_10M_subset/NLLB_10M.en"
-EN_OUT="${ROOT}/models/v3/char-en-de/phase_1/regular/"
+# EN_P1="${ROOT}/data/NLLB_100M/NLLB_100M.en"
+# EN_OUT="${ROOT}/models/v4/char-en-de/phase_1/regular/"
 
 # SHUFFLED:
-# EN_P1="${ROOT}/data/NLLB_10M_subset_shuffled/NLLB_10M_shuffled_geometric_r0.3.en"
-# EN_OUT="${ROOT}/models/v3/char-en-de/phase_1/shuffled/"
+
+EN_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_shuffled_geometric_r0.3.en"
+EN_OUT="${ROOT}/models/v4/char-en-de/phase_1/shuffled/"
 
 for SEED in "${SEEDS[@]}"; do
     echo "=== Phase 1 English | seed=${SEED} | $(date) ==="

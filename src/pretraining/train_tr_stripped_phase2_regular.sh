@@ -29,7 +29,7 @@ ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 PHASE2_DATA="${ROOT}/data/NLLB_10M_subset/NLLB_10M.de"
 
-TR_OUT="${ROOT}/models/v3/char-tr-de"
+TR_OUT="${ROOT}/models/v4/char-tr-de"
 
 # From REGULAR Phase 1:
 # TR_OUT_PHASE2="${TR_OUT}/phase_2/stripped_nominal_infl/regular/de_nllb/regular"
@@ -82,7 +82,7 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 
 echo "=== Evaluating char-tr-de | ${PHASE_SUBDIR} | epochs=${EPOCHS} seeds=${SEEDS} | $(date) ==="
 python3 ${ROOT}/src/eval/evaluate_ppl.py \
-    --model_root "${ROOT}/models/v3/char-tr-de" \
+    --model_root "${ROOT}/models/v4/char-tr-de" \
     --tokenizer_path "${TOKENIZER}" \
     --run_name "${RUN_NAME}" \
     --phase_subdir "${PHASE_SUBDIR}" \

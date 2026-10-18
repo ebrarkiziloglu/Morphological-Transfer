@@ -30,15 +30,15 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 
 # REGULAR:
 # TR_P1="${ROOT}/data/NLLB_10M_subset/NLLB_10M_stripped_nominal_infl.tr"
-# TR_OUT="${ROOT}/models/v3/char-tr-de/phase_1/stripped_nominal_infl/regular/"
+# TR_OUT="${ROOT}/models/v4/char-tr-de/phase_1/stripped_nominal_infl/regular/"
 
 # TR_P1="${ROOT}/data/NLLB_10M_subset/NLLB_10M_stripped.tr"
-# TR_OUT="${ROOT}/models/v3/char-tr-de/phase_1/stripped/regular/"
+# TR_OUT="${ROOT}/models/v4/char-tr-de/phase_1/stripped/regular/"
 
 
 # SHUFFLED:
 TR_P1="${ROOT}/data/NLLB_10M_subset_shuffled/NLLB_10M_stripped_nominal_infl_shuffled_geometric_r0.3.tr"
-TR_OUT="${ROOT}/models/v3/char-tr-de/phase_1/stripped_nominal_infl/shuffled/"
+TR_OUT="${ROOT}/models/v4/char-tr-de/phase_1/stripped_nominal_infl/shuffled/"
 
 for SEED in "${SEEDS[@]}"; do
     echo "=== Phase 1 Turkish | seed=${SEED} | $(date) ==="

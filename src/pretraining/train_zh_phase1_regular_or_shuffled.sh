@@ -30,11 +30,11 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 
 # REGULAR:
 ZH_P1="${ROOT}/data/NLLB_10M_subset/NLLB_10M.zh"
-ZH_OUT="${ROOT}/models/v3/char-zh-de/phase_1/regular/"
+ZH_OUT="${ROOT}/models/v4/char-zh-de/phase_1/regular/"
 
 # SHUFFLED:
 # ZH_P1="${ROOT}/data/NLLB_10M_subset_shuffled/NLLB_10M_shuffled_geometric_r0.3.zh"
-# ZH_OUT="${ROOT}/models/v3/char-zh-de/phase_1/shuffled/"
+# ZH_OUT="${ROOT}/models/v4/char-zh-de/phase_1/shuffled/"
 
 for SEED in "${SEEDS[@]}"; do
     echo "=== Phase 1 Chinese | seed=${SEED} | $(date) ==="

@@ -11,11 +11,11 @@ echo "Starting pre-training at $(date)"
  
 # python3 src/train.py \
 #     --tokenizer_path ~/Morphological/src/tokenizer/tokenizer_char/ \
-#     --resume_from ~/Morphological/models/v3/char-en-de/phase1_eng \
+#     --resume_from ~/Morphological/models/v4/char-en-de/phase1_eng \
 #     --phase2_path ~/Morphological/data/BabyLM_DE_subset/BabyLM_DE_subset.de \
 #     --l1 eng \
 #     --l2 deu \
-#     --out ~/Morphological/models/v3/gpt-reset-emb-en-de-v2/ \
+#     --out ~/Morphological/models/v4/gpt-reset-emb-en-de-v2/ \
 #     --max_seq_len 1024 \
 #     --max_position_embeddings 1024 \
 #     --batch_size 16 \
@@ -30,11 +30,11 @@ echo "Starting pre-training at $(date)"
 
 python3 src/train.py \
     --tokenizer_path ~/Morphological/src/tokenizer/tokenizer_char/ \
-    --resume_from ~/Morphological/models/v3/char-tr-de/phase1_tur \
+    --resume_from ~/Morphological/models/v4/char-tr-de/phase1_tur \
     --phase2_path ~/Morphological/data/BabyLM_DE_subset/BabyLM_DE_subset.de \
     --l1 tur \
     --l2 deu \
-    --out ~/Morphological/models/v3/reset-emb-tr-de/ \
+    --out ~/Morphological/models/v4/reset-emb-tr-de/ \
     --max_seq_len 1024 \
     --max_position_embeddings 1024 \
     --batch_size 16 \

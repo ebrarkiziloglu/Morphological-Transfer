@@ -14,7 +14,7 @@ ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 PHASE2_DATA="${ROOT}/data/NLLB_10M_subset/NLLB_10M.de"
 
-DE_OUT="${ROOT}/models/v3/char-de/phase_2/de_nllb/regular"
+DE_OUT="${ROOT}/models/v4/char-de/phase_2/de_nllb/regular"
 
 for SEED in "${SEEDS[@]}"; do
     echo "=== Phase 2 DE from scratch | seed=${SEED} | $(date) ==="
@@ -57,7 +57,7 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 
 echo "=== Evaluating char-de | ${PHASE_SUBDIR} | epochs=${EPOCHS} seeds=${SEEDS} | $(date) ==="
 python3 ${ROOT}/src/eval/evaluate_ppl.py \
-    --model_root "${ROOT}/models/v3/char-de" \
+    --model_root "${ROOT}/models/v4/char-de" \
     --tokenizer_path "${TOKENIZER}" \
     --run_name "${RUN_NAME}" \
     --phase_subdir "${PHASE_SUBDIR}" \

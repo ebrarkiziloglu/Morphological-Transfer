@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --partition h100
 #SBATCH --gres gpu:1
-#SBATCH --output %j.out
+#SBATCH --output logs/%j_extract_10m_nllb_trilingual_%d.out
 #SBATCH --time 24:00:00
 
 source ~/.bashrc
@@ -10,5 +10,5 @@ conda activate morph2
 mkdir -p logs
 
 echo "Starting extraction at $(date)"
-python3 src/extract_10m_hplt.py
+python3 src/pretraining_dataset/nllb_subset/extract_10m_hplt.py
 echo "Extraction completed at $(date)"

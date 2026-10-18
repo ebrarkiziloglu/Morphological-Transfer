@@ -36,7 +36,7 @@ ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 PHASE2_DATA="${ROOT}/data/NLLB_10M_subset/NLLB_10M_shifted.de"
 
-EN_OUT="${ROOT}/models/v3/char-en-de"
+EN_OUT="${ROOT}/models/v4/char-en-de"
 
 # From REGULAR Phase 1:
 EN_OUT_PHASE2="${EN_OUT}/phase_2/regular/de_nllb/shifted"
@@ -85,7 +85,7 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 
 echo "=== Evaluating char-en-de | ${PHASE_SUBDIR} | epochs=${EPOCHS} seeds=${SEEDS} | $(date) ==="
 python3 ${ROOT}/src/eval/evaluate_ppl.py \
-    --model_root "${ROOT}/models/v3/char-en-de" \
+    --model_root "${ROOT}/models/v4/char-en-de" \
     --tokenizer_path "${TOKENIZER}" \
     --run_name "${RUN_NAME}" \
     --phase_subdir "${PHASE_SUBDIR}" \

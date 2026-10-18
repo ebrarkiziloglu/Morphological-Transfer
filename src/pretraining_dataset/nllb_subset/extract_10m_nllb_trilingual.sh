@@ -7,4 +7,4 @@
 source ~/.bashrc
 conda activate morph2
 
-python pretraining_dataset/extract_10m_nllb_trilingual.py
+python pretraining_dataset/nllb_subset/extract_100m_nllb_trilingual.py

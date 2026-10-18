@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --partition h100
 #SBATCH --gres gpu:1
-#SBATCH --output %j.out
+#SBATCH --output logs/%j_morphological_analyzer_%d.out
 #SBATCH --time 24:00:00
 
 # Load conda
