@@ -1,0 +1,501 @@
+\documentclass[11pt]{article}
+
+% Change "review" to "final" to generate the final (sometimes called camera-ready) version.
+% Change to "preprint" to generate a non-anonymous version with page numbers.
+\usepackage[review]{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% This is also not strictly necessary, and may be commented out.
+% However, it will improve the aesthetics of text in
+% the typewriter font.
+\usepackage{inconsolata}
+
+%Including images in your LaTeX document requires adding
+%additional package(s)
+\usepackage{graphicx}
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+\title{Does Turkish Case Morphology Help German Case Sensitivity? Cross-Lingual Transfer in Small Character-Level LMs}
+
+% Author information can be set in various styles:
+% For several authors from the same institution:
+% \author{Author 1 \and ... \and Author n \\
+%         Address line \\ ... \\ Address line}
+% if the names do not fit well on one line use
+%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
+% For authors from different institutions:
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \And  ... \And
+%         Author n \\ Address line \\ ... \\ Address line}
+% To start a separate ``row'' of authors use \AND, as in
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \AND
+%         Author 2 \\ Address line \\ ... \\ Address line \And
+%         Author 3 \\ Address line \\ ... \\ Address line}
+
+\author{First Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\\And
+  Second Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\\And
+  Third Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\\And
+  Forth Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\}
+
+%\author{
+%  \textbf{First Author\textsuperscript{1}},
+%  \textbf{Second Author\textsuperscript{1,2}},
+%  \textbf{Third T. Author\textsuperscript{1}},
+%  \textbf{Fourth Author\textsuperscript{1}},
+%\\
+%  \textbf{Fifth Author\textsuperscript{1,2}},
+%  \textbf{Sixth Author\textsuperscript{1}},
+%  \textbf{Seventh Author\textsuperscript{1}},
+%  \textbf{Eighth Author \textsuperscript{1,2,3,4}},
+%\\
+%  \textbf{Ninth Author\textsuperscript{1}},
+%  \textbf{Tenth Author\textsuperscript{1}},
+%  \textbf{Eleventh E. Author\textsuperscript{1,2,3,4,5}},
+%  \textbf{Twelfth Author\textsuperscript{1}},
+%\\
+%  \textbf{Thirteenth Author\textsuperscript{3}},
+%  \textbf{Fourteenth F. Author\textsuperscript{2,4}},
+%  \textbf{Fifteenth Author\textsuperscript{1}},
+%  \textbf{Sixteenth Author\textsuperscript{1}},
+%\\
+%  \textbf{Seventeenth S. Author\textsuperscript{4,5}},
+%  \textbf{Eighteenth Author\textsuperscript{3,4}},
+%  \textbf{Nineteenth N. Author\textsuperscript{2,5}},
+%  \textbf{Twentieth Author\textsuperscript{1}}
+%\\
+%\\
+%  \textsuperscript{1}Affiliation 1,
+%  \textsuperscript{2}Affiliation 2,
+%  \textsuperscript{3}Affiliation 3,
+%  \textsuperscript{4}Affiliation 4,
+%  \textsuperscript{5}Affiliation 5
+%\\
+%  \small{
+%    \textbf{Correspondence:} \href{mailto:email@domain}{email@domain}
+%  }
+%}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+
+TODO: improve the abstract later:
+- Question: does morphological case knowledge transfer across languages in sequential pretraining?
+- Setup: Phase 1 on TR, EN or ZH, then Phase 2 on German. The probe is Acc$\leftrightarrow$Dat minimal pairs.
+- Interventions: word shuffling, embedding reset and Turkish morpheme stripping.
+- Headline finding: any Phase 1 helps by about 4 pp, but there is no reliable Turkish advantage over English. Equivalence is supported with TOST.
+\end{abstract}
+
+\section{Introduction}
+
+Do LMs learn abstract morphological structure that is reusable and transferable across languages, or only language-general statistics? 
+Cross-lingual transfer has been mostly studied through subword tokenization and large multilingual models. Morphological transfer is rarely isolated under controlled conditions. 
+This leaves open which of the two it is.
+We study morphological transfer across morphologically rich languages.
+To make this concrete, we focus on noun case.
+Turkish is an agglutinative, morphologically rich language that contains 6 noun cases: Nominative, Accusative, Dative, Locative, Ablative and Genitive. 
+English has none. German has 4 of them, though cases are realized quite differently in Turkish and German. 
+This gives us a natural testbed: a language with a rich case system (Turkish), a language without one (English), and a target language that has case but realizes it differently (German).
+Despite the structural differences, we hypothesise that the morphological case knowledge can transfer from Turkish to German, 
+and the lack of such knowledge shows up in the performances when transferring from English to German.
+We test this hypothesis in a controlled setting.
+We set up a controlled two-phase pre-training, parallel Phase 1 data (English, Turkish, Chinese) and Phase 2 pretraining with German. 
+Chinese serves as a control language: it has no case marking and no lexical similarity to German.
+To find out what drives any transfer we additionally intervene on the Phase 1 data and model.
+The contributions of this work are as follows:
+\begin{itemize}
+    \item A controlled transfer setup with parallel L1 data and byte-premium matching.
+    \item A German Acc$\leftrightarrow$Dat minimal-pair benchmark (about 9k pairs per direction) with Turkish-case-aligned dative categories.
+    \item Causal ablations: shuffling, embedding reset and morphology stripping.
+\end{itemize}
+
+\section{Related Work}
+
+
+Some notes for now - will be explored later:
+
+\begin{itemize}
+    \item Cross-lingual transfer and the effect of language similarity in pretraining. Examples: Papadimitriou \& Jurafsky on inductive bias from pretraining on structured data, and transfer in small or "second-language acquisition" LMs.
+    \item Probing morphology in LMs, including case.
+    \item Minimal-pair evaluation of grammaticality (BLiMP, CLAMS, etc.).
+    \item Tokenization and morphology: subword segmentation vs. character-level models.
+    \item Word order and syntax ablations (shuffling) and how they show what is and isn't learned.
+    \item Cross-lingual measurement fairness: byte premium (Arnett et al. 2024).
+    \item Position of this work: sequential, controlled, morphology-specific, with causal ablations on the source language.
+\end{itemize}
+
+\section{Methodology}
+
+\subsection{Experimental Design}
+
+We follow a two-phase training paradigm with three model configurations: regular, reset-embedding, and shuffled. Phase 1 consists of pre-training on a single language, L1, which is one of Turkish, English, or Chinese. Phase 2 is always pre-training on German (L2). The Phase 1 data comes from NLLB, which provides parallel sentences across all three Phase 1 languages. We sampled 10M English words and took the corresponding Turkish and Chinese sentences, so that differences between L1 conditions stem from the language rather than from the content. Later, we additionally sampled 100M words from English and Turkish and ran the same experiments at this larger scale. Since only around 23.85M words of English-Turkish-Chinese parallel triplets were available, we dropped Chinese from the 100M experiments.
+
+
+\subsubsection{Model Configurations}
+\begin{enumerate}
+    \item \textbf{Regular configuration}: Standard Phase 1 pre-training on each L1, followed by standard Phase 2 pre-training on German. No alterations are made between the phases.
+    \item \textbf{Reset-embedding configuration}: Standard Phase 1 pre-training on each L1, followed by re-initializing the token embedding matrix (and the tied output head) from $\mathcal{N}(0, 0.02)$. All other weights, including the transformer layers and positional embeddings, are kept. Phase 2 then proceeds with standard pre-training on German. Re-initializing the embeddings removes the lexical knowledge acquired in Phase 1, so any remaining transfer must reside in the non-lexical, structural weights. This separates structural (e.g., morphological) transfer from lexical transfer, which matters especially for English, whose vocabulary overlaps heavily with German.
+    \item \textbf{Shuffled configuration}: The Phase 1 data for each L1 is word-order shuffled, followed by standard Phase 2 pre-training on German. For each line, 30\% of the tokens (whitespace-separated words for English and Turkish, characters for Chinese) are selected. Each selected token is displaced by a distance drawn from a geometric distribution ($p = 0.5$, maximum 20) in a random direction, and the tokens are then re-sorted by their displaced positions. Geometric displacements mimic the distribution of syntactic dependency lengths, so local syntax is destroyed while the vocabulary and the word-internal morphology are preserved. This again reduces syntactic transfer from L1 to German, making it easier to detect morphological transfer.
+\end{enumerate}
+
+Figure 1 gives an overview of the experimental pipeline. [TODO: add the figure later].
+
+\subsection{Model and Training}
+
+We use a decoder-only model, \texttt{GPT2LMHeadModel}, in a GPT-2-style configuration with 6 layers. In addition, we train a single character-level tokenizer shared across all four languages, with a vocabulary of \num{5328} symbols. Character-level tokenization suits this task for three reasons: it causes no segmentation leakage, since subword boundaries cannot hide or reveal morphology; it avoids vocabulary mismatch between the two phases; and it prevents an unfair vocabulary transfer from English to German that has no counterpart in the Turkish-to-German case.
+
+Phase 1 hyperparameters are as follows:
+\begin{itemize}
+    \item max\_seq\_len = 1024.
+    \item max\_position\_embeddings = 1024.
+    \item batch\_size = 64.
+    \item lr = 1e-4.
+    \item 2 X H100 GPUs.
+\end{itemize}
+
+All models were trained and evaluated across 5 seeds (0--4). For each seed, Phase 2 resumes from the Phase 1 checkpoint of the same seed.
+
+\subsection{Data}
+
+\begin{itemize}
+    \item \textbf{Phase 1:} parallel NLLB English--Turkish--Chinese triples (469k lines, 10M English words), so that differences come from the language and not the content.
+    \item \textbf{Phase 1, larger scale:} parallel NLLB English--Turkish data with 100M English words.
+    \item \textbf{Phase 2:} the German side of NLLB, matched to the English data by UTF-8 byte budget using a byte premium of 1.0537 (TODO: add reference for the byte premium).
+\end{itemize}
+
+[TODO: add a data statistics table (lines, bytes, case counts per corpus).]
+
+\subsubsection{Phase 1 Manipulations}
+
+Apart from the shuffled configuration described above, we applied several manipulations to the Turkish NLLB pre-training dataset. Since we study the effect of the morphological structure of Turkish on German training, we also wanted to observe the effect of the \emph{lack} of such morphology. To this end, we created the following four variants of the Turkish pre-training dataset, ordered from the mildest to the most aggressive intervention:
+\begin{enumerate}
+    \item \textbf{Case Stripped}: All case markers (Acc, Dat, Loc, Abl, Gen), the instrumental \textit{-(y)lA}, the equative \textit{-cA}, and the relative \textit{-ki} are removed, including those in the middle of a word. Plural (A3pl) and possessive suffixes are kept. This is the default variant.
+    \item \textbf{Postpositions Stripped}: In addition to everything removed in the case-stripped variant, we delete the postposition words themselves (e.g., \textit{için}, \textit{ile}, \textit{gibi}, \textit{göre}, \textit{kadar}, \textit{sonra}), i.e., tokens whose selected parse is Zemberek's \texttt{Postp}. Their punctuation stays attached to the neighbouring words. Consequently, the output has fewer tokens per line than the input.
+    \item \textbf{Nominal Inflections Stripped}: All nominal inflection is removed, while every derivation is kept. Every nominal inflectional group (including those derived from a verb) loses its case, plural, possessive, \textit{-ki}, and nominal predicate markers (copula, \textit{-DI}, \textit{-mIş}, person), e.g., \textit{evsizlerin} $\rightarrow$ \textit{evsiz}, \textit{gelmesini} $\rightarrow$ \textit{gelme}, \textit{evdeyiz} $\rightarrow$ \textit{ev}. Verbal inflection (finite verbs and converbs) is kept.
+    \item \textbf{Nominal Stripped}: All nominal morphology is removed. Nominal roots lose their inflection (case, plural, possessive, \textit{-ki}), their noun/adjective derivation (\textit{-lIk}, \textit{-CI}, \textit{-lI}, \textit{-sIz}, ...), and their nominal predicate markers (e.g., \textit{evdeyiz} $\rightarrow$ \textit{ev}). Nominalised verbs (\textit{-mAk}, \textit{-mA}, \textit{-DIk}, \textit{-(y)An}, ...) are cut back to the verb stem, keeping voice and negation. Noun-to-verb derivation (\textit{-lAş}, \textit{-lAn}), finite verbs, and converbs are kept.
+\end{enumerate}
+
+To strip the Turkish dataset, we first POS-tag each sentence with the TULAP tagger (TODO: add references for the tools). We then analyze every word with the Zemberek morphological analyzer, using the POS tag to disambiguate among candidate parses. Next, we remove the selected morphemes, and finally, we regenerate the surface form of each word with Zemberek's generator. We verify the output against the original files and record per-variant statistics, such as the number of removed morphemes and deleted postpositions. Each stripped variant is also available in a word-shuffled form, which allows us to combine the stripping with the shuffled configuration. 
+     
+\section{Evaluation}
+
+\subsection{Test set Creation}
+
+We evaluate German case sensitivity with minimal sentence pairs built from the German UD-GSD treebank (TODO: add reference). The treebank serves only as a source of sentences; no model is trained on it. Each pair consists of a grammatical (gold) sentence and a corrupted sentence in which the case of one noun phrase is changed.
+
+The construction proceeds in four steps. First, we build a case dictionary from the German UD treebanks (GSD, HDT, PUD, and LIT). Each entry is keyed by lemma, case, number, gender, degree, part of speech, and (for adjectives) strong/weak inflection, and lists the observed surface forms. Hence, no hand-written suffix rules are needed. Second, for every accusative or dative token, we find the NP span by walking the UD dependencies. Third, we rewrite \emph{every} token of the source case in that span using the dictionary, so that the corrupted NP remains internally consistent, i.e., agreement between determiner, adjective, and noun is preserved. Contractions (e.g., \textit{im}, \textit{zum}) are expanded before the rewriting and re-spliced afterwards. Fourth, we filter the pairs: a pair is kept only if every token in the span can be converted, the result differs from the original sentence, and the pair is not a duplicate.
+
+We create test sets in both directions: by corrupting accusative spans into dative spans (Acc$\rightarrow$Dat, \num{9189} pairs) and vice versa (Dat$\rightarrow$Acc, \num{9389} pairs). In the Dat$\rightarrow$Acc set, each pair is additionally labeled with a dative category, such as prepositional datives (e.g., \textit{in}, \textit{zu}, \textit{mit}, \textit{von}) and core dative arguments. The prepositional datives are further grouped by the Turkish case they correspond to (locative, ablative, instrumental, or mixed), which we determine by aligning the German and Turkish sentences of the UD PUD parallel treebank. This grouping lets us test whether Turkish pre-training helps most where a German dative corresponds to a Turkish case suffix.
+
+\subsection{Evaluation Metrics:}
+Each sentence is scored by its mean token negative log-likelihood under the causal language model, and its perplexity (PPL) is the exponential of this value. A pair is counted as correct if the gold sentence has a perplexity lower than or equal to that of the corrupted sentence. Accuracy is the fraction of correct pairs, so chance level is 50\%. We compute the accuracy separately for each seed and report the mean $\pm$ standard deviation over the 5 seeds, both overall and per category. In addition, we report the mean perplexity of the gold sentences as a general check of German language modeling quality.
+
+\subsection{Statistics:}
+To compare two models, we use Welch's t-test with the seeds as the unit of analysis ($n = 5$). To compare categories, we use a two-proportion z-test with the examples as the unit. Because a non-significant difference does not show that two models perform equally, we additionally run TOST equivalence tests (with margins of 1 and 2 percentage points), which let us support claims of no difference.
+
+\subsection{Benchmark Sanity Checks}
+
+As a sanity check, the German-only baseline performs well above chance on both test sets. [TODO: report the numbers and verify that the test sentences do not overlap with the training data.]
+
+\section{Results}
+
+\subsection{Main result}
+* All Phase 1 conditions vs. the German-only baseline (about +4 pp on Acc→Dat). Training dynamics over epochs 1, 3 and 5, with the gap shrinking.
+
+\subsection{TR vs. EN vs. ZH}
+* No reliable Turkish advantage, with TOST equivalence results. Include the ZH results.
+
+\subsection{Ablations}
+- Shuffling has little effect, so benefit is not syntax-dependent.
+- Embedding reset costs about 1–1.5 pp, so part of the benefit is lexical or embedding-related, and the rest is structural.
+- Turkish stripping variants perform like regular Turkish, so the suffixes are not what transfers.
+
+\subsection{Fine-grained analysis}
+* per-category results (Loc/Abl/Instr/core datives) and epoch 1, where L1 differences are largest. Report whether any category shows a Turkish effect.
+- Mean gold PPL as a general LM-quality check.
+- Main table and one or two figures (accuracy by condition and epoch).
+
+\subsection{Discussion}
+- What the benefit is: general LM pretraining, optimization and positional or structural priors, not language-specific morphology.
+- Why a Turkish effect may not appear: small models, character-level input, 10M-word scale, German case marked mainly on closed-class words, and the large typological gap.
+- The value of a well-powered null result with equivalence tests.
+- Implications for curriculum or language-choice decisions in low-resource pretraining.
+
+\section{Conclusion}
+Restate the question, the setup and the main finding. Give future directions: larger scale, subword tokenizers, closer language pairs, generation-based probes.
+
+\section*{Limitations}
+% unnumbered, outside the page limit of the ACL.
+- Single architecture and scale, character-level tokenization only.
+- PPL minimal pairs measure sensitivity, not productive use.
+- Only Acc/Dat tested (not Nom/Gen).
+- Possible overlap between the test sentences and the NLLB data (check before submission).
+- Stripping tool errors and the effects of analyzer noise.
+
+\subsection*{Ethics / Reproducibility statement}
+- Data licenses (NLLB, UD), compute used, seeds, and release of code, models (Hugging Face) and the benchmark.
+
+\section*{Acknowledgments}
+
+% To use Times Roman, put the following in the preamble:
+% \begin{quote}
+% \begin{verbatim}
+% \usepackage{times}
+% \end{verbatim}
+% \end{quote}
+% (Alternatives like txfonts or newtx are also acceptable.)
+
+% Please see the \LaTeX{} source of this document for comments on other packages that may be useful.
+
+% Set the title and author using \verb|\title| and \verb|\author|. Within the author list, format multiple authors using \verb|\and| and \verb|\And| and \verb|\AND|; please see the \LaTeX{} source for examples.
+
+% By default, the box containing the title and author names is set to the minimum of 5 cm. If you need more space, include the following in the preamble:
+% \begin{quote}
+% \begin{verbatim}
+% \setlength\titlebox{<dim>}
+% \end{verbatim}
+% \end{quote}
+% where \verb|<dim>| is replaced with a length. Do not set this length smaller than 5 cm.
+
+% \section{Document Body}
+
+% \subsection{Footnotes}
+
+% Footnotes are inserted with the \verb|\footnote| command.\footnote{This is a footnote.}
+
+% \subsection{Tables and figures}
+
+% See Table~\ref{tab:accents} for an example of a table and its caption.
+% \textbf{Do not override the default caption sizes.}
+
+% \begin{table}
+%   \centering
+%   \begin{tabular}{lc}
+%     \hline
+%     \textbf{Command} & \textbf{Output} \\
+%     \hline
+%     \verb|{\"a}|     & {\"a}           \\
+%     \verb|{\^e}|     & {\^e}           \\
+%     \verb|{\`i}|     & {\`i}           \\
+%     \verb|{\.I}|     & {\.I}           \\
+%     \verb|{\o}|      & {\o}            \\
+%     \verb|{\'u}|     & {\'u}           \\
+%     \verb|{\aa}|     & {\aa}           \\\hline
+%   \end{tabular}
+%   \begin{tabular}{lc}
+%     \hline
+%     \textbf{Command} & \textbf{Output} \\
+%     \hline
+%     \verb|{\c c}|    & {\c c}          \\
+%     \verb|{\u g}|    & {\u g}          \\
+%     \verb|{\l}|      & {\l}            \\
+%     \verb|{\~n}|     & {\~n}           \\
+%     \verb|{\H o}|    & {\H o}          \\
+%     \verb|{\v r}|    & {\v r}          \\
+%     \verb|{\ss}|     & {\ss}           \\
+%     \hline
+%   \end{tabular}
+%   \caption{Example commands for accented characters, to be used in, \emph{e.g.}, Bib\TeX{} entries.}
+%   \label{tab:accents}
+% \end{table}
+
+% As much as possible, fonts in figures should conform
+% to the document fonts. See Figure~\ref{fig:experiments} for an example of a figure and its caption.
+
+% Using the \verb|graphicx| package graphics files can be included within figure
+% environment at an appropriate point within the text.
+% The \verb|graphicx| package supports various optional arguments to control the
+% appearance of the figure.
+% You must include it explicitly in the \LaTeX{} preamble (after the
+% \verb|\documentclass| declaration and before \verb|\begin{document}|) using
+% \verb|\usepackage{graphicx}|.
+
+% \begin{figure}[t]
+%   \includegraphics[width=\columnwidth]{example-image-golden}
+%   \caption{A figure with a caption that runs for more than one line.
+%     Example image is usually available through the \texttt{mwe} package
+%     without even mentioning it in the preamble.}
+%   \label{fig:experiments}
+% \end{figure}
+
+% \begin{figure*}[t]
+%   \includegraphics[width=0.48\linewidth]{example-image-a} \hfill
+%   \includegraphics[width=0.48\linewidth]{example-image-b}
+%   \caption {A minimal working example to demonstrate how to place
+%     two images side-by-side.}
+% \end{figure*}
+
+% \subsection{Hyperlinks}
+
+% Users of older versions of \LaTeX{} may encounter the following error during compilation:
+% \begin{quote}
+% \verb|\pdfendlink| ended up in different nesting level than \verb|\pdfstartlink|.
+% \end{quote}
+% This happens when pdf\LaTeX{} is used and a citation splits across a page boundary. The best way to fix this is to upgrade \LaTeX{} to 2018-12-01 or later.
+
+% \subsection{Citations}
+
+% \begin{table*}
+%   \centering
+%   \begin{tabular}{lll}
+%     \hline
+%     \textbf{Output}           & \textbf{natbib command} & \textbf{ACL only command} \\
+%     \hline
+%     \citep{Gusfield:97}       & \verb|\citep|           &                           \\
+%     \citealp{Gusfield:97}     & \verb|\citealp|         &                           \\
+%     \citet{Gusfield:97}       & \verb|\citet|           &                           \\
+%     \citeyearpar{Gusfield:97} & \verb|\citeyearpar|     &                           \\
+%     \citeposs{Gusfield:97}    &                         & \verb|\citeposs|          \\
+%     \hline
+%   \end{tabular}
+%   \caption{\label{citation-guide}
+%     Citation commands supported by the style file.
+%     The style is based on the natbib package and supports all natbib citation commands.
+%     It also supports commands defined in previous ACL style files for compatibility.
+%   }
+% \end{table*}
+
+% Table~\ref{citation-guide} shows the syntax supported by the style files.
+% We encourage you to use the natbib styles.
+% You can use the command \verb|\citet| (cite in text) to get ``author (year)'' citations, like this citation to a paper by \citet{Gusfield:97}.
+% You can use the command \verb|\citep| (cite in parentheses) to get ``(author, year)'' citations \citep{Gusfield:97}.
+% You can use the command \verb|\citealp| (alternative cite without parentheses) to get ``author, year'' citations, which is useful for using citations within parentheses (e.g. \citealp{Gusfield:97}).
+
+% A possessive citation can be made with the command \verb|\citeposs|.
+% This is not a standard natbib command, so it is generally not compatible
+% with other style files.
+
+\subsection{References}
+
+\nocite{Ando2005,andrew2007scalable,rasooli-tetrault-2015}
+
+The \LaTeX{} and Bib\TeX{} style files provided roughly follow the American Psychological Association format.
+If your own bib file is named \texttt{custom.bib}, then placing the following before any appendices in your \LaTeX{} file will generate the references section for you:
+\begin{quote}
+\begin{verbatim}
+\bibliography{custom}
+\end{verbatim}
+\end{quote}
+
+You can obtain the complete ACL Anthology as a Bib\TeX{} file from \url{https://aclweb.org/anthology/anthology.bib.gz}.
+To include both the Anthology and your own .bib file, use the following instead of the above.
+\begin{quote}
+\begin{verbatim}
+\bibliography{anthology,custom}
+\end{verbatim}
+\end{quote}
+
+% Please see Section~\ref{sec:bibtex} for information on preparing Bib\TeX{} files.
+
+% \subsection{Equations}
+
+% An example equation is shown below:
+% \begin{equation}
+%   \label{eq:example}
+%   A = \pi r^2
+% \end{equation}
+
+% Labels for equation numbers, sections, subsections, figures and tables
+% are all defined with the \verb|\label{label}| command and cross references
+% to them are made with the \verb|\ref{label}| command.
+
+% This an example cross-reference to Equation~\ref{eq:example}.
+
+% \subsection{Appendices}
+
+% Use \verb|\appendix| before any appendix section to switch the section numbering over to letters. See Appendix~\ref{sec:appendix} for an example.
+
+% \section{Bib\TeX{} Files}
+% \label{sec:bibtex}
+
+% Unicode cannot be used in Bib\TeX{} entries, and some ways of typing special characters can disrupt Bib\TeX's alphabetization. The recommended way of typing special characters is shown in Table~\ref{tab:accents}.
+
+% Please ensure that Bib\TeX{} records contain DOIs or URLs when possible, and for all the ACL materials that you reference.
+% Use the \verb|doi| field for DOIs and the \verb|url| field for URLs.
+% If a Bib\TeX{} entry has a URL or DOI field, the paper title in the references section will appear as a hyperlink to the paper, using the hyperref \LaTeX{} package.
+
+% \section*{Limitations}
+
+% This document does not cover the content requirements for ACL or any
+% other specific venue.  Check the author instructions for
+% information on
+% maximum page lengths, the required ``Limitations'' section,
+% and so on.
+
+% \section*{Acknowledgments}
+
+% This document has been adapted
+% by Steven Bethard, Ryan Cotterell and Rui Yan
+% from the instructions for earlier ACL and NAACL proceedings, including those for
+% ACL 2019 by Douwe Kiela and Ivan Vuli\'{c},
+% NAACL 2019 by Stephanie Lukin and Alla Roskovskaya,
+% ACL 2018 by Shay Cohen, Kevin Gimpel, and Wei Lu,
+% NAACL 2018 by Margaret Mitchell and Stephanie Lukin,
+% Bib\TeX{} suggestions for (NA)ACL 2017/2018 from Jason Eisner,
+% ACL 2017 by Dan Gildea and Min-Yen Kan,
+% NAACL 2017 by Margaret Mitchell,
+% ACL 2012 by Maggie Li and Michael White,
+% ACL 2010 by Jing-Shin Chang and Philipp Koehn,
+% ACL 2008 by Johanna D. Moore, Simone Teufel, James Allan, and Sadaoki Furui,
+% ACL 2005 by Hwee Tou Ng and Kemal Oflazer,
+% ACL 2002 by Eugene Charniak and Dekang Lin,
+% and earlier ACL and EACL formats written by several people, including
+% John Chen, Henry S. Thompson and Donald Walker.
+% Additional elements were taken from the formatting instructions of the \emph{International Joint Conference on Artificial Intelligence} and the \emph{Conference on Computer Vision and Pattern Recognition}.
+
+% Bibliography entries for the entire Anthology, followed by custom entries
+%\bibliography{custom,anthology-overleaf-1,anthology-overleaf-2}
+
+% Custom bibliography entries only
+\bibliography{custom}
+
+\appendix
+
+\section{Example Appendix}
+\label{sec:appendix}
+
+- Full hyperparameters, parameter count and token counts (these are TODOs in your outline).
+- Tokenizer details, stripping examples and statistics, dative-type counts.
+- Full per-category and per-seed result tables, plus significance-test tables.
+- Dictionary and NP-conversion failure statistics ("unconverted" reasons).
+
+\end{document}
