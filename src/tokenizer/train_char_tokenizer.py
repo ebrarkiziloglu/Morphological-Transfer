@@ -21,13 +21,13 @@ special_tokens = ["[BOS]", "[PAD]", "[EOS]", "[UNK]", "[CLS]", "[SEP]", "[MASK]"
 # We don't set a vocab_size limit since we want all unique characters.
 trainer = WordLevelTrainer(
     special_tokens=special_tokens,
-    min_frequency=1, # Change this to 2+ if you want to filter out rare chars
+    min_frequency=5, # drop rare chars (web noise) seen fewer than 5 times
     show_progress=True
 )
 
 # 5. Read the dataset
 print("Reading corpus...")
-with open("./multilingual_corpus.txt", "r", encoding="utf-8") as f:
+with open("./data/multilingual_corpus.txt", "r", encoding="utf-8") as f:
     lines = [ln.strip() for ln in f if ln.strip()]
 
 # 6. "Train" (this simply scans the corpus for all unique characters)
@@ -62,6 +62,7 @@ test_sentences = [
     "Merhaba, bugün nasılsın?",
     "Hello, how are you doing today?",
     "Heute ist das Wetter schön.",
+    "今天天气很好，我们去公园散步。",
 ]
 
 for sentence in test_sentences:

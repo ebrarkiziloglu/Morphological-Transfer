@@ -9,6 +9,6 @@ conda activate morph2
 
 echo "Starting pre-training at $(date)"
  
-python3 src/train_char_tokenizer.py
+python3 src/tokenizer/train_char_tokenizer.py
 
 echo "Training completed at $(date)"
