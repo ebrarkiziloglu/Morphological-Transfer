@@ -1,11 +1,19 @@
 import argparse
+import contextlib
+import datetime
+import hashlib
+import itertools
+import json
 import logging
 import math
 import os
 import sys
 from typing import List, Optional, Tuple
 
+import numpy as np
 import torch
+import torch.distributed as dist
+from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.utils.data import Dataset, DataLoader
 from transformers import (
     AutoTokenizer,
@@ -24,60 +32,167 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-class LineByLineTextDataset(Dataset):
-    """
-    Very simple line-by-line text dataset for causal LM pretraining.
-    Each non-empty line is tokenized independently.
-    """
+def is_main_process() -> bool:
+    return not (dist.is_available() and dist.is_initialized()) or dist.get_rank() == 0
 
-    def __init__(self, tokenizer, file_path: str, max_seq_len: int):
-        self.tokenizer = tokenizer
-        self.examples = []
 
+def _cache_prefix(tokenizer, file_path: str, max_seq_len: int, cache_dir: Optional[str]) -> str:
+    """Cache file prefix keyed on the data file, tokenizer and max_seq_len."""
+    st = os.stat(file_path)
+    vocab_hash = hashlib.md5(
+        json.dumps(tokenizer.get_vocab(), sort_keys=True).encode("utf-8")
+    ).hexdigest()
+    probe = tokenizer("Hello there")["input_ids"]
+    key = hashlib.md5(
+        f"{os.path.abspath(file_path)}|{st.st_size}|{int(st.st_mtime)}|{max_seq_len}|"
+        f"{vocab_hash}|{probe}".encode("utf-8")
+    ).hexdigest()[:12]
+    cache_dir = cache_dir or os.path.join(os.path.dirname(os.path.abspath(file_path)), "token_cache")
+    os.makedirs(cache_dir, exist_ok=True)
+    return os.path.join(cache_dir, f"{os.path.basename(file_path)}.L{max_seq_len}.{key}")
+
+
+def build_token_cache(tokenizer, file_path: str, max_seq_len: int, prefix: str, chunk_lines: int = 100_000):
+    """Tokenize every non-empty line once and store the ids as one flat array plus
+    per-line offsets (no padding). Written atomically so a killed job never leaves
+    a half-written cache behind."""
+    dtype = np.uint16 if len(tokenizer) < 2**16 else np.int32
+    id_chunks, len_chunks, pending = [], [], []
+
+    def flush():
+        enc = tokenizer(pending, truncation=True, max_length=max_seq_len)["input_ids"]
+        len_chunks.append(np.fromiter(map(len, enc), dtype=np.int64, count=len(enc)))
+        id_chunks.append(np.fromiter(itertools.chain.from_iterable(enc), dtype=dtype))
+        pending.clear()
+
+    logger.info(f"[Data] Tokenizing {file_path} (one-off, cached to {prefix}.*)")
+    with open(file_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                pending.append(line)
+            if len(pending) >= chunk_lines:
+                flush()
+                logger.info(f"[Data] tokenized {sum(len(x) for x in len_chunks)} lines")
+        if pending:
+            flush()
+
+    if not len_chunks:
+        raise ValueError(f"No non-empty lines found in {file_path}")
+    ids = np.concatenate(id_chunks)
+    offsets = np.zeros(sum(len(x) for x in len_chunks) + 1, dtype=np.int64)
+    np.cumsum(np.concatenate(len_chunks), out=offsets[1:])
+
+    for arr, suffix in ((ids, "ids"), (offsets, "offsets")):
+        tmp = f"{prefix}.{suffix}.tmp.npy"
+        np.save(tmp, arr)
+        os.replace(tmp, f"{prefix}.{suffix}.npy")
+
+
+class TokenizedDataset(Dataset):
+    """Pre-tokenized, unpadded line dataset backed by a memory-mapped id array
+    (shared between dataloader workers and ranks, no per-process copies)."""
+
+    def __init__(self, tokenizer, file_path: str, max_seq_len: int, cache_dir: Optional[str] = None):
         if not os.path.isfile(file_path):
             raise FileNotFoundError(f"Training file not found: {file_path}")
+        prefix = _cache_prefix(tokenizer, file_path, max_seq_len, cache_dir)
+        ids_path, offsets_path = f"{prefix}.ids.npy", f"{prefix}.offsets.npy"
 
-        with open(file_path, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                encoded = tokenizer(
-                    line,
-                    truncation=True,
-                    max_length=max_seq_len,
-                    padding="max_length",
-                    return_tensors="pt",
-                )
-                self.examples.append(
-                    {
-                        "input_ids": encoded["input_ids"].squeeze(0),
-                        "attention_mask": encoded["attention_mask"].squeeze(0),
-                    }
-                )
+        # Only rank 0 tokenizes; the other ranks wait and then read the cache.
+        if is_main_process() and not (os.path.isfile(ids_path) and os.path.isfile(offsets_path)):
+            build_token_cache(tokenizer, file_path, max_seq_len, prefix)
+        if dist.is_available() and dist.is_initialized():
+            dist.barrier()
 
-        if len(self.examples) == 0:
-            raise ValueError(f"No non-empty lines found in {file_path}")
-
+        self.ids = np.load(ids_path, mmap_mode="r")
+        self.offsets = np.load(offsets_path)
+        self.lengths = np.diff(self.offsets)
         logger.info(
-            f"Loaded {len(self.examples)} examples from {file_path} "
-            f"(max_seq_len={max_seq_len})"
+            f"Loaded {len(self.lengths)} examples from {file_path} "
+            f"(max_seq_len={max_seq_len}, mean_len={self.lengths.mean():.1f}, "
+            f"max_len={self.lengths.max()})"
         )
 
     def __len__(self):
-        return len(self.examples)
+        return len(self.lengths)
 
     def __getitem__(self, idx):
-        item = self.examples[idx]
-        input_ids = item["input_ids"]
-        attention_mask = item["attention_mask"]
+        return torch.from_numpy(
+            np.asarray(self.ids[self.offsets[idx] : self.offsets[idx + 1]], dtype=np.int64)
+        )
+
+
+class PadCollator:
+    """Pads each batch only to its longest sequence (right padding, labels -100
+    on padding) -- same examples as padding everything to max_seq_len."""
+
+    def __init__(self, pad_token_id: int):
+        self.pad_token_id = pad_token_id
+
+    def __call__(self, seqs: List[torch.Tensor]) -> dict:
+        max_len = max(len(x) for x in seqs)
+        input_ids = torch.full((len(seqs), max_len), self.pad_token_id, dtype=torch.long)
+        attention_mask = torch.zeros((len(seqs), max_len), dtype=torch.long)
+        for i, x in enumerate(seqs):
+            input_ids[i, : len(x)] = x
+            attention_mask[i, : len(x)] = 1
         labels = input_ids.clone()
         labels[attention_mask == 0] = -100
-        return {
-            "input_ids": input_ids,
-            "attention_mask": attention_mask,
-            "labels": labels,
-        }
+        return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": labels}
+
+
+class LengthAwareBatchSampler:
+    """Shuffled batch sampler that is distributed-aware (every rank derives the
+    same epoch order from seed+epoch and takes its own slice of batches).
+
+    With ``bucket=True``, examples are sorted by length inside large random chunks
+    before batching, then the batches are shuffled; this minimises padding."""
+
+    def __init__(self, lengths, batch_size, seed=0, bucket=False, rank=0, world_size=1):
+        self.lengths = np.asarray(lengths)
+        self.batch_size = batch_size
+        self.seed = seed
+        self.bucket = bucket
+        self.rank = rank
+        self.world_size = world_size
+        self.epoch = 0
+
+    def set_epoch(self, epoch: int):
+        self.epoch = epoch
+
+    def _batches(self):
+        n, bs = len(self.lengths), self.batch_size
+        g = torch.Generator()
+        g.manual_seed(self.seed + self.epoch)
+        perm = torch.randperm(n, generator=g).numpy()
+        if self.bucket:
+            batches = []
+            chunk = bs * 100
+            for s in range(0, n, chunk):
+                c = perm[s : s + chunk]
+                c = c[np.argsort(self.lengths[c], kind="stable")]
+                batches += [c[i : i + bs] for i in range(0, len(c), bs)]
+            order = torch.randperm(len(batches), generator=g).tolist()
+            batches = [batches[i] for i in order]
+        else:
+            batches = [perm[i : i + bs] for i in range(0, n, bs)]
+        if self.world_size > 1:
+            # Every rank must see the same number of equally sized batches.
+            batches = [b for b in batches if len(b) == bs]
+            batches = batches[: len(batches) // self.world_size * self.world_size]
+            batches = batches[self.rank :: self.world_size]
+        return batches
+
+    def __iter__(self):
+        for b in self._batches():
+            yield b.tolist()
+
+    def __len__(self):
+        n, bs = len(self.lengths), self.batch_size
+        if self.world_size > 1:
+            return (n // bs) // self.world_size
+        return math.ceil(n / bs)
 
 
 def build_model_and_tokenizer(
@@ -206,24 +321,54 @@ def create_dataloader(
     max_seq_len: int,
     batch_size: int,
     num_workers: int,
+    seed: int = 0,
+    length_bucketing: bool = False,
+    cache_dir: Optional[str] = None,
 ) -> Tuple[DataLoader, int]:
-    dataset = LineByLineTextDataset(
+    """``batch_size`` is per GPU/process."""
+    dataset = TokenizedDataset(
         tokenizer=tokenizer,
         file_path=file_path,
         max_seq_len=max_seq_len,
+        cache_dir=cache_dir,
+    )
+    ddp = dist.is_available() and dist.is_initialized()
+    batch_sampler = LengthAwareBatchSampler(
+        dataset.lengths,
+        batch_size=batch_size,
+        seed=seed,
+        bucket=length_bucketing,
+        rank=dist.get_rank() if ddp else 0,
+        world_size=dist.get_world_size() if ddp else 1,
     )
     dataloader = DataLoader(
         dataset,
-        batch_size=batch_size,
-        shuffle=True,
+        batch_sampler=batch_sampler,
+        collate_fn=PadCollator(tokenizer.pad_token_id),
         num_workers=num_workers,
+        pin_memory=torch.cuda.is_available(),
+        prefetch_factor=4 if num_workers > 0 else None,
     )
-    steps_per_epoch = math.ceil(len(dataset) / batch_size)
-    return dataloader, steps_per_epoch
+    return dataloader, len(dataloader)
 
 
 def move_batch_to_device(batch: dict, device: torch.device) -> dict:
-    return {k: v.to(device) for k, v in batch.items()}
+    return {k: v.to(device, non_blocking=True) for k, v in batch.items()}
+
+
+def setup_distributed() -> Tuple[int, int, torch.device]:
+    """Initialise torch.distributed when launched with torchrun; otherwise single process."""
+    if int(os.environ.get("WORLD_SIZE", "1")) > 1:
+        local_rank = int(os.environ["LOCAL_RANK"])
+        if torch.cuda.is_available():
+            torch.cuda.set_device(local_rank)
+        dist.init_process_group(
+            backend="nccl" if torch.cuda.is_available() else "gloo",
+            timeout=datetime.timedelta(hours=3),  # rank 0 may tokenize while others wait
+        )
+        device = torch.device("cuda", local_rank) if torch.cuda.is_available() else torch.device("cpu")
+        return dist.get_rank(), dist.get_world_size(), device
+    return 0, 1, torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def _parse_epoch_list(value: Optional[str]) -> Optional[List[int]]:
@@ -291,9 +436,11 @@ def train_one_phase(
     logger.info(f"[{phase_name}] Moving model to device: {device}")
     model.to(device)
     model.train()
+    ddp = dist.is_available() and dist.is_initialized()
+    train_model = DDP(model, device_ids=[device.index] if device.type == "cuda" else None) if ddp else model
 
     optimizer = torch.optim.AdamW(
-        model.parameters(),
+        train_model.parameters(),
         lr=lr,
         betas=(0.9, 0.98),
         eps=1e-08,
@@ -306,7 +453,7 @@ def train_one_phase(
     )
 
     global_step = 0
-    running_loss = 0.0
+    running_loss = torch.zeros((), device=device)  # on-GPU: no host sync per micro-batch
     save_set = set(save_epochs) if save_epochs is not None else None
 
     logger.info(
@@ -328,38 +475,43 @@ def train_one_phase(
 
     def _optimizer_update():
         nonlocal global_step, running_loss
-        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+        torch.nn.utils.clip_grad_norm_(train_model.parameters(), max_norm=1.0)
         optimizer.step()
         scheduler.step()
         optimizer.zero_grad()
         global_step += 1
         if global_step % logging_steps == 0:
-            avg_loss = running_loss / logging_steps
+            avg_loss = running_loss.item() / logging_steps
+            if not math.isfinite(avg_loss):
+                raise RuntimeError(
+                    f"[{phase_name}] Non-finite loss in the last {logging_steps} optimizer "
+                    f"steps (at step {global_step}): {avg_loss!r}. This is usually an empty "
+                    "tokenizer (vocab_size=0) so every token is padding and all labels are -100."
+                )
             logger.info(
                 f"[{phase_name}] step {global_step}/{total_steps} "
                 f"- loss: {avg_loss:.4f} "
                 f"- lr: {scheduler.get_last_lr()[0]:.2e}"
             )
-            running_loss = 0.0
+            running_loss.zero_()
 
     for epoch in range(num_epochs):
         logger.info(f"[{phase_name}] Epoch {epoch + 1}/{num_epochs} started.")
         micro_in_acc = 0
+        if hasattr(dataloader.batch_sampler, "set_epoch"):
+            dataloader.batch_sampler.set_epoch(epoch)
         for step, batch in enumerate(dataloader):
             batch = move_batch_to_device(batch, device)
-            with torch.autocast(
-                device_type=device.type, dtype=torch.bfloat16, enabled=bf16
-            ):
-                outputs = model(**batch)
-                loss = outputs.loss / grad_acc
-            if not torch.isfinite(loss):
-                raise RuntimeError(
-                    f"[{phase_name}] Non-finite loss at optimizer_step={global_step}, "
-                    f"batch={step}: {loss.item()!r}. This is usually an empty tokenizer "
-                    "(vocab_size=0) so every token is padding and all labels are -100."
-                )
-            loss.backward()
-            running_loss += loss.item()
+            # With DDP, only all-reduce gradients on the last micro-batch of a window.
+            sync_now = micro_in_acc + 1 == grad_acc or step == batches_per_epoch - 1
+            with contextlib.nullcontext() if (not ddp or sync_now) else train_model.no_sync():
+                with torch.autocast(
+                    device_type=device.type, dtype=torch.bfloat16, enabled=bf16
+                ):
+                    outputs = train_model(**batch)
+                    loss = outputs.loss / grad_acc
+                loss.backward()
+            running_loss += loss.detach()
             micro_in_acc += 1
 
             if micro_in_acc == grad_acc:
@@ -379,9 +531,12 @@ def train_one_phase(
         )
         if should_save:
             epoch_dir = os.path.join(save_dir, f"ep{epoch_num}", f"seed_{seed}")
-            os.makedirs(epoch_dir, exist_ok=True)
-            logger.info(f"[{phase_name}] Saving epoch {epoch_num} checkpoint to {epoch_dir}")
-            model.save_pretrained(epoch_dir)
+            if is_main_process():
+                os.makedirs(epoch_dir, exist_ok=True)
+                logger.info(f"[{phase_name}] Saving epoch {epoch_num} checkpoint to {epoch_dir}")
+                model.save_pretrained(epoch_dir)
+            if ddp:
+                dist.barrier()
 
     logger.info(
         f"[{phase_name}] Finished {num_epochs} epochs "
@@ -449,7 +604,12 @@ def parse_args():
     )
 
     parser.add_argument("--max_seq_len", type=int, default=256)
-    parser.add_argument("--batch_size", type=int, default=32)
+    parser.add_argument(
+        "--batch_size",
+        type=int,
+        default=32,
+        help="Per-GPU micro-batch size. Effective batch = batch_size * grad_acc * num_gpus.",
+    )
     parser.add_argument(
         "--epochs_phase1",
         type=int,
@@ -490,6 +650,18 @@ def parse_args():
         "(default: '1,2,3,4,5'). Empty string saves every epoch.",
     )
     parser.add_argument("--cpus", type=int, default=4)
+    parser.add_argument(
+        "--length_bucketing",
+        action="store_true",
+        help="Group similar-length lines into the same batch (less padding, faster). "
+        "Batches are still shuffled each epoch.",
+    )
+    parser.add_argument(
+        "--token_cache_dir",
+        type=str,
+        default=None,
+        help="Where to cache the pre-tokenized data (default: <data dir>/token_cache).",
+    )
     parser.add_argument("--logging_steps", type=int, default=500)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--lower", action="store_true")
@@ -548,8 +720,10 @@ def main():
     logger.info(f"[Init] Parsed arguments: {args}")
     set_seed(args.seed)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    logger.info(f"[Init] Using device: {device}")
+    rank, world_size, device = setup_distributed()
+    if rank != 0:
+        logging.getLogger().setLevel(logging.WARNING)
+    logger.info(f"[Init] Using device: {device} (world_size={world_size})")
 
     save_epochs_p1 = _parse_epoch_list(args.save_epochs_phase1)
     save_epochs_p2 = _parse_epoch_list(args.save_epochs_phase2)
@@ -576,7 +750,8 @@ def main():
     if not args.resume_from:
         if args.epochs_phase1 <= 0:
             logger.info("[Phase1] epochs_phase1 <= 0; skipping Phase 1.")
-            model.save_pretrained(args.out)
+            if is_main_process():
+                model.save_pretrained(args.out)
         else:
             # Phase 1: pretraining on L1 (e.g., Turkish or English)
             logger.info(
@@ -588,6 +763,9 @@ def main():
                 max_seq_len=args.max_seq_len,
                 batch_size=args.batch_size,
                 num_workers=args.cpus,
+                seed=args.seed,
+                length_bucketing=args.length_bucketing,
+                cache_dir=args.token_cache_dir,
             )
             opt_steps_epoch_p1 = optimizer_steps_per_epoch(
                 batches_per_epoch_p1, args.grad_acc
@@ -649,6 +827,9 @@ def main():
         max_seq_len=args.max_seq_len,
         batch_size=args.batch_size,
         num_workers=args.cpus,
+        seed=args.seed,
+        length_bucketing=args.length_bucketing,
+        cache_dir=args.token_cache_dir,
     )
     opt_steps_epoch_p2 = optimizer_steps_per_epoch(
         batches_per_epoch_p2, args.grad_acc
@@ -687,4 +868,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    finally:
+        if dist.is_available() and dist.is_initialized():
+            dist.destroy_process_group()
