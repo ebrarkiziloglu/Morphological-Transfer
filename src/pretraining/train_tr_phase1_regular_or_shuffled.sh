@@ -32,16 +32,16 @@ ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 
 # ---------------------------------------------------------------------------
-# Phase 1 — Turkish (NLLB 10M)
+# Phase 1 — Turkish (NLLB 100M)
 # ---------------------------------------------------------------------------
 
 # REGULAR:
 # TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M.tr"
-# TR_OUT="${ROOT}/models/v4/char-tr-de/phase_1/regular/"
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/regular/"
 
 # SHUFFLED:
 TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_shuffled_geometric_r0.3.tr"
-TR_OUT="${ROOT}/models/v4/char-tr-de/phase_1/shuffled/"
+TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/shuffled/"
 
 for SEED in "${SEEDS[@]}"; do
     echo "=== Phase 1 Turkish | seed=${SEED} | $(date) ==="

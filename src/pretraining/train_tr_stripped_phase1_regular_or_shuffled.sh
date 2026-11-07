@@ -1,12 +1,19 @@
 #!/bin/bash
 #SBATCH --partition h100
-#SBATCH --gres gpu:1
-#SBATCH --output logs/%j_tr_stripped_nominal_infl_phase1_shuffled_seeds_all.out
+#SBATCH --gres gpu:2
+#SBATCH --output logs/%j_tr_phase1_stripped_shuffled.out
 #SBATCH --time 24:00:00
 SEEDS=(0 1 2 3 4)
+NGPUS=2   # keep in sync with --gres gpu:N above
 
 # Multi-seed two-phase pretraining
 # --------------------------------
+# Parallelism: DDP over NGPUS GPUs (torchrun). --batch_size is PER GPU, so the
+# effective batch = batch_size * grad_acc * NGPUS = 64 * 1 * 2 = 128 sequences
+# (the old single-GPU run used 16 * 2 = 32).
+# The data is tokenized once and cached in <data dir>/token_cache; batches are
+# padded to their longest line (not 1024) and length-bucketed.
+#
 # Phase 1 (EN, TR and ZH separately):
 #   - LR = 1e-4, 5 epochs
 #   - checkpoints after epochs 5
@@ -29,20 +36,30 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 # ---------------------------------------------------------------------------
 
 # REGULAR:
-# TR_P1="${ROOT}/data/NLLB_10M_subset/NLLB_10M_stripped_nominal_infl.tr"
-# TR_OUT="${ROOT}/models/v4/char-tr-de/phase_1/stripped_nominal_infl/regular/"
+# TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M_stripped_nominal_infl.tr"
+# TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M_stripped_postp.tr"
+# TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M_stripped_case.tr"
+# TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M_stripped_nominal.tr"
 
-# TR_P1="${ROOT}/data/NLLB_10M_subset/NLLB_10M_stripped.tr"
-# TR_OUT="${ROOT}/models/v4/char-tr-de/phase_1/stripped/regular/"
-
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_nominal_infl/regular/"
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_postp/regular/"
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_case/regular/"
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_nominal/regular/"
 
 # SHUFFLED:
-TR_P1="${ROOT}/data/NLLB_10M_subset_shuffled/NLLB_10M_stripped_nominal_infl_shuffled_geometric_r0.3.tr"
-TR_OUT="${ROOT}/models/v4/char-tr-de/phase_1/stripped_nominal_infl/shuffled/"
+# TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_stripped_nominal_infl_shuffled_geometric_r0.3.tr"
+# TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_stripped_postp_shuffled_geometric_r0.3.tr"
+# TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_stripped_case_shuffled_geometric_r0.3.tr"
+TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_stripped_nominal_shuffled_geometric_r0.3.tr"
+
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_nominal_infl/shuffled/"
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_postp/shuffled/"
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_case/shuffled/"
+TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_nominal/shuffled/"
 
 for SEED in "${SEEDS[@]}"; do
     echo "=== Phase 1 Turkish | seed=${SEED} | $(date) ==="
-    python3 pretraining/train.py \
+    torchrun --standalone --nproc_per_node="${NGPUS}" pretraining/train.py \
         --tokenizer_path "${TOKENIZER}" \
         --phase1_path "${TR_P1}" \
         --l1 tur \
@@ -50,13 +67,15 @@ for SEED in "${SEEDS[@]}"; do
         --out "${TR_OUT}" \
         --max_seq_len 1024 \
         --max_position_embeddings 1024 \
-        --batch_size 16 \
+        --batch_size 64 \
         --epochs_phase1 5 \
         --epochs_phase2 0 \
         --save_epochs_phase1 5 \
         --lr 1e-4 \
-        --grad_acc 2 \
+        --grad_acc 1 \
         --logging_steps 100 \
+        --length_bucketing \
+        --cpus 8 \
         --seed "${SEED}" \
         --attn_implementation flash_attention_3 \
         --bf16

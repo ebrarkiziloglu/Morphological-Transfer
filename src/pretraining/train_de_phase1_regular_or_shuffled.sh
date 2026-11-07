@@ -37,18 +37,18 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 
 # REGULAR:
 # DE_P1="${ROOT}/data/NLLB_100M/NLLB_100M.de"
-# DE_OUT="${ROOT}/models/v4/char-de/phase_1/regular/"
+# DE_OUT="${ROOT}/models/v5/char-de/phase_1/regular/"
 
 # SHUFFLED:
 DE_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_shuffled_geometric_r0.3.de"
-DE_OUT="${ROOT}/models/v4/char-de/phase_1/shuffled/"
+DE_OUT="${ROOT}/models/v5/char-de/phase_1/shuffled/"
 
 for SEED in "${SEEDS[@]}"; do
     echo "=== Phase 1 German | seed=${SEED} | $(date) ==="
     torchrun --standalone --nproc_per_node="${NGPUS}" pretraining/train.py \
         --tokenizer_path "${TOKENIZER}" \
         --phase1_path "${DE_P1}" \
-        --l1 eng \
+        --l1 deu \
         --l2 deu \
         --out "${DE_OUT}" \
         --max_seq_len 1024 \
