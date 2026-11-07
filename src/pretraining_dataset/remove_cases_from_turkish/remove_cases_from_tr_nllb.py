@@ -78,6 +78,7 @@ import sys
 import time
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
+from functools import lru_cache
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -198,6 +199,30 @@ class CorpusStats:
         self.joint_words[(n_case, n_ki)][
             (original, stripped, original_analysis, stripped_analysis)
         ] += 1
+
+    def merge(self, other: "CorpusStats") -> None:
+        """Add another (e.g. per-chunk worker) stats object into this one."""
+        for name in (
+            "n_sentences",
+            "n_empty_sentences",
+            "n_failed_sentences",
+            "n_tokens",
+            "n_modified",
+            "n_case_suffixes",
+            "n_ki_suffixes",
+        ):
+            setattr(self, name, getattr(self, name) + getattr(other, name))
+        for name in (
+            "case_hist",
+            "ki_hist",
+            "joint_hist",
+            "selection",
+            "dropped_tags",
+            "deleted_postp",
+        ):
+            getattr(self, name).update(getattr(other, name))
+        for key, counts in other.joint_words.items():
+            self.joint_words[key].update(counts)
 
     def report(self) -> str:
         def pct(part: int, whole: int) -> str:
@@ -709,6 +734,11 @@ def generate_from_morphemes(parse, kept_morphemes):
     if not kept_morphemes:
         return None
     item = parse.item.reference_item or parse.item
+    return _generate_cached(item, tuple(kept_morphemes))
+
+
+@lru_cache(maxsize=300_000)
+def _generate_cached(item, kept_morphemes: tuple):
     try:
         results = zemb.morphology.word_generator.generate(
             item=item, morphemes=kept_morphemes
@@ -877,7 +907,7 @@ def strip_token(
         return TokenResult(token)
 
     if analysis is None:
-        analysis = zemb.morphology.analyze(core)
+        analysis = analyze_cached(core)
     parses = [p for p in analysis if not p.is_unknown()]
     if not parses:
         return TokenResult(token)
@@ -910,9 +940,16 @@ def strip_token(
     )
 
 
+@lru_cache(maxsize=300_000)
+def analyze_cached(core: str):
+    """Zemberek candidate parses of a word. Context-free, so safe to cache; the
+    contextual choice (POS tag, sentence-level best parse) is made afterwards."""
+    return zemb.morphology.analyze(core)
+
+
 def disambiguate_cores(cores: list[str]) -> tuple[list, list]:
     """Zemberek analyses of each core plus the sentence-level best parse for each."""
-    analyses = [zemb.morphology.analyze(core or ".") for core in cores]
+    analyses = [analyze_cached(core or ".") for core in cores]
     try:
         best = zemb.morphology.disambiguate(" ".join(cores), analyses).best_analysis()
     except Exception:  # noqa: BLE001 — fall back to POS + ranking only
@@ -923,56 +960,80 @@ def disambiguate_cores(cores: list[str]) -> tuple[list, list]:
     return analyses, best
 
 
-def pos_tag_words(tagger, words: list[str]) -> list[str]:
+def pos_tag_batch(tagger, batch: list[list[str]]) -> list[list[str]]:
     """Map TULAP predictions onto original whitespace tokens via word_ids.
 
     ``PosTagger.pos_tag`` returns WordPiece first-pieces and can split off
     punctuation, so it is not a 1-1 map onto ``sentence.split()``. Zemberek
     analyses the original whitespace tokens, so each of those needs one tag.
+    All (non-empty) sentences of ``batch`` go through one padded forward pass.
     """
     import torch
 
-    if not words:
-        return []
-
     encoded = tagger.tokenizer(
-        words,
+        batch,
         return_tensors="pt",
         is_split_into_words=True,
         truncation=True,
         max_length=512,
+        padding=True,
     )
-    word_ids = tagger.tokenizer(
-        words,
-        is_split_into_words=True,
-        truncation=True,
-        max_length=512,
-    ).word_ids()
+    word_ids = [encoded.word_ids(b) for b in range(len(batch))]
 
     device = next(tagger.model.parameters()).device
     encoded = encoded.to(device)
 
     with torch.no_grad():
         logits = tagger.model(**encoded).logits
-    pred_ids = torch.argmax(logits, dim=2)[0].tolist()
+    pred_ids = torch.argmax(logits, dim=2).tolist()
 
-    tags = [None] * len(words)
-    for idx, word_id in enumerate(word_ids):
-        if word_id is None or tags[word_id] is not None:
+    all_tags: list[list[str]] = []
+    for words, ids, preds in zip(batch, word_ids, pred_ids):
+        tags = [None] * len(words)
+        for idx, word_id in enumerate(ids):
+            if word_id is None or tags[word_id] is not None:
+                continue
+            tags[word_id] = tagger.id2label.get(preds[idx], "X")
+        all_tags.append([tag or "X" for tag in tags])
+    return all_tags
+
+
+def pos_tag_words(tagger, words: list[str]) -> list[str]:
+    """POS tags for one sentence's whitespace tokens."""
+    if not words:
+        return []
+    return pos_tag_batch(tagger, [words])[0]
+
+
+def pos_tag_sentences(
+    tagger, word_lists: list[list[str]], batch_size: int
+) -> list[list[str]]:
+    """Batched POS tagging; sorted by length so padding stays small."""
+    order = sorted(range(len(word_lists)), key=lambda i: len(word_lists[i]))
+    tags: list[list[str]] = [[] for _ in word_lists]
+    for start in range(0, len(order), batch_size):
+        idxs = [i for i in order[start : start + batch_size] if word_lists[i]]
+        if not idxs:
             continue
-        if idx >= len(pred_ids):
-            break
-        tags[word_id] = tagger.id2label.get(pred_ids[idx], "X")
-    return [tag or "X" for tag in tags]
+        for i, sent_tags in zip(
+            idxs, pos_tag_batch(tagger, [word_lists[i] for i in idxs])
+        ):
+            tags[i] = sent_tags
+    return tags
 
 
 def strip_sentence(
-    tagger, sentence: str, stats: CorpusStats, mode: str = "case"
+    tagger,
+    sentence: str,
+    stats: CorpusStats,
+    mode: str = "case",
+    tags: list[str] | None = None,
 ) -> str:
     words = sentence.split()
     if not words:
         return sentence
-    tags = pos_tag_words(tagger, words)
+    if tags is None:
+        tags = pos_tag_words(tagger, words)
     analyses, best = disambiguate_cores([peel_punct(word)[1] for word in words])
     stripped_words: list[str] = []
     pending_prefix = ""  # leading punctuation of a deleted word ("(için" -> "(")
@@ -1029,21 +1090,101 @@ def _cuda_available() -> bool:
         return False
 
 
+# Per-process state, set by _init_worker (or process_file when running in-process)
+_WORKER_TAGGER = None
+
+
+def _init_worker(device: str, n_gpus: int) -> None:
+    """Load one TULAP tagger per worker, spreading workers over the GPUs."""
+    global _WORKER_TAGGER
+    if device.startswith("cuda") and n_gpus > 1 and ":" not in device:
+        import multiprocessing
+
+        worker_idx = multiprocessing.current_process()._identity[0] - 1
+        device = f"cuda:{worker_idx % n_gpus}"
+    _WORKER_TAGGER = load_tulap_tagger(device)
+
+
+def process_chunk(
+    lines: list[str], first_line_no: int, mode: str, tag_batch_size: int
+) -> tuple[list[str], CorpusStats, list[str]]:
+    """Strip a chunk of raw lines; returns (output lines, stats, failure messages)."""
+    tagger = _WORKER_TAGGER
+    stats = CorpusStats()
+    texts = [line.rstrip("\n") for line in lines]
+    word_lists = [text.split() for text in texts]
+    try:
+        all_tags: list[list[str] | None] = list(
+            pos_tag_sentences(tagger, word_lists, tag_batch_size)
+        )
+    except Exception:  # noqa: BLE001 — fall back to per-sentence tagging below
+        all_tags = [None] * len(texts)
+
+    out: list[str] = []
+    failures: list[str] = []
+    for offset, (text, tags) in enumerate(zip(texts, all_tags)):
+        stats.n_sentences += 1
+        if not text.strip():
+            out.append("")
+            stats.n_empty_sentences += 1
+            continue
+        try:
+            out.append(strip_sentence(tagger, text, stats, mode, tags))
+        except Exception as exc:  # noqa: BLE001 — keep the run going
+            out.append(text)
+            stats.n_failed_sentences += 1
+            failures.append(
+                f"Line {first_line_no + offset} failed "
+                f"({type(exc).__name__}: {exc}); wrote original"
+            )
+    return out, stats, failures
+
+
+def _read_chunks(path: Path, chunk_size: int, max_lines: int | None):
+    """Yield ``(first_line_no, lines)`` chunks of the input file."""
+    chunk: list[str] = []
+    first = 1
+    with path.open("r", encoding="utf-8") as handle:
+        for i, line in enumerate(handle):
+            if max_lines is not None and i >= max_lines:
+                break
+            chunk.append(line)
+            if len(chunk) >= chunk_size:
+                yield first, chunk
+                first += len(chunk)
+                chunk = []
+    if chunk:
+        yield first, chunk
+
+
 def process_file(
     input_path: Path,
     output_path: Path,
     device: str,
     max_lines: int | None = None,
     mode: str = "case",
+    num_workers: int = 1,
+    chunk_size: int = 2000,
+    tag_batch_size: int = 64,
 ) -> None:
+    import multiprocessing
+    from collections import deque
+
     from tqdm import tqdm
 
     if not input_path.is_file():
         raise FileNotFoundError(f"Input file not found: {input_path}")
 
-    print("Loading TULAP POS tagger...", flush=True)
-    tulap_tagger = load_tulap_tagger(device)
-    print(f"Zemberek analyser ready. Mode: {mode}", flush=True)
+    n_gpus = 0
+    if device.startswith("cuda"):
+        import torch
+
+        n_gpus = torch.cuda.device_count()
+    print(
+        f"Zemberek + TULAP tagger: mode={mode}, workers={num_workers}, "
+        f"device={device} ({n_gpus} GPU(s)), tag batch={tag_batch_size}",
+        flush=True,
+    )
 
     n_lines = count_lines(input_path)
     if max_lines is not None:
@@ -1053,30 +1194,46 @@ def process_file(
     t0 = time.time()
     stats = CorpusStats()
 
+    pool = None
+    if num_workers > 1:
+        # spawn: fork after CUDA/torch initialisation is unsafe
+        ctx = multiprocessing.get_context("spawn")
+        pool = ctx.Pool(num_workers, initializer=_init_worker, initargs=(device, n_gpus))
+    else:
+        _init_worker(device, n_gpus)
+
+    def submit(first_line_no: int, lines: list[str]):
+        args = (lines, first_line_no, mode, tag_batch_size)
+        if pool is None:
+            return process_chunk(*args)
+        return pool.apply_async(process_chunk, args)
+
     with (
-        input_path.open("r", encoding="utf-8") as in_f,
         output_path.open("w", encoding="utf-8") as out_f,
+        tqdm(total=n_lines, desc=f"Stripping ({mode})", unit="sent") as bar,
     ):
-        for i, raw_line in enumerate(
-            tqdm(in_f, total=n_lines, desc=f"Stripping ({mode})", unit="sent")
-        ):
-            if max_lines is not None and i >= max_lines:
-                break
-            stats.n_sentences += 1
-            text = raw_line.rstrip("\n")
-            if not text.strip():
-                out_f.write("\n")
-                stats.n_empty_sentences += 1
-                continue
-            try:
-                out_f.write(strip_sentence(tulap_tagger, text, stats, mode) + "\n")
-            except Exception as exc:  # noqa: BLE001 — keep the run going
-                out_f.write(text + "\n")
-                stats.n_failed_sentences += 1
-                print(
-                    f"Line {i + 1} failed ({type(exc).__name__}: {exc}); wrote original",
-                    flush=True,
-                )
+
+        def collect(pending) -> None:
+            out, chunk_stats, failures = pending if pool is None else pending.get()
+            out_f.write("\n".join(out) + "\n")
+            stats.merge(chunk_stats)
+            bar.update(len(out))
+            for message in failures:
+                print(message, flush=True)
+
+        # Bounded window of in-flight chunks keeps memory flat and output ordered.
+        window: deque = deque()
+        max_in_flight = num_workers * 3
+        for first_line_no, lines in _read_chunks(input_path, chunk_size, max_lines):
+            window.append(submit(first_line_no, lines))
+            while len(window) >= max_in_flight:
+                collect(window.popleft())
+        while window:
+            collect(window.popleft())
+
+    if pool is not None:
+        pool.close()
+        pool.join()
 
     elapsed = time.time() - t0
     n_done = stats.n_sentences
@@ -1125,6 +1282,17 @@ def parse_args() -> argparse.Namespace:
         default="cuda" if _cuda_available() else "cpu",
     )
     parser.add_argument("--max-lines", type=int, default=None)
+    parser.add_argument(
+        "--num-workers",
+        type=int,
+        default=1,
+        help="parallel worker processes (each loads its own tagger + Zemberek; "
+        "with several GPUs, workers are spread round-robin over them)",
+    )
+    parser.add_argument("--chunk-size", type=int, default=2000, help="lines per task")
+    parser.add_argument(
+        "--tag-batch-size", type=int, default=64, help="sentences per TULAP forward pass"
+    )
     return parser.parse_args()
 
 
@@ -1136,6 +1304,9 @@ def main() -> None:
         device=args.device,
         max_lines=args.max_lines,
         mode=args.mode,
+        num_workers=args.num_workers,
+        chunk_size=args.chunk_size,
+        tag_batch_size=args.tag_batch_size,
     )
 
 

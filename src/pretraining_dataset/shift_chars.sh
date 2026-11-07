@@ -13,4 +13,4 @@ echo "Starting pre-training at $(date)"
 
 # Re-run with fixed script
 conda activate morph2 && python3 ~/Morphological/src/pretraining_dataset/shift_chars.py \
-  --pretrain_path "../data/NLLB_10M_subset/NLLB_10M.de"
+  --pretrain_path "../data/NLLB_100M/NLLB_100M.de"

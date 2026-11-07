@@ -1,31 +1,24 @@
 #!/bin/bash
 #SBATCH --partition h100
 #SBATCH --gres gpu:1
-#SBATCH --output logs/%j_remove_cases_from_tr_nllb.out
+#SBATCH --cpus-per-task 32
+#SBATCH --array 0-3
+#SBATCH --output logs/%A_%a_remove_cases_from_tr_nllb.out
 #SBATCH --time 24:00:00
 
 source ~/.bashrc
 conda activate morph2
 
-# Compute nodes cannot reach Hugging Face Xet CAS; use HTTPS + the login-node cache.
 export HF_HUB_DISABLE_XET=1
 # HF_TOKEN is expected to be exported from ~/.bashrc
 
-python3 pretraining_dataset/remove_cases_from_turkish/remove_cases_from_tr_nllb.py \
-   --input /hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M/NLLB_100M.tr \
-   --mode case
-   # --output /hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M/NLLB_100M_case.tr
+MODES=(case postp nominal nominal_infl)
+MODE=${MODES[$SLURM_ARRAY_TASK_ID]}
+D=/hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M
 
-# other modes: add --mode postp, --mode nominal or --mode nominal_infl (and a matching --output)
-
-python3 pretraining_dataset/remove_cases_from_turkish/remove_cases_from_tr_nllb.py \
-   --input /hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M/NLLB_100M.tr \
-   --mode nominal
-
-python3 pretraining_dataset/remove_cases_from_turkish/remove_cases_from_tr_nllb.py \
-   --input /hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M/NLLB_100M.tr \
-   --mode postp
-   
-python3 pretraining_dataset/remove_cases_from_turkish/remove_cases_from_tr_nllb.py \
-   --input /hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M/NLLB_100M.tr \
-   --mode nominal_infl
+python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/remove_cases_from_turkish/remove_cases_from_tr_nllb.py \
+   --input $D/NLLB_100M.tr \
+   --output $D/NLLB_100M_stripped_${MODE}.tr \
+   --mode $MODE \
+   --num-workers $((SLURM_CPUS_PER_TASK - 2)) \
+   --tag-batch-size 128
