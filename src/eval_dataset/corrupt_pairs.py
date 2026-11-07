@@ -26,9 +26,20 @@ written to a separate duplicates JSON (``gold_span_duplicate_forms``).
 
 An elimination summary (counts + reasons) is printed at the end.
 
+Each record gets a ``category``. Core arguments (``core_dative_argument`` /
+``core_accusative_argument``) are ``core_pronoun`` (NP head UPOS PRON) or
+``core_other``. Prepositional examples (``--category-mode``):
+  preps_in_TR (dat2acc default): Locative_TR / Ablative_TR / Instrumental_TR /
+      Mixed_TR / NaN_prep, from the Turkish case of the translation.
+  preps_in_DE: dative_only_prep / two_way_prep / other_prep (dat2acc), written to
+      ``*_preps_in_DE`` files. acc2dat always uses German classes
+      (accusative_only_prep / two_way_prep / other_prep) and stores the umbrella
+      ``accusative_type`` (accusative_prep, core_accusative_argument, "no category").
+
 Example:
     python corrupt_pairs.py --direction acc2dat
     python corrupt_pairs.py --direction dat2acc
+    python corrupt_pairs.py --direction dat2acc --category-mode preps_in_DE
 """
 
 from __future__ import annotations
@@ -38,7 +49,7 @@ import os
 from typing import Optional, Set
 
 from load_ud_dataset import UD_GERMAN_GSD_SPLITS
-from ud_corruption_utils import run_pair_generation_main
+from ud_corruption_utils import CATEGORY_MODE_DE, CATEGORY_MODE_TR, CATEGORY_MODES, run_pair_generation_main
 
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 _DATA_ROOT = os.path.abspath(os.path.join(_SCRIPT_DIR, "..", "..", "data"))
@@ -68,11 +79,22 @@ def main(
     duplicates_dict_csv_path: Optional[str] = None,
     output_group_duplicates_json: Optional[str] = None,
     output_dative_categories_dir: Optional[str] = None,
+    category_mode: str = CATEGORY_MODE_TR,
 ):
-    """Generate pairs for ``direction`` (``acc2dat`` or ``dat2acc``)."""
+    """Generate pairs for ``direction`` (``acc2dat`` or ``dat2acc``).
+
+    ``category_mode`` (dat2acc only): ``preps_in_TR`` groups prepositional datives by
+    the Turkish case of their translation, ``preps_in_DE`` by German preposition class.
+    """
     source_case, target_case, label, stem = DIRECTIONS[direction]
     kwargs = {}
     if direction == "acc2dat":
+        if category_mode != CATEGORY_MODE_DE:
+            print(
+                "ℹ️  acc2dat has no Turkish-translation categories; "
+                "using German preposition classes (preps_in_DE)."
+            )
+            category_mode = CATEGORY_MODE_DE
         kwargs["allow_missing_for_upos_fn"] = _allow_missing_for_upos
     else:
         kwargs["dative_types_csv_path"] = dative_types_csv_path or os.path.join(
@@ -88,6 +110,7 @@ def main(
         source_case=source_case,
         target_case=target_case,
         direction_label=label,
+        category_mode=category_mode,
         log_level=log_level,
         output_unconverted_json=os.path.join(
             os.path.dirname(output_group_json), f"{stem}_unconverted.json"
@@ -136,6 +159,16 @@ def _parse_args() -> argparse.Namespace:
         default=None,
         help="dat2acc only: directory for per-dative_type JSONs (default testset/dative_categories)",
     )
+    p.add_argument(
+        "--category-mode",
+        choices=CATEGORY_MODES,
+        default=CATEGORY_MODE_TR,
+        help="dat2acc: how prepositional datives get their `category`: "
+        "preps_in_TR (Turkish case of the translation, default) or preps_in_DE "
+        "(dative-only / two-way / other German preposition). acc2dat always uses "
+        "German preposition classes. With preps_in_DE the default output paths get "
+        "a `_preps_in_DE` suffix.",
+    )
     return p.parse_args()
 
 
@@ -143,11 +176,13 @@ if __name__ == "__main__":
     args = _parse_args()
     stem = DIRECTIONS[args.direction][3]
     dat2acc = args.direction == "dat2acc"
+    de_suffix = "_preps_in_DE" if dat2acc and args.category_mode == CATEGORY_MODE_DE else ""
     main(
         direction=args.direction,
         ud_base_path=args.ud_base or os.path.join(_DATA_ROOT, "UD_German-GSD"),
+        category_mode=args.category_mode,
         output_group_json=args.output_group_json
-        or os.path.join(_SCRIPT_DIR, "testset", f"{stem}_pairs.json"),
+        or os.path.join(_SCRIPT_DIR, "testset", f"{stem}_pairs{de_suffix}.json"),
         dict_csv_path=args.dictionary
         or os.path.join(_SCRIPT_DIR, "german_ud_lookup_dictionary.csv"),
         log_level=str(args.log_level).upper(),
@@ -157,10 +192,12 @@ if __name__ == "__main__":
             _SCRIPT_DIR, "duplicates", "german_ud_lookup_dictionary_duplicates.csv"
         ),
         output_group_duplicates_json=args.output_group_duplicates_json
-        or os.path.join(_SCRIPT_DIR, "duplicates", f"{stem}_pairs_duplicates.json"),
+        or os.path.join(
+            _SCRIPT_DIR, "duplicates", f"{stem}_pairs_duplicates{de_suffix}.json"
+        ),
         output_dative_categories_dir=(
             args.output_dative_categories_dir
-            or os.path.join(_SCRIPT_DIR, "testset", "dative_categories")
+            or os.path.join(_SCRIPT_DIR, "testset", f"dative_categories{de_suffix}")
             if dat2acc
             else None
         ),

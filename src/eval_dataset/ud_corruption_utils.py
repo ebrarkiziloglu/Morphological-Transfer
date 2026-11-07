@@ -759,19 +759,61 @@ DATIVE_CATEGORY_BY_TYPE: Dict[str, str] = {
     "dative_prep_zu": "Mixed_TR",
     "dative_prep_nach": "Mixed_TR",
     "dative_prep_vor": "Mixed_TR",
-    # NaN_core (bare verbal dative arguments)
-    "core_dative_argument": "NaN_core",
-    # legacy label kept for older CSVs / cached JSONs
-    "dative_indirect_obl_arg": "NaN_core",
 }
 DATIVE_CATEGORY_DEFAULT = "NaN_prep"
-DATIVE_CATEGORY_OUTPUT_FILES: Dict[str, str] = {
-    "Locative_TR": "Locative_TR.json",
-    "Ablative_TR": "Ablative_TR.json",
-    "Instrumental_TR": "Instrumental_TR.json",
-    "Mixed_TR": "Mixed_TR.json",
-    "NaN_core": "NaN_core.json",
-    "NaN_prep": "NaN_prep.json",
+
+# ``category`` for core (non-prepositional) arguments, both directions and both
+# category modes: decided from the UPOS of the NP head token.
+CORE_PRONOUN_CATEGORY = "core_pronoun"
+CORE_OTHER_CATEGORY = "core_other"
+
+# Category modes for Dat→Acc prepositional examples.
+#   preps_in_TR: group ``dative_prep_*`` by the Turkish case their translation takes
+#   preps_in_DE: group by the German preposition class (dative-only / two-way / other)
+CATEGORY_MODE_TR = "preps_in_TR"
+CATEGORY_MODE_DE = "preps_in_DE"
+CATEGORY_MODES: Tuple[str, ...] = (CATEGORY_MODE_TR, CATEGORY_MODE_DE)
+
+# Prepositions that define the ``preps_in_DE`` classes (study lists; any other
+# preposition falls into ``other_prep``).
+CAT_DATIVE_ONLY_PREPS: frozenset[str] = frozenset({
+    "aus", "bei", "mit", "nach", "seit", "von", "zu", "außer", "gegenüber",
+})
+CAT_ACCUSATIVE_ONLY_PREPS: frozenset[str] = frozenset({
+    "durch", "für", "gegen", "ohne", "um",
+})
+CAT_TWO_WAY_PREPS: frozenset[str] = frozenset({
+    "an", "auf", "hinter", "in", "neben", "über", "unter", "vor", "zwischen",
+})
+DATIVE_ONLY_PREP_CATEGORY = "dative_only_prep"
+ACCUSATIVE_ONLY_PREP_CATEGORY = "accusative_only_prep"
+TWO_WAY_PREP_CATEGORY = "two_way_prep"
+OTHER_PREP_CATEGORY = "other_prep"
+
+# Umbrella / fallback ``accusative_type`` labels (Acc→Dat).
+ACCUSATIVE_PREP_TYPE = "accusative_prep"
+CORE_ACCUSATIVE_TYPE = "core_accusative_argument"
+NO_CATEGORY_TYPE = "no category"
+
+_CORE_CATEGORY_FILES: Dict[str, str] = {
+    CORE_PRONOUN_CATEGORY: f"{CORE_PRONOUN_CATEGORY}.json",
+    CORE_OTHER_CATEGORY: f"{CORE_OTHER_CATEGORY}.json",
+}
+DATIVE_CATEGORY_OUTPUT_FILES_BY_MODE: Dict[str, Dict[str, str]] = {
+    CATEGORY_MODE_TR: {
+        "Locative_TR": "Locative_TR.json",
+        "Ablative_TR": "Ablative_TR.json",
+        "Instrumental_TR": "Instrumental_TR.json",
+        "Mixed_TR": "Mixed_TR.json",
+        **_CORE_CATEGORY_FILES,
+        "NaN_prep": "NaN_prep.json",
+    },
+    CATEGORY_MODE_DE: {
+        DATIVE_ONLY_PREP_CATEGORY: f"{DATIVE_ONLY_PREP_CATEGORY}.json",
+        TWO_WAY_PREP_CATEGORY: f"{TWO_WAY_PREP_CATEGORY}.json",
+        OTHER_PREP_CATEGORY: f"{OTHER_PREP_CATEGORY}.json",
+        **_CORE_CATEGORY_FILES,
+    },
 }
 
 # UD ``case`` comparator for degree/role comparisons (GSD: ADP + KOKOM).
@@ -1294,6 +1336,36 @@ def classify_dative_type(
     return "ignore_dative_other"
 
 
+# Relations of a bare (preposition-free) accusative core argument. Unlike the
+# dative side, where the direct-object relation is dropped (``kill_dative_obj``),
+# the accusative core argument is the direct object itself.
+_CORE_ACCUSATIVE_DEPRELS: frozenset[str] = frozenset({"obj", "obl:arg"})
+
+
+def classify_accusative_type(
+    token: Dict[str, Any], case_lemma: Optional[str]
+) -> str:
+    """Classify an accusative head token: prepositional / core argument / none.
+
+    Mirrors :func:`classify_dative_type`: any governing preposition makes the span
+    ``accusative_prep``; without one, a bare ``obj`` / ``obl:arg`` is a
+    ``core_accusative_argument``. Comparative *als*, adverbial markers and every
+    other relation are ``no category``.
+    """
+    if case_lemma is not None:
+        if is_comparative_case_marker(case_lemma):
+            return NO_CATEGORY_TYPE
+        if normalize_case_prep_lemma(case_lemma) == "wie":
+            case_lemma = None
+    if case_lemma is not None:
+        if is_adverbial_case_marker(case_lemma):
+            return NO_CATEGORY_TYPE
+        return ACCUSATIVE_PREP_TYPE
+    if (token.get("deprel") or "") in _CORE_ACCUSATIVE_DEPRELS:
+        return CORE_ACCUSATIVE_TYPE
+    return NO_CATEGORY_TYPE
+
+
 def load_dative_type_lookup(csv_path: str) -> Dict[DativeTypeKey, str]:
     """Build (split, sent_id, head_lemma, head_form, relation) → dative_type from CSV."""
     lookup: Dict[DativeTypeKey, str] = {}
@@ -1319,6 +1391,7 @@ def dative_nominal_head_index(
     span_end: int,
     *,
     fallback_idx: int,
+    case: str = "Dat",
 ) -> int:
     """Index of the UD phrase head inside the span (e.g. *Dezember* for *dem 31. Dezember*).
 
@@ -1329,7 +1402,7 @@ def dative_nominal_head_index(
     for i in range(span_start, span_end + 1):
         tok = tokens[i]
         feats = tok.get("feats") or {}
-        if tok.get("upos") in _DAT_HEAD_UPOS and feats.get("Case") == "Dat":
+        if tok.get("upos") in _DAT_HEAD_UPOS and feats.get("Case") == case:
             phrase_head = walk_np_head_index(tokens, i)
             if span_start <= phrase_head <= span_end:
                 return phrase_head
@@ -1350,10 +1423,11 @@ def _resolve_raw_case_marker_lemma(
     span_start: int,
     span_end: int,
     seed_idx: int,
+    case: str = "Dat",
 ) -> Optional[str]:
-    """Raw ``case``/governing ADP lemma for a dative NP span."""
+    """Raw ``case``/governing ADP lemma for a dative (or *case*) NP span."""
     head_idx = dative_nominal_head_index(
-        tokens, span_start, span_end, fallback_idx=seed_idx
+        tokens, span_start, span_end, fallback_idx=seed_idx, case=case
     )
     case_lemma = case_marker_lemma_for_head(tokens, head_idx)
     if case_lemma is None:
@@ -1411,6 +1485,30 @@ def resolve_dative_type(
     )
 
 
+def resolve_accusative_type(
+    *,
+    tokens: List[Dict[str, Any]],
+    span_start: int,
+    span_end: int,
+    seed_idx: int,
+) -> Tuple[str, Optional[str], str]:
+    """Return ``(accusative_type, preposition, head_upos)`` for an accusative NP span."""
+    head_idx = dative_nominal_head_index(
+        tokens, span_start, span_end, fallback_idx=seed_idx, case="Acc"
+    )
+    token = tokens[head_idx]
+    case_lemma = _resolve_raw_case_marker_lemma(
+        tokens, span_start, span_end, seed_idx, case="Acc"
+    )
+    acc_type = classify_accusative_type(token, case_lemma)
+    preposition = (
+        normalize_case_prep_lemma(case_lemma)
+        if acc_type == ACCUSATIVE_PREP_TYPE
+        else None
+    )
+    return acc_type, preposition, token.get("upos") or ""
+
+
 # ---------------------------------------------------------------------------
 # Unified case-conversion engine  (Acc↔Dat, parameterised by direction)
 # ---------------------------------------------------------------------------
@@ -1438,7 +1536,9 @@ class CaseConversionPair:
     group_span_char_start: Optional[int]
     group_span_char_end: Optional[int]
     dative_type: Optional[str] = None
+    accusative_type: Optional[str] = None
     preposition: Optional[str] = None
+    is_pronoun: bool = False  # NP head is UPOS PRON and the span has no NOUN/PROPN
     corrupted_tokens: Tuple[Dict[str, Any], ...] = ()
     target_span_tokens: Tuple[Dict[str, Any], ...] = ()
     gold_span_tokens: Tuple[Dict[str, Any], ...] = ()
@@ -1968,6 +2068,24 @@ def iter_case_conversion_pairs(
                         preposition = prep_from_label or resolve_case_marker_lemma(
                             tokens, group_start, group_end, idx
                         )
+                accusative_type: Optional[str] = None
+                if source_case == "Acc":
+                    accusative_type, preposition, _ = resolve_accusative_type(
+                        tokens=tokens,
+                        span_start=group_start,
+                        span_end=group_end,
+                        seed_idx=idx,
+                    )
+                head_tok = tokens[
+                    dative_nominal_head_index(
+                        tokens, group_start, group_end, fallback_idx=idx,
+                        case=source_case,
+                    )
+                ]
+                is_pronoun = head_tok.get("upos") == "PRON" and not any(
+                    tokens[i].get("upos") in ("NOUN", "PROPN")
+                    for i in range(group_start, group_end + 1)
+                )
 
                 processed_spans.append((group_start, group_end))
 
@@ -1989,7 +2107,9 @@ def iter_case_conversion_pairs(
                     group_span_char_start=gch0,
                     group_span_char_end=gch1,
                     dative_type=dative_type,
+                    accusative_type=accusative_type,
                     preposition=preposition,
+                    is_pronoun=is_pronoun,
                     corrupted_tokens=changed_tokens,
                     target_span_tokens=target_span_tokens,
                     gold_span_tokens=tuple(
@@ -2027,7 +2147,55 @@ def category_for_dative_type(
     return DATIVE_CATEGORY_DEFAULT
 
 
-def pair_to_group_record(pair: CaseConversionPair) -> Optional[Dict[str, Any]]:
+def _prep_class_category(
+    preposition: Optional[str], only_preps: frozenset[str], only_category: str
+) -> str:
+    """``preps_in_DE`` class of a preposition lemma (case-only / two-way / other)."""
+    base = normalize_case_prep_lemma(preposition)
+    if base in only_preps:
+        return only_category
+    if base in CAT_TWO_WAY_PREPS:
+        return TWO_WAY_PREP_CATEGORY
+    return OTHER_PREP_CATEGORY
+
+
+def category_for_pair(
+    pair: CaseConversionPair, category_mode: str = CATEGORY_MODE_TR
+) -> Optional[str]:
+    """Coarse evaluation ``category`` of a pair (``None`` = uncategorised).
+
+    Core arguments (``core_dative_argument`` / ``core_accusative_argument``) are
+    ``core_pronoun`` when the NP head is UPOS ``PRON`` (and the span holds no
+    NOUN/PROPN), else ``core_other``, in every mode. Prepositional examples depend on ``category_mode``: Dat→Acc in
+    ``preps_in_TR`` follows :func:`category_for_dative_type`; ``preps_in_DE`` (and
+    all of Acc→Dat) split by dative-only / accusative-only / two-way / other
+    preposition.
+    """
+    if pair.dative_type == "core_dative_argument" or (
+        pair.accusative_type == CORE_ACCUSATIVE_TYPE
+    ):
+        return CORE_PRONOUN_CATEGORY if pair.is_pronoun else CORE_OTHER_CATEGORY
+    if pair.accusative_type is not None:
+        if pair.accusative_type == ACCUSATIVE_PREP_TYPE:
+            return _prep_class_category(
+                pair.preposition, CAT_ACCUSATIVE_ONLY_PREPS, ACCUSATIVE_ONLY_PREP_CATEGORY
+            )
+        return None
+    if category_mode == CATEGORY_MODE_TR:
+        return category_for_dative_type(pair.dative_type, pair.preposition)
+    dt = pair.dative_type or ""
+    if dt == "ignore_dative_other_prep" or (
+        dt.startswith("dative_prep_") and dt not in _DATIVE_PREP_BUCKET_LABELS
+    ):
+        return _prep_class_category(
+            pair.preposition, CAT_DATIVE_ONLY_PREPS, DATIVE_ONLY_PREP_CATEGORY
+        )
+    return None
+
+
+def pair_to_group_record(
+    pair: CaseConversionPair, category_mode: str = CATEGORY_MODE_TR
+) -> Optional[Dict[str, Any]]:
     """Serialise a :class:`CaseConversionPair` as a group-level dict (or ``None``)."""
     gs = pair.group_start_index
     ge = pair.group_end_index
@@ -2042,11 +2210,14 @@ def pair_to_group_record(pair: CaseConversionPair) -> Optional[Dict[str, Any]]:
         "gold_text": pair.gold_text,
         "corrupted": pair.corrupt_group,
     }
+    record["is_pronoun"] = pair.is_pronoun
     if pair.dative_type is not None:
         record["dative_type"] = pair.dative_type
+    if pair.accusative_type is not None:
+        record["accusative_type"] = pair.accusative_type
     if pair.preposition is not None:
         record["preposition"] = pair.preposition
-    category = category_for_dative_type(pair.dative_type, pair.preposition)
+    category = category_for_pair(pair, category_mode)
     if category is not None:
         record["category"] = category
     return record
@@ -2056,9 +2227,10 @@ def pair_to_group_duplicates_record(
     pair: CaseConversionPair,
     case_dict: dict,
     target_case: str,
+    category_mode: str = CATEGORY_MODE_TR,
 ) -> Optional[Dict[str, Any]]:
     """Group record for the duplicates JSON when the span has multi-form lookup rows."""
-    record = pair_to_group_record(pair)
+    record = pair_to_group_record(pair, category_mode)
     if record is None:
         return None
     record["gold_span_duplicate_forms"] = gold_span_duplicate_surface_forms(
@@ -2094,6 +2266,7 @@ def _prep_lemma_from_dative_prep_label(label: str) -> Optional[str]:
 def write_dative_category_pair_files(
     group_records: List[Dict[str, Any]],
     output_dir: str,
+    category_mode: str = CATEGORY_MODE_TR,
 ) -> Dict[str, int]:
     """Write minimal-pair JSON per :data:`DATIVE_TYPE_LABELS` entry.
 
@@ -2102,9 +2275,8 @@ def write_dative_category_pair_files(
     ``dative_prep_remaining.json`` (each row keeps a ``preposition`` field).
     Non-target prepositional datives live in ``ignore_dative_other_prep.json``.
 
-    Records that carry a coarse ``category`` are also merged into
-    ``Locative_TR.json`` / ``Ablative_TR.json`` / ``Instrumental_TR.json`` /
-    ``Mixed_TR.json`` / ``NaN_core.json`` / ``NaN_prep.json``.
+    Records that carry a coarse ``category`` are also merged into one file per
+    category of *category_mode* (see :data:`DATIVE_CATEGORY_OUTPUT_FILES_BY_MODE`).
     """
     by_type: Dict[str, List[Dict[str, Any]]] = {
         label: []
@@ -2116,12 +2288,10 @@ def write_dative_category_pair_files(
         if dt == "dative_indirect_obl_arg":
             record = dict(record)
             record["dative_type"] = "core_dative_argument"
-            if "category" not in record:
-                record["category"] = "NaN_core"
             dt = "core_dative_argument"
         if dt in by_type:
-            # Ensure category is present for every typed record.
-            if "category" not in record:
+            # preps_in_TR: every typed record falls into some Turkish bucket.
+            if "category" not in record and category_mode == CATEGORY_MODE_TR:
                 cat = category_for_dative_type(
                     dt, record.get("preposition")
                 )
@@ -2187,15 +2357,19 @@ def write_dative_category_pair_files(
     if os.path.exists(stale_core):
         os.remove(stale_core)
 
-    by_category: Dict[str, List[Dict[str, Any]]] = {
-        cat: [] for cat in DATIVE_CATEGORY_OUTPUT_FILES
-    }
+    category_files = DATIVE_CATEGORY_OUTPUT_FILES_BY_MODE[category_mode]
+    by_category: Dict[str, List[Dict[str, Any]]] = {cat: [] for cat in category_files}
     for record in written_records:
         cat = record.get("category")
         if cat in by_category:
             by_category[cat].append(record)
 
-    for cat, filename in DATIVE_CATEGORY_OUTPUT_FILES.items():
+    # Pre-split core bucket (replaced by core_pronoun / core_other).
+    stale_nan_core = os.path.join(output_dir, "NaN_core.json")
+    if os.path.exists(stale_nan_core):
+        os.remove(stale_nan_core)
+
+    for cat, filename in category_files.items():
         path = os.path.join(output_dir, filename)
         rows = by_category[cat]
         if rows:
@@ -2224,6 +2398,7 @@ def run_pair_generation_main(
     duplicates_dict_csv_path: Optional[str] = None,
     output_group_duplicates_json: Optional[str] = None,
     output_dative_categories_dir: Optional[str] = None,
+    category_mode: str = CATEGORY_MODE_TR,
 ) -> SpanEliminationReport:
     """Shared main-loop: load data → iterate pairs → deduplicate → write JSON.
 
@@ -2240,10 +2415,13 @@ def run_pair_generation_main(
     For Dat→Acc runs with dative typing, minimal pairs are also split into one JSON
     per :data:`DATIVE_TYPE_LABELS` label under *output_dative_categories_dir*
     (default: ``<parent of output_group_json>/dative_categories``), and into coarse
-    merged files ``Locative_TR.json`` / ``Ablative_TR.json`` /
-    ``Instrumental_TR.json`` / ``Mixed_TR.json`` / ``NaN_core.json`` /
-    ``NaN_prep.json``.
+    merged files, one per ``category`` of *category_mode*.
+
+    *category_mode* picks how the ``category`` field is set (see
+    :func:`category_for_pair`). Acc→Dat always uses the German preposition classes.
     """
+    if category_mode not in CATEGORY_MODES:
+        raise ValueError(f"category_mode must be one of {CATEGORY_MODES}: {category_mode!r}")
     from load_ud_dataset import load_ud_dataset, UD_GERMAN_GSD_SPLITS
     from german_ud_lookup_dict_load import load_case_dictionary
 
@@ -2287,6 +2465,7 @@ def run_pair_generation_main(
     group_seen_duplicates: Set[Tuple[str, str, int, int, str]] = set()
     unconverted_records: List[Dict[str, Any]] = []
     dative_type_counts: Counter[str] = Counter()
+    category_counts_all: Counter[str] = Counter()
 
     for pair in iter_case_conversion_pairs(
         dataset,
@@ -2304,7 +2483,7 @@ def run_pair_generation_main(
         g_norm_corr = normalize_german_for_pair_compare(pair.corrupt_group)
 
         if g_norm_corr != g_norm_gold:
-            gr = pair_to_group_record(pair)
+            gr = pair_to_group_record(pair, category_mode)
             if gr is None:
                 gs = pair.group_start_index
                 ge = pair.group_end_index
@@ -2327,14 +2506,15 @@ def run_pair_generation_main(
             if output_group_duplicates_json:
                 if gkey not in group_seen_duplicates:
                     dup_gr = pair_to_group_duplicates_record(
-                        pair, case_dict, target_case
+                        pair, case_dict, target_case, category_mode
                     )
                     if dup_gr is not None:
                         group_seen_duplicates.add(gkey)
                         group_records_duplicates.append(dup_gr)
-            dt = gr.get("dative_type")
+            dt = gr.get("dative_type") or gr.get("accusative_type")
             if dt:
                 dative_type_counts[dt] += 1
+            category_counts_all[gr.get("category", "(none)")] += 1
         else:
             report.group_dropped_normalized_equals_gold += 1
 
@@ -2363,13 +2543,18 @@ def run_pair_generation_main(
         if categories_dir is None:
             categories_dir = os.path.join(parent or ".", "dative_categories")
         category_counts = write_dative_category_pair_files(
-            group_records, categories_dir
+            group_records, categories_dir, category_mode
         )
         written = sum(category_counts.values())
         print(
             f"✅ Wrote {written} Dat→Acc minimal pairs across "
             f"{len(category_counts)} dative_type files under: {categories_dir}"
         )
+
+    if category_counts_all:
+        print(f"--- category counts ({category_mode}) ---")
+        for cat, n in sorted(category_counts_all.items()):
+            print(f"  {cat}: {n}")
 
     if dative_type_counts:
         total_dt = sum(dative_type_counts.values())

@@ -7,6 +7,7 @@
     "group_span_text": "dem Umstand",
     "gold_text": "Unter dem Umstand, dass es kein anderes Paintball Unternehmen in unmittelbarer Nähe gibt, würde ich Paintball Experience weiterempfehlen.",
     "corrupted": "Unter den Umstand, dass es kein anderes Paintball Unternehmen in unmittelbarer Nähe gibt, würde ich Paintball Experience weiterempfehlen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -19,6 +20,7 @@
     "group_span_text": "Ausschluß der Öffentlichkeit",
     "gold_text": "Ausschußvorsitzender Peter Straub (CDU) sagte, Zeugen müßten unter Ausschluß der Öffentlichkeit vernommen werden.",
     "corrupted": "Ausschußvorsitzender Peter Straub (CDU) sagte, Zeugen müßten unter Ausschluss der Öffentlichkeit vernommen werden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -31,6 +33,7 @@
     "group_span_text": "dem",
     "gold_text": "Das Schild des Ost -- West -- Konfliktes, unter dem das deutsche Zweiblockland bequemen Schutz vor unangenehmen internationalen Verpflichtungen gefunden hatte, ist zerbrochen.",
     "corrupted": "Das Schild des Ost -- West -- Konfliktes, unter den das deutsche Zweiblockland bequemen Schutz vor unangenehmen internationalen Verpflichtungen gefunden hatte, ist zerbrochen.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -43,6 +46,7 @@
     "group_span_text": "anderem",
     "gold_text": "Die Ukraine brauche dieses Geld unter anderem, um den Unglücksreaktorblock IV mit einem neuen Betonsarkophag zu umhüllen.",
     "corrupted": "Die Ukraine brauche dieses Geld unter anderes, um den Unglücksreaktorblock IV mit einem neuen Betonsarkophag zu umhüllen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -55,6 +59,7 @@
     "group_span_text": "dem Vorsitz des Kantons St. Gallen",
     "gold_text": "Zwischen 2005 und 2007 wurde unter dem Vorsitz des Kantons St. Gallen ein Plan für die Weiterentwicklung der S - Bahn erstellt.",
     "corrupted": "Zwischen 2005 und 2007 wurde unter den Vorsitz des Kantons St. Gallen ein Plan für die Weiterentwicklung der S - Bahn erstellt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -67,6 +72,7 @@
     "group_span_text": "anderem",
     "gold_text": "Aus den USA kamen etwa 1000 Athleten, die im Vorfeld der Spiele unter anderem durch die früheren Olympiasieger Rulon Gardner und Kirsty Coventry betreut wurden.",
     "corrupted": "Aus den USA kamen etwa 1000 Athleten, die im Vorfeld der Spiele unter anderes durch die früheren Olympiasieger Rulon Gardner und Kirsty Coventry betreut wurden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -79,6 +85,7 @@
     "group_span_text": "den besten 20",
     "gold_text": "Nach ersten Siegen bei FIS - Rennen im März 2010 erreichte er im Nor - am Cup in der Saison 2010 / 2011 zunächst erstmals Platzierungen unter den besten 20 und gegen Saisonende mit Platz acht im Riesenslalom von Whistler das erste Top - 10 - Ergebnis.",
     "corrupted": "Nach ersten Siegen bei FIS - Rennen im März 2010 erreichte er im Nor - am Cup in der Saison 2010 / 2011 zunächst erstmals Platzierungen unter die besten 20 und gegen Saisonende mit Platz acht im Riesenslalom von Whistler das erste Top - 10 - Ergebnis.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -91,6 +98,7 @@
     "group_span_text": "anderem",
     "gold_text": "Erst in den 1950er Jahren entwickelte er eine pädagogische Tätigkeit und wurde unter anderem Lehrer von François - René Duchâble, Avi Schönfeld, Ann Schein Carlyss, Eugen Indjic, Dean Kramer und Marc Laforêt.",
     "corrupted": "Erst in den 1950er Jahren entwickelte er eine pädagogische Tätigkeit und wurde unter anderes Lehrer von François - René Duchâble, Avi Schönfeld, Ann Schein Carlyss, Eugen Indjic, Dean Kramer und Marc Laforêt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -103,6 +111,7 @@
     "group_span_text": "der Herrschaft Napoléons III",
     "gold_text": "Die Place Saint - Michel entstand im Jahr 1855 unter der Herrschaft Napoléons III.",
     "corrupted": "Die Place Saint - Michel entstand im Jahr 1855 unter die Herrschaft Napoléons III.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -115,6 +124,7 @@
     "group_span_text": "Palästinensern",
     "gold_text": "Ihre Ziele sind \"die Definition und Beförderung US-amerikanischer Interessen im Nahen Osten, die Bekämpfung des Radikalislamismus und der iranischen Bedrohung, die Förderung der Akzeptanz Israels unter Palästinensern, eine robustere Vertretung der US - Interessen gegenüber Saudi - Arabien und die Energieunabhängigkeit Israels.\"",
     "corrupted": "Ihre Ziele sind \"die Definition und Beförderung US-amerikanischer Interessen im Nahen Osten, die Bekämpfung des Radikalislamismus und der iranischen Bedrohung, die Förderung der Akzeptanz Israels unter Palästinenser, eine robustere Vertretung der US - Interessen gegenüber Saudi - Arabien und die Energieunabhängigkeit Israels.\"",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -127,6 +137,7 @@
     "group_span_text": "der Führung",
     "gold_text": "Dezember 1942 mit einer Niederlage der Roten Armee unter der Führung von Armeegeneral Georgi Konstantinowitsch Schukow.",
     "corrupted": "Dezember 1942 mit einer Niederlage der Roten Armee unter die Führung von Armeegeneral Georgi Konstantinowitsch Schukow.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -139,6 +150,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter anderem wurde ins Auge gefasst, die Sender zu fusionieren und Shivering Sands als gemeinsame Relaisstation zu verwenden, um eine noch höhere Abdeckung Englands zu erreichen.",
     "corrupted": "Unter anderes wurde ins Auge gefasst, die Sender zu fusionieren und Shivering Sands als gemeinsame Relaisstation zu verwenden, um eine noch höhere Abdeckung Englands zu erreichen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -151,6 +163,7 @@
     "group_span_text": "großem Beifall",
     "gold_text": "März 1868, als er unter großem Beifall ausführte, das Konkordat von 1855 komme ihm vor.",
     "corrupted": "März 1868, als er unter großen Beifall ausführte, das Konkordat von 1855 komme ihm vor.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -163,6 +176,7 @@
     "group_span_text": "anderem",
     "gold_text": "Um den Ort herum bestehen eine Reihe von ausgeschilderten Wanderwegen, unter anderem auch ein Rundweg von der Burg zum Dorf und zurück.",
     "corrupted": "Um den Ort herum bestehen eine Reihe von ausgeschilderten Wanderwegen, unter anderes auch ein Rundweg von der Burg zum Dorf und zurück.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -175,6 +189,7 @@
     "group_span_text": "anderem",
     "gold_text": "Behandelt werden unter anderem die Themen Inkontinenz, Stoma, Wund - und Dekubitusversorgung.",
     "corrupted": "Behandelt werden unter anderes die Themen Inkontinenz, Stoma, Wund - und Dekubitusversorgung.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -187,6 +202,7 @@
     "group_span_text": "dem Titel \"Castrol Austria Trophy",
     "gold_text": "So lief der Automobilteil unter dem Titel \"Mercedes - Benz - Cup\", später dann umbenannt in \"Mercedes - Benz - Trophäe Alfred Neubauer\", gesponsert von Mercedes Benz Österreich und der Motorradteil unter dem Titel \"Castrol Austria Trophy\", gesponsert von Castrol Austria.",
     "corrupted": "So lief der Automobilteil unter dem Titel \"Mercedes - Benz - Cup\", später dann umbenannt in \"Mercedes - Benz - Trophäe Alfred Neubauer\", gesponsert von Mercedes Benz Österreich und der Motorradteil unter den Titel \"Castrol Austria Trophy\", gesponsert von Castrol Austria.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -199,6 +215,7 @@
     "group_span_text": "anderem",
     "gold_text": "Dazu gehörten unter anderem mehrere Schornsteine, die zum Coldharbour Gate gehörten.",
     "corrupted": "Dazu gehörten unter anderes mehrere Schornsteine, die zum Coldharbour Gate gehörten.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -211,6 +228,7 @@
     "group_span_text": "der Vielzahl",
     "gold_text": "Überwiegend waren dies heimische Arten, aber auch exotische Baum - und Straucharten: Ahorne, Akazien, Trompetenbäume, Ulmen, Eschen, Sumachgewächse, Esskastanien, Arten des Christusdorns, Zürgelbäume, Tulpenbaum, japanische Magnolien, Maulbeerbaum, Amerikanische Weiß - Eiche sowie unter der Vielzahl der Blüten - und Decksträucher verschiedene Wildrosenarten von hoher Qualität.",
     "corrupted": "Überwiegend waren dies heimische Arten, aber auch exotische Baum - und Straucharten: Ahorne, Akazien, Trompetenbäume, Ulmen, Eschen, Sumachgewächse, Esskastanien, Arten des Christusdorns, Zürgelbäume, Tulpenbaum, japanische Magnolien, Maulbeerbaum, Amerikanische Weiß - Eiche sowie unter die Vielzahl der Blüten - und Decksträucher verschiedene Wildrosenarten von hoher Qualität.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -223,6 +241,7 @@
     "group_span_text": "anderem",
     "gold_text": "Hintergrund der Förderungen sind unter anderem Bemühungen zum Umweltschutz, Klimaschutz, zur Ressourcenschonung, Verringerung der Abhängigkeit von Energieexporteuren und die Förderung ländlicher Regionen.",
     "corrupted": "Hintergrund der Förderungen sind unter anderes Bemühungen zum Umweltschutz, Klimaschutz, zur Ressourcenschonung, Verringerung der Abhängigkeit von Energieexporteuren und die Förderung ländlicher Regionen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -235,6 +254,7 @@
     "group_span_text": "anderem",
     "gold_text": "Städte, die von Roosendaal direkt erreicht werden, sind unter anderem Arnheim, Antwerpen, Amsterdam, Brüssel, 's - Hertogenbosch und Rotterdam.",
     "corrupted": "Städte, die von Roosendaal direkt erreicht werden, sind unter anderes Arnheim, Antwerpen, Amsterdam, Brüssel, 's - Hertogenbosch und Rotterdam.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -247,6 +267,7 @@
     "group_span_text": "Sozialer Marktwirtschaft",
     "gold_text": "Die breite gesellschaftliche Bezugnahme auf den Begriff Soziale Marktwirtschaft bedeutet jedoch keineswegs, dass sich alle darin einig sind, was unter Sozialer Marktwirtschaft zu verstehen sei.",
     "corrupted": "Die breite gesellschaftliche Bezugnahme auf den Begriff Soziale Marktwirtschaft bedeutet jedoch keineswegs, dass sich alle darin einig sind, was unter Soziale Marktwirtschaft zu verstehen sei.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -259,6 +280,7 @@
     "group_span_text": "anderem",
     "gold_text": "Das Team der Nordiques wurde 1995 nach Colorado verkauft und avancierte unter dem Namen Colorado Avalanche zu einem Spitzenteam, das unter anderem zweimal den Stanley Cup gewann.",
     "corrupted": "Das Team der Nordiques wurde 1995 nach Colorado verkauft und avancierte unter dem Namen Colorado Avalanche zu einem Spitzenteam, das unter anderes zweimal den Stanley Cup gewann.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -271,6 +293,7 @@
     "group_span_text": "dem Schlüssel C20",
     "gold_text": "Sie zählt zu den Offenen Spielen und ist in den ECO - Codes unter dem Schlüssel C20 klassifiziert.",
     "corrupted": "Sie zählt zu den Offenen Spielen und ist in den ECO - Codes unter den Schlüssel C20 klassifiziert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -283,6 +306,7 @@
     "group_span_text": "der Leitung",
     "gold_text": "Im Jahr 1898 wurde er an der Technischen Hochschule Dresden unter der Leitung von Fritz Foerster erstmals auf dem Gebiet der Elektrochemie tätig.",
     "corrupted": "Im Jahr 1898 wurde er an der Technischen Hochschule Dresden unter die Leitung von Fritz Foerster erstmals auf dem Gebiet der Elektrochemie tätig.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -295,6 +319,7 @@
     "group_span_text": "anderem",
     "gold_text": "Heute umfasst das Programm etwa 14 verschiedene Reihen, unter anderem auch eine Jugendbuchserie.",
     "corrupted": "Heute umfasst das Programm etwa 14 verschiedene Reihen, unter anderes auch eine Jugendbuchserie.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -307,6 +332,7 @@
     "group_span_text": "anderem",
     "gold_text": "Es wurden unter anderem ein Bandarmband, ein kleiner Ring, eine Nadel, eine Spirale und einen Dolch mit einem Gammadion - Griff, der wahrscheinlich zu einer Statuette gehört, gefunden.",
     "corrupted": "Es wurden unter anderes ein Bandarmband, ein kleiner Ring, eine Nadel, eine Spirale und einen Dolch mit einem Gammadion - Griff, der wahrscheinlich zu einer Statuette gehört, gefunden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -319,6 +345,7 @@
     "group_span_text": "diesem Einfluss",
     "gold_text": "Malte er vorher hauptsächlich abstrakte Bilder, änderte er dies unter diesem Einfluss mehr in Richtung gegenständliche und surreale Kunst.",
     "corrupted": "Malte er vorher hauptsächlich abstrakte Bilder, änderte er dies unter dies Einfluss mehr in Richtung gegenständliche und surreale Kunst.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -331,6 +358,7 @@
     "group_span_text": "anderem",
     "gold_text": "1993 veranstaltete Inge Latz gemeinsam mit Eva Bauer in der Münchner Seidl - Villa wöchentlich Themenabende (unter anderem: Musikalische Maskentänze, Das Geheimnis der Herbstzeitlosen, Hexenklänge und Wintergeister), bei denen improvisierte Musik vorgetragen wurde.",
     "corrupted": "1993 veranstaltete Inge Latz gemeinsam mit Eva Bauer in der Münchner Seidl - Villa wöchentlich Themenabende (unter anderes: Musikalische Maskentänze, Das Geheimnis der Herbstzeitlosen, Hexenklänge und Wintergeister), bei denen improvisierte Musik vorgetragen wurde.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -343,6 +371,7 @@
     "group_span_text": "hohen Kosten",
     "gold_text": "Allerdings wurde die Kirche 90 Jahre nach ihrer Erbauung so schwer baufällig, dass sie unter hohen Kosten saniert werden musste.",
     "corrupted": "Allerdings wurde die Kirche 90 Jahre nach ihrer Erbauung so schwer baufällig, dass sie unter hohe Kosten saniert werden musste.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -355,6 +384,7 @@
     "group_span_text": "ihnen",
     "gold_text": "Dort porträtierte sie viele berühmte Artisten, unter ihnen Oleg Popov.",
     "corrupted": "Dort porträtierte sie viele berühmte Artisten, unter sie Oleg Popov.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -367,6 +397,7 @@
     "group_span_text": "der Dreiteilung des Winkels (auch: Trisektion des Winkels",
     "gold_text": "Unter der Dreiteilung des Winkels (auch: Trisektion des Winkels) versteht man in der Geometrie das Problem, ob man einen beliebigen Winkel nur mit Hilfe von Zirkel und Lineal (den euklidischen Werkzeugen) konstruktiv und präzise in drei gleich große Winkel unterteilen kann.",
     "corrupted": "Unter die Dreiteilung des Winkels (auch: Trisektion des Winkels) versteht man in der Geometrie das Problem, ob man einen beliebigen Winkel nur mit Hilfe von Zirkel und Lineal (den euklidischen Werkzeugen) konstruktiv und präzise in drei gleich große Winkel unterteilen kann.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -379,6 +410,7 @@
     "group_span_text": "dem Dach",
     "gold_text": "Unter dem Dach liegt ein nach außen betontes Aussichtsgeschoss mit Koppelfenstern.",
     "corrupted": "Unters Dach liegt ein nach außen betontes Aussichtsgeschoss mit Koppelfenstern.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -391,6 +423,7 @@
     "group_span_text": "anderem",
     "gold_text": "Abswurmbachit bildet sich zusammen mit Braunit in mangan- und aluminiumhaltigen Piemontit-Sursassit-Quarziten bei Drücken von 7-11 kbar und Temperaturen von 300-420 °C. Weitere Begleitminerale sind unter anderem Ardennit, Hollandit, Klinochlor, Quarz, Rutil und Shattuckit.",
     "corrupted": "Abswurmbachit bildet sich zusammen mit Braunit in mangan- und aluminiumhaltigen Piemontit-Sursassit-Quarziten bei Drücken von 7-11 kbar und Temperaturen von 300-420 °C. Weitere Begleitminerale sind unter anderes Ardennit, Hollandit, Klinochlor, Quarz, Rutil und Shattuckit.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -403,6 +436,7 @@
     "group_span_text": "der Leitung",
     "gold_text": "Gegründet wurde er 1946 von einem Proponenten - Komitee unter der Leitung von Viktor Fous.",
     "corrupted": "Gegründet wurde er 1946 von einem Proponenten - Komitee unter die Leitung von Viktor Fous.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -415,6 +449,7 @@
     "group_span_text": "der Überschrift",
     "gold_text": "Damit wurde die ab Mitte der 1990er Jahre von Anwohnern und Medien problematisierte Entwicklung einer sogenannten offene Drogenszene zu einer Auseinandersetzung um die strukturelle Zukunft des gesamten Quartiers, prägnant zusammengefasst unter der Überschrift: \"Das Fenster zum Elend ist zu\".",
     "corrupted": "Damit wurde die ab Mitte der 1990er Jahre von Anwohnern und Medien problematisierte Entwicklung einer sogenannten offene Drogenszene zu einer Auseinandersetzung um die strukturelle Zukunft des gesamten Quartiers, prägnant zusammengefasst unter die Überschrift: \" Das Fenster zum Elend ist zu \".",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -427,6 +462,7 @@
     "group_span_text": "anderem",
     "gold_text": "Der wieder zunehmende Handel führte zu einem wahren Boom, es wurde unter anderem Eisen, Holz, Weizen, Hanf und Flachs importiert.",
     "corrupted": "Der wieder zunehmende Handel führte zu einem wahren Boom, es wurde unter anderes Eisen, Holz, Weizen, Hanf und Flachs importiert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -439,6 +475,7 @@
     "group_span_text": "anderem",
     "gold_text": "Die Polymerfraktionierung für analytische Zwecke (Maßstab: einige mg) erfolgt unter anderem mittels der Gel - Permeations - Chromatographie (GPC), Matrix Assisted Laser Desorption / Ionisation - Time Of Flight (MALDI - TOF) oder der Feld - Fluss - Fraktionierung (FFF).",
     "corrupted": "Die Polymerfraktionierung für analytische Zwecke (Maßstab: einige mg) erfolgt unter anderes mittels der Gel - Permeations - Chromatographie (GPC), Matrix Assisted Laser Desorption / Ionisation - Time Of Flight (MALDI - TOF) oder der Feld - Fluss - Fraktionierung (FFF).",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -451,6 +488,7 @@
     "group_span_text": "eigenem Namen",
     "gold_text": "Der Erfolg des Quartetts führte dazu, dass Hamilton ein Angebot für eine Aufnahme unter eigenem Namen bekam, die er mit Howard Roberts und George Duvivier einspielte.",
     "corrupted": "Der Erfolg des Quartetts führte dazu, dass Hamilton ein Angebot für eine Aufnahme unter eigenen Namen bekam, die er mit Howard Roberts und George Duvivier einspielte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -463,6 +501,7 @@
     "group_span_text": "anderem",
     "gold_text": "Dazu zählen unter anderem Frisch -, Butter - und H - Milch sowie Milchmischgetränke, aber auch Sahne, Butter, Joghurt, Quark und Kondensmilch.",
     "corrupted": "Dazu zählen unter anderes Frisch -, Butter - und H - Milch sowie Milchmischgetränke, aber auch Sahne, Butter, Joghurt, Quark und Kondensmilch.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -475,6 +514,7 @@
     "group_span_text": "anderem",
     "gold_text": "Als Modelle dienten ihm unter anderem der Zehnkämpfer Jürgen Hingsen, die Hochspringerin Ulrike Nasse - Meyfarth und der Schwimmer Walter Kusch.",
     "corrupted": "Als Modelle dienten ihm unter anderes der Zehnkämpfer Jürgen Hingsen, die Hochspringerin Ulrike Nasse - Meyfarth und der Schwimmer Walter Kusch.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -487,6 +527,7 @@
     "group_span_text": "der Verwaltung der Hudson 's Bay Company",
     "gold_text": "Die Region stand de facto unter der Verwaltung der Hudson 's Bay Company und dessen Filialleiter James Douglas, der gleichzeitig Gouverneur von Vancouver Island war.",
     "corrupted": "Die Region stand de facto unter die Verwaltung der Hudson 's Bay Company und dessen Filialleiter James Douglas, der gleichzeitig Gouverneur von Vancouver Island war.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -499,6 +540,7 @@
     "group_span_text": "den Pflanzen",
     "gold_text": "Unter den Pflanzen, die an den Ufern des Flusses wachsen, finden sich viele Bäume und Sträucher verschiedener Arten, unter anderem Mangrove.",
     "corrupted": "Unter die Pflanzen, die an den Ufern des Flusses wachsen, finden sich viele Bäume und Sträucher verschiedener Arten, unter anderem Mangrove.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -511,6 +553,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter den Pflanzen, die an den Ufern des Flusses wachsen, finden sich viele Bäume und Sträucher verschiedener Arten, unter anderem Mangrove.",
     "corrupted": "Unter den Pflanzen, die an den Ufern des Flusses wachsen, finden sich viele Bäume und Sträucher verschiedener Arten, unter anderes Mangrove.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -523,6 +566,7 @@
     "group_span_text": "anderem",
     "gold_text": "Thomas Karlsson schreibt dort unter anderem: \"Das Zeichen des Abraxas / Der Kreis des Sonnenjahres / Tief im Winter wirst du sehen, wie die Sonne geboren wird.\"",
     "corrupted": "Thomas Karlsson schreibt dort unter anderes: \"Das Zeichen des Abraxas / Der Kreis des Sonnenjahres / Tief im Winter wirst du sehen, wie die Sonne geboren wird.\"",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -535,6 +579,7 @@
     "group_span_text": "dem Namen Gruppe",
     "gold_text": "1899 formierte sich eine weitere separatistische Künstlervereinigung unter dem Namen Gruppe G, die sich kurz darauf in Scholle umbenannte und 1913 gründete sich die Münchner Neue Secession.",
     "corrupted": "1899 formierte sich eine weitere separatistische Künstlervereinigung unter den Namen Gruppe G, die sich kurz darauf in Scholle umbenannte und 1913 gründete sich die Münchner Neue Secession.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -547,6 +592,7 @@
     "group_span_text": "anderem",
     "gold_text": "Das Zusammengehörigkeitsgefühl der Angehörigen dieser Kultur drückt sich unter anderem durch eine eigene Sprache, den so genannten Netzjargon, aus.",
     "corrupted": "Das Zusammengehörigkeitsgefühl der Angehörigen dieser Kultur drückt sich unter anderes durch eine eigene Sprache, den so genannten Netzjargon, aus.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -559,6 +605,7 @@
     "group_span_text": "der",
     "gold_text": "Auch wird er leicht zornig, dann schlägt er vor Wut auf Gegenstände ein, so auch wenn ihn seine ältere Schwester mal wieder ärgert, oder man von der Scheidung seiner Eltern spricht, unter der er sehr leidet.",
     "corrupted": "Auch wird er leicht zornig, dann schlägt er vor Wut auf Gegenstände ein, so auch wenn ihn seine ältere Schwester mal wieder ärgert, oder man von der Scheidung seiner Eltern spricht, unter die er sehr leidet.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -571,6 +618,7 @@
     "group_span_text": "der Regie",
     "gold_text": "Die Universal Studios nahmen sie 1934 unter Vertrag, und ihr Filmdebüt gab sie im gleichen Jahr unter der Regie von James Whale in One More River.",
     "corrupted": "Die Universal Studios nahmen sie 1934 unter Vertrag, und ihr Filmdebüt gab sie im gleichen Jahr unter die Regie von James Whale in One More River.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -583,6 +631,7 @@
     "group_span_text": "anderem",
     "gold_text": "Er ist unter anderem Vater von Karsten Troyke und Großvater von Tino Mewes.",
     "corrupted": "Er ist unter anderes Vater von Karsten Troyke und Großvater von Tino Mewes.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -595,6 +644,7 @@
     "group_span_text": "dem Einfluss des Nordost - Passats",
     "gold_text": "Sie liegen nicht unter dem Einfluss des Nordost - Passats wie die Inseln über dem Winde und weisen daher ein weitaus trockeneres Klima auf.",
     "corrupted": "Sie liegen nicht unter den Einfluss des Nordost - Passats wie die Inseln über dem Winde und weisen daher ein weitaus trockeneres Klima auf.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -607,6 +657,7 @@
     "group_span_text": "anderem",
     "gold_text": "Er war in erster Linie ein Sandplatzspieler, was unter anderem darin deutlich wird, dass er vier seiner fünf Profi - Turniersiege auf diesem Belag errang.",
     "corrupted": "Er war in erster Linie ein Sandplatzspieler, was unter anderes darin deutlich wird, dass er vier seiner fünf Profi - Turniersiege auf diesem Belag errang.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -619,6 +670,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter anderem war er stellvertretender Vorsitzender des Bildungsausschusses.",
     "corrupted": "Unter anderes war er stellvertretender Vorsitzender des Bildungsausschusses.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -631,6 +683,7 @@
     "group_span_text": "der Hälfte der Wahlberechtigten",
     "gold_text": "Diese scheiterte mit einer Beteiligung von weniger als 10 %, weit unter der mindestens nötigen Teilnahme der Hälfte der Wahlberechtigten.",
     "corrupted": "Diese scheiterte mit einer Beteiligung von weniger als 10 %, weit unter der mindestens nötigen Teilnahme die Hälfte der Wahlberechtigten.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -643,6 +696,7 @@
     "group_span_text": "dem Titel Target",
     "gold_text": "Unter dem Titel In Sound erschien eine vom Kronos Quartet und dem Paul Dresher Ensemble eingespielte CD mit Werken Makans, eine weitere mit Aufnahmen des Ensembles Either / Or, der California E.A.R. Unit und der Sopranistin Laurie Rubin erschien unter dem Titel Target.",
     "corrupted": "Unter dem Titel In Sound erschien eine vom Kronos Quartet und dem Paul Dresher Ensemble eingespielte CD mit Werken Makans, eine weitere mit Aufnahmen des Ensembles Either / Or, der California E.A.R. Unit und der Sopranistin Laurie Rubin erschien unter den Titel Target.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -655,6 +709,7 @@
     "group_span_text": "dem Titel",
     "gold_text": "Unter dem Titel In Sound erschien eine vom Kronos Quartet und dem Paul Dresher Ensemble eingespielte CD mit Werken Makans, eine weitere mit Aufnahmen des Ensembles Either / Or, der California E.A.R. Unit und der Sopranistin Laurie Rubin erschien unter dem Titel Target.",
     "corrupted": "Unter den Titel In Sound erschien eine vom Kronos Quartet und dem Paul Dresher Ensemble eingespielte CD mit Werken Makans, eine weitere mit Aufnahmen des Ensembles Either / Or, der California E.A.R. Unit und der Sopranistin Laurie Rubin erschien unter dem Titel Target.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -667,6 +722,7 @@
     "group_span_text": "dem Titel \"Intoleranz",
     "gold_text": "Die jüngste und aktuelle Geschichte wurde 1919 nochmals unter dem Titel \"Intoleranz 2.",
     "corrupted": "Die jüngste und aktuelle Geschichte wurde 1919 nochmals unter den Titel \"Intoleranz 2.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -679,6 +735,7 @@
     "group_span_text": "anderem",
     "gold_text": "Dieses Gebäude beinhaltet unter anderem die Einrichtungen für Jugend.",
     "corrupted": "Dieses Gebäude beinhaltet unter anderes die Einrichtungen für Jugend.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -691,6 +748,7 @@
     "group_span_text": "anderem",
     "gold_text": "Dazu gehören unter anderem Gesteinsbrocken vom Mars, vom Mond und von Meteoriten, ein Modell des Hubble - Weltraumteleskops, ein Seismograph und ein 100 Kilogramm schweres Foucaultsches Pendel.",
     "corrupted": "Dazu gehören unter anderes Gesteinsbrocken vom Mars, vom Mond und von Meteoriten, ein Modell des Hubble - Weltraumteleskops, ein Seismograph und ein 100 Kilogramm schweres Foucaultsches Pendel.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -703,6 +761,7 @@
     "group_span_text": "dem Lauf",
     "gold_text": "Das Colt Modell 1895 war ein Gasdrucklader und bekam im Spanisch - Amerikanischen Krieg den Namen \"Potato Digger\", da beim Schießen ein Hebel, der den Gaskolben trug, unter dem Lauf hin und her pendelte und an eine Schaufel zum Ausgraben von Kartoffeln erinnerte.",
     "corrupted": "Das Colt Modell 1895 war ein Gasdrucklader und bekam im Spanisch - Amerikanischen Krieg den Namen \" Potato Digger \", da beim Schießen ein Hebel, der den Gaskolben trug, unter den Lauf hin und her pendelte und an eine Schaufel zum Ausgraben von Kartoffeln erinnerte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -715,6 +774,7 @@
     "group_span_text": "deren genauer Verlauf und Umfang",
     "gold_text": "Diese gipfelten im April 1242 in der Schlacht auf dem zugefrorenen Peipussee, deren genauer Verlauf und Umfang unter Historikern umstritten ist.",
     "corrupted": "Diese gipfelten im April 1242 in der Schlacht auf dem zugefrorenen Peipussee, deren genauen Verlauf und Umfang unter Historikern umstritten ist.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -727,6 +787,7 @@
     "group_span_text": "den Schülern",
     "gold_text": "Christen und Muslime stellen etwa gleich große Religionsgruppen unter den Schülern.",
     "corrupted": "Christen und Muslime stellen etwa gleich große Religionsgruppen unter die Schüler.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -739,6 +800,7 @@
     "group_span_text": "dem Pseudonym Courtmasta",
     "gold_text": "Der Sieger des Wettbewerbs wurde ein privater Produzent, der unter dem Pseudonym Courtmasta arbeitet und als Preis ein Treffen mit Kollegah erhielt.",
     "corrupted": "Der Sieger des Wettbewerbs wurde ein privater Produzent, der unter den Pseudonym Courtmasta arbeitet und als Preis ein Treffen mit Kollegah erhielt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -751,6 +813,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter anderem befasste er sich sogar mit medizinischen Fragen des Weltraumfluges.",
     "corrupted": "Unter anderes befasste er sich sogar mit medizinischen Fragen des Weltraumfluges.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -763,6 +826,7 @@
     "group_span_text": "den rund 2200 Arten",
     "gold_text": "Unter den rund 2200 Arten befinden sich auch viele Zierpflanzen.",
     "corrupted": "Unter die rund 2200 Arten befinden sich auch viele Zierpflanzen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -775,6 +839,7 @@
     "group_span_text": "anderem",
     "gold_text": "In Rom war er unter anderem mit den Malern Adam Elsheimer, Pieter Lastman, und Jacob Pinas befreundet.",
     "corrupted": "In Rom war er unter anderes mit den Malern Adam Elsheimer, Pieter Lastman, und Jacob Pinas befreundet.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -787,6 +852,7 @@
     "group_span_text": "anderem",
     "gold_text": "Seine zwei Doppelpartien konnte er gewinnen, seine Einzelbilanz war 2:5, wobei er unter anderem Greg Rusedski und Tim Henman bei der Partie gegen Großbritannien unterlegen war.",
     "corrupted": "Seine zwei Doppelpartien konnte er gewinnen, seine Einzelbilanz war 2:5, wobei er unter anderes Greg Rusedski und Tim Henman bei der Partie gegen Großbritannien unterlegen war.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -799,6 +865,7 @@
     "group_span_text": "der Herrschaft der Ameisen",
     "gold_text": "Während der Entdecker des Phänomens, Ernest Hubbs (Nigel Davenport), stirbt, wird sein Kollege James Lesko (Michael Murphy) zusammen mit einer vorher geretteten jungen Frau (Lynne Frederick) von den Ameisen unterjocht, um vielleicht eine neue Rasse unter der Herrschaft der Ameisen zu gründen.",
     "corrupted": "Während der Entdecker des Phänomens, Ernest Hubbs (Nigel Davenport), stirbt, wird sein Kollege James Lesko (Michael Murphy) zusammen mit einer vorher geretteten jungen Frau (Lynne Frederick) von den Ameisen unterjocht, um vielleicht eine neue Rasse unter die Herrschaft der Ameisen zu gründen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -811,6 +878,7 @@
     "group_span_text": "der Leitung",
     "gold_text": "Diesmal stand die Produktion unter der Leitung von Brenk (Stiege 44).",
     "corrupted": "Diesmal stand die Produktion unter die Leitung von Brenk (Stiege 44).",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -823,6 +891,7 @@
     "group_span_text": "anderem",
     "gold_text": "Bereits im September 1946 als \"Feind der Einheit\" von seinem Posten entfernt, wurde er unter anderem wegen seines öffentlichen Auftretens für eine Gewaltenteilung in der sächsischen Verfassung 1947 auch aus der Partei ausgeschlossen.",
     "corrupted": "Bereits im September 1946 als \"Feind der Einheit\" von seinem Posten entfernt, wurde er unter anderes wegen seines öffentlichen Auftretens für eine Gewaltenteilung in der sächsischen Verfassung 1947 auch aus der Partei ausgeschlossen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -835,6 +904,7 @@
     "group_span_text": "ihm",
     "gold_text": "Man glaubt, dass der Monarch um 1268 dieses Gebiet unter seine Protektion stellte und ihm den Namen Real de Manzanares gab.",
     "corrupted": "Man glaubt, dass der Monarch um 1268 dieses Gebiet unter seine Protektion stellte und ihn den Namen Real de Manzanares gab.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -847,6 +917,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter anderem gehört auch Alexandros Ipsilantis zu ihnen.",
     "corrupted": "Unter anderes gehört auch Alexandros Ipsilantis zu ihnen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -859,6 +930,7 @@
     "group_span_text": "anderem",
     "gold_text": "Der Bezirksteil Simmering umfasst große Teile der Wohn - und Betriebsbauflächen des Bezirks, unter anderem das Wiener Gaswerk und das Wiener Elektrizitätswerk.",
     "corrupted": "Der Bezirksteil Simmering umfasst große Teile der Wohn - und Betriebsbauflächen des Bezirks, unter anderes das Wiener Gaswerk und das Wiener Elektrizitätswerk.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -871,6 +943,7 @@
     "group_span_text": "dem Vorsitz",
     "gold_text": "Führungslos schloss sich die NAL mit drei kleineren Parteien unter dem Vorsitz von Joe Appiah zur Justice Party im Oktober 1970 zusammen.",
     "corrupted": "Führungslos schloss sich die NAL mit drei kleineren Parteien unter den Vorsitz von Joe Appiah zur Justice Party im Oktober 1970 zusammen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -883,6 +956,7 @@
     "group_span_text": "der Regie Kerschbaumers",
     "gold_text": "Während die Anschläge in den ersten Jahren unter der Regie Kerschbaumers weitgehend auf die Zerstörung von Sacheigentum abzielten (Strommasten, italienische Wohnbauten), richtete sich die Gewalt sogenannter \"Südtirol - Aktivisten\" zunehmend auch gegen Menschen, nachdem infolge der Anschlagsserie der Feuernacht 1961 die ursprüngliche BAS - Gruppe fast vollständig inhaftiert worden war.",
     "corrupted": "Während die Anschläge in den ersten Jahren unter die Regie Kerschbaumers weitgehend auf die Zerstörung von Sacheigentum abzielten (Strommasten, italienische Wohnbauten), richtete sich die Gewalt sogenannter \"Südtirol - Aktivisten\" zunehmend auch gegen Menschen, nachdem infolge der Anschlagsserie der Feuernacht 1961 die ursprüngliche BAS - Gruppe fast vollständig inhaftiert worden war.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -895,6 +969,7 @@
     "group_span_text": "anderem",
     "gold_text": "Danach war er zwischen 1933 und 1956 als Chefarzt der Medizinischen Klinik am Kantonsspital Aarau unter anderem für den Aufbau eines Grosslabors verantwortlich.",
     "corrupted": "Danach war er zwischen 1933 und 1956 als Chefarzt der Medizinischen Klinik am Kantonsspital Aarau unter anderes für den Aufbau eines Grosslabors verantwortlich.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -907,6 +982,7 @@
     "group_span_text": "anderem",
     "gold_text": "Er war als Klempner tätig unter anderem 1946 bei den Borgwardwerken.",
     "corrupted": "Er war als Klempner tätig unter anderes 1946 bei den Borgwardwerken.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -919,6 +995,7 @@
     "group_span_text": "der französischen Regierung",
     "gold_text": "1798 fiel Kell an den unter der französischen Regierung neu gebildeten Kanton Andernach, der zum Arrondissement de Coblence im Département de Rhin-et-Moselle gehörte.",
     "corrupted": "1798 fiel Kell an den unter die französische Regierung neu gebildeten Kanton Andernach, der zum Arrondissement de Coblence im Département de Rhin - et - Moselle gehörte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -931,6 +1008,7 @@
     "group_span_text": "dem Titel \"Le rudiment de la musique",
     "gold_text": "Cardon veröffentlichte 1786 ein Traktat unter dem Titel \"Le rudiment de la musique, ou Principes de cet art à la portée de tout le monde, par questions et réponses\".",
     "corrupted": "Cardon veröffentlichte 1786 ein Traktat unter den Titel \"Le rudiment de la musique, ou Principes de cet art à la portée de tout le monde, par questions et réponses\".",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -943,6 +1021,7 @@
     "group_span_text": "dem Einfluss",
     "gold_text": "Unter dem Einfluss von Bucer wandte sich Hermann von Wied 1542 dem Protestantismus zu.",
     "corrupted": "Unter den Einfluss von Bucer wandte sich Hermann von Wied 1542 dem Protestantismus zu.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -955,6 +1034,7 @@
     "group_span_text": "anderem",
     "gold_text": "Hauptgrund der Reise ist jedoch das Treffen mit der Georgischen Arbeiterpartei (unter anderem vertreten durch Schalwa Natelaschwili) und das Abschließen von bilateralen Verträgen, die die Zusammenarbeit der beiden Parteien beschließen.",
     "corrupted": "Hauptgrund der Reise ist jedoch das Treffen mit der Georgischen Arbeiterpartei (unter anderes vertreten durch Schalwa Natelaschwili) und das Abschließen von bilateralen Verträgen, die die Zusammenarbeit der beiden Parteien beschließen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -967,6 +1047,7 @@
     "group_span_text": "18 Jahren",
     "gold_text": "Davon waren 9,2 % Kinder und Jugendliche unter 18 Jahren und 13,9 % waren 65 oder älter.",
     "corrupted": "Davon waren 9,2 % Kinder und Jugendliche unter 18 Jahre und 13,9 % waren 65 oder älter.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -979,6 +1060,7 @@
     "group_span_text": "anderem",
     "gold_text": "Sie traten unter anderem bei dem größten deutschen a - cappella Festival Vokal Total in München auf, in der Musikuniversität Szeged / H, Musikuniversität Wien, Musikuniversität Köln, im Bregenzer Festspielhaus, im großen Sendesaal des Radiokulturhauses Wien... Die Gruppe wurde ua.",
     "corrupted": "Sie traten unter anderes bei dem größten deutschen a - cappella Festival Vokal Total in München auf, in der Musikuniversität Szeged / H, Musikuniversität Wien, Musikuniversität Köln, im Bregenzer Festspielhaus, im großen Sendesaal des Radiokulturhauses Wien... Die Gruppe wurde ua.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -991,6 +1073,7 @@
     "group_span_text": "denen des Gleitreibungskoeffizienten",
     "gold_text": "Typische Zahlenwerte des Rollwiderstandskoeffizienten liegen um ein bis über zwei Größenordnungen unter denen des Gleitreibungskoeffizienten.",
     "corrupted": "Typische Zahlenwerte des Rollwiderstandskoeffizienten liegen um ein bis über zwei Größenordnungen unter die des Gleitreibungskoeffizienten.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1003,6 +1086,7 @@
     "group_span_text": "anderem",
     "gold_text": "Jahrhundert aus, jedoch führen unter anderem die Familien Este, Pallavicini, Fieschi, Malaspina und Della Torre, Visconti of Gallura, Parodi, Pinelli, Lupi, Massa, Della Berardenga, Cavalcabò, Adalbertina, etc., ihre Stammbäume auf Oberto I. zurück.",
     "corrupted": "Jahrhundert aus, jedoch führen unter anderes die Familien Este, Pallavicini, Fieschi, Malaspina und Della Torre, Visconti of Gallura, Parodi, Pinelli, Lupi, Massa, Della Berardenga, Cavalcabò, Adalbertina, etc., ihre Stammbäume auf Oberto I. zurück.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1015,6 +1099,7 @@
     "group_span_text": "großen Mühen",
     "gold_text": "Die Abbildung eins komplexen Wartungsprotokolls, dass aus mehreren DIN A4 Seiten besteht ist so nur unter großen Mühen für den Ausfüllenden möglich.",
     "corrupted": "Die Abbildung eins komplexen Wartungsprotokolls, dass aus mehreren DIN A4 Seiten besteht ist so nur unter große Mühen für den Ausfüllenden möglich.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1027,6 +1112,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter anderem wurde er 2006 Siebter der Formel A Kartweltmeisterschaft und Vizemeister der französischen Meisterschaft.",
     "corrupted": "Unter anderes wurde er 2006 Siebter der Formel A Kartweltmeisterschaft und Vizemeister der französischen Meisterschaft.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1039,6 +1125,7 @@
     "group_span_text": "der Leitung",
     "gold_text": "Die erste schwedische Lokomotive wurde 1852 unter der Leitung von Harald Asplund gebaut.",
     "corrupted": "Die erste schwedische Lokomotive wurde 1852 unter die Leitung von Harald Asplund gebaut.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1051,6 +1138,7 @@
     "group_span_text": "anderem",
     "gold_text": "Zu den tantrischen Schriften der bestehenden Sarma - Traditionen zählen heute unter anderem das Guhyasamaja -, Chakrasamvara -, Hevajra -, Yamantaka -, Vajrayogini - und das Kalachakra - Tantra.",
     "corrupted": "Zu den tantrischen Schriften der bestehenden Sarma - Traditionen zählen heute unter anderes das Guhyasamaja -, Chakrasamvara -, Hevajra -, Yamantaka -, Vajrayogini - und das Kalachakra - Tantra.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1063,6 +1151,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter anderem ließ Ovtcharov eine Haarprobe analysieren.",
     "corrupted": "Unter anderes ließ Ovtcharov eine Haarprobe analysieren.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1075,6 +1164,7 @@
     "group_span_text": "verschiedenen Namen bekannt: Torre",
     "gold_text": "Der ehemalige Wachturm in Positano, den Gilbert Clavel ausbauen liess, ist unter verschiedenen Namen bekannt: Torre Clavel, Castel Clavel, Torre di Fornillo, Torre di Positano.",
     "corrupted": "Der ehemalige Wachturm in Positano, den Gilbert Clavel ausbauen liess, ist unter verschiedene Namen bekannt: Torre Clavel, Castel Clavel, Torre di Fornillo, Torre di Positano.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1087,6 +1177,7 @@
     "group_span_text": "dieser Bezeichnung",
     "gold_text": "Form des sogenannten \"Sakralen Tanzes\", die heute in ihrem Verbreitungsgebiet unter dieser Bezeichnung in erster Linie verstanden wird.",
     "corrupted": "Form des sogenannten \"Sakralen Tanzes\", die heute in ihrem Verbreitungsgebiet unter diese Bezeichnung in erster Linie verstanden wird.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1099,6 +1190,7 @@
     "group_span_text": "anderem",
     "gold_text": "Auch in Kaduna werden unter anderem Kainji - Sprachen gesprochen.",
     "corrupted": "Auch in Kaduna werden unter anderes Kainji - Sprachen gesprochen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1111,6 +1203,7 @@
     "group_span_text": "dieser Bedingung",
     "gold_text": "Unter dieser Bedingung soll der Nutzwert der ausgewählten Objekte maximiert werden.",
     "corrupted": "Unter diese Bedingung soll der Nutzwert der ausgewählten Objekte maximiert werden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1123,6 +1216,7 @@
     "group_span_text": "ihnen",
     "gold_text": "Soziale Konflikte kamen auf und mit ihnen einige neue religiöse Bewegungen, unter ihnen Tenrikyō, Kurozumikyō und Ōmoto.",
     "corrupted": "Soziale Konflikte kamen auf und mit ihnen einige neue religiöse Bewegungen, unter sie Tenrikyō, Kurozumikyō und Ōmoto.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1135,6 +1229,7 @@
     "group_span_text": "anderem",
     "gold_text": "Weitere bekannte Spiele der 1980er Jahre waren unter anderem Rally - X (Namco, 1980, Maze), Spy Hunter (Bally Midway, 1983, Vehicular Combat), Chase H.Q. (Taito, 1988, Action / Spionage) und die Test - Drive - Serie (Accolade, 1987, Fahrsimulation).",
     "corrupted": "Weitere bekannte Spiele der 1980er Jahre waren unter anderes Rally - X (Namco, 1980, Maze), Spy Hunter (Bally Midway, 1983, Vehicular Combat), Chase H.Q. (Taito, 1988, Action / Spionage) und die Test - Drive - Serie (Accolade, 1987, Fahrsimulation).",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1147,6 +1242,7 @@
     "group_span_text": "ihnen",
     "gold_text": "Sie wollen ihn hängen, falls sich keine Frau unter ihnen findet, die ihn heiratet.",
     "corrupted": "Sie wollen ihn hängen, falls sich keine Frau unter sie findet, die ihn heiratet.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1159,6 +1255,7 @@
     "group_span_text": "jedem Zahn",
     "gold_text": "Unter jedem Zahn saßen zumindest im Unterkiefer mindestens zwei Ersatzzähne.",
     "corrupted": "Unter jeden Zahn saßen zumindest im Unterkiefer mindestens zwei Ersatzzähne.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1171,6 +1268,7 @@
     "group_span_text": "der Führung der LDP",
     "gold_text": "Im Mai 2006 erfolgte auf der fünften Parteiversammlung die Umbenennung in Tvarka ir teisingumas, nachdem bereits zu den Parlamentswahlen 2004 eine Wahlliste unter dem Namen Rolando Pakso koalicija \"Už tvarką ir teisingumą\" (Rolandas 'Paksas' Koalition \"Für Ordnung und Gerechtigkeit\") unter der Führung der LDP angetreten war.",
     "corrupted": "Im Mai 2006 erfolgte auf der fünften Parteiversammlung die Umbenennung in Tvarka ir teisingumas, nachdem bereits zu den Parlamentswahlen 2004 eine Wahlliste unter dem Namen Rolando Pakso koalicija \"Už tvarką ir teisingumą\" (Rolandas 'Paksas' Koalition \"Für Ordnung und Gerechtigkeit\") unter die Führung der LDP angetreten war.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1183,6 +1281,7 @@
     "group_span_text": "dem Namen Heidenschanze",
     "gold_text": "Vor - und frühgeschichtlich von Bedeutung ist ein 70 Meter hoher Bergsporn an der Südwestflanke des Tales, bekannt unter dem Namen Heidenschanze.",
     "corrupted": "Vor - und frühgeschichtlich von Bedeutung ist ein 70 Meter hoher Bergsporn an der Südwestflanke des Tales, bekannt unter den Namen Heidenschanze.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1195,6 +1294,7 @@
     "group_span_text": "der Herrschaft der Familie der Malatesta",
     "gold_text": "Urkundlich erwähnt wird der Ort Bellaria im Jahre 1359 als Ort unter der Herrschaft der Familie der Malatesta.",
     "corrupted": "Urkundlich erwähnt wird der Ort Bellaria im Jahre 1359 als Ort unter die Herrschaft der Familie der Malatesta.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1207,6 +1307,7 @@
     "group_span_text": "den Römern",
     "gold_text": "Unter den Römern wurde der Ort unter dem Namen Tacapae zur Colonia ernannt und und gehörte zu Tripolitanien.",
     "corrupted": "Unter die Römer wurde der Ort unter dem Namen Tacapae zur Colonia ernannt und und gehörte zu Tripolitanien.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1219,6 +1320,7 @@
     "group_span_text": "anderem",
     "gold_text": "Es erlangte unter anderem die Grafschaft Foix, das Herzogtum Nemours und den Titel des Königs von Navarra.",
     "corrupted": "Es erlangte unter anderes die Grafschaft Foix, das Herzogtum Nemours und den Titel des Königs von Navarra.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1231,6 +1333,7 @@
     "group_span_text": "der Wirkung des Edelmetallkatalysators",
     "gold_text": "In der mageren, das heißt sauerstoffreichen, Atmosphäre werden die Stickstoffoxide unter der Wirkung des Edelmetallkatalysators aufoxidiert, unter Ausbildung von Nitraten wie beispielsweise Bariumnitrat im Katalysator absorbiert und somit aus dem Abgasstrom entfernt.",
     "corrupted": "In der mageren, das heißt sauerstoffreichen, Atmosphäre werden die Stickstoffoxide unter die Wirkung des Edelmetallkatalysators aufoxidiert, unter Ausbildung von Nitraten wie beispielsweise Bariumnitrat im Katalysator absorbiert und somit aus dem Abgasstrom entfernt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1243,6 +1346,7 @@
     "group_span_text": "seiner Mitwirkung",
     "gold_text": "Zu den Entwicklungen und Produktionen unter seiner Mitwirkung gehören Ferienexpress, Wurlitzer, Wer A sagt, Grand Prix der Volksmusik, Der große Liebestest, Die Barbara Karlich Show, Wickie, Slime & Paiper, Taxi Orange, Sendung ohne Namen, Starmania und Expedition Österreich.",
     "corrupted": "Zu den Entwicklungen und Produktionen unter seine Mitwirkung gehören Ferienexpress, Wurlitzer, Wer A sagt, Grand Prix der Volksmusik, Der große Liebestest, Die Barbara Karlich Show, Wickie, Slime & Paiper, Taxi Orange, Sendung ohne Namen, Starmania und Expedition Österreich.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1255,6 +1359,7 @@
     "group_span_text": "anderem",
     "gold_text": "Während der Zeit Jósef Łubieńskis wurden unter anderem 1831 Adam Mickiewicz, und 1842 sowie 1846 Cyprian Kamil Norwid empfangen.",
     "corrupted": "Während der Zeit Jósef Łubieńskis wurden unter anderes 1831 Adam Mickiewicz, und 1842 sowie 1846 Cyprian Kamil Norwid empfangen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1267,6 +1372,7 @@
     "group_span_text": "anderem",
     "gold_text": "Dies ist unter anderem bei der Auswertung von Skalarprodukten, bei Matrix - Operationen und bei der numerischen Integration der Fall.",
     "corrupted": "Dies ist unter anderes bei der Auswertung von Skalarprodukten, bei Matrix - Operationen und bei der numerischen Integration der Fall.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1279,6 +1385,7 @@
     "group_span_text": "dem \"Dach\" des Örebro SK",
     "gold_text": "Unter dem \"Dach\" des Örebro SK gibt es mehrere eigenständige Vereine, welche jeweils eine Sportart vertreten.",
     "corrupted": "Unters \"Dach\" des Örebro SK gibt es mehrere eigenständige Vereine, welche jeweils eine Sportart vertreten.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1291,6 +1398,7 @@
     "group_span_text": "der Bezeichnung Berliner Bürgerbräu",
     "gold_text": "Unter der Bezeichnung Berliner Bürgerbräu hatte sie sich auf Premiumprodukte spezialisiert.",
     "corrupted": "Unter die Bezeichnung Berliner Bürgerbräu hatte sie sich auf Premiumprodukte spezialisiert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1303,6 +1411,7 @@
     "group_span_text": "dem Kommando",
     "gold_text": "Wichtige Mitglieder des CLN waren in der Partei organisiert und nahmen in den Einheiten der Giustizia e Libertà (\"Gerechtigkeit und Freiheit\") unter dem Kommando von Ferruccio Parri am italienischen Widerstand teil.",
     "corrupted": "Wichtige Mitglieder des CLN waren in der Partei organisiert und nahmen in den Einheiten der Giustizia e Libertà (\"Gerechtigkeit und Freiheit\") unters Kommando von Ferruccio Parri am italienischen Widerstand teil.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1315,6 +1424,7 @@
     "group_span_text": "anderem",
     "gold_text": "Dabei fotografierte er unter anderem Gene Hackman, Denzel Washington, Brad Pitt und Angelina Jolie und machte die Plakatfotos für From Hell, Sin Eater -- Die Seele des Bösen und Die Liga der außergewöhnlichen Gentlemen.",
     "corrupted": "Dabei fotografierte er unter anderes Gene Hackman, Denzel Washington, Brad Pitt und Angelina Jolie und machte die Plakatfotos für From Hell, Sin Eater -- Die Seele des Bösen und Die Liga der außergewöhnlichen Gentlemen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1327,6 +1437,7 @@
     "group_span_text": "der technischen Leitung des Ischler Waldmeisters Hans Kalß",
     "gold_text": "Die Zuleitung der Sole erfolgte über eine fast 40 km lange Soleleitung vom Hallstätter Salzberg, die unter der technischen Leitung des Ischler Waldmeisters Hans Kalß errichtet wurde -- diese ist noch immer in Betrieb, und die Soleleitungsbrücke Gosauzwang gehört zum UNESCO - Welterbe Hallstatt - Dachstein - Salzkammergut.",
     "corrupted": "Die Zuleitung der Sole erfolgte über eine fast 40 km lange Soleleitung vom Hallstätter Salzberg, die unter die technische Leitung des Ischler Waldmeisters Hans Kalß errichtet wurde -- diese ist noch immer in Betrieb, und die Soleleitungsbrücke Gosauzwang gehört zum UNESCO - Welterbe Hallstatt - Dachstein - Salzkammergut.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1339,6 +1450,7 @@
     "group_span_text": "anderem",
     "gold_text": "Dies äußerte sich unter anderem, nach einer Verzögerung von einem Jahr, in der Entscheidung, Taylors Buch Scientific Management nicht herauszugeben.",
     "corrupted": "Dies äußerte sich unter anderes, nach einer Verzögerung von einem Jahr, in der Entscheidung, Taylors Buch Scientific Management nicht herauszugeben.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1351,6 +1463,7 @@
     "group_span_text": "dem Eindruck der Bilder",
     "gold_text": "Ab Anfang der 1970er Jahre beschäftigte sich Tollmann, unter dem Eindruck der Bilder von Max Ernst mit der gegenständlichen Malerei sowie der Architektur - und Landschaftsmalerei.",
     "corrupted": "Ab Anfang der 1970er Jahre beschäftigte sich Tollmann, unter den Eindruck der Bilder von Max Ernst mit der gegenständlichen Malerei sowie der Architektur - und Landschaftsmalerei.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1363,6 +1476,7 @@
     "group_span_text": "dem Titel Crazy World",
     "gold_text": "Als jedoch Schlagzeuger Herman Rarebell recht kurz vor Produktionsschluss des Albums US - Präsident George H. W. Bush im amerikanischen Fernsehen \"You have to realize, we live in a crazy world\" (zu deutsch: \"Ihr müsst einsehen, dass wir in einer verrückten Welt leben\") ausrufen sah, erkannte dieser das Potential der letzten beiden Wörter Bushs und so wurde das Album schließlich unter dem Titel Crazy World veröffentlicht.",
     "corrupted": "Als jedoch Schlagzeuger Herman Rarebell recht kurz vor Produktionsschluss des Albums US - Präsident George H. W. Bush im amerikanischen Fernsehen \"You have to realize, we live in a crazy world\" (zu deutsch: \"Ihr müsst einsehen, dass wir in einer verrückten Welt leben\") ausrufen sah, erkannte dieser das Potential der letzten beiden Wörter Bushs und so wurde das Album schließlich unter den Titel Crazy World veröffentlicht.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1375,6 +1489,7 @@
     "group_span_text": "anderem",
     "gold_text": "Nach ihrem Studium an der Privathochschule École des Hautes Études Commerciales (HEC) und dann an der staatlichen Verwaltungsschule École nationale d'administration (ENA) bekleidete sie unter anderem von 1992 bis 1998 ein hohes Amt im französischen Staatsrat.",
     "corrupted": "Nach ihrem Studium an der Privathochschule École des Hautes Études Commerciales (HEC) und dann an der staatlichen Verwaltungsschule École nationale d'administration (ENA) bekleidete sie unter anderes von 1992 bis 1998 ein hohes Amt im französischen Staatsrat.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1387,6 +1502,7 @@
     "group_span_text": "besonderem Schutz",
     "gold_text": "Unter besonderem Schutz stehen hier Watt - und Marschflächen.",
     "corrupted": "Unter besonderen Schutz stehen hier Watt - und Marschflächen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1399,6 +1515,7 @@
     "group_span_text": "der Intendanz Frank Castorfs",
     "gold_text": "Seit den 1990er Jahren haben sich in der deutschen Theaterszene durch die weithin ausstrahlenden Impulse der Berliner Volksbühne unter der Intendanz Frank Castorfs vielfältige Ansatzpunkte eines politisch involvierten Theaters entwickelt.",
     "corrupted": "Seit den 1990er Jahren haben sich in der deutschen Theaterszene durch die weithin ausstrahlenden Impulse der Berliner Volksbühne unter die Intendanz Frank Castorfs vielfältige Ansatzpunkte eines politisch involvierten Theaters entwickelt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1411,6 +1528,7 @@
     "group_span_text": "anderem",
     "gold_text": "Geschnitten wurde unter anderem, wie die Rekruten den Kasernenhofschinder Himmelstoß verprügeln und wie Paul Bäumer die Ehrenbezeugung verweigert.",
     "corrupted": "Geschnitten wurde unter anderes, wie die Rekruten den Kasernenhofschinder Himmelstoß verprügeln und wie Paul Bäumer die Ehrenbezeugung verweigert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1423,6 +1541,7 @@
     "group_span_text": "anderem",
     "gold_text": "Ab 1890 bildete er im Rahmen erster militär - aeronautischer Kurse unter anderem auch die ersten Ballonfahrer der k.u.k. Armee aus, darunter auch Franz Hinterstoisser.",
     "corrupted": "Ab 1890 bildete er im Rahmen erster militär - aeronautischer Kurse unter anderes auch die ersten Ballonfahrer der k.u.k. Armee aus, darunter auch Franz Hinterstoisser.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1435,6 +1554,7 @@
     "group_span_text": "Großmeister",
     "gold_text": "Zum Schutz der Stadt und der Hafeneinfahrt wurde unter Großmeister Philippe de Villiers de l'Isle - Adam das bestehende Sea Castle zu Fort St. Angelo erweitert.",
     "corrupted": "Zum Schutz der Stadt und der Hafeneinfahrt wurde unter Großmeister Philippe de Villiers de l' Isle - Adam das bestehende Sea Castle zu Fort St. Angelo erweitert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1447,6 +1567,7 @@
     "group_span_text": "anderem",
     "gold_text": "Die im Jahre 2005 fertiggestellte und von den Architekten \"Rheinpark\" entworfene Grund - und Realschule legt Wert auf Energieeffizienz, die unter anderem durch das Wiesendach erreicht wird.",
     "corrupted": "Die im Jahre 2005 fertiggestellte und von den Architekten \"Rheinpark\" entworfene Grund - und Realschule legt Wert auf Energieeffizienz, die unter anderes durch das Wiesendach erreicht wird.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1459,6 +1580,7 @@
     "group_span_text": "römischer Herrschaft",
     "gold_text": "Unter römischer Herrschaft wurde am selben Ort eine neue Stadt, Novum Clusium gegründet, die bei Plinius erwähnt wird.",
     "corrupted": "Unter römische Herrschaft wurde am selben Ort eine neue Stadt, Novum Clusium gegründet, die bei Plinius erwähnt wird.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1471,6 +1593,7 @@
     "group_span_text": "anderem",
     "gold_text": "Gegen die Initiative wurden unter anderem folgende Argumente vorgebracht:",
     "corrupted": "Gegen die Initiative wurden unter anderes folgende Argumente vorgebracht:",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1483,6 +1606,7 @@
     "group_span_text": "den besten zehn",
     "gold_text": "Platz erstmals der Gewinn von Weltcup - Punkten und zudem erstmals eine Platzierung unter den besten zehn.",
     "corrupted": "Platz erstmals der Gewinn von Weltcup - Punkten und zudem erstmals eine Platzierung unter die besten zehn.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1495,6 +1619,7 @@
     "group_span_text": "seinen Nachfolgern",
     "gold_text": "Unter seinen Nachfolgern nahm die Bedeutung der Stände wieder zu.",
     "corrupted": "Unter seine Nachfolger nahm die Bedeutung der Stände wieder zu.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1507,6 +1632,7 @@
     "group_span_text": "dem Titel \"Die Langoliers",
     "gold_text": "Die Kurzgeschichte wurde als zweiteiliger Spielfilm unter dem Titel \"Die Langoliers\" verfilmt.",
     "corrupted": "Die Kurzgeschichte wurde als zweiteiliger Spielfilm unter den Titel \"Die Langoliers\" verfilmt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1519,6 +1645,7 @@
     "group_span_text": "anderem",
     "gold_text": "September 1852 in Baden - Baden ein Delikatessen - und Kolonialwarengeschäft, in dem er unter anderem verschiedene Teesorten anbot.",
     "corrupted": "September 1852 in Baden - Baden ein Delikatessen - und Kolonialwarengeschäft, in dem er unter anderes verschiedene Teesorten anbot.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1531,6 +1658,7 @@
     "group_span_text": "der Bevölkerung",
     "gold_text": "Unter der Bevölkerung waren 75,8 % Weiße, 10,9 % Afroamerikaner, 0,4 % amerikanische Indianer, 1,2 % Asiaten und 9,6 % von anderen Ethnien;",
     "corrupted": "Unter die Bevölkerung waren 75,8 % Weiße, 10,9 % Afroamerikaner, 0,4 % amerikanische Indianer, 1,2 % Asiaten und 9,6 % von anderen Ethnien;",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1543,6 +1671,7 @@
     "group_span_text": "anderem",
     "gold_text": "\"Grenze\" -- Das Wort Terminus bezeichnet unter anderem ein Fachwort einer Fachsprache, die sprachliche Benennung eines gedanklich klar umrissenen, abgegrenzten Begriffs, in der römischen Mythologie den Gott der Grenzsteine oder das Ende einer Frist.",
     "corrupted": "\"Grenze\" -- Das Wort Terminus bezeichnet unter anderes ein Fachwort einer Fachsprache, die sprachliche Benennung eines gedanklich klar umrissenen, abgegrenzten Begriffs, in der römischen Mythologie den Gott der Grenzsteine oder das Ende einer Frist.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1555,6 +1684,7 @@
     "group_span_text": "islamischer Herrschaft",
     "gold_text": "Littmans wissenschaftliches Spezialgebiet ist die Geschichte und aktuelle Situation nichtmuslimischer Minderheiten unter islamischer Herrschaft, speziell die von Christen und Juden.",
     "corrupted": "Littmans wissenschaftliches Spezialgebiet ist die Geschichte und aktuelle Situation nichtmuslimischer Minderheiten unter islamische Herrschaft, speziell die von Christen und Juden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1567,6 +1697,7 @@
     "group_span_text": "anderem",
     "gold_text": "Aufgrund zahlreicher Werbekampagnen in verschiedenen Militärzeitschriften und auf Messen konnte der Panzer in viele Länder verkauft werden, so unter anderem in die UdSSR, nach Griechenland und Polen.",
     "corrupted": "Aufgrund zahlreicher Werbekampagnen in verschiedenen Militärzeitschriften und auf Messen konnte der Panzer in viele Länder verkauft werden, so unter anderes in die UdSSR, nach Griechenland und Polen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1579,6 +1710,7 @@
     "group_span_text": "dem Eindruck der internationalen Feiern",
     "gold_text": "1992-1995 wurde das Cinematograph - Kino zur Austragungsstätte des America Film Festival, das unter dem Eindruck der internationalen Feiern zum \"Columbusjahr\" 1992, der Feiern zur 500.",
     "corrupted": "1992-1995 wurde das Cinematograph - Kino zur Austragungsstätte des America Film Festival, das unter den Eindruck der internationalen Feiern zum \" Columbusjahr \" 1992, der Feiern zur 500.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1591,6 +1723,7 @@
     "group_span_text": "den Gästen",
     "gold_text": "Unter den Gästen waren Oscar D'León, Ismael Miranda, Raulín Rosendo, Joe Arroyo und der Musikproduzent Ralph Mercado.",
     "corrupted": "Unter die Gäste waren Oscar D'León, Ismael Miranda, Raulín Rosendo, Joe Arroyo und der Musikproduzent Ralph Mercado.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1603,6 +1736,7 @@
     "group_span_text": "König Ludwig dem Heiligen",
     "gold_text": "Sein Wirken auf Valmagne fällt in die Zeit des letzten Trencavel, unter König Ludwig dem Heiligen.",
     "corrupted": "Sein Wirken auf Valmagne fällt in die Zeit des letzten Trencavel, unter König Ludwig das Heiligen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1615,6 +1749,7 @@
     "group_span_text": "anderem",
     "gold_text": "In dieser Zeit entwarf er unter anderem die Dachkonstruktion des Bahnhofs Birmingham New Street mit für damalige Verhältnisse aufsehenerregenden 70 Metern Spannweite.",
     "corrupted": "In dieser Zeit entwarf er unter anderes die Dachkonstruktion des Bahnhofs Birmingham New Street mit für damalige Verhältnisse aufsehenerregenden 70 Metern Spannweite.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1627,6 +1762,7 @@
     "group_span_text": "anderem",
     "gold_text": "So findet SIMON unter anderem Verwendung in der Ausbildung, Forschung und Spieleentwicklung, im Grid Computing sowie bei diversen Wirtschaftsunternehmen wo es für die klassische Trennung von Front - und Backend eingesetzt wird.",
     "corrupted": "So findet SIMON unter anderes Verwendung in der Ausbildung, Forschung und Spieleentwicklung, im Grid Computing sowie bei diversen Wirtschaftsunternehmen wo es für die klassische Trennung von Front - und Backend eingesetzt wird.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1639,6 +1775,7 @@
     "group_span_text": "anderem",
     "gold_text": "Dabei sollten unter anderem die kirchen - und zarentreuen Truppen in Russland, die Weißgardisten, in ihrem Kampf gegen den Kommunismus durch gefälschte Rubel unterstützt werden.",
     "corrupted": "Dabei sollten unter anderes die kirchen - und zarentreuen Truppen in Russland, die Weißgardisten, in ihrem Kampf gegen den Kommunismus durch gefälschte Rubel unterstützt werden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1651,6 +1788,7 @@
     "group_span_text": "seinem heutigen Namen",
     "gold_text": "Tešanj wurde erstmals 1461 unter seinem heutigen Namen erwähnt.",
     "corrupted": "Tešanj wurde erstmals 1461 unter seinen heutigen Namen erwähnt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1663,6 +1801,7 @@
     "group_span_text": "die sehr langen Hphenenden",
     "gold_text": "Unter dem Mikroskop sind besonders die stark amyloiden, netzartig ornamentierten Sporen und die sehr langen Hphenenden auffällig.",
     "corrupted": "Unter dem Mikroskop sind besonders die stark amyloiden, netzartig ornamentierten Sporen und die sehr längeren Hphenenden auffällig.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1675,6 +1814,7 @@
     "group_span_text": "den Kriegs - und Handelsschiffen",
     "gold_text": "Für den Fall einer Konvoibegleitung sah eine Konvoi - Marschordnung vor, dass die Kriegsschiffe ein einschließendes Viereck um die Handelsschiffe bilden und in der Mitte dieses Vierecks sich ein weiteres Kriegsschiff befindet, das die Signale des Flaggschiffs für alle sichtbar wiederholt und so für Ordnung unter den Kriegs - und Handelsschiffen sorgt.",
     "corrupted": "Für den Fall einer Konvoibegleitung sah eine Konvoi - Marschordnung vor, dass die Kriegsschiffe ein einschließendes Viereck um die Handelsschiffe bilden und in der Mitte dieses Vierecks sich ein weiteres Kriegsschiff befindet, das die Signale des Flaggschiffs für alle sichtbar wiederholt und so für Ordnung unter die Kriegs - und Handelsschiffe sorgt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1687,6 +1827,7 @@
     "group_span_text": "Verschluss",
     "gold_text": "Insgesamt 27 Jahre lang wurde der Film in Großbritannien bis nach Kubricks Tod weitgehend unter Verschluss gehalten.",
     "corrupted": "Insgesamt 27 Jahre lang wurde der Film in Großbritannien bis nach Kubricks Tod weitgehend unter Verschluß gehalten.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1699,6 +1840,7 @@
     "group_span_text": "dem Begriff Südöstliche Algonkin",
     "gold_text": "Beide Stammesgruppen hatten eine ähnliche Kultur und werden unter dem Begriff Südöstliche Algonkin zusammengefasst.",
     "corrupted": "Beide Stammesgruppen hatten eine ähnliche Kultur und werden unter den Begriff Südöstliche Algonkin zusammengefasst.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1711,6 +1853,7 @@
     "group_span_text": "anderem",
     "gold_text": "Die Strecke war anspruchsvoll und führte unter anderem über schlechte, kaum gesicherte Straßen über den Arlberg.",
     "corrupted": "Die Strecke war anspruchsvoll und führte unter anderes über schlechte, kaum gesicherte Straßen über den Arlberg.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1723,6 +1866,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter anderem gewann er 2005 die Kartweltmeisterschaft der Formel A. 2006 wechselte er in den Formelsport und trat in der britischen Formel BMW an.",
     "corrupted": "Unter anderes gewann er 2005 die Kartweltmeisterschaft der Formel A. 2006 wechselte er in den Formelsport und trat in der britischen Formel BMW an.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1735,6 +1879,7 @@
     "group_span_text": "ihnen",
     "gold_text": "Das Hotel hat mehrere private Speiseräume, unter ihnen die Marie Antoinette Suite, welche während des Zweiten Weltkrieges als Konferenzzimmer für Treffen zwischen Churchill, de Gaulle und Eisenhower genutzt wurde.",
     "corrupted": "Das Hotel hat mehrere private Speiseräume, unter sie die Marie Antoinette Suite, welche während des Zweiten Weltkrieges als Konferenzzimmer für Treffen zwischen Churchill, de Gaulle und Eisenhower genutzt wurde.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1747,6 +1892,7 @@
     "group_span_text": "anderem",
     "gold_text": "Neben seinen Fotoreportagen für Zeitschriften und Buchverlage fotografierte Vollmer auch häufig bei Dreharbeiten, unter anderem für zwei Filme mit Catherine Deneuve.",
     "corrupted": "Neben seinen Fotoreportagen für Zeitschriften und Buchverlage fotografierte Vollmer auch häufig bei Dreharbeiten, unter anderes für zwei Filme mit Catherine Deneuve.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1759,6 +1905,7 @@
     "group_span_text": "anderem",
     "gold_text": "In dem Grundstein wurde eine Flasche deponiert, die unter anderem eine Kopie der Stiftungsurkunde, eine Gottesdienstordnung, Zeitungen und Münzen enthielt.",
     "corrupted": "In dem Grundstein wurde eine Flasche deponiert, die unter anderes eine Kopie der Stiftungsurkunde, eine Gottesdienstordnung, Zeitungen und Münzen enthielt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1771,6 +1918,7 @@
     "group_span_text": "dem Lauf",
     "gold_text": "In der Regel werden unter dem Lauf liegende Röhrenmagazine von hinten durch eine Ladeöffnung geladen.",
     "corrupted": "In der Regel werden unter den Lauf liegende Röhrenmagazine von hinten durch eine Ladeöffnung geladen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1783,6 +1931,7 @@
     "group_span_text": "der Regie",
     "gold_text": "Im Jahre 1960 wurde in Deutschland der Spielfilm \"Soldatensender Calais\" unter der Regie von Paul May produziert.",
     "corrupted": "Im Jahre 1960 wurde in Deutschland der Spielfilm \"Soldatensender Calais\" unter die Regie von Paul May produziert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1795,6 +1944,7 @@
     "group_span_text": "einer kommerziellen Lizenz",
     "gold_text": "Ob dieser Treiber jedoch wie Tuxeras NTFS - 3G nach dem \"Dual - Licensing\" - Prinzip sowohl unter einer kommerziellen Lizenz als auch unter einer Open - Source - Lizenz veröffentlicht wird, ist unbekannt.",
     "corrupted": "Ob dieser Treiber jedoch wie Tuxeras NTFS - 3G nach dem \"Dual - Licensing\" - Prinzip sowohl unter eine kommerzielle Lizenz als auch unter einer Open - Source - Lizenz veröffentlicht wird, ist unbekannt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1807,6 +1957,7 @@
     "group_span_text": "dem Architekten und Direktor der Berliner Bauakademie Richard Lucae",
     "gold_text": "Es wurde 1875-1877 gebaut unter dem Architekten und Direktor der Berliner Bauakademie Richard Lucae im Stil der damals sehr beliebten Neorenaissance.",
     "corrupted": "Es wurde 1875-1877 gebaut unter den Architekten und Direktor der Berliner Bauakademie Richard Lucae im Stil der damals sehr beliebten Neorenaissance.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1819,6 +1970,7 @@
     "group_span_text": "denen",
     "gold_text": "Die Emissionen liegen im Schnitt 40 % unter denen in anderen Regionen.",
     "corrupted": "Die Emissionen liegen im Schnitt 40 % unter die in anderen Regionen.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1831,6 +1983,7 @@
     "group_span_text": "anderem",
     "gold_text": "Unter anderem nutzt auch die regionale KAB die Dörnschlade für die jährliche Wallfahrt.",
     "corrupted": "Unter anderes nutzt auch die regionale KAB die Dörnschlade für die jährliche Wallfahrt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1843,6 +1996,7 @@
     "group_span_text": "dem Kommando des Herzogs",
     "gold_text": "1692 nahm er als kurbrandenburgischer Adjutant an der Aktion bei Heilbronn teil und im nächsten Jahr unter dem Kommando des Herzogs von Schomberg an der Schlacht bei Marsaglia im Piemont.",
     "corrupted": "1692 nahm er als kurbrandenburgischer Adjutant an der Aktion bei Heilbronn teil und im nächsten Jahr unters Kommando des Herzogs von Schomberg an der Schlacht bei Marsaglia im Piemont.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1855,6 +2009,7 @@
     "group_span_text": "dem Namen Foiled for the Last Time",
     "gold_text": "Die fünfte Single, die Calling You (Remix) heißt, gehörte schon zu der Premium - Edition, die die Band 2007 unter dem Namen Foiled for the Last Time veröffentlichte.",
     "corrupted": "Die fünfte Single, die Calling You (Remix) heißt, gehörte schon zu der Premium - Edition, die die Band 2007 unter den Namen Foiled for the Last Time veröffentlichte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1867,6 +2022,7 @@
     "group_span_text": "der Herrschaft seines Vaters",
     "gold_text": "Schon früh entwickelte er eine Zuneigung zu den Meteora - Klöstern, von denen einige unter der Herrschaft seines Vaters entstanden und die auch er finanziell unterstützte.",
     "corrupted": "Schon früh entwickelte er eine Zuneigung zu den Meteora - Klöstern, von denen einige unter die Herrschaft seines Vaters entstanden und die auch er finanziell unterstützte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1879,6 +2035,7 @@
     "group_span_text": "fünf Jahren",
     "gold_text": "Mit scheint, dass der Betreiber der Rheinfähre in Düsseldorf es bitter nötig haben muss wenn schon Kinder unter fünf Jahren auf diese Art und Weise abkassiert werden müssen.",
     "corrupted": "Mit scheint, dass der Betreiber der Rheinfähre in Düsseldorf es bitter nötig haben muss wenn schon Kinder unter fünf Jahre auf diese Art und Weise abkassiert werden müssen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1891,6 +2048,7 @@
     "group_span_text": "dem",
     "gold_text": "Eine Bekannte empfahl mir dann Herr Dr. Sieben und wie sich herausstellte, war der Preis, den ich dort bezahlte 70 % unter dem der anderen beiden Zahnärzte!!!!",
     "corrupted": "Eine Bekannte empfahl mir dann Herr Dr. Sieben und wie sich herausstellte, war der Preis, den ich dort bezahlte 70 % unters der anderen beiden Zahnärzte!!!!",
+    "is_pronoun": true,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1903,6 +2061,7 @@
     "group_span_text": "dem Zimmer",
     "gold_text": "Die elektrische Eingangstür ist direkt unter dem Zimmer.",
     "corrupted": "Die elektrische Eingangstür ist direkt unters Zimmer.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1915,6 +2074,7 @@
     "group_span_text": "anderem",
     "gold_text": "Weitere Kernpunkte der Dubliner Vereinbarungen sind die Einführung eines ``Frühwarnsystems'' für finanzpolitische Fehlentwicklungen, die Präzisierung und Straffung der Abläufe bei übermäßigen Defiziten unter anderem durch Selbstbindungen der Länder und EU-Gremien sowie klare Terminvorgaben.",
     "corrupted": "Weitere Kernpunkte der Dubliner Vereinbarungen sind die Einführung eines ``Frühwarnsystems'' für finanzpolitische Fehlentwicklungen, die Präzisierung und Straffung der Abläufe bei übermäßigen Defiziten unter anderes durch Selbstbindungen der Länder und EU-Gremien sowie klare Terminvorgaben.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1927,6 +2087,7 @@
     "group_span_text": "anderem",
     "gold_text": "In Deutschland liegen mehrere Haftbefehle gegen den ehemaligen Staats- und Parteichef vor, unter anderem wegen seiner Verantwortung für die Todesschüsse an der ehemaligen innerdeutschen Grenze.",
     "corrupted": "In Deutschland liegen mehrere Haftbefehle gegen den ehemaligen Staats- und Parteichef vor, unter anderes wegen seiner Verantwortung für die Todesschüsse an der ehemaligen innerdeutschen Grenze.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1939,6 +2100,7 @@
     "group_span_text": "anderem",
     "gold_text": "Die Ermittlungen konzentrieren sich unter anderem auf den Sprecher der Siedler aus Kyriat Arba, Abraham Ben David.",
     "corrupted": "Die Ermittlungen konzentrieren sich unter anderes auf den Sprecher der Siedler aus Kyriat Arba, Abraham Ben David.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1951,6 +2113,7 @@
     "group_span_text": "Schwarzen",
     "gold_text": "De Klerk versuche die Gewalt in den Schwarzensiedlungen als internen Machtkampf unter Schwarzen darzustellen, statt sich der ``zentralen Rolle der Sicherheitskräfte'' bei den Unruhen zuzuwenden, denen in drei Jahren 8000 Menschen zum Opfer fielen.",
     "corrupted": "De Klerk versuche die Gewalt in den Schwarzensiedlungen als internen Machtkampf unter Schwarzen darzustellen, statt sich der `` zentralen Rolle der Sicherheitskräfte '' bei den Unruhen zuzuwenden, denen in drei Jahren 8000 Menschen zum Opfer fielen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1963,6 +2126,7 @@
     "group_span_text": "der Leitung",
     "gold_text": "Unter der Leitung von Ministerpräsident Fuad Maassum ist im nordirakischen Erbil die erste kurdische Regierung gebildet worden.",
     "corrupted": "Unter die Leitung von Ministerpräsident Fuad Maassum ist im nordirakischen Erbil die erste kurdische Regierung gebildet worden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1975,6 +2139,7 @@
     "group_span_text": "anderem",
     "gold_text": "Zeitverlust geht auf Kosten der Menschen'', unter anderem wegen der anhaltenden Abwanderung von Fachkräften in die Altländer.",
     "corrupted": "Zeitverlust geht auf Kosten der Menschen'', unter anderes wegen der anhaltenden Abwanderung von Fachkräften in die Altländer.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1987,6 +2152,7 @@
     "group_span_text": "dem Schirm der Westeuropäischen Union (WEU",
     "gold_text": "Es müsse absolute Klarheit über die Befehlsstruktur herrschen, das Eurokorps müßte unter dem Schirm der Westeuropäischen Union (WEU) operieren.",
     "corrupted": "Es müsse absolute Klarheit über die Befehlsstruktur herrschen, das Eurokorps müßte unter den Schirm der Westeuropäischen Union (WEU) operieren.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -1999,6 +2165,7 @@
     "group_span_text": "anderem",
     "gold_text": "Hersteller der Präparate sind unter anderem die Schering AG und Organon.",
     "corrupted": "Hersteller der Präparate sind unter anderes die Schering AG und Organon.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -2011,6 +2178,7 @@
     "group_span_text": "anderem",
     "gold_text": "Auch der übrige Familienbesitz im Ausland, der unter anderem Geschäftshäuser und Golfplätze einschließen soll, werde untersucht.",
     "corrupted": "Auch der übrige Familienbesitz im Ausland, der unter anderes Geschäftshäuser und Golfplätze einschließen soll, werde untersucht.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -2023,6 +2191,7 @@
     "group_span_text": "solchen Umständen",
     "gold_text": "Wer unter solchen Umständen Einfluß ausüben will, braucht mehr als nur Macht:",
     "corrupted": "Wer unter solche Umstände Einfluß ausüben will, braucht mehr als nur Macht:",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -2035,6 +2204,7 @@
     "group_span_text": "dem Titel Die Straße",
     "gold_text": "Das hier erwähnte Theaterstück des Autors ist unter dem Titel Die Straße als Fischer-Taschenbuch erhältlich.",
     "corrupted": "Das hier erwähnte Theaterstück des Autors ist unter den Titel Die Straße als Fischer-Taschenbuch erhältlich.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"
@@ -2047,6 +2217,7 @@
     "group_span_text": "dem Schutz der drei Westmächte",
     "gold_text": "Und ohne diesen Tag ist die Geschichte der Selbstbehauptung mit Neumann und Reuter unter dem Schutz der drei Westmächte auch nicht erklärbar.",
     "corrupted": "Und ohne diesen Tag ist die Geschichte der Selbstbehauptung mit Neumann und Reuter unter den Schutz der drei Westmächte auch nicht erklärbar.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_unter",
     "preposition": "unter",
     "category": "Locative_TR"

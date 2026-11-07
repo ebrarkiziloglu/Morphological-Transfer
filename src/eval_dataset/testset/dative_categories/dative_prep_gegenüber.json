@@ -7,6 +7,7 @@
     "group_span_text": "den Kunden",
     "gold_text": "Unfreundliches und sehr arrogantes Auftreten gegenüber den Kunden.",
     "corrupted": "Unfreundliches und sehr arrogantes Auftreten gegenüber die Kunden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -19,6 +20,7 @@
     "group_span_text": "der Bevölkerung Nigerias",
     "gold_text": "``Wir haben immerhin eine beträchtliche Verpflichtung gegenüber der Bevölkerung Nigerias und des Niger-Deltas.''",
     "corrupted": "``Wir haben immerhin eine beträchtliche Verpflichtung gegenüber die Bevölkerung Nigerias und des Niger-Deltas.''",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -31,6 +33,7 @@
     "group_span_text": "dem Basismodell",
     "gold_text": "Er basierte technisch auf dem Lamborghini 350 GT, allerdings wurde der Radstand gegenüber dem Basismodell um zehn Zentimeter verkürzt.",
     "corrupted": "Er basierte technisch auf dem Lamborghini 350 GT, allerdings wurde der Radstand gegenüber das Basismodell um zehn Zentimeter verkürzt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -43,6 +46,7 @@
     "group_span_text": "dem Bahnhof",
     "gold_text": "Nach dem Umzug der LBE - Hauptverwaltung in das neue Gebäude gegenüber dem Bahnhof wurden die alten Bahnanlagen sukzessive abgerissen.",
     "corrupted": "Nach dem Umzug der LBE - Hauptverwaltung in das neue Gebäude gegenüber den Bahnhof wurden die alten Bahnanlagen sukzessive abgerissen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -55,6 +59,7 @@
     "group_span_text": "der älteren Szene",
     "gold_text": "Punk Planet orientierte sich politisch gegenüber der älteren Szene und legte besonderen Wert auf Feminismus und die Riot - Grrrl - Bewegung.",
     "corrupted": "Punk Planet orientierte sich politisch gegenüber die alte Szene und legte besonderen Wert auf Feminismus und die Riot - Grrrl - Bewegung.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -67,6 +72,7 @@
     "group_span_text": "den Schwaben und der Landesregierung",
     "gold_text": "Lange nach dem Konflikt um den Südwestsstaat hat sich erneut eine starke regionale badische Identität und die damit einhergehende Abgrenzung gegenüber den Schwaben und der Landesregierung in Stuttgart etabliert.",
     "corrupted": "Lange nach dem Konflikt um den Südwestsstaat hat sich erneut eine starke regionale badische Identität und die damit einhergehende Abgrenzung gegenüber die Schwaben und die Landesregierung in Stuttgart etabliert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -79,6 +85,7 @@
     "group_span_text": "dem Projekt",
     "gold_text": "Da jede Kritik dem Projekt gegenüber untersagt wurde, konnten sich Kritiker nur im Ausland darüber äußern.",
     "corrupted": "Da jede Kritik das Projekt gegenüber untersagt wurde, konnten sich Kritiker nur im Ausland darüber äußern.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -91,6 +98,7 @@
     "group_span_text": "anderen Weibchen",
     "gold_text": "Untersuchungen zeigen, dass die Monogamie bei manchen Vogelarten auch durch Aggressivität der Weibchen gegenüber anderen Weibchen verursacht wird.",
     "corrupted": "Untersuchungen zeigen, dass die Monogamie bei manchen Vogelarten auch durch Aggressivität der Weibchen gegenüber andere Weibchen verursacht wird.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -103,6 +111,7 @@
     "group_span_text": "dem Kanton",
     "gold_text": "Die Klosteraufhebung trug auch massgeblich zur Entfremdung des Freiamts gegenüber dem Kanton bei.",
     "corrupted": "Die Klosteraufhebung trug auch massgeblich zur Entfremdung des Freiamts gegenüber den Kanton bei.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -115,6 +124,7 @@
     "group_span_text": "dem sowjetischen Botschafter",
     "gold_text": "Während die Roter Oktober an der US - amerikanischen Ostküste versteckt wird, gibt Jeffrey Pelt gegenüber dem sowjetischen Botschafter eine Erklärung zu den Geschehnissen ab.",
     "corrupted": "Während die Roter Oktober an der US - amerikanischen Ostküste versteckt wird, gibt Jeffrey Pelt gegenüber den sowjetischen Botschafter eine Erklärung zu den Geschehnissen ab.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -127,6 +137,7 @@
     "group_span_text": "politischen Führern aller Seiten",
     "gold_text": "Als das postkoloniale Leben in Angola in Korruption, Brutalität, Gewalt und einen endlosen blutigen Bürgerkrieg entartete, blieb Bonga kritisch gegenüber politischen Führern aller Seiten.",
     "corrupted": "Als das postkoloniale Leben in Angola in Korruption, Brutalität, Gewalt und einen endlosen blutigen Bürgerkrieg entartete, blieb Bonga kritisch gegenüber politische Führer aller Seiten.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -139,6 +150,7 @@
     "group_span_text": "der Presse",
     "gold_text": "Der damalige Zoodirektor Jürgen Lange berichtete aber gegenüber der Presse, dass Yan Yan in Berlin bleiben müsse und man sich langfristig um ein junges Panda - Pärchen bemühen würde.",
     "corrupted": "Der damalige Zoodirektor Jürgen Lange berichtete aber gegenüber die Presse, dass Yan Yan in Berlin bleiben müsse und man sich langfristig um ein junges Panda - Pärchen bemühen würde.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -151,6 +163,7 @@
     "group_span_text": "dem Vorjahr",
     "gold_text": "Eine GmbH-Gründung dauert demnach hierzulande 18 Tage, umfasst 9 Schritte und kostet 4,7 Prozent des Pro-Kopf-Einkommens\", wodurch sich Deutschland gegenüber dem Vorjahr um 17 Plätze verbessert habe.",
     "corrupted": "Eine GmbH-Gründung dauert demnach hierzulande 18 Tage, umfasst 9 Schritte und kostet 4,7 Prozent des Pro-Kopf-Einkommens\", wodurch sich Deutschland gegenüber das Vorjahr um 17 Plätze verbessert habe.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -163,6 +176,7 @@
     "group_span_text": "der N 1 des OKB",
     "gold_text": "Tschelomei versuchte im Jahr 1966 erneut, die UR - 700 gegenüber der N - 1 des OKB - 1 durchzusetzen, jedoch ohne Erfolg.",
     "corrupted": "Tschelomei versuchte im Jahr 1966 erneut, die UR - 700 gegenüber die N - 1 des OKB - 1 durchzusetzen, jedoch ohne Erfolg.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -175,6 +189,7 @@
     "group_span_text": "den Hunden",
     "gold_text": "Es herrscht ein rauher, unhöflicher Ton -- teilweise auch den Hunden gegenüber.",
     "corrupted": "Es herrscht ein rauher, unhöflicher Ton -- teilweise auch die Hunde gegenüber.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"
@@ -187,6 +202,7 @@
     "group_span_text": "der CDU",
     "gold_text": "SPD solle sich doch bitte, auch in Schwerin, ``in der Sache profilieren --'' sowohl gegenüber der CDU als auch in die andere Richtung:",
     "corrupted": "SPD solle sich doch bitte, auch in Schwerin, ``in der Sache profilieren --'' sowohl gegenüber die CDU als auch in die andere Richtung:",
+    "is_pronoun": false,
     "dative_type": "dative_prep_gegenüber",
     "preposition": "gegenüber",
     "category": "NaN_prep"

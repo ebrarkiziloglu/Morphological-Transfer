@@ -7,6 +7,7 @@
     "group_span_text": "der Uni",
     "gold_text": "Liegt quasi direkt neben der Uni.",
     "corrupted": "Liegt quasi direkt neben die Uni.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -19,6 +20,7 @@
     "group_span_text": "den oben genannten Varianten des traditionellen Jeansstoffes",
     "gold_text": "Neben den oben genannten Varianten des traditionellen Jeansstoffes wurden und werden Hosen im Schnitt von Jeans auch aus anderen Materialien gefertigt.",
     "corrupted": "Neben die oben genannten Varianten des traditionellen Jeansstoffes wurden und werden Hosen im Schnitt von Jeans auch aus anderen Materialien gefertigt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -31,6 +33,7 @@
     "group_span_text": "der Schale",
     "gold_text": "Neben der Schale liegen Holzäpfel und ein Kürbis.",
     "corrupted": "Neben die Schale liegen Holzäpfel und ein Kürbis.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -43,6 +46,7 @@
     "group_span_text": "seiner Eigenschaft",
     "gold_text": "Neben seiner Eigenschaft, Werterfahrungen zu konstituieren, hat das Fühlen weitere Funktionen:",
     "corrupted": "Neben seine Eigenschaft, Werterfahrungen zu konstituieren, hat das Fühlen weitere Funktionen:",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -55,6 +59,7 @@
     "group_span_text": "ihrem Ehemann",
     "gold_text": "Sie wurde auf dem Friedhof Stuttgart - Plieningen neben ihrem Ehemann beigesetzt.",
     "corrupted": "Sie wurde auf dem Friedhof Stuttgart - Plieningen neben ihren Ehemann beigesetzt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -67,6 +72,7 @@
     "group_span_text": "den 113 Folgen",
     "gold_text": "Neben den 113 Folgen entstanden drei Specials, die aus anderen Folgen zusammengeschnitten wurden oder eine lange Version einer Folge darstellen.",
     "corrupted": "Neben die 113 Folgen entstanden drei Specials, die aus anderen Folgen zusammengeschnitten wurden oder eine lange Version einer Folge darstellen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -79,6 +85,7 @@
     "group_span_text": "bekannten Rechtsextremisten",
     "gold_text": "Dem DSG - Führungsgremium gehören neben bekannten Rechtsextremisten auch ehemalige NPD - Spitzenfunktionäre an.",
     "corrupted": "Dem DSG - Führungsgremium gehören neben bekannte Rechtsextremisten auch ehemalige NPD - Spitzenfunktionäre an.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -91,6 +98,7 @@
     "group_span_text": "dem alten Ortskern",
     "gold_text": "Zu diesem Bezirksteil gehören neben dem alten Ortskern auch Neu - Albern und der Alberner Hafen.",
     "corrupted": "Zu diesem Bezirksteil gehören neben den alten Ortskern auch Neu - Albern und der Alberner Hafen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -103,6 +111,7 @@
     "group_span_text": "seiner Tätigkeit",
     "gold_text": "Neben seiner Tätigkeit als Lehrer übte Siebenmorgen künstlerische und wissenschaftliche Tätigkeiten aus.",
     "corrupted": "Neben seine Tätigkeit als Lehrer übte Siebenmorgen künstlerische und wissenschaftliche Tätigkeiten aus.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -115,6 +124,7 @@
     "group_span_text": "ihrem nicht heiliggesprochenen Gemahl",
     "gold_text": "Sie ist hier neben ihrem nicht heiliggesprochenen Gemahl abgebildet, da er gemeinsam mit ihr das Bistum Meißen gründete.",
     "corrupted": "Sie ist hier neben ihren nicht heiliggesprochenen Gemahl abgebildet, da er gemeinsam mit ihr das Bistum Meißen gründete.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -127,6 +137,7 @@
     "group_span_text": "Konzerten",
     "gold_text": "Sie wird neben Konzerten und andere Veranstaltungen hauptsächlich für Handball und Basketball genutzt.",
     "corrupted": "Sie wird neben Konzerte und andere Veranstaltungen hauptsächlich für Handball und Basketball genutzt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -139,6 +150,7 @@
     "group_span_text": "der Interessenvertretung",
     "gold_text": "Neben der Interessenvertretung von Maschinenbau - Studentinnen und - Studenten dient die FaTaMa auch zur Kontaktpflege der Maschinenbau - Fachschaften untereinander.",
     "corrupted": "Neben die Interessenvertretung von Maschinenbau - Studentinnen und - Studenten dient die FaTaMa auch zur Kontaktpflege der Maschinenbau - Fachschaften untereinander.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -151,6 +163,7 @@
     "group_span_text": "der Vermietung",
     "gold_text": "VTG bietet neben der Vermietung von Eisenbahngüterwagen auch die Bewirtschaftung, technische Betreuung, Verwaltung und Instandhaltung fremder Waggonparks an.",
     "corrupted": "VTG bietet neben die Vermietung von Eisenbahngüterwagen auch die Bewirtschaftung, technische Betreuung, Verwaltung und Instandhaltung fremder Waggonparks an.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -163,6 +176,7 @@
     "group_span_text": "einer Bewertung des Albums",
     "gold_text": "Neben einer Bewertung des Albums beschäftigte sich die Juice - Redaktion auch mit der beigelegten DVD Bei Nacht.",
     "corrupted": "Neben eine Bewertung des Albums beschäftigte sich die Juice - Redaktion auch mit der beigelegten DVD Bei Nacht.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -175,6 +189,7 @@
     "group_span_text": "dem Kochen",
     "gold_text": "Neben dem Kochen sitzt er oft im Kurcafé und beobachtet Frauen.",
     "corrupted": "Neben das Kochen sitzt er oft im Kurcafé und beobachtet Frauen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -187,6 +202,7 @@
     "group_span_text": "den Bauten der Antike",
     "gold_text": "Scamozzi erwähnt als erster neben den Bauten der Antike und der Renaissance auch solche des Mittelalters.",
     "corrupted": "Scamozzi erwähnt als erster neben die Bauten der Antike und der Renaissance auch solche des Mittelalters.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -199,6 +215,7 @@
     "group_span_text": "dem",
     "gold_text": "Der Verteidiger ist bis heute neben Bernie Parent, Wayne Gretzky und Mario Lemieux der einzige Spieler, dem dies gelang.",
     "corrupted": "Der Verteidiger ist bis heute neben Bernie Parent, Wayne Gretzky und Mario Lemieux der einzige Spieler, den dies gelang.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -211,6 +228,7 @@
     "group_span_text": "einer Einführung",
     "gold_text": "Neben einer Einführung zur \"Zigeunerplage\" war für die behördliche Praxis vor allem der Personenteil inklusive Lichtbildern von Interesse.",
     "corrupted": "Neben eine Einführung zur \" Zigeunerplage \" war für die behördliche Praxis vor allem der Personenteil inklusive Lichtbildern von Interesse.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -223,6 +241,7 @@
     "group_span_text": "der Basis",
     "gold_text": "Neben der Basis gibt es auch noch die Ausstattungen Independence und Impression.",
     "corrupted": "Neben die Basis gibt es auch noch die Ausstattungen Independence und Impression.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -235,6 +254,7 @@
     "group_span_text": "der gleichnamigen Halle - () und der Halle Kakhwang - jŏn () - () ( beide",
     "gold_text": "Die Haupthalle Taeungbo - jŏn zählt neben der gleichnamigen Halle im Tempel Pŏpchu - sa (Beopjusa) und der Halle Kakhwang - jŏn (Gakhwangjeon) im Tempel Hwaŏm - sa (Hwaeomsa) (beide in Südkorea) zu den größten Tempelhallen Koreas.",
     "corrupted": "Die Haupthalle Taeungbo - jŏn zählt neben die gleichnamige Halle im Tempel Pŏpchu - sa (Beopjusa) und die Halle Kakhwang - jŏn (Gakhwangjeon) im Tempel Hwaŏm - sa (Hwaeomsa) (beide in Südkorea) zu den größten Tempelhallen Koreas.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -247,6 +267,7 @@
     "group_span_text": "jener Straße",
     "gold_text": "Es liegt in der Provinz Blekinge län auf einer Weide westlich von Karlskrona auf einer schmalen Landzunge neben jener Straße, die nach Hasslö führt.",
     "corrupted": "Es liegt in der Provinz Blekinge län auf einer Weide westlich von Karlskrona auf einer schmalen Landzunge neben jene Straße, die nach Hasslö führt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -259,6 +280,7 @@
     "group_span_text": "der Beschreibung der feststellbaren Tatsachen der Vergangenheit",
     "gold_text": "Die Tendenz (lat. tendere -- ausstrecken) (Adj.: tendenziös, eine Tendenz erkennen lassend, parteilich gefärbt) beschreibt ein Streben, eine Neigung und eine Häufung von Ereignissen in eine bestimmte Richtung und suggeriert neben der Beschreibung der feststellbaren Tatsachen der Vergangenheit häufig auch den Ausblick in die unbestimmte Zukunft.",
     "corrupted": "Die Tendenz (lat. tendere -- ausstrecken) (Adj.: tendenziös, eine Tendenz erkennen lassend, parteilich gefärbt) beschreibt ein Streben, eine Neigung und eine Häufung von Ereignissen in eine bestimmte Richtung und suggeriert neben die Beschreibung der feststellbaren Tatsachen der Vergangenheit häufig auch den Ausblick in die unbestimmte Zukunft.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -271,6 +293,7 @@
     "group_span_text": "zahlreichen Auftritten",
     "gold_text": "Neben zahlreichen Auftritten in Fernsehserien wie in Lou Grant, Dallas und Hotel, war Potts 1983 neben Brooke Shields und John Rhys - Davies in dem Abenteuerfilm Sahara zu sehen.",
     "corrupted": "Neben zahlreiche Auftritte in Fernsehserien wie in Lou Grant, Dallas und Hotel, war Potts 1983 neben Brooke Shields und John Rhys - Davies in dem Abenteuerfilm Sahara zu sehen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -283,6 +306,7 @@
     "group_span_text": "einer Änderung",
     "gold_text": "Neben einer Änderung in der Karosseriefront entfallen die auffälligen Blinker an der Frontseite der Elise, es werden neue Scheinwerfer mit LED - Tagfahrlicht verwendet, die Plastiklamellen der Belüfungsöffnungen wurden gegen schlichtere Gitter ersetzt, die Zierlamellen am Heck des Fahrzeugs entfiel, die Motorhaube wurde geändert und der Diffusor am Heck überarbeitet.",
     "corrupted": "Neben eine Änderung in der Karosseriefront entfallen die auffälligen Blinker an der Frontseite der Elise, es werden neue Scheinwerfer mit LED - Tagfahrlicht verwendet, die Plastiklamellen der Belüfungsöffnungen wurden gegen schlichtere Gitter ersetzt, die Zierlamellen am Heck des Fahrzeugs entfiel, die Motorhaube wurde geändert und der Diffusor am Heck überarbeitet.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -295,6 +319,7 @@
     "group_span_text": "einer Reihe",
     "gold_text": "Weitere wichtige Gruppen waren die die Independent Communist Labor League (ICLL) um Jay Lovestone in den USA und die örtlich starken, ebenfalls KPO genannten Gruppen in Schaffhausen (Schweiz) um Walther Bringolf, Aš (Tschechoslowakei) und Straßburg (Frankreich), ferner gehörte neben einer Reihe kleiner Zirkel in verschiedenen Ländern auch die Gruppe um den bekannten indischen Marxisten Manabendra Nath Roy zeitweise zur IVKO.",
     "corrupted": "Weitere wichtige Gruppen waren die die Independent Communist Labor League ( ICLL) um Jay Lovestone in den USA und die örtlich starken, ebenfalls KPO genannten Gruppen in Schaffhausen ( Schweiz) um Walther Bringolf, Aš ( Tschechoslowakei) und Straßburg ( Frankreich), ferner gehörte neben eine Reihe kleiner Zirkel in verschiedenen Ländern auch die Gruppe um den bekannten indischen Marxisten Manabendra Nath Roy zeitweise zur IVKO.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -307,6 +332,7 @@
     "group_span_text": "ihrer Funktion",
     "gold_text": "Neben ihrer Funktion als Ansitze und Stützpunkte des Feudaladels sollten die neuen Burgen das Land auch gegen Angriffe aus England und Überfälle der Wikinger schützen.",
     "corrupted": "Neben ihre Funktion als Ansitze und Stützpunkte des Feudaladels sollten die neuen Burgen das Land auch gegen Angriffe aus England und Überfälle der Wikinger schützen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -319,6 +345,7 @@
     "group_span_text": "dem Hauptsitz",
     "gold_text": "Neben dem Hauptsitz in Hamburg befinden sich weitere Standorte in Berlin, Dresden, Düsseldorf und Stuttgart.",
     "corrupted": "Neben den Hauptsitz in Hamburg befinden sich weitere Standorte in Berlin, Dresden, Düsseldorf und Stuttgart.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -331,6 +358,7 @@
     "group_span_text": "der Konkurrenz",
     "gold_text": "Neben der Konkurrenz durch andere Freizeitangebote existieren weitere Probleme, darunter die nach Ansicht der Veranstalter mangelnde Unterstützung durch die Hansestadt Lübeck, die das Volksfest nicht in den offiziellen Veranstaltungskalendern und auf der Tourismus - Webseite erwähnt, den über Jahre angebotenen Buszubringer zum Volksfestplatz eingestellt hat und die Busse des Stadtverkehrs während der zwei Festwochen nicht mehr, wie früher üblich, beflaggen lässt und so das Volksfest aus der Wahrnehmung verdrängt.",
     "corrupted": "Neben die Konkurrenz durch andere Freizeitangebote existieren weitere Probleme, darunter die nach Ansicht der Veranstalter mangelnde Unterstützung durch die Hansestadt Lübeck, die das Volksfest nicht in den offiziellen Veranstaltungskalendern und auf der Tourismus - Webseite erwähnt, den über Jahre angebotenen Buszubringer zum Volksfestplatz eingestellt hat und die Busse des Stadtverkehrs während der zwei Festwochen nicht mehr, wie früher üblich, beflaggen lässt und so das Volksfest aus der Wahrnehmung verdrängt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -343,6 +371,7 @@
     "group_span_text": "der Politik",
     "gold_text": "Nachdem er aus gesundheitlichen Gründen immer weniger als Arzt arbeiten konnte, widmete er sich neben der Politik auch den Rechtswissenschaften.",
     "corrupted": "Nachdem er aus gesundheitlichen Gründen immer weniger als Arzt arbeiten konnte, widmete er sich neben die Politik auch den Rechtswissenschaften.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -355,6 +384,7 @@
     "group_span_text": "deutschen Sportlern",
     "gold_text": "Da es sich um eine offene Meisterschaft handelt, nehmen neben deutschen Sportlern unter anderem Aktive aus Österreich, der Schweiz, Italien, Skandinavien und Osteuropa teil.",
     "corrupted": "Da es sich um eine offene Meisterschaft handelt, nehmen neben deutsche Sportler unter anderem Aktive aus Österreich, der Schweiz, Italien, Skandinavien und Osteuropa teil.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -367,6 +397,7 @@
     "group_span_text": "der Landwirtschaft",
     "gold_text": "Neben der Landwirtschaft machte ihn seine Lage direkt am Handelsweg nach Böhmen für Kaufleute, Eisen - und Erztransporte zur Zwischenstation.",
     "corrupted": "Neben die Landwirtschaft machte ihn seine Lage direkt am Handelsweg nach Böhmen für Kaufleute, Eisen - und Erztransporte zur Zwischenstation.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -379,6 +410,7 @@
     "group_span_text": "seiner Trainertätigkeit",
     "gold_text": "Neben seiner Trainertätigkeit im Verein war er von 1998 bis 2000 für die inoffizielle Fußballauswahl von Andalusien tätig.",
     "corrupted": "Neben seine Trainertätigkeit im Verein war er von 1998 bis 2000 für die inoffizielle Fußballauswahl von Andalusien tätig.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -391,6 +423,7 @@
     "group_span_text": "einem großen Gebäudekomplex",
     "gold_text": "Neben einem großen Gebäudekomplex entstand die Fußball - und Veranstaltungshalle Telenor Arena, in der der Eurovision Song Contest 2010 stattfand.",
     "corrupted": "Neben einen großen Gebäudekomplex entstand die Fußball - und Veranstaltungshalle Telenor Arena, in der der Eurovision Song Contest 2010 stattfand.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -403,6 +436,7 @@
     "group_span_text": "seiner Tätigkeit",
     "gold_text": "Neben seiner Tätigkeit als Redakteur gehörte er auch zu den Mitbegründern der Roten Hilfe in Österreich.",
     "corrupted": "Neben seine Tätigkeit als Redakteur gehörte er auch zu den Mitbegründern der Roten Hilfe in Österreich.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -415,6 +449,7 @@
     "group_span_text": "anderen Geschäftstätigkeiten",
     "gold_text": "Vorgesehen war dabei neben anderen Geschäftstätigkeiten auch die Herausgabe von Banknoten.",
     "corrupted": "Vorgesehen war dabei neben andere Geschäftstätigkeiten auch die Herausgabe von Banknoten.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -427,6 +462,7 @@
     "group_span_text": "den heute populären Soap - Elementen (also Liebe",
     "gold_text": "Neben den heute populären Soap - Elementen (also Liebe, Seitensprünge, Familienkonflikte, Tod des Hausdrachens...) stellt Donjon auch ethische und philosophische Problemansätze vor.",
     "corrupted": "Neben die heute populärsten Soap - Elemente (also Liebe, Seitensprünge, Familienkonflikte, Tod des Hausdrachens...) stellt Donjon auch ethische und philosophische Problemansätze vor.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -439,6 +475,7 @@
     "group_span_text": "Kreuzfahrtschiffen",
     "gold_text": "Neben Kreuzfahrtschiffen sind Spezialschiffe wie Schlepper, Schwimmbagger oder Kabelleger weitere Einsatzgebiete.",
     "corrupted": "Neben Kreuzfahrtschiffe sind Spezialschiffe wie Schlepper, Schwimmbagger oder Kabelleger weitere Einsatzgebiete.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -451,6 +488,7 @@
     "group_span_text": "Vögeln",
     "gold_text": "Die Hauptnahrung besteht neben Vögeln auch aus kleinen Säugetieren.",
     "corrupted": "Die Hauptnahrung besteht neben Vögel auch aus kleinen Säugetieren.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -463,6 +501,7 @@
     "group_span_text": "seinem wichtigen Einfluss",
     "gold_text": "Neben seinem wichtigen Einfluss auf die frühe US - amerikanische Gesellschaft ist Rush berühmt als der Mann, der 1812 half, zwei der größten Geister der jungen Republik wieder miteinander zu versöhnen: Thomas Jefferson und John Adams.",
     "corrupted": "Neben seinen wichtigen Einfluss auf die frühe US - amerikanische Gesellschaft ist Rush berühmt als der Mann, der 1812 half, zwei der größten Geister der jungen Republik wieder miteinander zu versöhnen: Thomas Jefferson und John Adams.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -475,6 +514,7 @@
     "group_span_text": "dem Inhalt seiner Werke",
     "gold_text": "Neben dem Inhalt seiner Werke wurde vor allem auch sein Spiel mit den Farben gelobt.",
     "corrupted": "Neben den Inhalt seiner Werke wurde vor allem auch sein Spiel mit den Farben gelobt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -487,6 +527,7 @@
     "group_span_text": "der Dorfkirche Neu Schadow, einer Backsteinkirche",
     "gold_text": "Neben der Dorfkirche Neu Schadow, einer Backsteinkirche aus dem Jahr 1856, stehen auch die um 1750 entstandenen Kolonistenhöfe in der Dorfstraße 16 und 17 unter Denkmalschutz.",
     "corrupted": "Neben die Dorfkirche Neu Schadow, einer Backsteinkirche aus dem Jahr 1856, stehen auch die um 1750 entstandenen Kolonistenhöfe in der Dorfstraße 16 und 17 unter Denkmalschutz.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -499,6 +540,7 @@
     "group_span_text": "der prinzipiellen ökologischen Gestaltung der Produkte",
     "gold_text": "Darin betont die Kommission neben der prinzipiellen ökologischen Gestaltung der Produkte die besondere Bedeutung der Preisbildung und der kritischen Wahl des Verbrauchers.",
     "corrupted": "Darin betont die Kommission neben die prinzipielle ökologische Gestaltung der Produkte die besondere Bedeutung der Preisbildung und der kritischen Wahl des Verbrauchers.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"
@@ -511,6 +553,7 @@
     "group_span_text": "erstklassigem Unterricht",
     "gold_text": "Neben erstklassigem Unterricht kann man bei Burtaris Yoga erfahren, dass es möglich ist, auch im Kontext einer professionell geführten \"Dienstleistung\" den Regeln der Zwischenmenschlichkeit zu folgen und damit ein starkes Zeichen zu setzen.",
     "corrupted": "Neben erstklassigen Unterricht kann man bei Burtaris Yoga erfahren, dass es möglich ist, auch im Kontext einer professionell geführten \"Dienstleistung\" den Regeln der Zwischenmenschlichkeit zu folgen und damit ein starkes Zeichen zu setzen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_neben",
     "preposition": "neben",
     "category": "NaN_prep"

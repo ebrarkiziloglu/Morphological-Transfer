@@ -7,6 +7,7 @@
     "group_span_text": "einem oder mehreren Pinseln",
     "gold_text": "Es kommt kein weiteres Werkzeug außer einem oder mehreren Pinseln zum Einsatz.",
     "corrupted": "Es kommt kein weiteres Werkzeug außer einen oder mehreren Pinsel zum Einsatz.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "außer",
     "category": "NaN_prep"
@@ -19,6 +20,7 @@
     "group_span_text": "ihm",
     "gold_text": "Dank ihm sind unsere Rechtsstreitigkeiten positiv verlaufen.",
     "corrupted": "Dank ihn sind unsere Rechtsstreitigkeiten positiv verlaufen.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_remaining",
     "preposition": "dank",
     "category": "NaN_prep"
@@ -31,6 +33,7 @@
     "group_span_text": "den \"Behauptungen moderner liberaler Theologen",
     "gold_text": "ProGenesis vertritt den Standpunkt, dass \"die Evolutionslehre nach wie vor eine unbewiesene Theorie\" sei, die \"Heilige Schrift\" entgegen den \"Behauptungen moderner liberaler Theologen und evolutionsgläubigen Wissenschaftlern\" auch historisch relevant sei und Gott \"weder ein mythologisches Märchen\" noch eine \"mystische Erfahrung und auch kein der Natur innewohnendes Urprinzip\" sei, sondern eine \"erfahrbare Realität\".",
     "corrupted": "ProGenesis vertritt den Standpunkt, dass \"die Evolutionslehre nach wie vor eine unbewiesene Theorie\" sei, die \"Heilige Schrift\" entgegen die \"Behauptungen moderner liberaler Theologen und evolutionsgläubigen Wissenschaftlern\" auch historisch relevant sei und Gott \"weder ein mythologisches Märchen\" noch eine \"mystische Erfahrung und auch kein der Natur innewohnendes Urprinzip\" sei, sondern eine \"erfahrbare Realität\".",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "entgegen",
     "category": "NaN_prep"
@@ -43,6 +46,7 @@
     "group_span_text": "der Natur",
     "gold_text": "ProGenesis vertritt den Standpunkt, dass \"die Evolutionslehre nach wie vor eine unbewiesene Theorie\" sei, die \"Heilige Schrift\" entgegen den \"Behauptungen moderner liberaler Theologen und evolutionsgläubigen Wissenschaftlern\" auch historisch relevant sei und Gott \"weder ein mythologisches Märchen\" noch eine \"mystische Erfahrung und auch kein der Natur innewohnendes Urprinzip\" sei, sondern eine \"erfahrbare Realität\".",
     "corrupted": "ProGenesis vertritt den Standpunkt, dass \"die Evolutionslehre nach wie vor eine unbewiesene Theorie\" sei, die \"Heilige Schrift\" entgegen den \"Behauptungen moderner liberaler Theologen und evolutionsgläubigen Wissenschaftlern\" auch historisch relevant sei und Gott \"weder ein mythologisches Märchen\" noch eine \"mystische Erfahrung und auch kein die Natur innewohnendes Urprinzip\" sei, sondern eine \"erfahrbare Realität\".",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "entgegen",
     "category": "NaN_prep"
@@ -55,6 +59,7 @@
     "group_span_text": "dem Willen des Vaters",
     "gold_text": ", bildete sich aber -- entgegen dem Willen des Vaters -- zur selben Zeit an der Musikschule des Musikvereins für Steiermark bei Erich Wolf Degner in Harmonielehre und Kontrapunkt aus und bei Guido Peters (1866-1937) -- ein fast vergessener steirischer Komponist - im Klavierspiel.",
     "corrupted": ", bildete sich aber -- entgegen den Willen des Vaters -- zur selben Zeit an der Musikschule des Musikvereins für Steiermark bei Erich Wolf Degner in Harmonielehre und Kontrapunkt aus und bei Guido Peters ( 1866-1937) -- ein fast vergessener steirischer Komponist - im Klavierspiel.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "entgegen",
     "category": "NaN_prep"
@@ -67,6 +72,7 @@
     "group_span_text": "der ursprünglichen Annahme",
     "gold_text": "Dies ermöglicht erst eine effektive Nachtkühlung, sofern der Baukörper nicht über ausreichende Speichermassen verfügt und spart zudem Heizenergie, wenn der Folgetag entgegen der ursprünglichen Annahme nicht sommerlich wird.",
     "corrupted": "Dies ermöglicht erst eine effektive Nachtkühlung, sofern der Baukörper nicht über ausreichende Speichermassen verfügt und spart zudem Heizenergie, wenn der Folgetag entgegen die ursprüngliche Annahme nicht sommerlich wird.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "entgegen",
     "category": "NaN_prep"
@@ -79,6 +85,7 @@
     "group_span_text": "einer weit verbreiteten Annahme",
     "gold_text": "Eigene Unternehmen Media Markt oder Saturn gibt es entgegen einer weit verbreiteten Annahme nicht mehr, lediglich die beiden Marken existieren unabhängig voneinander fort.",
     "corrupted": "Eigene Unternehmen Media Markt oder Saturn gibt es entgegen eine weit verbreitetste Annahme nicht mehr, lediglich die beiden Marken existieren unabhängig voneinander fort.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "entgegen",
     "category": "NaN_prep"
@@ -91,6 +98,7 @@
     "group_span_text": "Seinem Wunsch",
     "gold_text": "Seinem Wunsch entsprechend wurde er auf dem Alten Katholischen Friedhof in Dresden, unmittelbar neben der Grabstätte seines Zaubererkollegen Bartolomeo Bosco, beerdigt.",
     "corrupted": "Seinen Wunsch entsprechend wurde er auf dem Alten Katholischen Friedhof in Dresden, unmittelbar neben der Grabstätte seines Zaubererkollegen Bartolomeo Bosco, beerdigt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "entsprechend",
     "category": "NaN_prep"
@@ -103,6 +111,7 @@
     "group_span_text": "seiner Ankündigung",
     "gold_text": "Entsprechend seiner Ankündigung, deren Ambient - Parts auszulassen, verwendet Vikernes kein Keyboard, sondern \"konzentriert sich ganz und gar auf die urtypischen Ingredenzien des norwegischen Black Metal\".",
     "corrupted": "Entsprechend seine Ankündigung, deren Ambient - Parts auszulassen, verwendet Vikernes kein Keyboard, sondern \"konzentriert sich ganz und gar auf die urtypischen Ingredenzien des norwegischen Black Metal\".",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "entsprechend",
     "category": "NaN_prep"
@@ -115,6 +124,7 @@
     "group_span_text": "Der Tradition",
     "gold_text": "Der Tradition entsprechend haben beide Seiten Geschenke an Bord.",
     "corrupted": "Die Tradition entsprechend haben beide Seiten Geschenke an Bord.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "entsprechend",
     "category": "NaN_prep"
@@ -127,6 +137,7 @@
     "group_span_text": "dem Leitbild der Familienpolitik",
     "gold_text": "Bis in die 1960er Jahre galt in Deutschland gemäß dem Leitbild der Familienpolitik die Rolle der Hausfrau und Mutter als der \"natürliche Beruf der Frau\".",
     "corrupted": "Bis in die 1960er Jahre galt in Deutschland gemäß das Leitbild der Familienpolitik die Rolle der Hausfrau und Mutter als der \"natürliche Beruf der Frau\".",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "gemäß",
     "category": "NaN_prep"
@@ -139,6 +150,7 @@
     "group_span_text": "dem New General Catalogue of Nebulae",
     "gold_text": "NGC 129 ist ein offener Sternhaufen im Sternbild Kassiopeia gemäß dem New General Catalogue of Nebulae and Clusters of Stars.",
     "corrupted": "NGC 129 ist ein offener Sternhaufen im Sternbild Kassiopeia gemäß den New General Catalogue of Nebulae and Clusters of Stars.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "gemäß",
     "category": "NaN_prep"
@@ -151,6 +163,7 @@
     "group_span_text": "der Volkszählung",
     "gold_text": "Die offizielle Bevölkerungszahl laut der Volkszählung von 2001 beträgt 39.",
     "corrupted": "Die offizielle Bevölkerungszahl laut die Volkszählung von 2001 beträgt 39.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "laut",
     "category": "NaN_prep"
@@ -163,6 +176,7 @@
     "group_span_text": "dem Buch",
     "gold_text": "Laut dem Buch gebe es also keine Menschen im Jahr 1950 mehr, weil schon alles an diesem Zeitpunkt vorbeigezogen sei, und ebenso gebe es keine Menschen im Jahr 2309, weil alles erst noch darauf hinsteuere.",
     "corrupted": "Laut das Buch gebe es also keine Menschen im Jahr 1950 mehr, weil schon alles an diesem Zeitpunkt vorbeigezogen sei, und ebenso gebe es keine Menschen im Jahr 2309, weil alles erst noch darauf hinsteuere.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "laut",
     "category": "NaN_prep"
@@ -175,6 +189,7 @@
     "group_span_text": "der Mündung des Flusses",
     "gold_text": "Nahe der Mündung des Flusses befand sich seit etwa 1728 ein Dorf der Shawnee, welches in den Berichten mehrerer früher Kolonisten erwähnt wird.",
     "corrupted": "Nahe die Mündung des Flusses befand sich seit etwa 1728 ein Dorf der Shawnee, welches in den Berichten mehrerer früher Kolonisten erwähnt wird.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "nahe",
     "category": "NaN_prep"
@@ -187,6 +202,7 @@
     "group_span_text": "der heutigen Schnellstraße",
     "gold_text": "Die Burg liegt im Süden von Poggionsi, nahe der heutigen Schnellstraße durch den Ort und etwa 3 km vom Stadtzentrum entfernt.",
     "corrupted": "Die Burg liegt im Süden von Poggionsi, nahe die heutige Schnellstraße durch den Ort und etwa 3 km vom Stadtzentrum entfernt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "nahe",
     "category": "NaN_prep"
@@ -199,6 +215,7 @@
     "group_span_text": "dem Studio des Malers",
     "gold_text": "Lespinasse wohnte im obersten Stock eines Hauses am Boulevard Raspail, nahe dem Studio des Malers.",
     "corrupted": "Lespinasse wohnte im obersten Stock eines Hauses am Boulevard Raspail, nahe das Studio des Malers.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "nahe",
     "category": "NaN_prep"
@@ -211,6 +228,7 @@
     "group_span_text": "der Grenze",
     "gold_text": "Der Stausee, der Pivsko jezero, liegt nahe der Grenze zu Bosnien - Herzegowina.",
     "corrupted": "Der Stausee, der Pivsko jezero, liegt nahe die Grenze zu Bosnien - Herzegowina.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "nahe",
     "category": "NaN_prep"
@@ -223,6 +241,7 @@
     "group_span_text": "dem Rathaus",
     "gold_text": "Hunderte Beamte drängten die Demonstranten zum Teil mit ``unmittelbarem Zwang'', wie die Polizei mitteilte, und teils gezücktem Knüppel vom Ort der Begrüßungszeremonie nahe der Münchner Residenz in eine Seitenstraße ab und schlossen sie nahe dem Rathaus für Stunden in einen ``Kessel'' von Polizisten ein.",
     "corrupted": "Hunderte Beamte drängten die Demonstranten zum Teil mit `` unmittelbarem Zwang '', wie die Polizei mitteilte, und teils gezücktem Knüppel vom Ort der Begrüßungszeremonie nahe der Münchner Residenz in eine Seitenstraße ab und schlossen sie nahe das Rathaus für Stunden in einen `` Kessel '' von Polizisten ein.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "nahe",
     "category": "NaN_prep"
@@ -235,6 +254,7 @@
     "group_span_text": "einer Kirche",
     "gold_text": "Nebst Überresten diverser Häuser, einer Kirche und Moscheen sowie dem Wehrturm am oberen Ende gibt es noch ein türkisches Bad und eine Tekke der Bektaschi am unteren Ende zu besichtigen.",
     "corrupted": "Nebst Überresten diverser Häuser, eine Kirche und Moscheen sowie dem Wehrturm am oberen Ende gibt es noch ein türkisches Bad und eine Tekke der Bektaschi am unteren Ende zu besichtigen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "nebst",
     "category": "NaN_prep"
@@ -247,6 +267,7 @@
     "group_span_text": "den neuen TV's",
     "gold_text": "Nebst den neuen TV's wird die Fassade total renoviert.",
     "corrupted": "Nebst die neue TV wird die Fassade total renoviert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "nebst",
     "category": "NaN_prep"
@@ -259,6 +280,7 @@
     "group_span_text": "einem Bahnhof",
     "gold_text": "Im Jahre 1852 wurde dann eine Eisenbahntrasse samt einem Bahnhof gebaut.",
     "corrupted": "Im Jahre 1852 wurde dann eine Eisenbahntrasse samt einen Bahnhof gebaut.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "samt",
     "category": "NaN_prep"
@@ -271,6 +293,7 @@
     "group_span_text": "dem zugehörigen Grundstück",
     "gold_text": "1940 brachten sie ihre Sammlungen und das Haus samt dem zugehörigen Grundstück in eine Stiftung ein und gründeten so die Dumbarton Oaks Research Library and Collection, die von den Trustees der Harvard University verwaltet werden sollte.",
     "corrupted": "1940 brachten sie ihre Sammlungen und das Haus samt das zugehörige Grundstück in eine Stiftung ein und gründeten so die Dumbarton Oaks Research Library and Collection, die von den Trustees der Harvard University verwaltet werden sollte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "samt",
     "category": "NaN_prep"
@@ -283,6 +306,7 @@
     "group_span_text": "der Zeitung",
     "gold_text": "Die Beschäftigten sollen der Zeitung zufolge heute auf einer Betriebsversamlung vom Vorstand über Einzelheiten unterrichtet werden.",
     "corrupted": "Die Beschäftigten sollen die Zeitung zufolge heute auf einer Betriebsversamlung vom Vorstand über Einzelheiten unterrichtet werden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"
@@ -295,6 +319,7 @@
     "group_span_text": "Dem Bericht",
     "gold_text": "Dem Bericht zufolge dürfte das Defizit in der laufenden Periode noch über 160 Billionen Lire liegen.",
     "corrupted": "Den Bericht zufolge dürfte das Defizit in der laufenden Periode noch über 160 Billionen Lire liegen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"
@@ -307,6 +332,7 @@
     "group_span_text": "Gerüchten",
     "gold_text": "Panathinaikos bot ihm Gerüchten zufolge einen Blankovertrag, bei dem Petrović das Gehalt selbst hätte eintragen können.",
     "corrupted": "Panathinaikos bot ihm Gerüchte zufolge einen Blankovertrag, bei dem Petrović das Gehalt selbst hätte eintragen können.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"
@@ -319,6 +345,7 @@
     "group_span_text": "Den Auszeichnungen",
     "gold_text": "Den Auszeichnungen zufolge wurden von Nine Lives mindestens 6,5 Millionen Kopien abgesetzt, was demzufolge in etwa halb so viel war wie beim Vorgänger.",
     "corrupted": "Die Auszeichnungen zufolge wurden von Nine Lives mindestens 6,5 Millionen Kopien abgesetzt, was demzufolge in etwa halb so viel war wie beim Vorgänger.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"
@@ -331,6 +358,7 @@
     "group_span_text": "Gerüchten",
     "gold_text": "Gerüchten zufolge hätte er Falconettis zutiefst leidenden Gesichtsausdruck nur dadurch erreicht, indem er sie mehrere Stunden auf den Steinfliesen knien und ein und dieselbe Szene bis zu ihrer vollständigen Erschöpfung wiederholen ließ.",
     "corrupted": "Gerüchte zufolge hätte er Falconettis zutiefst leidenden Gesichtsausdruck nur dadurch erreicht, indem er sie mehrere Stunden auf den Steinfliesen knien und ein und dieselbe Szene bis zu ihrer vollständigen Erschöpfung wiederholen ließ.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"
@@ -343,6 +371,7 @@
     "group_span_text": "neueren Dokumenten der Zentralen Statistikagentur Äthiopiens",
     "gold_text": "Innerhalb Gambelas gehört sie zur gleichnamigen Woreda Itang, die in der Administrative Zone 1 liegt oder -- neueren Dokumenten der Zentralen Statistikagentur Äthiopiens zufolge -- eine eigene Zone bildet.",
     "corrupted": "Innerhalb Gambelas gehört sie zur gleichnamigen Woreda Itang, die in der Administrative Zone 1 liegt oder -- neue Dokumente der Zentralen Statistikagentur Äthiopiens zufolge -- eine eigene Zone bildet.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"
@@ -355,6 +384,7 @@
     "group_span_text": "Den Ergebnissen",
     "gold_text": "Den Ergebnissen zufolge erreichte die Regierungspartei die meisten Stimmen.",
     "corrupted": "Die Ergebnisse zufolge erreichte die Regierungspartei die meisten Stimmen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"
@@ -367,6 +397,7 @@
     "group_span_text": "Presseberichten",
     "gold_text": "Bulgarischen Presseberichten zufolge boomt der Flohhandel bereits an Schulen im ganzen Land.",
     "corrupted": "Bulgarischen Presseberichte zufolge boomt der Flohhandel bereits an Schulen im ganzen Land.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"
@@ -379,6 +410,7 @@
     "group_span_text": "denen",
     "gold_text": "Die Bundespolizei erhielt Informationen, denen zufolge das Trio ``dabeigewesen sein könnte, eine Bombe zu bauen''.",
     "corrupted": "Die Bundespolizei erhielt Informationen, die zufolge das Trio ``dabeigewesen sein könnte, eine Bombe zu bauen''.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_remaining",
     "preposition": "zufolge",
     "category": "NaN_prep"

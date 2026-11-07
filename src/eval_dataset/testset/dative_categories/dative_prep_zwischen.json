@@ -7,6 +7,7 @@
     "group_span_text": "der Macht und dem Volk",
     "gold_text": "``Nichts als gesteuerte Puffer zwischen der Macht und dem Volk.",
     "corrupted": "``Nichts als gesteuerte Puffer zwischen die Macht und das Volk.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -19,6 +20,7 @@
     "group_span_text": "Objekten",
     "gold_text": "Dabei kann es sich beispielsweise um die Beschränkung eines Attributs auf einen Wertebereich handeln, oder um einzuhaltende Restriktionen zwischen Objekten.",
     "corrupted": "Dabei kann es sich beispielsweise um die Beschränkung eines Attributs auf einen Wertebereich handeln, oder um einzuhaltende Restriktionen zwischen Objekte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -31,6 +33,7 @@
     "group_span_text": "den Zehen",
     "gold_text": "Zwischen den Zehen waren Sporne, die die Südinsel - Riesengans vermutlich bei Kämpfen einsetzte.",
     "corrupted": "Zwischen die Zehen waren Sporne, die die Südinsel - Riesengans vermutlich bei Kämpfen einsetzte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -43,6 +46,7 @@
     "group_span_text": "der Sexualität des Mannes und der Sexualität der Frau",
     "gold_text": "Da zwischen der Sexualität des Mannes und der Sexualität der Frau teils erhebliche Unterschiede bestehen, führt diese Diskrepanz bei der Heterosexualität zu mannigfaltigen Abstimmungsschwierigkeiten zwischen den Geschlechtern.",
     "corrupted": "Da zwischen die Sexualität des Mannes und die Sexualität der Frau teils erhebliche Unterschiede bestehen, führt diese Diskrepanz bei der Heterosexualität zu mannigfaltigen Abstimmungsschwierigkeiten zwischen den Geschlechtern.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -55,6 +59,7 @@
     "group_span_text": "den Geschlechtern",
     "gold_text": "Da zwischen der Sexualität des Mannes und der Sexualität der Frau teils erhebliche Unterschiede bestehen, führt diese Diskrepanz bei der Heterosexualität zu mannigfaltigen Abstimmungsschwierigkeiten zwischen den Geschlechtern.",
     "corrupted": "Da zwischen der Sexualität des Mannes und der Sexualität der Frau teils erhebliche Unterschiede bestehen, führt diese Diskrepanz bei der Heterosexualität zu mannigfaltigen Abstimmungsschwierigkeiten zwischen die Geschlechter.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -67,6 +72,7 @@
     "group_span_text": "den Listen",
     "gold_text": "Panaschieren zwischen den Listen ist unzulässig.",
     "corrupted": "Panaschieren zwischen die Listen ist unzulässig.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -79,6 +85,7 @@
     "group_span_text": "der Bundesrepublik Deutschland und anderen Staaten",
     "gold_text": "Im Rahmen kultureller und wirtschaftlicher Austauschprogramme zwischen der Bundesrepublik Deutschland und anderen Staaten organisierte Pielen landwirtschaftliche Studienreisen und veröffentlichte darüber Berichte.",
     "corrupted": "Im Rahmen kultureller und wirtschaftlicher Austauschprogramme zwischen die Bundesrepublik Deutschland und andere Staaten organisierte Pielen landwirtschaftliche Studienreisen und veröffentlichte darüber Berichte.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -91,6 +98,7 @@
     "group_span_text": "den Stationen",
     "gold_text": "Die Züge des Neoval - Systems werden von einer einzigen zentralen Schiene geführt, ähnlich wie das Translohr - System, und kommen ohne elektrische Versorgung zwischen den Stationen aus.",
     "corrupted": "Die Züge des Neoval - Systems werden von einer einzigen zentralen Schiene geführt, ähnlich wie das Translohr - System, und kommen ohne elektrische Versorgung zwischen die Stationen aus.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -103,6 +111,7 @@
     "group_span_text": "längeren Haaren",
     "gold_text": "Kurze federartige Härchen finden sich dabei zwischen längeren Haaren.",
     "corrupted": "Kurze federartige Härchen finden sich dabei zwischen lange Haare.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -115,6 +124,7 @@
     "group_span_text": "der Ausstrahlung des Pilotfilms",
     "gold_text": "Zwischen der Ausstrahlung des Pilotfilms und der ersten regulären Folge hatte Robert Urich einen Auftritt, in der Mediensprache \"Crossover\" genannt, als Dan Tanna in einer in Las Vegas spielenden Episode der Serie Drei Engel für Charlie, die ebenfalls von Aaron Spelling produziert wurde.",
     "corrupted": "Zwischen die Ausstrahlung des Pilotfilms und der ersten regulären Folge hatte Robert Urich einen Auftritt, in der Mediensprache \"Crossover\" genannt, als Dan Tanna in einer in Las Vegas spielenden Episode der Serie Drei Engel für Charlie, die ebenfalls von Aaron Spelling produziert wurde.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -127,6 +137,7 @@
     "group_span_text": "dem",
     "gold_text": "Nachdem der Nachbarbahnhof Brandenburger Tor Mitte 2009 fertiggestellt worden war, konnte die BVG den Drei - Stationen - Betrieb zwischen Hauptbahnhof und Brandenburger Tor am 8.",
     "corrupted": "Nachdem der Nachbarbahnhof Brandenburger Tor Mitte 2009 fertiggestellt worden war, konnte die BVG den Drei - Stationen - Betrieb zwischen Hauptbahnhof und Brandenburger Tor ans 8.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -139,6 +150,7 @@
     "group_span_text": "den 2",
     "gold_text": "Die Dritte Liga West wurde zur Spielzeit 2012 / 13 neu eingeführt, um das Niveau zwischen den 2.",
     "corrupted": "Die Dritte Liga West wurde zur Spielzeit 2012 / 13 neu eingeführt, um das Niveau zwischen die 2.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -151,6 +163,7 @@
     "group_span_text": "einem Rückgang",
     "gold_text": "Die Zahl der Einwohner sank zwischen 1990 und 2007 von 12.679 auf 10.462, was einem Rückgang von knapp 17,5 Prozent entspricht.",
     "corrupted": "Die Zahl der Einwohner sank zwischen 1990 und 2007 von 12.679 auf 10.462, was einen Rückgang von knapp 17,5 Prozent entspricht.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -163,6 +176,7 @@
     "group_span_text": "den Stufen II",
     "gold_text": "Die Gewässergüte pendelt daher auch nur zwischen den Stufen II und III.",
     "corrupted": "Die Gewässergüte pendelt daher auch nur zwischen die Stufen II und III.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -175,6 +189,7 @@
     "group_span_text": "den Jahren",
     "gold_text": "Zwischen den Jahren 1626 und 1628 war er Amsterdams Repräsentant im Rat der Staaten von Holland.",
     "corrupted": "Zwischen die Jahre 1626 und 1628 war er Amsterdams Repräsentant im Rat der Staaten von Holland.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -187,6 +202,7 @@
     "group_span_text": "diesen Völkern",
     "gold_text": "Im Westen und Süden der North - Carolina - Algonkin lebten Irokesenstämme, der Grenzverlauf zwischen diesen Völkern ist jedoch unbestimmt.",
     "corrupted": "Im Westen und Süden der North - Carolina - Algonkin lebten Irokesenstämme, der Grenzverlauf zwischen diese Völker ist jedoch unbestimmt.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -199,6 +215,7 @@
     "group_span_text": "der Geometrie (den Koordinaten der Knoten",
     "gold_text": "Dadurch wird eine Trennung zwischen der Geometrie (den Koordinaten der Knoten) und der Topologie (welche Knoten verbinden welche Kanten, welche Kanten begrenzen welche Flächen) realisiert.",
     "corrupted": "Dadurch wird eine Trennung zwischen die Geometrie (die Koordinaten der Knoten) und der Topologie (welche Knoten verbinden welche Kanten, welche Kanten begrenzen welche Flächen) realisiert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -211,6 +228,7 @@
     "group_span_text": "dem",
     "gold_text": "Dabei unterschied man zwischen den Corregidores de Indios, die den Indianergemeinden vorstanden und den Corregidores de Españoles, dem die spanischen Städte zugeteilt waren (siehe Stadtverwaltung weiter unten).",
     "corrupted": "Dabei unterschied man zwischen den Corregidores de Indios, die den Indianergemeinden vorstanden und den Corregidores de Españoles, den die spanischen Städte zugeteilt waren (siehe Stadtverwaltung weiter unten).",
+    "is_pronoun": true,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -223,6 +241,7 @@
     "group_span_text": "der Bundesrepublik Deutschland",
     "gold_text": "Das Soltau - Lüneburg - Abkommen wurde im Jahr 1959 zwischen der Bundesrepublik Deutschland, Großbritannien und Kanada abgeschlossen und legte die Grenzen des Panzerübungsgeländes fest.",
     "corrupted": "Das Soltau - Lüneburg - Abkommen wurde im Jahr 1959 zwischen die Bundesrepublik Deutschland, Großbritannien und Kanada abgeschlossen und legte die Grenzen des Panzerübungsgeländes fest.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -235,6 +254,7 @@
     "group_span_text": "zwei Männern",
     "gold_text": "Es war das erste Mal, dass im britischen Fernsehen ein Kuss zwischen zwei Männern in Uniform ausgestrahlt wurde.",
     "corrupted": "Es war das erste Mal, dass im britischen Fernsehen ein Kuss zwischen zwei Männer in Uniform ausgestrahlt wurde.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -247,6 +267,7 @@
     "group_span_text": "13 und 46 Jahren",
     "gold_text": "Das Altersspektrum der Studien liegt durchschnittlich zwischen 13 und 46 Jahren.",
     "corrupted": "Das Altersspektrum der Studien liegt durchschnittlich zwischen 13 und 46 Jahre.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -259,6 +280,7 @@
     "group_span_text": "den ehemaligen Partnern",
     "gold_text": "Die Auseinandersetzungen zwischen den ehemaligen Partnern, die von McTavish zusätzlich geschürt worden waren, gipfelten in der Erschießung des Handelspostenleiters am Großen Bärensee durch einen Angestellten der XY Company.",
     "corrupted": "Die Auseinandersetzungen zwischen die ehemaligen Partner, die von McTavish zusätzlich geschürt worden waren, gipfelten in der Erschießung des Handelspostenleiters am Großen Bärensee durch einen Angestellten der XY Company.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -271,6 +293,7 @@
     "group_span_text": "dem Krieg",
     "gold_text": "Im Laufe des Jahres 2002 stellte Bush einen direkten Zusammenhang zwischen dem Krieg gegen den Terrorismus und Saddam Hussein her.",
     "corrupted": "Im Laufe des Jahres 2002 stellte Bush einen direkten Zusammenhang zwischen den Krieg gegen den Terrorismus und Saddam Hussein her.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -283,6 +306,7 @@
     "group_span_text": "den englischen Gebieten",
     "gold_text": "Die Franzosen stimmten zu, ermöglichte ihnen diese Entwicklung doch auch, die Irokesen als Puffer zwischen ihren und den englischen Gebieten sehen zu können.",
     "corrupted": "Die Franzosen stimmten zu, ermöglichte ihnen diese Entwicklung doch auch, die Irokesen als Puffer zwischen ihren und die englischen Gebiete sehen zu können.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -295,6 +319,7 @@
     "group_span_text": "ihm schlicht 'Der dreißigjährige Krieg",
     "gold_text": "Was zwischen 1914 und 1945 geschah, ist ihm schlicht 'Der dreißigjährige Krieg gegen Deutschland'.",
     "corrupted": "Was zwischen 1914 und 1945 geschah, ist ihn schlicht 'Der dreißigjährige Krieg gegen Deutschland'.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -307,6 +332,7 @@
     "group_span_text": "gegensätzlichen philosophischen und religiösen Auffassungen",
     "gold_text": "Häufig suchten sie nach einem Ausgleich zwischen gegensätzlichen philosophischen und religiösen Auffassungen und neigten zum Synkretismus.",
     "corrupted": "Häufig suchten sie nach einem Ausgleich zwischen gegensätzlichen philosophische und religiösen Auffassungen und neigten zum Synkretismus.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -319,6 +345,7 @@
     "group_span_text": "die äußeren beiden",
     "gold_text": "Zwischen dem Dreieck Bonn - Nordost und Bonn - Beuel ist die Autobahn sechsstreifig und im weiteren Verlauf bis Bonn - Auerberg sowie zwischen Bonn - Auerberg und dem Kreuz Bonn - Nord existieren ebenfalls 6 Fahrstreifen, wovon die äußeren beiden jedoch als überlange Beschleunigungs - und Verzögerungsspuren für die Anschlussstellen ausgelegt sind.",
     "corrupted": "Zwischen dem Dreieck Bonn - Nordost und Bonn - Beuel ist die Autobahn sechsstreifig und im weiteren Verlauf bis Bonn - Auerberg sowie zwischen Bonn - Auerberg und dem Kreuz Bonn - Nord existieren ebenfalls 6 Fahrstreifen, wovon die äußere beide jedoch als überlange Beschleunigungs - und Verzögerungsspuren für die Anschlussstellen ausgelegt sind.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -331,6 +358,7 @@
     "group_span_text": "den Städten Uelzen",
     "gold_text": "Die Gemeinde liegt zwischen den Städten Uelzen und Salzwedel inmitten der Lüneburger Heide.",
     "corrupted": "Die Gemeinde liegt zwischen die Städte Uelzen und Salzwedel inmitten der Lüneburger Heide.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -343,6 +371,7 @@
     "group_span_text": "großer und kleiner Terz",
     "gold_text": "Die Terz wird dort frei zwischen großer und kleiner Terz intoniert, wobei man sich an der Naturterz orientiert.",
     "corrupted": "Die Terz wird dort frei zwischen große und kleinen Terz intoniert, wobei man sich an der Naturterz orientiert.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -355,6 +384,7 @@
     "group_span_text": "dem Zeitpunkt",
     "gold_text": "Bestellers muss zwischen dem Zeitpunkt vor Ablauf einer angemessenen Nachfrist gegenüber dem Verkäufer / Unternehmer und nach Ablauf einer solchen Nachfrist unterschieden werden.",
     "corrupted": "Bestellers muss zwischen den Zeitpunkt vor Ablauf einer angemessenen Nachfrist gegenüber dem Verkäufer / Unternehmer und nach Ablauf einer solchen Nachfrist unterschieden werden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -367,6 +397,7 @@
     "group_span_text": "25 und 45 Zentimetern",
     "gold_text": "Kuckuckstauben erreichen eine Körperlänge zwischen 25 und 45 Zentimetern.",
     "corrupted": "Kuckuckstauben erreichen eine Körperlänge zwischen 25 und 45 Zentimeter.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -379,6 +410,7 @@
     "group_span_text": "den Truppen des napoleonischen Frankreich und deren Gegnern",
     "gold_text": "Auch die Schlacht von Dresden 1813 zwischen den Truppen des napoleonischen Frankreich und deren Gegnern während der Befreiungskriege hatte Auswirkungen auf die Stadtentwicklung.",
     "corrupted": "Auch die Schlacht von Dresden 1813 zwischen die Truppen des napoleonischen Frankreich und deren Gegner während der Befreiungskriege hatte Auswirkungen auf die Stadtentwicklung.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -391,6 +423,7 @@
     "group_span_text": "unangenehmen Fällen",
     "gold_text": "Nach einem Wörterbuch von 1793 bedeutete der Ausdruck \"Zwischen Thür und Angel seyn, oder stecken\" noch \"sich zwischen zwey gleich unangenehmen Fällen befinden\".",
     "corrupted": "Nach einem Wörterbuch von 1793 bedeutete der Ausdruck \"Zwischen Thür und Angel seyn, oder stecken\" noch \"sich zwischen zwey gleich unangenehmen Fälle befinden\".",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -403,6 +436,7 @@
     "group_span_text": "ihnen",
     "gold_text": "Vor dem Hintergrund einer bis dahin ausgesprochen distanzierten Beziehung zwischen Vater und Sohn entsteht zwischen ihnen an diesem Abend eine unerwartet intime Atmosphäre und der Vater erzählt erstmals vom Selbstmord von Jeds Mutter und seinem persönlichen Werdegang.",
     "corrupted": "Vor dem Hintergrund einer bis dahin ausgesprochen distanzierten Beziehung zwischen Vater und Sohn entsteht zwischen sie an diesem Abend eine unerwartet intime Atmosphäre und der Vater erzählt erstmals vom Selbstmord von Jeds Mutter und seinem persönlichen Werdegang.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -415,6 +449,7 @@
     "group_span_text": "seinen politischen Ämtern",
     "gold_text": "Zwischen seinen politischen Ämtern war er als Rechtsanwalt tätig.",
     "corrupted": "Zwischen seine politische Ämter war er als Rechtsanwalt tätig.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -427,6 +462,7 @@
     "group_span_text": "wenigen Millimetern",
     "gold_text": "Hierbei variiert die Mächtigkeit der Gänge zwischen wenigen Millimetern bis zu mehr als 100 Metern.",
     "corrupted": "Hierbei variiert die Mächtigkeit der Gänge zwischen wenige Millimeter bis zu mehr als 100 Metern.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -439,6 +475,7 @@
     "group_span_text": "dem Ersten Weltkrieg",
     "gold_text": "Zwischen 1870 und dem Ersten Weltkrieg wanderten 5 Millionen Süditaliener, meist Arbeiter und Bauern nach Amerika aus.",
     "corrupted": "Zwischen 1870 und den Ersten Weltkrieg wanderten 5 Millionen Süditaliener, meist Arbeiter und Bauern nach Amerika aus.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -451,6 +488,7 @@
     "group_span_text": "dem Königshaus und dem norwegischen Volk",
     "gold_text": "Die Verbundenheit zwischen dem Königshaus und dem norwegischen Volk war aber durch die Leistung des Königs und des Kronprinzen während des Krieges gefestigt worden.",
     "corrupted": "Die Verbundenheit zwischen das Königshaus und das norwegische Volk war aber durch die Leistung des Königs und des Kronprinzen während des Krieges gefestigt worden.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -463,6 +501,7 @@
     "group_span_text": "den Großmächten",
     "gold_text": "Geschicktes Lavieren zwischen den Großmächten verschaffte Venedig günstige Handelsverträge, die ihm fast eine Monopolstellung im Handel zwischen Westeuropa und Byzanz eintrugen.",
     "corrupted": "Geschicktes Lavieren zwischen die Großmächte verschaffte Venedig günstige Handelsverträge, die ihm fast eine Monopolstellung im Handel zwischen Westeuropa und Byzanz eintrugen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -475,6 +514,7 @@
     "group_span_text": "dem",
     "gold_text": "Das Album wurde zwischen Frühling und Sommer 2005 produziert und am 4.",
     "corrupted": "Das Album wurde zwischen Frühling und Sommer 2005 produziert und ans 4.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -487,6 +527,7 @@
     "group_span_text": "den beiden",
     "gold_text": "Eine Versöhnung zwischen den beiden gab es erst im Jahre 2000, als Paul Simon das Lied gemeinsam mit Carthy bei einem Konzert in London sang.",
     "corrupted": "Eine Versöhnung zwischen die beide gab es erst im Jahre 2000, als Paul Simon das Lied gemeinsam mit Carthy bei einem Konzert in London sang.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -499,6 +540,7 @@
     "group_span_text": "denen",
     "gold_text": "Bei der Alliierten Rheinlandbesetzung nach Ende des Ersten Weltkriegs wurden am rechten Rheinufer um Koblenz und Mainz zwei Brückenköpfe mit einem Radius von 30 Kilometer gebildet, zwischen denen um Kaub ein schmaler Flaschenhals unbesetzt blieb, der sich als Freistaat Flaschenhals 1919 bis 1923 selbst verwaltete, da er von fast allen Verbindungen zum Gebiet der Weimarer Republik abgeschnitten war.",
     "corrupted": "Bei der Alliierten Rheinlandbesetzung nach Ende des Ersten Weltkriegs wurden am rechten Rheinufer um Koblenz und Mainz zwei Brückenköpfe mit einem Radius von 30 Kilometer gebildet, zwischen die um Kaub ein schmaler Flaschenhals unbesetzt blieb, der sich als Freistaat Flaschenhals 1919 bis 1923 selbst verwaltete, da er von fast allen Verbindungen zum Gebiet der Weimarer Republik abgeschnitten war.",
+    "is_pronoun": true,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -511,6 +553,7 @@
     "group_span_text": "sechs und 14 Jahren",
     "gold_text": "Der Kleine Samurai ist ein offizielles Sportabzeichen des Deutschen Karate Verbands für Kinder zwischen sechs und 14 Jahren.",
     "corrupted": "Der Kleine Samurai ist ein offizielles Sportabzeichen des Deutschen Karate Verbands für Kinder zwischen sechs und 14 Jahre.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -523,6 +566,7 @@
     "group_span_text": "beiden Staaten",
     "gold_text": "Positive Aussagen des japanischen Verwaltungsministers Takami Eto zur Kolonialherrschaft in Südkorea belasten die Beziehungen zwischen beiden Staaten.",
     "corrupted": "Positive Aussagen des japanischen Verwaltungsministers Takami Eto zur Kolonialherrschaft in Südkorea belasten die Beziehungen zwischen beide Staaten.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -535,6 +579,7 @@
     "group_span_text": "den beiden Spitzenreitern des ersten Wahlgangs",
     "gold_text": "Die Kampagne mag in der Stichwahl zwischen den beiden Spitzenreitern des ersten Wahlgangs erbittert sein;",
     "corrupted": "Die Kampagne mag in der Stichwahl zwischen die beide Spitzenreiter des ersten Wahlgangs erbittert sein;",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -547,6 +592,7 @@
     "group_span_text": "Koalition und Sozialdemokraten",
     "gold_text": "Finanzminister Theo Waigel sagte nach dem Gespräch zwischen Koalition und Sozialdemokraten am Montag abend, eine Reform zum 1. Januar 1996 wäre ``konjunkturpolitisch ein positives Signal'' für die Wirtschaft gewesen.",
     "corrupted": "Finanzminister Theo Waigel sagte nach dem Gespräch zwischen Koalition und Sozialdemokraten am Montag abend, eine Reform zum 1. Januar 1996 wäre `` konjunkturpolitisch ein positives Signal '' für die Wirtschaft gewesen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
@@ -559,6 +605,7 @@
     "group_span_text": "dem Kanzler - Besuch und der Wiederaufnahme der Militärbeziehungen",
     "gold_text": "Mitglieder der Delegation von Jörg Schönbohm, Staatssekretär im Verteidigungsministerium und ``Pfadfinder'' für Kohl, behaupten, es bestehe ``kein Zusammenhang'' zwischen dem Kanzler-Besuch und der Wiederaufnahme der Militärbeziehungen.",
     "corrupted": "Mitglieder der Delegation von Jörg Schönbohm, Staatssekretär im Verteidigungsministerium und ``Pfadfinder'' für Kohl, behaupten, es bestehe ``kein Zusammenhang'' zwischen den Kanzler-Besuch und die Wiederaufnahme der Militärbeziehungen.",
+    "is_pronoun": false,
     "dative_type": "dative_prep_zwischen",
     "preposition": "zwischen",
     "category": "NaN_prep"
