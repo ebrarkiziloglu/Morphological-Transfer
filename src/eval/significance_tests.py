@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
 """Significance tests for PPL-preference accuracy tables.
 
-Each PDF cell is mean preference accuracy (PPL_gold < PPL_corrupt) over
-training seeds, from evaluate_ppl.py CSVs.
+Each table cell is mean preference accuracy (PPL_gold < PPL_corrupt) over
+training seeds. Per-seed, per-category accuracies come from the analysis cache
+written by ``build_analysis_data.py`` (``eval_results/analysis_cache``), whose
+item categories are joined from the test-set JSONs, so no re-evaluation is
+needed when categories change. Both test sets (dat→acc, acc→dat) are analysed.
+
+Categories (see ``corrupt_pairs.py``): ``core_pronoun`` / ``core_other`` (UD POS of
+the NP head), and prepositional groups, either by the Turkish case of the
+translation (dat→acc only) or by German preposition class (dative-only /
+accusative-only / two-way / other). Family 2 only compares categories that
+partition the items (never an aggregate with its own parts).
 
 Two comparison families (different experimental units):
 
@@ -12,7 +21,7 @@ Two comparison families (different experimental units):
 
   2. Categories (columns), same epoch + model
      Unit = example (independent subsets). Two-proportion z-test on mean
-     n_correct. This is the right test for "is Ablative harder than Locative?"
+     n_correct. This is the right test for "is two-way harder than dative-only?"
 
 "No difference" is *not* the same as a non-significant t-test. TOST
 equivalence tests (δ = 1 pp and 2 pp) are reported so a true null can be
@@ -20,7 +29,8 @@ supported rather than merely failed-to-reject.
 
 Usage:
   python src/eval/significance_tests.py
-  python src/eval/significance_tests.py --out_json eval_results/significance_summary.json
+  python src/eval/significance_tests.py --cache eval_results/analysis_cache \
+      --out_json eval_results/significance_summary.json
 """
 
 from __future__ import annotations
@@ -33,58 +43,59 @@ from itertools import combinations
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
-import pandas as pd
 from scipy import stats
 
-RESULTS_ROOT = os.path.expanduser(
-    os.environ.get(
-        "MORPH_RESULTS_ROOT",
-        "~/Morphological/results",
-    )
-)
-if not os.path.isdir(RESULTS_ROOT):
-    _fallback = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "eval_results")
-    if os.path.isdir(_fallback):
-        RESULTS_ROOT = _fallback
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DEFAULT_CACHE = os.path.join(REPO_ROOT, "eval_results", "analysis_cache")
 
-# PDF row labels -> (csv_dir, epoch_in_csv). Epoch 0 for L1 models is phase-1 ep5.
-MODEL_SPECS: List[Tuple[str, str, Optional[int]]] = [
-    ("DE only", "char-de_phase_2_de_nllb_regular", None),
-    ("EN-DE", "char-en-de_phase_2_regular_de_nllb_regular", None),
-    ("TR-DE", "char-tr-de_phase_2_regular_de_nllb_regular", None),
-    ("ZH-DE", "char-zh-de_phase_2_regular_de_nllb_regular", None),
-    ("EN-DE (L1 shuffled)", "char-en-de_phase_2_shuffled_de_nllb_regular", None),
-    ("TR-DE (L1 shuffled)", "char-tr-de_phase_2_shuffled_de_nllb_regular", None),
-    ("ZH-DE (L1 shuffled)", "char-zh-de_phase_2_shuffled_de_nllb_regular", None),
-    ("EN-DE (reset embeddings)", "char-en-de_phase_2_regular_de_nllb_reset_embeddings", None),
-    ("TR-DE (reset embeddings)", "char-tr-de_phase_2_regular_de_nllb_reset_embeddings", None),
-    ("ZH-DE (reset embeddings)", "char-zh-de_phase_2_regular_de_nllb_reset_embeddings", None),
-    ("DE only (shifted DE)", "char-de_phase_2_de_nllb_shifted", None),
-    ("EN-DE (shifted DE)", "char-en-de_phase_2_regular_de_nllb_shifted", None),
-    ("TR-DE (shifted DE)", "char-tr-de_phase_2_regular_de_nllb_shifted", None),
-    ("ZH-DE (shifted DE)", "char-zh-de_phase_2_regular_de_nllb_shifted", None),
+# Row label -> (L1 corpus, phase-2 condition) system in the analysis cache.
+# Shifted-DE runs are not part of the v3 cache.
+MODEL_SPECS: List[Tuple[str, Tuple[str, str]]] = [
+    ("DE only", ("DE", "regular")),
+    ("EN-DE", ("EN", "regular")),
+    ("TR-DE", ("TR", "regular")),
+    ("ZH-DE", ("ZH", "regular")),
+    ("EN-DE (L1 shuffled)", ("EN", "shuffled")),
+    ("TR-DE (L1 shuffled)", ("TR", "shuffled")),
+    ("ZH-DE (L1 shuffled)", ("ZH", "shuffled")),
+    ("EN-DE (reset embeddings)", ("EN", "reset")),
+    ("TR-DE (reset embeddings)", ("TR", "reset")),
+    ("ZH-DE (reset embeddings)", ("ZH", "reset")),
 ]
 
-PHASE1_EPOCH0: Dict[str, str] = {
-    "EN-DE": "char-en-de_phase_1_regular",
-    "TR-DE": "char-tr-de_phase_1_regular",
-    "ZH-DE": "char-zh-de_phase_1_regular",
-    "EN-DE (L1 shuffled)": "char-en-de_phase_1_shuffled",
-    "TR-DE (L1 shuffled)": "char-tr-de_phase_1_shuffled",
-    "ZH-DE (L1 shuffled)": "char-zh-de_phase_1_shuffled",
+# Analysed test sets: name -> index in the cache.
+TESTSETS = {"dat2acc": 0, "acc2dat": 1}
+
+# Report category -> group key in the cache (ALL, aggregates and parts).
+ALL_KEY = "ALL"
+_CORE = {"core": "core", "core_pronoun": "cat:core_pronoun", "core_other": "cat:core_other"}
+CATEGORY_KEYS: Dict[str, Dict[str, str]] = {
+    "dat2acc": {
+        "ALL": "ALL",
+        **_CORE,
+        "dative_only_prep": "de:dative_only_prep",
+        "two_way_prep": "de:two_way_prep",
+        "other_prep": "de:other_prep",
+    },
+    "acc2dat": {
+        "ALL": "ALL",
+        **_CORE,
+        "accusative_only_prep": "de:accusative_only_prep",
+        "two_way_prep": "de:two_way_prep",
+        "other_prep": "de:other_prep",
+    },
 }
-
-CATEGORIES = [
-    "ALL",
-    "Ablative_TR",
-    "Instrumental_TR",
-    "Locative_TR",
-    "Mixed_TR",
-    "NaN_prep",
-    "dative-case",
-    "no-case",
-    "other-case",
-]
+# Disjoint category sets: family 2 only compares categories within one set.
+PARTITIONS: Dict[str, List[List[str]]] = {
+    "dat2acc": [
+        ["core_pronoun", "core_other", "dative_only_prep", "two_way_prep", "other_prep"],
+    ],
+    "acc2dat": [
+        ["core_pronoun", "core_other", "accusative_only_prep", "two_way_prep",
+         "other_prep"],
+    ],
+}
+CORE_CATEGORIES = ["core_pronoun", "core_other"]
 
 # Planned contrasts (not all pairwise) — these are the scientific questions.
 PLANNED_VS_DE = [
@@ -106,10 +117,6 @@ REGULAR_VS_CONTROL = [
     ("EN-DE", "EN-DE (reset embeddings)"),
     ("TR-DE", "TR-DE (reset embeddings)"),
     ("ZH-DE", "ZH-DE (reset embeddings)"),
-    ("EN-DE", "EN-DE (shifted DE)"),
-    ("TR-DE", "TR-DE (shifted DE)"),
-    ("ZH-DE", "ZH-DE (shifted DE)"),
-    ("DE only", "DE only (shifted DE)"),
 ]
 
 
@@ -211,65 +218,48 @@ def two_prop_z(k1: float, n1: int, k2: float, n2: int) -> Dict[str, float]:
     }
 
 
-def find_csv(run_dir: str) -> Optional[str]:
-    path = os.path.join(RESULTS_ROOT, run_dir, f"{run_dir}_per_seed_by_category.csv")
-    return path if os.path.isfile(path) else None
+class Cache:
+    """Per-seed accuracies and group sizes from ``build_analysis_data.py``."""
+
+    def __init__(self, cache_dir: str) -> None:
+        with open(os.path.join(cache_dir, "meta.json"), encoding="utf-8") as f:
+            self.meta = json.load(f)
+        self.grp = np.load(os.path.join(cache_dir, "bundle.npz"))["grp"]
+        self.sys = {(x["l1"], x["cond"]): i for i, x in enumerate(self.meta["systems"])}
+        self.group = {g["key"]: i for i, g in enumerate(self.meta["groups"])}
+        self.metric = self.meta["group_metrics"].index("acc")
+
+    def accuracy(self, system: Tuple[str, str], epoch: int, ts: int, key: str) -> Optional[np.ndarray]:
+        if system not in self.sys or key not in self.group:
+            return None
+        x = self.grp[self.sys[system], epoch, ts, self.group[key], self.metric, :]
+        x = x[~np.isnan(x)].astype(np.float64)
+        return x if x.size else None
+
+    def n_examples(self, ts: int, key: str) -> int:
+        return int(self.meta["group_n"][ts][self.group[key]]) if key in self.group else 0
 
 
-def load_run(run_dir: str) -> Optional[pd.DataFrame]:
-    path = find_csv(run_dir)
-    if path is None:
-        return None
-    df = pd.read_csv(path)
-    # Shifted DE uses a different testset name.
-    keep = df["testset"].isin(
-        ["dative_accusative_pairs", "dative_accusative_pairs_shifted"]
-    )
-    return df.loc[keep].copy()
-
-
-def collect_cells() -> Dict[Tuple[str, int, str], np.ndarray]:
+def collect_cells(cache: Cache, testset: str) -> Dict[Tuple[str, int, str], np.ndarray]:
     """(model_label, epoch, category) -> seed accuracies."""
+    ts = TESTSETS[testset]
     cells: Dict[Tuple[str, int, str], np.ndarray] = {}
-
-    for label, run_dir, _ in MODEL_SPECS:
-        df = load_run(run_dir)
-        if df is None:
-            continue
-        for epoch in sorted(df["epoch"].unique()):
-            for cat in CATEGORIES:
-                sub = df[(df["epoch"] == epoch) & (df["category"] == cat)]
-                if sub.empty:
-                    continue
-                cells[(label, int(epoch), cat)] = sub.sort_values("seed")[
-                    "accuracy"
-                ].to_numpy(dtype=np.float64)
-
-    # Epoch 0 for L1 models = end of phase 1 (csv epoch 5).
-    for label, run_dir in PHASE1_EPOCH0.items():
-        df = load_run(run_dir)
-        if df is None:
-            continue
-        ep = int(df["epoch"].max())
-        for cat in CATEGORIES:
-            sub = df[(df["epoch"] == ep) & (df["category"] == cat)]
-            if sub.empty:
-                continue
-            cells[(label, 0, cat)] = sub.sort_values("seed")["accuracy"].to_numpy(
-                dtype=np.float64
-            )
-
+    for label, system in MODEL_SPECS:
+        for epoch in cache.meta["epochs"]:
+            for cat, key in CATEGORY_KEYS[testset].items():
+                acc = cache.accuracy(system, epoch, ts, key)
+                if acc is not None:
+                    cells[(label, int(epoch), cat)] = acc
     return cells
 
 
-def n_examples_map() -> Dict[str, int]:
-    df = load_run("char-de_phase_2_de_nllb_regular")
-    assert df is not None
-    out = {}
-    for cat in CATEGORIES:
-        sub = df[(df["epoch"] == 1) & (df["category"] == cat)]
-        out[cat] = int(sub["n_examples"].iloc[0])
-    return out
+def n_examples_map(cache: Cache, testset: str) -> Dict[str, int]:
+    ts = TESTSETS[testset]
+    return {
+        cat: cache.n_examples(ts, key)
+        for cat, key in CATEGORY_KEYS[testset].items()
+        if cache.n_examples(ts, key) > 0
+    }
 
 
 def fmt_p(p: float) -> str:
@@ -280,19 +270,14 @@ def fmt_p(p: float) -> str:
     return f"{p:.4f}"
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--out_json",
-        default=os.path.expanduser(
-            "~/Morphological/eval_results/significance_summary.json"
-        ),
-    )
-    parser.add_argument("--alpha", type=float, default=0.05)
-    args = parser.parse_args()
-
-    cells = collect_cells()
-    n_ex = n_examples_map()
+def analyse(args: argparse.Namespace, cache: Cache, testset: str) -> Dict[str, Any]:
+    """Run both comparison families on one test set; print the report, return its JSON."""
+    print("\n" + "#" * 88)
+    print(f"# TEST SET: {testset}")
+    print("#" * 88)
+    cells = collect_cells(cache, testset)
+    n_ex = n_examples_map(cache, testset)
+    categories = list(n_ex)
     epochs = [0, 1, 3, 5]
     models = [m[0] for m in MODEL_SPECS]
 
@@ -302,7 +287,7 @@ def main() -> None:
         rows = []
         for label in models:
             row: Dict[str, Any] = {"model": label, "epoch": epoch}
-            for cat in CATEGORIES:
+            for cat in categories:
                 acc = cells.get((label, epoch, cat))
                 if acc is None:
                     row[cat] = None
@@ -318,7 +303,7 @@ def main() -> None:
     # --- Family 1: model vs model, planned contrasts, seed-level Welch ---
     planned_rows: List[Dict[str, Any]] = []
     for epoch in [1, 3, 5]:  # epoch 0 DE-only has 1 seed
-        for cat in CATEGORIES:
+        for cat in categories:
             # vs DE only
             de = cells.get(("DE only", epoch, cat))
             if de is not None and de.size >= 2:
@@ -419,7 +404,12 @@ def main() -> None:
     # --- Family 2: category vs category within a model ---
     cat_rows: List[Dict[str, Any]] = []
     focus_models = ["DE only", "EN-DE", "TR-DE", "ZH-DE"]
-    cat_pairs = list(combinations([c for c in CATEGORIES if c != "ALL"], 2))
+    # Only categories within one partition are disjoint, hence independent.
+    cat_pairs: List[Tuple[str, str]] = []
+    for part in PARTITIONS[testset]:
+        for pair in combinations([c for c in part if c in n_ex], 2):
+            if pair not in cat_pairs:
+                cat_pairs.append(pair)
     for epoch in [1, 3, 5]:
         for label in focus_models:
             for c1, c2 in cat_pairs:
@@ -499,27 +489,26 @@ def main() -> None:
     print("=" * 88)
     print("What a cell is")
     print("=" * 88)
+    src, tgt = ("dative", "accusative") if testset == "dat2acc" else ("accusative", "dative")
     print(
         "Mean over seeds of preference accuracy: the model assigns lower PPL to the\n"
-        "gold dative sentence than to its accusative-corrupted pair.\n"
+        f"gold {src} sentence than to its {tgt}-corrupted pair.\n"
         f"Test set sizes: {n_ex}"
     )
     print()
-    print("Supervisor claim: no statistical difference between cells.")
-    print("That claim is false for categories, and mixed for models.\n")
 
     print("=" * 88)
-    print("PDF-style tables (accuracy %, mean over seeds)  |  dative_accusative_pairs")
+    print(f"Tables (accuracy %, mean over seeds)  |  {testset}")
     print("=" * 88)
-    header = f"{'model':<28} " + " ".join(f"{c[:10]:>10}" for c in CATEGORIES)
+    header = f"{'model':<28} " + " ".join(f"{c[:12]:>12}" for c in categories)
     for epoch in epochs:
         print(f"\n--- epoch {epoch} ---")
         print(header)
         for row in tables[str(epoch)]:
             vals = []
-            for c in CATEGORIES:
+            for c in categories:
                 v = row[c]
-                vals.append(f"{v:10.2f}" if v is not None else f"{'—':>10}")
+                vals.append(f"{v:12.2f}" if v is not None else f"{'—':>12}")
             print(f"{row['model']:<28} " + " ".join(vals))
 
     print("\n" + "=" * 88)
@@ -530,7 +519,7 @@ def main() -> None:
         for fam, title in [
             ("vs_DE_only", "Each condition vs DE-only"),
             ("L1_vs_L1", "EN vs TR vs ZH (regular)"),
-            ("regular_vs_control", "Regular vs shuffled / reset / shifted"),
+            ("regular_vs_control", "Regular vs shuffled / reset"),
         ]:
             print(f"\n  {title}")
             print(
@@ -567,8 +556,8 @@ def main() -> None:
     print("FAMILY 2 — Categories (two-proportion z, same model)")
     print("=" * 88)
     print(
-        "Categories are different examples, so they are independent. Even a 2 pp\n"
-        "gap on Locative (n=4567) is detectable; Ablative vs Instrumental is huge."
+        "Only categories that partition the items are compared (they are different\n"
+        "examples, hence independent); an aggregate is never compared with its parts."
     )
     for epoch in [5]:
         for label in focus_models:
@@ -596,11 +585,11 @@ def main() -> None:
                         f"Δ={r['delta_pp']:+6.1f}pp  p={fmt_p(r['p'])}  q={fmt_p(r.get('q_fdr', np.nan))}"
                     )
 
-    # Highlight the core (non-prepositional) dative-argument categories vs DE-only.
+    # Core (non-prepositional) argument categories vs DE-only.
     print("\n" + "=" * 88)
-    print(f"Notable: core dative-argument categories (n={n_ex['dative-case']}/{n_ex['no-case']}/{n_ex['other-case']}) are where L1 transfer shows up most")
+    print(f"Core-argument categories (n={'/'.join(str(n_ex[c]) for c in CORE_CATEGORIES)}) vs DE-only")
     print("=" * 88)
-    for core_cat in ["dative-case", "no-case", "other-case"]:
+    for core_cat in CORE_CATEGORIES:
         print(f"\n -- category: {core_cat} --")
         for epoch in [1, 3, 5]:
             print(f"\n  epoch {epoch}")
@@ -622,13 +611,32 @@ def main() -> None:
                         f"Δ={r['delta_pp']:+5.2f}pp  p={fmt_p(r['p'])}  d={r['cohens_d']:.2f}"
                     )
 
-    os.makedirs(os.path.dirname(args.out_json) or ".", exist_ok=True)
-    payload = {
+    return {
         "summary": summary,
         "tables_percent": tables,
         "planned_contrasts": planned_rows,
         "category_pairs": cat_rows,
     }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cache", default=DEFAULT_CACHE, help="build_analysis_data.py output dir")
+    parser.add_argument(
+        "--out_json",
+        default=os.path.join(REPO_ROOT, "eval_results", "significance_summary.json"),
+    )
+    parser.add_argument("--alpha", type=float, default=0.05)
+    parser.add_argument(
+        "--testset", choices=["both", *TESTSETS], default="both", help="test set(s) to analyse"
+    )
+    args = parser.parse_args()
+
+    cache = Cache(args.cache)
+    names = list(TESTSETS) if args.testset == "both" else [args.testset]
+    payload = {name: analyse(args, cache, name) for name in names}
+
+    os.makedirs(os.path.dirname(args.out_json) or ".", exist_ok=True)
     with open(args.out_json, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
     print(f"\nWrote {args.out_json}")

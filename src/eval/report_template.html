@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>German Case Transfer — Full Evaluation Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+<style>
+/*__CSS__*/
+/* ---- additions for the v3 report ---- */
+.wrap{max-width:1040px}
+.panel.flush{padding:12px 14px}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(380px,1fr)); gap:14px}
+nav.toc{display:flex; flex-wrap:wrap; gap:6px 14px; font-family:var(--f-mono); font-size:0.74rem}
+nav.toc a{color:var(--accent); text-decoration:none}
+nav.toc a:hover{text-decoration:underline}
+input[type=number],input[type=text]{font:inherit; font-size:0.8rem; color:var(--ink); background:var(--surface); border:1px solid var(--rule); border-radius:6px; padding:4px 7px; width:70px}
+input[type=text]{width:170px}
+.filters{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px 18px; font-size:0.8rem; color:var(--ink-3)}
+.filters .f{display:flex; flex-direction:column; gap:4px}
+.filters label.cb{display:flex; gap:6px; align-items:center; color:var(--ink-2)}
+details.cats{border:1px solid var(--rule); border-radius:6px; padding:6px 10px; background:var(--surface)}
+details.cats summary{cursor:pointer; color:var(--ink-2)}
+td.pos{color:var(--good)} td.neg{color:var(--warn)}
+td.sig{font-weight:600}
+.sent{white-space:normal; min-width:300px; max-width:520px; text-align:left; font-size:0.78rem; line-height:1.4}
+.sent mark{background:var(--warn-wash); color:var(--ink); padding:0 1px; border-radius:2px}
+.sent .g{color:var(--ink-3)}
+button.act{font:inherit; font-size:0.78rem; border:1px solid var(--rule); background:var(--surface); color:var(--ink-2); border-radius:6px; padding:5px 11px; cursor:pointer}
+button.act:hover{border-color:var(--axis)}
+.kpi{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px}
+.kpi div{background:var(--surface); border:1px solid var(--rule); border-radius:8px; padding:10px 12px}
+.kpi b{display:block; font-family:var(--f-mono); font-size:1.15rem; color:var(--ink)}
+.kpi span{font-size:0.74rem; color:var(--ink-3)}
+.defs td.l{white-space:normal}
+#loading{position:fixed; inset:0; display:grid; place-items:center; background:var(--bg); color:var(--ink-2); font-family:var(--f-mono); z-index:50}
+.small{font-size:0.8rem; color:var(--ink-3)}
+</style>
+</head>
+<body>
+<div id="loading">decoding embedded data…</div>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Evaluation v3 · re-scored with per-token, length-aware and span-level metrics</div>
+  <h1>How do L1-pretrained character LMs learn German case — and how much of that depends on how we score them?</h1>
+  <p>Every checkpoint under <span class="mono">models_archive/v3</span> (21 L1 systems) and <span class="mono">models/v3/char-de</span> (German-only), 24 systems × epochs 0–5 × 5 seeds = 720 cells from 715 evaluated checkpoints (German-only epoch 0 is the phase-1 checkpoint), was re-evaluated on the dat→acc and acc→dat minimal-pair test sets with the updated pipeline. This page extends the stripped-Turkish report with the new metrics, the core-dative splits, a span-level view, and a per-item explorer you can filter yourself.</p>
+  <div class="pills">
+    <span class="pill">dat→acc: 9,389 pairs</span><span class="pill">acc→dat: 9,189 pairs</span>
+    <span class="pill">715 checkpoints</span><span class="pill">5 seeds / cell</span>
+    <span class="pill">3 phase-2 configs: regular · reset · shuffled L1</span>
+    <span class="pill warn">phase-1 and shifted variants not part of this run</span>
+  </div>
+  <nav class="toc">
+    <a href="#changes">what changed</a><a href="#findings">findings</a><a href="#lens">metric lens</a><a href="#curves">learning curves</a>
+    <a href="#compare">compare systems</a><a href="#core">categories</a><a href="#span">span length</a><a href="#items">item explorer</a><a href="#notes">method notes</a>
+  </nav>
+</header>
+
+<section id="changes">
+  <span class="sec-label">What changed in the pipeline</span>
+  <h2>Four changes to the evaluation</h2>
+  <ol class="findings">
+    <li><span><b>Mean surprisal per token, token-weighted.</b> Aggregated surprisal is now Σ NLL ÷ Σ tokens over all items, so long sentences count in proportion to their length instead of every sentence counting equally. Reported separately for the gold and corrupted sentence, and for the edited span.</span></li>
+    <li><span><b>Gold-length normalisation.</b> Both sentences' <i>total</i> NLL are divided by the gold sentence's length, so the comparison shares one denominator (<span class="mono">accuracy_goldnorm</span>, <span class="mono">margin_goldnorm</span>). This is equivalent to comparing total log-probabilities — and as the length lens below shows, that is not length-neutral when the corruption changes the sentence length.</span></li>
+    <li><span><b>Per-item log-probs with token lengths and span scores.</b> Each test item now stores total log-prob, token counts, and the log-prob of the <i>edited span</i> (first to last differing word) in both sentences. One token = one character here (no BOS/EOS, the first character is never predicted), so token length = character length − 1. The explorer at the bottom filters on these.</span></li>
+    <li><span><b>Categories joined from the test sets.</b> Item categories are read from the test-set JSONs by example index (checked against the evaluated sentences), so no re-evaluation was needed. Core (non-prepositional) arguments are split into <b>pronoun</b> (NP head is UD <span class="mono">PRON</span>) and <b>other</b>: dat→acc 242 / 329, acc→dat 421 / 3,400 (core accusative = bare <span class="mono">obj</span> / <span class="mono">obl:arg</span>). Prepositional items are grouped by German preposition class — dative-only, two-way, other (dat→acc); accusative-only, two-way, other (acc→dat). The dat→acc categories and pronoun flags are read from <span class="mono">dative_accusative_pairs_preps_in_DE.json</span>. The word-count / span-length splits are still derived for every item.</span></li>
+  </ol>
+  <div class="tbl defs"><table>
+    <thead><tr><th>Metric key</th><th class="l">Definition</th><th class="l">Gold wins when…</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">acc</td><td class="l">Accuracy, sentence mean NLL (the original metric)</td><td class="l">mean NLL per predicted char of gold &lt; corrupted</td></tr>
+      <tr><td class="mono">acc_tot</td><td class="l">Accuracy, total log-prob (= gold-length normalised)</td><td class="l">Σ log p(gold) &gt; Σ log p(corrupted)</td></tr>
+      <tr><td class="mono">acc_span</td><td class="l">Accuracy on the edited span <i>and everything after it</i>, per token</td><td class="l">surprisal/char from the edit start to the sentence end is lower for gold than for corrupted</td></tr>
+      <tr><td class="mono">surp_g / surp_c</td><td class="l">Token-weighted mean surprisal (nats/char), gold / corrupted sentence</td><td class="l">—</td></tr>
+      <tr><td class="mono">sspan_g / sspan_c</td><td class="l">Token-weighted mean surprisal on the gold / corrupted span</td><td class="l">—</td></tr>
+      <tr><td class="mono">marg_gn</td><td class="l">Mean (log p(gold) − log p(corrupted)) ÷ gold length, nats</td><td class="l">&gt; 0</td></tr>
+    </tbody></table></div>
+</section>
+
+<section id="findings">
+  <span class="sec-label">Summary</span>
+  <h2>What the re-scored experiments show</h2>
+  <ol class="findings" id="findings-list"><!--__FINDINGS__--></ol>
+</section>
+
+<section id="lens">
+  <span class="sec-label">Metric lens</span>
+  <h2>The same checkpoints under three accuracy definitions</h2>
+  <p>Each cell is a 5-seed mean over all items of the test. The last column is <span class="mono">acc_tot − acc</span>: how much the headline moves when switching from mean-NLL to total-log-prob scoring.</p>
+  <div class="controls" id="lens-ctl"></div>
+  <div class="tbl"><table id="lens-tbl"></table></div>
+  <h3 style="margin-top:12px">Length lens — why the metrics disagree</h3>
+  <p>Items are split by whether the corrupted edit is <b>shorter</b>, <b>the same length</b> or <b>longer</b> than the gold edit. Where lengths are equal, <span class="mono">acc</span> and <span class="mono">acc_tot</span> are identical by construction. Where the corruption adds characters (<i>im → in den</i>), total log-prob has an automatic head start for the gold sentence; where it removes characters, it is penalised.</p>
+  <div class="controls" id="lens2-ctl"></div>
+  <div class="grid2"><div class="panel"><h3>dat→acc</h3><div id="lens-da"></div></div><div class="panel"><h3>acc→dat</h3><div id="lens-ad"></div></div></div>
+  <div class="legend" id="lens-legend"></div>
+</section>
+
+<section id="curves">
+  <span class="sec-label">Learning curves</span>
+  <h2>Phase-2 epochs, any metric, any item subset</h2>
+  <p>Mean ±1 sd over 5 seeds. Epoch 0 is the end of phase 1 (L1 systems: trained on the L1 corpus only; German-only: trained on 10M German sentences). German-only (dashed) is the matched baseline in each configuration (its own regular, reset-embedding or shuffled-corpus run). Click legend entries to hide lines.</p>
+  <div class="controls" id="curve-ctl"></div>
+  <div class="legend" id="curve-legend"></div>
+  <div class="panel flush"><div id="curve-chart"></div></div>
+</section>
+
+<section id="compare">
+  <span class="sec-label">Compare systems</span>
+  <h2>Any system against any reference</h2>
+  <p>Pick a reference system, a test, epoch, metric and item subset. Every other system is compared with Welch's t over the 5 per-seed values (difference = system − reference), Benjamini–Hochberg q across the rows shown (one family per selection of reference, test, epoch, metric and subset). Filled dots: q&lt;0.05; ringed: raw p&lt;0.05 only.</p>
+  <div class="controls" id="cmp-ctl"></div>
+  <div class="grid2"><div class="panel flush"><div id="cmp-forest"></div></div><div class="tbl"><table id="cmp-tbl"></table></div></div>
+</section>
+
+<section id="core">
+  <span class="sec-label">Categories</span>
+  <h2>Core arguments and prepositions, by category</h2>
+  <p>Core (non-prepositional) arguments split into pronouns (UD <span class="mono">PRON</span> head) and other noun groups; prepositional items grouped by German preposition class (dative-only for dat→acc, accusative-only for acc→dat, two-way, other), plus the “All core” and “All prep.” aggregates. Chance is 50%. Cells show the 5-seed mean; the Δ line is the gain over German-only with a Welch p and a Benjamini–Hochberg q computed over all cells of the table; * marks q&lt;0.05. Several groups are small (the dat→acc "other" preposition class has 73 items), so single-cell differences are noisy.</p>
+  <div class="controls" id="core-ctl"></div>
+  <div class="panel flush"><div id="core-chart"></div></div>
+  <div class="legend" id="core-legend"></div>
+  <div class="tbl"><table id="core-tbl"></table></div>
+</section>
+
+<section id="span">
+  <span class="sec-label">Span length</span>
+  <h2>Does accuracy depend on how long the edited region is?</h2>
+  <p>Three ways to bin the items of either test: by <b>words in the dative/accusative group</b> (<span class="mono">group_span_text</span>), by <b>characters in the edited span</b> (gold side), and by <b>edit-length change</b>. Optionally show the gain over German-only instead of the raw value.</p>
+  <div class="controls" id="span-ctl"></div>
+  <div class="legend" id="span-legend"></div>
+  <div class="grid2"><div class="panel flush"><h3>dat→acc</h3><div id="span-da"></div></div><div class="panel flush"><h3>acc→dat</h3><div id="span-ad"></div></div></div>
+</section>
+
+<section id="items">
+  <span class="sec-label">Item explorer</span>
+  <h2>Filter the test items yourself</h2>
+  <p>Filters apply to the items; scores are the seed-averaged correctness of each system on the matching items (epochs 1, 3, 5). Differences are <b>paired by item</b> (z-test on per-item differences) — they test whether the item sample is enough to separate two systems, not training-run variance (use the sections above for that).</p>
+  <div class="panel"><div class="filters" id="flt"></div></div>
+  <div class="kpi" id="flt-kpi"></div>
+  <div class="controls" id="itm-ctl"></div>
+  <div class="tbl"><table id="itm-sys"></table></div>
+  <h3 style="margin-top:10px">Matching items</h3>
+  <div class="controls" id="itm-list-ctl"></div>
+  <div class="tbl"><table id="itm-list"></table></div>
+</section>
+
+<section id="notes">
+  <span class="sec-label">Method notes</span>
+  <h2>Definitions and caveats</h2>
+  <ol class="findings">
+    <li><span><b>Systems.</b> A system is (phase-1 corpus, phase-2 configuration). Regular = L1 then German NLLB; reset = L1 with embeddings reset before German; shuffled = word-shuffled L1 corpus then German. German-only has no L1: its phase 1 is 10M German sentences (so it sees German in both phases), followed by the same German NLLB phase 2; in the reset and shuffled configurations it gets the same treatment (embeddings reset before phase 2; word-shuffled German as phase 1), so every L1 system has a matched German-only reference. It was trained and scored with the new character tokenizer (<span class="mono">tokenizer_char</span>, 5,328 types), the L1 systems with the older one (<span class="mono">tokenizer_char_old</span>, 2,442 types), so tokenizer and training recipe differ from the L1 systems along with the corpus.</span></li>
+    <li><span><b>Edited span.</b> The first to last differing character between gold and corrupted sentence, widened to whole words. When the corruption also changes tokenisation spacing (e.g. <i>"Leiden"</i> → <i>" Leiden "</i>) the span can cover most of the sentence; use the span-length filters to remove such items. Spans start at the first differing word, so the text before the span has identical log-probs in both sentences.</span></li>
+    <li><span><b>Group sizes in words</b> come from <span class="mono">group_span_text</span> (the annotated dative/accusative noun group), which can be longer than the edited span. Pronoun = the head of the group is tagged <span class="mono">PRON</span> in UD and the group contains no noun or proper noun; this flag (<span class="mono">is_pronoun</span>) is stored in the test-set JSONs, so it covers demonstrative and relative pronouns (<i>dem</i>, <i>denen</i>) as well as personal ones.</span></li>
+    <li><span><b>Statistics.</b> Welch's t over the five per-seed values of a group's metric (training-run variance). Item-level z-tests in the explorer reflect item sampling only. Every table of tests applies Benjamini–Hochberg correction within the table (compare systems: the rows shown; categories: all non-German-only system × category cells shown; explorer: the systems shown). The q-values quoted in the findings use the same rule with these families, each per test set, metric and epoch (and category where stated): vs. German-only = the 7 regular L1 systems; EN / TR / ZH regular against each other = 3 pairs; regular vs. shuffled / reset = 6 pairs; stripped variants vs. Turkish = 12 pairs; core categories = the cells of the categories table (all systems × all categories of that test set, regular config); EN − TR on core pronouns = 3 L1 pairs.</span></li>
+    <li><span><b>Ties</b> count as wrong for the original metric and for <span class="mono">acc_tot</span> (strict inequality). Span accuracy is undefined for items whose tokenisation is not one-token-per-character (none occurred here). <span class="mono">acc_span</span> scores the region from the first edited word to the end of the sentence: the text before the edit is identical in both sentences, but the continuation after the edited span is conditioned on different context, so it is included. <span class="mono">sspan_g / sspan_c</span> still cover the edited span alone.</span></li>
+  </ol>
+  <footer><p>Generated by <span class="mono">src/eval/build_analysis_data.py</span> + <span class="mono">build_analysis_report.py</span> from <span class="mono">eval_results/v3/**/per_item.csv</span>.</p></footer>
+</section>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+(async function(){
+"use strict";
+const META = __META__;
+const BLOBS = __BLOBS__;
+
+/* ------------------------------------------------------------------ data */
+async function inflate(b64){
+  const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const ds = new DecompressionStream("gzip");
+  return await new Response(new Blob([bin]).stream().pipeThrough(ds)).arrayBuffer();
+}
+const [bGrp,bIa,bIt,bIs,bIsn,bIm,bItems] = await Promise.all(
+  ["grp","ia","it","is","isn","im","items"].map(k => inflate(BLOBS[k])));
+const GRP = new Float32Array(bGrp), IA = new Uint8Array(bIa), IT = new Uint8Array(bIt),
+      IS = new Uint8Array(bIs), ISN = new Uint8Array(bIsn), IM = new Int8Array(bIm);
+const ITEMS = JSON.parse(new TextDecoder().decode(bItems));
+const [NS,NE,NT,NG,NM,NK] = META.grp_shape;
+const N = META.n_items;
+const NIE = META.item_epochs.length;
+
+const $ = (s, r) => (r||document).querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const SYS = META.systems;
+const sysKey = (l1,c) => l1+"|"+c;
+const SYSIDX = {}; SYS.forEach((s,i) => SYSIDX[sysKey(s.l1,s.cond)] = i);
+const sid = (l1,c) => SYSIDX[sysKey(l1,c)];
+const GIDX = {}; META.groups.forEach((g,i) => GIDX[g.key] = i);
+const MIDX = {}; META.group_metrics.forEach((m,i) => MIDX[m] = i);
+const L1S = META.l1_order;
+const L1NAME = META.l1_label;
+const CONDS = META.cond_order;
+const CONDNAME = {regular:"Regular", reset:"Reset embeddings", shuffled:"Shuffled L1"};
+const TSNAME = META.testset_labels;
+const css = k => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+if (matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.dataset.theme = "dark";
+const COLOR = l1 => css("--s-"+l1);
+
+const METRICS = [
+  {k:"acc",     l:"Accuracy · mean NLL (original)", pct:true},
+  {k:"acc_tot", l:"Accuracy · total log-prob (gold-length norm.)", pct:true},
+  {k:"acc_span",l:"Accuracy · surprisal/char from edit onward", pct:true},
+  {k:"surp_g",  l:"Surprisal/char · gold sentence (nats)", pct:false},
+  {k:"surp_c",  l:"Surprisal/char · corrupted sentence (nats)", pct:false},
+  {k:"sspan_g", l:"Surprisal/char · gold span (nats)", pct:false},
+  {k:"sspan_c", l:"Surprisal/char · corrupted span (nats)", pct:false},
+  {k:"marg_gn", l:"Mean margin, gold-length normalised (nats)", pct:false},
+];
+const ACCM = METRICS.slice(0,3);
+const MINFO = {}; METRICS.forEach(m => MINFO[m.k] = m);
+
+const GLABEL = {
+  "ALL":"All items","core":"Core arguments (all)","prep":"Prepositional (all)",
+  "cat:core_pronoun":"Core · pronoun (UD PRON)","cat:core_other":"Core · other",
+  "de:dative_only_prep":"Prep · dative-only","de:accusative_only_prep":"Prep · accusative-only","de:two_way_prep":"Prep · two-way","de:other_prep":"Prep · other",
+  "pron":"Pronoun span (UD PRON, any category)","nonpron":"Non-pronoun span",
+  "w:1":"Group = 1 word","w:2":"Group = 2 words","w:3":"Group = 3 words","w:4":"Group = 4 words","w:5+":"Group = 5+ words",
+  "sl:1-3":"Edited span 1–3 chars","sl:4-6":"Edited span 4–6 chars","sl:7-10":"Edited span 7–10 chars","sl:11-20":"Edited span 11–20 chars","sl:21+":"Edited span 21+ chars",
+  "dl:shorter":"Corrupt edit shorter","dl:equal":"Same length","dl:longer":"Corrupt edit longer",
+};
+const gname = k => GLABEL[k] || k;
+
+/* ------------------------------------------------------------- statistics */
+function lgamma(x){
+  const c=[76.18009172947146,-86.50532032941677,24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5];
+  let y=x, t=x+5.5; t-=(x+0.5)*Math.log(t); let s=1.000000000190015;
+  for(let j=0;j<6;j++) s+=c[j]/++y; return -t+Math.log(2.5066282746310005*s/x);
+}
+function betacf(a,b,x){
+  const MAXIT=200, EPS=3e-12, FPMIN=1e-300; let qab=a+b,qap=a+1,qam=a-1,c=1,d=1-qab*x/qap;
+  if(Math.abs(d)<FPMIN)d=FPMIN; d=1/d; let h=d;
+  for(let m=1;m<=MAXIT;m++){
+    const m2=2*m; let aa=m*(b-m)*x/((qam+m2)*(a+m2));
+    d=1+aa*d; if(Math.abs(d)<FPMIN)d=FPMIN; c=1+aa/c; if(Math.abs(c)<FPMIN)c=FPMIN; d=1/d; h*=d*c;
+    aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2));
+    d=1+aa*d; if(Math.abs(d)<FPMIN)d=FPMIN; c=1+aa/c; if(Math.abs(c)<FPMIN)c=FPMIN; d=1/d;
+    const del=d*c; h*=del; if(Math.abs(del-1)<EPS)break;
+  } return h;
+}
+function ibeta(x,a,b){
+  if(x<=0)return 0; if(x>=1)return 1;
+  const bt=Math.exp(lgamma(a+b)-lgamma(a)-lgamma(b)+a*Math.log(x)+b*Math.log(1-x));
+  return x<(a+1)/(a+b+2) ? bt*betacf(a,b,x)/a : 1-bt*betacf(b,a,1-x)/b;
+}
+function tcdf(t,df){ const p=0.5*ibeta(df/(df+t*t),df/2,0.5); return t>0?1-p:p; }
+function tinv(p,df){ let lo=0,hi=60; for(let i=0;i<80;i++){ const mid=(lo+hi)/2; if(tcdf(mid,df)<p)lo=mid; else hi=mid; } return (lo+hi)/2; }
+const mean = a => a.reduce((s,x)=>s+x,0)/a.length;
+const sd = a => { if(a.length<2) return 0; const m=mean(a); return Math.sqrt(a.reduce((s,x)=>s+(x-m)*(x-m),0)/(a.length-1)); };
+function welch(a,b){
+  if(a.length<2||b.length<2) return null;
+  const ma=mean(a), mb=mean(b), va=sd(a)**2/a.length, vb=sd(b)**2/b.length, se=Math.sqrt(va+vb);
+  const d=ma-mb; if(se===0) return {d,se:0,p:d===0?1:0,lo:d,hi:d,df:NaN};
+  const t=d/se, df=(va+vb)**2/(va*va/(a.length-1)+vb*vb/(b.length-1));
+  const p=2*(1-tcdf(Math.abs(t),df)), h=tinv(0.975,df)*se;
+  return {d,se,t,df,p,lo:d-h,hi:d+h};
+}
+function bh(ps){
+  const idx=ps.map((p,i)=>[p,i]).filter(x=>x[0]===x[0]).sort((a,b)=>a[0]-b[0]), m=idx.length, q=new Array(ps.length).fill(NaN);
+  let prev=1; for(let r=m-1;r>=0;r--){ const v=Math.min(prev, idx[r][0]*m/(r+1)); q[idx[r][1]]=v; prev=v; } return q;
+}
+function normP(z){ // two-sided
+  const t=1/(1+0.2316419*Math.abs(z)), d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274)))); return 2*p;
+}
+
+/* ------------------------------------------------------------- data access */
+function seedVals(s,e,t,g,m){
+  const base=((((s*NE+e)*NT+t)*NG+g)*NM+m)*NK, out=[];
+  for(let k=0;k<NK;k++){ const v=GRP[base+k]; if(v===v) out.push(v); } return out;
+}
+const gv = (l1,c,e,t,gk,mk) => seedVals(sid(l1,c),e,t,GIDX[gk],MIDX[mk]);
+function nItems(t,gk){ return META.group_n[t][GIDX[gk]]; }
+function fmtVal(m,v,dp){ if(v==null||v!==v) return "–"; return MINFO[m].pct ? (100*v).toFixed(dp==null?2:dp) : v.toFixed(dp==null?3:dp); }
+const unit = m => MINFO[m].pct ? "pp" : "nats";
+const scale = m => MINFO[m].pct ? 100 : 1;
+const sgn = x => (x>=0?"+":"−")+Math.abs(x).toFixed(2);
+
+/* ------------------------------------------------------------------ UI kit */
+function seg(parent,label,opts,init,cb){
+  const wrap=document.createElement("span"); wrap.style.display="inline-flex"; wrap.style.alignItems="center"; wrap.style.gap="6px";
+  if(label){ const l=document.createElement("span"); l.textContent=label; wrap.appendChild(l); }
+  const box=document.createElement("div"); box.className="seg"; wrap.appendChild(box);
+  let cur=init; const btns=[];
+  opts.forEach(o=>{ const b=document.createElement("button"); b.type="button"; b.textContent=o.l; b.setAttribute("aria-pressed", String(o.v===cur));
+    b.onclick=()=>{ cur=o.v; btns.forEach(x=>x.b.setAttribute("aria-pressed",String(x.v===cur))); cb(cur); }; box.appendChild(b); btns.push({b,v:o.v}); });
+  parent.appendChild(wrap); return {get:()=>cur};
+}
+function select(parent,label,opts,init,cb){
+  const wrap=document.createElement("span"); wrap.style.display="inline-flex"; wrap.style.alignItems="center"; wrap.style.gap="6px";
+  if(label){ const l=document.createElement("span"); l.textContent=label; wrap.appendChild(l); }
+  const sel=document.createElement("select");
+  opts.forEach(o=>{ if(o.group){ const og=document.createElement("optgroup"); og.label=o.group; o.items.forEach(i=>{ const op=document.createElement("option"); op.value=i.v; op.textContent=i.l; og.appendChild(op); }); sel.appendChild(og); }
+    else { const op=document.createElement("option"); op.value=o.v; op.textContent=o.l; sel.appendChild(op); } });
+  sel.value=init; sel.onchange=()=>cb(sel.value); wrap.appendChild(sel); parent.appendChild(wrap); return {get:()=>sel.value,set:v=>{sel.value=v;}};
+}
+const tip=$("#tip");
+function addTip(node,html){
+  node.addEventListener("mousemove",e=>{ tip.innerHTML=html; tip.style.left=e.clientX+"px"; tip.style.top=e.clientY+"px"; tip.classList.add("on"); });
+  node.addEventListener("mouseleave",()=>tip.classList.remove("on"));
+}
+const SVGNS="http://www.w3.org/2000/svg";
+function S(tag,attrs,text){ const n=document.createElementNS(SVGNS,tag); for(const k in attrs) n.setAttribute(k,attrs[k]); if(text!=null) n.textContent=text; return n; }
+function niceTicks(lo,hi,n){
+  const span=hi-lo||1, raw=span/n, mag=Math.pow(10,Math.floor(Math.log10(raw))), f=raw/mag, step=(f<1.5?1:f<3?2:f<7?5:10)*mag;
+  const a=Math.floor(lo/step)*step, b=Math.ceil(hi/step)*step, t=[]; for(let v=a; v<=b+step/2; v+=step) t.push(+v.toFixed(10)); return t;
+}
+const yFmtFor = m => v => MINFO[m].pct ? (100*v).toFixed(0)+"%" : v.toFixed(2);
+
+function lineChart(host,o){
+  host.innerHTML=""; const W=760,H=o.h||320,pl=50,pr=14,pt=14,pb=o.pb||34;
+  const vis=o.series.filter(s=>!s.hidden); let lo=Infinity,hi=-Infinity;
+  vis.forEach(s=>s.vals.forEach((v,i)=>{ if(v==null||v!==v) return; const d=(s.sd&&s.sd[i])||0; lo=Math.min(lo,v-d); hi=Math.max(hi,v+d); }));
+  if(!isFinite(lo)){ host.textContent="no data for this selection"; return; }
+  if(o.yMin!=null) lo=Math.min(lo,o.yMin); if(o.yMax!=null) hi=Math.max(hi,o.yMax);
+  const pad=(hi-lo)*0.06||0.01; lo-=pad; hi+=pad; const ticks=niceTicks(lo,hi,5); lo=Math.min(lo,ticks[0]); hi=Math.max(hi,ticks[ticks.length-1]);
+  const x=i=>pl+(o.xs.length===1?0.5:i/(o.xs.length-1))*(W-pl-pr), y=v=>pt+(1-(v-lo)/(hi-lo))*(H-pt-pb);
+  const svg=S("svg",{viewBox:`0 0 ${W} ${H}`,role:"img"});
+  ticks.forEach(t=>{ svg.appendChild(S("line",{class:"grid-line",x1:pl,x2:W-pr,y1:y(t),y2:y(t)})); svg.appendChild(S("text",{x:pl-6,y:y(t)+3,"text-anchor":"end"},o.yFmt(t))); });
+  if(o.hline!=null && o.hline>lo && o.hline<hi) svg.appendChild(S("line",{class:"zero",x1:pl,x2:W-pr,y1:y(o.hline),y2:y(o.hline),"stroke-dasharray":"3 3"}));
+  o.xs.forEach((l,i)=>String(l).split("\n").forEach((ln,li)=>svg.appendChild(S("text",{x:x(i),y:H-pb+15+li*11,"text-anchor":"middle"},ln))));
+  if(o.xTitle) svg.appendChild(S("text",{x:(pl+W-pr)/2,y:H-4,"text-anchor":"middle"},o.xTitle));
+  vis.forEach(s=>{
+    const pts=s.vals.map((v,i)=>v==null||v!==v?null:[x(i),y(v)]);
+    if(s.sd){ const up=[],dn=[]; s.vals.forEach((v,i)=>{ if(v==null||v!==v) return; up.push(`${x(i)},${y(v+(s.sd[i]||0))}`); dn.push(`${x(i)},${y(v-(s.sd[i]||0))}`); });
+      if(up.length>1) svg.appendChild(S("polygon",{points:up.concat(dn.reverse()).join(" "),fill:s.color,opacity:0.13})); }
+    let d=""; pts.forEach(p=>{ if(p) d+=(d?"L":"M")+p[0]+","+p[1]; });
+    svg.appendChild(S("path",{d,fill:"none",stroke:s.color,"stroke-width":s.dash?1.6:2,"stroke-dasharray":s.dash?"5 4":"none"}));
+    pts.forEach((p,i)=>{ if(!p) return; const c=S("circle",{cx:p[0],cy:p[1],r:3.2,fill:s.color}); addTip(c,`<b>${esc(s.name)}</b><br>${esc(o.xs[i])}: ${o.tipFmt(s.vals[i])}${s.sd?" ± "+o.tipFmt(s.sd[i]):""}`); svg.appendChild(c); });
+  });
+  host.appendChild(svg);
+}
+function barChart(host,o){
+  host.innerHTML=""; const W=760,H=o.h||330,pl=50,pr=14,pt=16,pb=o.pb||52;
+  let hi=-Infinity, lo=Infinity;
+  o.vals.forEach(r=>r.forEach(v=>{ if(v!=null&&v===v){hi=Math.max(hi,v);lo=Math.min(lo,v);} }));
+  if(!isFinite(hi)){ host.textContent="no data for this selection"; return; }
+  lo=Math.min(0,lo); const ticks=niceTicks(lo,hi*1.04,5); const yl=ticks[0], yh=ticks[ticks.length-1];
+  const y=v=>pt+(1-(v-yl)/(yh-yl))*(H-pt-pb), gw=(W-pl-pr)/o.groups.length, ns=o.series.length, bw=Math.min(22,(gw*0.82)/ns);
+  const svg=S("svg",{viewBox:`0 0 ${W} ${H}`,role:"img"});
+  ticks.forEach(t=>{ svg.appendChild(S("line",{class:"grid-line",x1:pl,x2:W-pr,y1:y(t),y2:y(t)})); svg.appendChild(S("text",{x:pl-6,y:y(t)+3,"text-anchor":"end"},o.yFmt(t))); });
+  if(o.hline!=null) svg.appendChild(S("line",{class:"zero",x1:pl,x2:W-pr,y1:y(o.hline),y2:y(o.hline),"stroke-dasharray":"3 3"}));
+  o.groups.forEach((g,gi)=>{
+    const cx=pl+gw*(gi+0.5); const lines=String(g).split("\n");
+    lines.forEach((ln,li)=>svg.appendChild(S("text",{x:cx,y:H-pb+15+li*12,"text-anchor":"middle"},ln)));
+    o.series.forEach((s,si)=>{ const v=o.vals[gi][si]; if(v==null||v!==v) return;
+      const x0=cx-(ns*bw)/2+si*bw, y0=y(Math.max(v,0)), y1=y(Math.min(v,0));
+      const r=S("rect",{x:x0+0.5,y:y0,width:Math.max(bw-1.5,1),height:Math.max(y1-y0,0.8),fill:s.color,rx:1.5});
+      addTip(r,`<b>${esc(s.name)}</b><br>${esc(String(g).replace("\n"," "))}: ${o.tipFmt(v,gi,si)}`); svg.appendChild(r);
+      if(o.sd && o.sd[gi][si]!=null){ const e=o.sd[gi][si]; svg.appendChild(S("line",{x1:x0+bw/2,x2:x0+bw/2,y1:y(v+e),y2:y(v-e),stroke:css("--ink-3"),"stroke-width":1})); }
+    });
+  });
+  host.appendChild(svg);
+}
+function forestChart(host,rows,unitTxt){
+  host.innerHTML=""; if(!rows.length){ host.textContent="no rows"; return; }
+  const W=560,rh=22,pl=170,pr=18,pt=8,pb=30,H=pt+pb+rows.length*rh;
+  let lo=Math.min(0,...rows.map(r=>r.lo)), hi=Math.max(0,...rows.map(r=>r.hi)); const ticks=niceTicks(lo,hi,5); lo=ticks[0]; hi=ticks[ticks.length-1];
+  const x=v=>pl+(v-lo)/(hi-lo)*(W-pl-pr); const svg=S("svg",{viewBox:`0 0 ${W} ${H}`,role:"img"});
+  ticks.forEach(t=>{ svg.appendChild(S("line",{class:"grid-line",x1:x(t),x2:x(t),y1:pt,y2:H-pb})); svg.appendChild(S("text",{x:x(t),y:H-pb+13,"text-anchor":"middle"},(+t.toFixed(2))+"")); });
+  svg.appendChild(S("line",{class:"zero",x1:x(0),x2:x(0),y1:pt,y2:H-pb}));
+  svg.appendChild(S("text",{x:(pl+W-pr)/2,y:H-2,"text-anchor":"middle"},"Δ ("+unitTxt+")"));
+  rows.forEach((r,i)=>{ const cy=pt+rh*(i+0.5);
+    svg.appendChild(S("text",{class:"lbl",x:pl-8,y:cy+4,"text-anchor":"end"},r.label));
+    svg.appendChild(S("line",{x1:x(r.lo),x2:x(r.hi),y1:cy,y2:cy,stroke:r.color,"stroke-width":2}));
+    const c=S("circle",{cx:x(r.d),cy,r:r.q<0.05?4.6:r.p<0.05?4.6:4,fill:r.q<0.05?r.color:"var(--surface)",stroke:r.color,"stroke-width":r.p<0.05&&!(r.q<0.05)?2.6:1.6});
+    addTip(c,`<b>${esc(r.label)}</b><br>Δ ${sgn(r.d)} ${unitTxt} [${sgn(r.lo)}, ${sgn(r.hi)}]<br>p=${r.p.toFixed(3)} q=${r.q.toFixed(3)}`); svg.appendChild(c); });
+  host.appendChild(svg);
+}
+function legend(host,items,state,redraw){
+  host.innerHTML=""; items.forEach(it=>{ const b=document.createElement("button"); b.type="button";
+    b.innerHTML=`<span class="sw ${it.dash?"dash":""}" style="background:${it.color}"></span>${esc(it.name)}`;
+    b.setAttribute("aria-pressed",String(!state[it.id])); b.onclick=()=>{ state[it.id]=!state[it.id]; b.setAttribute("aria-pressed",String(!state[it.id])); redraw(); }; host.appendChild(b); });
+}
+
+/* ------------------------------------------------------------- group lists */
+function groupOptions(t){
+  const mk=keys=>keys.filter(k=>GIDX[k]!=null&&nItems(t,k)>0).map(k=>({v:k,l:`${gname(k)} (n=${nItems(t,k).toLocaleString()})`}));
+  const out=[{group:"Overall",items:mk(["ALL"])}];
+  out.push({group:"Core / prepositional",items:mk(["core","cat:core_pronoun","cat:core_other","prep","de:dative_only_prep","de:accusative_only_prep","de:two_way_prep","de:other_prep"])});
+  out.push({group:"Pronoun / word count",items:mk(["pron","nonpron","w:1","w:2","w:3","w:4","w:5+"])});
+  out.push({group:"Edited-span length",items:mk(["sl:1-3","sl:4-6","sl:7-10","sl:11-20","sl:21+","dl:shorter","dl:equal","dl:longer"])});
+  return out;
+}
+const epochOpts = [0,1,2,3,4,5].map(e=>({v:e,l:String(e)}));
+const epoch135 = [1,3,5].map(e=>({v:e,l:String(e)}));
+const configOpts = CONDS.map(c=>({v:c,l:CONDNAME[c]}));
+const metricOpts = METRICS.map(m=>({v:m.k,l:m.l}));
+const accMetricOpts = ACCM.map(m=>({v:m.k,l:m.l}));
+const testOpts = [{v:0,l:"dat→acc"},{v:1,l:"acc→dat"}];
+const l1Sys = (c) => L1S.map(l1 => ({l1,c,i:sid(l1,c)}));
+
+/* ------------------------------------------------------------- 1. lens */
+(function lens(){
+  const ctl=$("#lens-ctl"); let ep=5, cfg="regular";
+  const render=()=>{
+    const tb=$("#lens-tbl"); let h="<thead><tr><th>System</th>";
+    TSNAME.forEach(t=>{ h+=`<th colspan="4" style="text-align:center">${t}</th>`; }); h+="</tr><tr><th></th>";
+    TSNAME.forEach(()=>{ h+="<th>acc</th><th>acc_tot</th><th>acc_span</th><th>tot−acc</th>"; }); h+="</tr></thead><tbody>";
+    L1S.forEach(l1=>{ h+=`<tr><td><span class="sw" style="background:${COLOR(l1)}"></span> ${L1NAME[l1]}</td>`;
+      [0,1].forEach(t=>{ const v=ACCM.map(m=>mean(gv(l1,cfg,ep,t,"ALL",m.k)));
+        h+=v.map(x=>`<td class="num">${(100*x).toFixed(2)}</td>`).join("")+`<td class="num dim">${sgn(100*(v[1]-v[0]))}</td>`; });
+      h+="</tr>"; });
+    tb.innerHTML=h+"</tbody>";
+  };
+  seg(ctl,"Epoch:",epoch135.concat([{v:0,l:"0"},{v:2,l:"2"},{v:4,l:"4"}]).sort((a,b)=>a.v-b.v),5,v=>{ep=v;render();});
+  seg(ctl,"Config:",configOpts,"regular",v=>{cfg=v;render();});
+  render();
+
+  const c2=$("#lens2-ctl"); let sys2="TR", ep2=5, cfg2="regular"; const leg={};
+  const draw=()=>{
+    [0,1].forEach(t=>{
+      const groups=["dl:shorter","dl:equal","dl:longer"].map(k=>`${gname(k)}\nn=${nItems(t,k).toLocaleString()}`);
+      const vals=["dl:shorter","dl:equal","dl:longer"].map(k=>ACCM.map(m=>mean(gv(sys2,cfg2,ep2,t,k,m.k))));
+      const cols=[css("--s-EN"),css("--s-TR"),css("--s-TRS")];
+      barChart($(t===0?"#lens-da":"#lens-ad"),{groups,series:ACCM.map((m,i)=>({name:m.l,color:cols[i]})),vals,yFmt:v=>(100*v).toFixed(0)+"%",tipFmt:v=>(100*v).toFixed(2)+"%",h:300,pb:56,hline:0.5});
+    });
+    $("#lens-legend").innerHTML=ACCM.map((m,i)=>`<span><span class="sw" style="background:${[css("--s-EN"),css("--s-TR"),css("--s-TRS")][i]}"></span>${m.l}</span>`).join("");
+  };
+  select(c2,"System:",L1S.map(l=>({v:l,l:L1NAME[l]})),"TR",v=>{sys2=v;draw();});
+  seg(c2,"Config:",configOpts,"regular",v=>{cfg2=v;draw();});
+  seg(c2,"Epoch:",epoch135,5,v=>{ep2=+v;draw();});
+  draw();
+})();
+
+/* ------------------------------------------------------------- 2. curves */
+(function curves(){
+  const ctl=$("#curve-ctl"); let t=0,cfg="regular",met="acc",gk="ALL"; const hidden={};
+  let gsel;
+  const draw=()=>{
+    const series=L1S.map(l1=>{ const vals=[],sds=[]; for(let e=0;e<NE;e++){ const a=gv(l1,cfg,e,t,gk,met); vals.push(a.length?mean(a):null); sds.push(a.length>1?sd(a):0); }
+      return {id:l1,name:L1NAME[l1],color:COLOR(l1),dash:l1==="DE",vals,sd:sds,hidden:!!hidden[l1]}; });
+    legend($("#curve-legend"),series,hidden,draw);
+    const m=MINFO[met];
+    lineChart($("#curve-chart"),{xs:[0,1,2,3,4,5].map(String),xTitle:"phase-2 epoch",series,yFmt:yFmtFor(met),tipFmt:v=>m.pct?(100*v).toFixed(2)+"%":v.toFixed(3),hline:m.pct?0.5:null,h:340});
+  };
+  const regroup=()=>{ ctl.querySelector("[data-gsel]")?.remove(); const w=document.createElement("span"); w.dataset.gsel=1; ctl.appendChild(w);
+    gsel=select(w,"Items:",groupOptions(t),gk in GIDX&&nItems(t,gk)>0?gk:"ALL",v=>{gk=v;draw();}); gk=gsel.get(); };
+  seg(ctl,"Test:",testOpts,0,v=>{t=v;regroup();draw();});
+  seg(ctl,"Config:",configOpts,"regular",v=>{cfg=v;draw();});
+  select(ctl,"Metric:",metricOpts,"acc",v=>{met=v;draw();});
+  regroup(); draw();
+})();
+
+/* ------------------------------------------------------------- 3. compare */
+(function compare(){
+  const ctl=$("#cmp-ctl"); let ref=sid("TR","regular"),t=0,ep=5,met="acc",gk="ALL",same=false; let gw;
+  const sysOpts=SYS.map((s,i)=>({v:String(i),l:`${L1NAME[s.l1]} · ${CONDNAME[s.cond]}`}));
+  const draw=()=>{
+    const r0=SYS[ref], rv=seedVals(ref,ep,t,GIDX[gk],MIDX[met]), m=MINFO[met], k=scale(m.k);
+    const rows=[]; SYS.forEach((s,i)=>{ if(i===ref) return; if(same&&s.cond!==r0.cond) return;
+      const v=seedVals(i,ep,t,GIDX[gk],MIDX[met]); const w=welch(v,rv); if(!w) return;
+      rows.push({i,label:`${L1NAME[s.l1]} · ${CONDNAME[s.cond]}`,color:COLOR(s.l1),val:mean(v),d:w.d*k,lo:w.lo*k,hi:w.hi*k,p:w.p}); });
+    const q=bh(rows.map(r=>r.p)); rows.forEach((r,i)=>r.q=q[i]); rows.sort((a,b)=>b.d-a.d);
+    forestChart($("#cmp-forest"),rows,unit(m.k));
+    let h=`<thead><tr><th>System</th><th>value</th><th>Δ vs ref (${unit(m.k)})</th><th>95% CI</th><th>p</th><th>q</th></tr></thead><tbody>`;
+    h+=`<tr><td class="dim">${esc(L1NAME[r0.l1])} · ${esc(CONDNAME[r0.cond])} (reference)</td><td class="num">${fmtVal(met,mean(rv))}</td><td colspan="4"></td></tr>`;
+    rows.forEach(r=>{ const cl=r.q<0.05?"qs":r.p<0.05?"ps":""; h+=`<tr><td><span class="sw" style="background:${r.color}"></span> ${esc(r.label)}</td><td class="num">${fmtVal(met,r.val)}</td><td class="num ${cl}">${sgn(r.d)}</td><td class="num dim">[${sgn(r.lo)}, ${sgn(r.hi)}]</td><td class="num">${r.p.toFixed(3)}</td><td class="num">${r.q.toFixed(3)}</td></tr>`; });
+    $("#cmp-tbl").innerHTML=h+"</tbody>";
+  };
+  const regroup=()=>{ ctl.querySelector("[data-gsel]")?.remove(); const w=document.createElement("span"); w.dataset.gsel=1; ctl.appendChild(w);
+    gw=select(w,"Items:",groupOptions(t),nItems(t,gk)>0?gk:"ALL",v=>{gk=v;draw();}); gk=gw.get(); };
+  select(ctl,"Reference:",sysOpts,String(ref),v=>{ref=+v;draw();});
+  seg(ctl,"Test:",testOpts,0,v=>{t=v;regroup();draw();});
+  seg(ctl,"Epoch:",epochOpts,5,v=>{ep=v;draw();});
+  select(ctl,"Metric:",metricOpts,"acc",v=>{met=v;draw();});
+  const lab=document.createElement("label"); lab.className="cb"; lab.style.display="inline-flex"; lab.style.gap="5px"; lab.innerHTML='<input type="checkbox" id="cmp-same"> same config only';
+  ctl.appendChild(lab); lab.querySelector("input").onchange=e=>{same=e.target.checked;draw();};
+  regroup(); draw();
+})();
+
+/* ------------------------------------------------------------- 4. core */
+(function core(){
+  const ctl=$("#core-ctl"); let ts=0,ep=5,cfg="regular",met="acc",mode="val"; const hidden={};
+  const LAB={"cat:core_pronoun":"Core\npronoun","cat:core_other":"Core\nother","core":"All core",
+    "de:dative_only_prep":"Dative-only\npreps","de:accusative_only_prep":"Acc.-only\npreps","de:two_way_prep":"Two-way\npreps","de:other_prep":"Other\npreps","prep":"All prep."};
+  const ORDER=["cat:core_pronoun","cat:core_other","core","de:dative_only_prep","de:accusative_only_prep","de:two_way_prep","de:other_prep","prep"];
+  const draw=()=>{
+    const CG=ORDER.filter(g=>GIDX[g]!=null&&nItems(ts,g)>0), CL=CG.map(g=>LAB[g]);
+    const m=MINFO[met], k=scale(met);
+    const series=L1S.map(l1=>({id:l1,name:L1NAME[l1],color:COLOR(l1),l1}));
+    legend($("#core-legend"),series,hidden,draw);
+    const vis=series.filter(s=>!hidden[s.id]);
+    const vals=CG.map(g=>vis.map(s=>{ const a=gv(s.l1,cfg,ep,ts,g,met), b=gv("DE",cfg,ep,ts,g,met); if(!a.length) return null; return mode==="val"?mean(a):mean(a)-mean(b); }));
+    barChart($("#core-chart"),{groups:CG.map((g,i)=>CL[i]+"\nn="+nItems(ts,g).toLocaleString()),series:vis,vals,
+      yFmt:m.pct?(v=>mode==="val"?(100*v).toFixed(0)+"%":(100*v).toFixed(0)+"pp"):(v=>v.toFixed(2)),tipFmt:v=>m.pct?(mode==="val"?(100*v).toFixed(2)+"%":sgn(100*v)+" pp"):v.toFixed(3),h:340,pb:64,hline:mode==="val"&&m.pct?0.5:0});
+    let h="<thead><tr><th>System</th>"+CG.map((g,i)=>`<th>${CL[i].replace("\n"," ")}</th>`).join("")+"</tr></thead><tbody>";
+    // Welch vs German-only for every non-DE system x category cell shown; one BH family per table.
+    const W={}, keys=[];
+    L1S.forEach(l1=>{ if(l1==="DE") return; CG.forEach(g=>{ const a=gv(l1,cfg,ep,ts,g,met), b=gv("DE",cfg,ep,ts,g,met); const w=a.length?welch(a,b):null; if(w){ W[l1+"|"+g]=w; keys.push(l1+"|"+g); } }); });
+    const Q=bh(keys.map(k=>W[k].p)); keys.forEach((k,i)=>W[k].q=Q[i]);
+    L1S.forEach(l1=>{ h+=`<tr><td><span class="sw" style="background:${COLOR(l1)}"></span> ${L1NAME[l1]}</td>`;
+      CG.forEach(g=>{ const a=gv(l1,cfg,ep,ts,g,met); if(!a.length){ h+="<td>–</td>"; return; }
+        let extra=""; const w=W[l1+"|"+g]; if(w){ const cl=w.q<0.05?(w.d>0?"pos sig":"neg sig"):"dim"; extra=`<br><span class="${cl}" style="font-size:.74rem">${sgn(w.d*k)}${w.q<0.05?" *":""} <span class="dim">p=${w.p.toFixed(3)} q=${w.q.toFixed(3)}</span></span>`; }
+        h+=`<td class="num">${fmtVal(met,mean(a))}${extra}</td>`; });
+      h+="</tr>"; });
+    $("#core-tbl").innerHTML=h+"</tbody>";
+  };
+  seg(ctl,"Test:",[{v:0,l:"dat→acc"},{v:1,l:"acc→dat"}],0,v=>{ts=+v;draw();});
+  seg(ctl,"Epoch:",epoch135.concat([{v:2,l:"2"},{v:4,l:"4"},{v:0,l:"0"}]).sort((a,b)=>a.v-b.v),5,v=>{ep=v;draw();});
+  seg(ctl,"Config:",configOpts,"regular",v=>{cfg=v;draw();});
+  select(ctl,"Metric:",metricOpts,"acc",v=>{met=v;draw();});
+  seg(ctl,"Chart:",[{v:"val",l:"value"},{v:"gain",l:"gain vs German-only"}],"val",v=>{mode=v;draw();});
+  draw();
+})();
+
+/* ------------------------------------------------------------- 5. span length */
+(function spanLen(){
+  const ctl=$("#span-ctl"); let split="w",ep=5,cfg="regular",met="acc",gain=false; const hidden={};
+  const SPL={w:{keys:["w:1","w:2","w:3","w:4","w:5+"],labels:["1","2","3","4","5+"],title:"words in the annotated group"},
+             sl:{keys:["sl:1-3","sl:4-6","sl:7-10","sl:11-20","sl:21+"],labels:["1–3","4–6","7–10","11–20","21+"],title:"characters in the gold edited span"},
+             dl:{keys:["dl:shorter","dl:equal","dl:longer"],labels:["corrupt shorter","same length","corrupt longer"],title:"edit-length change"}};
+  const draw=()=>{
+    const sp=SPL[split], m=MINFO[met], series0=L1S.map(l1=>({id:l1,name:L1NAME[l1],color:COLOR(l1),l1,dash:l1==="DE"}));
+    legend($("#span-legend"),series0,hidden,draw);
+    [0,1].forEach(t=>{
+      const series=series0.map(s=>({...s,hidden:!!hidden[s.id],vals:sp.keys.map(g=>{ const a=gv(s.l1,cfg,ep,t,g,met); if(!a.length) return null;
+        return gain?mean(a)-mean(gv("DE",cfg,ep,t,g,met)):mean(a); })}));
+      lineChart($(t===0?"#span-da":"#span-ad"),{xs:sp.labels.map((l,i)=>l+"\nn="+nItems(t,sp.keys[i]).toLocaleString()),xTitle:sp.title,pb:58,series,
+        yFmt:m.pct?(gain?(v=>(100*v).toFixed(1)+"pp"):(v=>(100*v).toFixed(0)+"%")):(v=>v.toFixed(2)),tipFmt:v=>m.pct?(gain?sgn(100*v)+" pp":(100*v).toFixed(2)+"%"):v.toFixed(3),hline:gain?0:null,h:300});
+    });
+  };
+  seg(ctl,"Bin by:",[{v:"w",l:"words in group"},{v:"sl",l:"edited-span chars"},{v:"dl",l:"edit-length change"}],"w",v=>{split=v;draw();});
+  seg(ctl,"Epoch:",epoch135,5,v=>{ep=+v;draw();});
+  seg(ctl,"Config:",configOpts,"regular",v=>{cfg=v;draw();});
+  select(ctl,"Metric:",metricOpts,"acc",v=>{met=v;draw();});
+  seg(ctl,"Show:",[{v:false,l:"value"},{v:true,l:"gain vs German-only"}],false,v=>{gain=v;draw();});
+  draw();
+})();
+
+/* ------------------------------------------------------------- 6. item explorer */
+(function explorer(){
+  const it=ITEMS, cats=[...new Set(it.category)].sort();
+  const spanChars=it.span_gold.map(s=>s.length);
+  const delta=it.span_corrupt.map((s,i)=>s.length-it.span_gold[i].length);
+  const flt={ts:"both",cats:new Set(cats),pron:"any",wmin:1,wmax:99,smin:1,smax:99999,dl:"any",q:""};
+  const box=$("#flt"); const field=(label,node)=>{ const d=document.createElement("div"); d.className="f"; const l=document.createElement("span"); l.textContent=label; d.appendChild(l); d.appendChild(node); box.appendChild(d); return d; };
+  const mkSel=(opts,init,cb)=>{ const s=document.createElement("select"); opts.forEach(o=>{ const op=document.createElement("option"); op.value=o[0]; op.textContent=o[1]; s.appendChild(op); }); s.value=init; s.onchange=()=>cb(s.value); return s; };
+  const mkNum=(init,cb)=>{ const n=document.createElement("input"); n.type="number"; n.value=init; n.onchange=()=>cb(+n.value); return n; };
+  field("Test",mkSel([["both","both"],["0","dat→acc"],["1","acc→dat"]],"both",v=>{flt.ts=v;refresh();}));
+  field("Pronoun group (UD PRON)",mkSel([["any","any"],["yes","pronouns only"],["no","non-pronouns only"]],"any",v=>{flt.pron=v;refresh();}));
+  field("Edit length vs gold",mkSel([["any","any"],["shorter","corrupt shorter"],["equal","same length"],["longer","corrupt longer"]],"any",v=>{flt.dl=v;refresh();}));
+  const w=document.createElement("div"); w.style.display="flex"; w.style.gap="6px"; w.append(mkNum(1,v=>{flt.wmin=v;refresh();}),mkNum(99,v=>{flt.wmax=v;refresh();})); field("Words in group (min – max)",w);
+  const s=document.createElement("div"); s.style.display="flex"; s.style.gap="6px"; s.append(mkNum(1,v=>{flt.smin=v;refresh();}),mkNum(99999,v=>{flt.smax=v;refresh();})); field("Gold edited-span chars (min – max)",s);
+  const q=document.createElement("input"); q.type="text"; q.placeholder="substring of sentence/span"; q.oninput=()=>{flt.q=q.value.toLowerCase();refresh();}; field("Text contains",q);
+  const dt=document.createElement("details"); dt.className="cats"; dt.innerHTML="<summary>Categories</summary>";
+  const cl=document.createElement("div"); cl.style.cssText="display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:6px";
+  cats.forEach(c=>{ const lb=document.createElement("label"); lb.className="cb"; lb.innerHTML=`<input type="checkbox" checked> ${esc(c)}`; lb.querySelector("input").onchange=e=>{ e.target.checked?flt.cats.add(c):flt.cats.delete(c); refresh(); }; cl.appendChild(lb); });
+  dt.appendChild(cl); const dd=document.createElement("div"); dd.className="f"; dd.style.gridColumn="1/-1"; dd.appendChild(dt); box.appendChild(dd);
+
+  const st={met:"acc",ep:5,cfg:"regular",ref:"DE",A:"TR",B:"EN",sort:"diff",page:0,sel:null}; const PER=40;
+  const ctl=$("#itm-ctl");
+  seg(ctl,"Metric:",accMetricOpts.map(o=>({v:o.v,l:o.l.replace("Accuracy · ","")})),"acc",v=>{st.met=v;render();});
+  seg(ctl,"Epoch:",epoch135,5,v=>{st.ep=+v;render();});
+  seg(ctl,"Config:",configOpts,"regular",v=>{st.cfg=v;render();});
+  select(ctl,"Reference:",L1S.map(l=>({v:l,l:L1NAME[l]})),"DE",v=>{st.ref=v;render();});
+  const lc=$("#itm-list-ctl");
+  select(lc,"System A:",L1S.map(l=>({v:l,l:L1NAME[l]})),"TR",v=>{st.A=v;st.page=0;render();});
+  select(lc,"System B:",L1S.map(l=>({v:l,l:L1NAME[l]})),"EN",v=>{st.B=v;st.page=0;render();});
+  select(lc,"Sort:",[{v:"diff",l:"A − B (A better first)"},{v:"rdiff",l:"B − A (B better first)"},{v:"both0",l:"both wrong (lowest A+B)"},{v:"idx",l:"test order"}],"diff",v=>{st.sort=v;st.page=0;render();});
+  const prev=document.createElement("button"); prev.className="act"; prev.textContent="‹ prev"; prev.onclick=()=>{st.page=Math.max(0,st.page-1);renderList();};
+  const next=document.createElement("button"); next.className="act"; next.textContent="next ›"; next.onclick=()=>{st.page++;renderList();};
+  const pg=document.createElement("span"); const dl=document.createElement("button"); dl.className="act"; dl.textContent="download filtered items (CSV)";
+  lc.append(prev,pg,next,dl);
+
+  let idx=[];
+  function match(i){
+    if(flt.ts!=="both" && it.ts[i]!==+flt.ts) return false;
+    if(!flt.cats.has(it.category[i])) return false;
+    if(flt.pron==="yes"&&!it.pron[i]) return false; if(flt.pron==="no"&&it.pron[i]) return false;
+    if(it.n_words[i]<flt.wmin||it.n_words[i]>flt.wmax) return false;
+    if(spanChars[i]<flt.smin||spanChars[i]>flt.smax) return false;
+    if(flt.dl==="shorter"&&delta[i]>=0) return false; if(flt.dl==="equal"&&delta[i]!==0) return false; if(flt.dl==="longer"&&delta[i]<=0) return false;
+    if(flt.q && !(it.gold[i].toLowerCase().includes(flt.q)||it.span_gold[i].toLowerCase().includes(flt.q)||it.span_corrupt[i].toLowerCase().includes(flt.q))) return false;
+    return true;
+  }
+  const epK = e => META.item_epochs.indexOf(e);
+  function score(s,k,i,met){ // seed-averaged correctness or NaN
+    const o=(s*NIE+k)*N+i;
+    if(met==="acc_span"){ const d=ISN[o]; return d? IS[o]/d : NaN; }
+    return (met==="acc"?IA[o]:IT[o])/META.seed_counts[s][k];
+  }
+  function column(l1,met){ const s=sid(l1,st.cfg), k=epK(st.ep); const out=new Float32Array(idx.length); for(let j=0;j<idx.length;j++) out[j]=score(s,k,idx[j],met); return out; }
+  function pairStats(a,b){ let n=0,sa=0,sb=0,sd2=0; const d=[]; for(let j=0;j<a.length;j++){ if(a[j]!==a[j]||b[j]!==b[j]) continue; n++; sa+=a[j]; sb+=b[j]; d.push(a[j]-b[j]); }
+    if(n<2) return {n,ma:NaN,mb:NaN,dm:NaN,se:NaN,p:NaN}; const dm=(sa-sb)/n; let v=0; d.forEach(x=>v+=(x-dm)*(x-dm)); const se=Math.sqrt(v/(n-1)/n);
+    return {n,ma:sa/n,mb:sb/n,dm,se,p:se>0?normP(dm/se):(dm===0?1:0)}; }
+  function refresh(){ idx=[]; for(let i=0;i<N;i++) if(match(i)) idx.push(i); st.page=0; render(); }
+  function render(){
+    const n0=idx.filter(i=>it.ts[i]===0).length, n1=idx.length-n0;
+    $("#flt-kpi").innerHTML=`<div><b>${idx.length.toLocaleString()}</b><span>matching items (dat→acc ${n0.toLocaleString()} · acc→dat ${n1.toLocaleString()})</span></div>`+
+      `<div><b>${idx.length?(mean(Array.from(idx,i=>spanChars[i]))).toFixed(1):"–"}</b><span>mean gold edited-span chars</span></div>`+
+      `<div><b>${idx.length?(100*idx.reduce((a,i)=>a+it.pron[i],0)/idx.length).toFixed(0)+"%":"–"}</b><span>pronoun groups (UD PRON)</span></div>`+
+      `<div><b>${idx.length?(100*idx.reduce((a,i)=>a+(delta[i]>0),0)/idx.length).toFixed(0)+"%":"–"}</b><span>corrupt edit longer than gold</span></div>`;
+    const refCol=column(st.ref,st.met); let h=`<thead><tr><th>System (${CONDNAME[st.cfg]}, epoch ${st.ep})</th><th>accuracy</th><th>Δ vs ${esc(L1NAME[st.ref])} (pp)</th><th>paired SE</th><th>p (items)</th><th>q (BH)</th><th>n</th></tr></thead><tbody>`;
+    const PS={}; L1S.forEach(l1=>{ if(l1!==st.ref) PS[l1]=pairStats(column(l1,st.met),refCol); });
+    const qk=Object.keys(PS), qv=bh(qk.map(k=>PS[k].p)); qk.forEach((k,i)=>PS[k].q=qv[i]);
+    L1S.forEach(l1=>{ const col=column(l1,st.met); const ps=l1===st.ref?pairStats(col,refCol):PS[l1];
+      const cl=l1===st.ref?"":(ps.q<0.05?(ps.dm>0?"qs":"ps"):""); h+=`<tr><td><span class="sw" style="background:${COLOR(l1)}"></span> ${L1NAME[l1]}</td><td class="num">${(100*ps.ma).toFixed(2)}</td>`+
+        (l1===st.ref?`<td colspan="5" class="dim">reference</td>`:`<td class="num ${cl}">${sgn(100*ps.dm)}</td><td class="num dim">${(100*ps.se).toFixed(2)}</td><td class="num">${isNaN(ps.p)?"–":ps.p.toFixed(3)}</td><td class="num">${isNaN(ps.q)?"–":ps.q.toFixed(3)}</td><td class="num dim">${ps.n}</td>`)+"</tr>"; });
+    $("#itm-sys").innerHTML=h+"</tbody>"; renderList();
+  }
+  function hl(text,start,len,cls){ if(start<0||start>text.length) return esc(text); return esc(text.slice(0,start))+`<mark>${esc(text.slice(start,start+len))}</mark>`+esc(text.slice(start+len)); }
+  function renderList(){
+    const a=column(st.A,st.met), b=column(st.B,st.met); const order=Array.from(idx.keys());
+    const key=j=>{ const d=(a[j]===a[j]&&b[j]===b[j])?a[j]-b[j]:0; return st.sort==="diff"?-d:st.sort==="rdiff"?d:st.sort==="both0"?(a[j]+b[j]||0):j; };
+    if(st.sort!=="idx") order.sort((x,y)=>key(x)-key(y)||x-y);
+    const pages=Math.max(1,Math.ceil(order.length/PER)); st.page=Math.min(st.page,pages-1); pg.textContent=` page ${st.page+1}/${pages} `;
+    let h=`<thead><tr><th>#</th><th class="l">Test · category</th><th>words</th><th>${esc(L1NAME[st.A])}</th><th>${esc(L1NAME[st.B])}</th><th class="l">gold / corrupted (edited span highlighted)</th></tr></thead><tbody>`;
+    order.slice(st.page*PER,(st.page+1)*PER).forEach(j=>{ const i=idx[j]; const sg=it.span_start[i];
+      const f=v=>v!==v?"–":(100*v).toFixed(0)+"%";
+      h+=`<tr><td class="num dim">${i}</td><td class="l dim">${TSNAME[it.ts[i]]} · ${esc(it.category[i])}${it.prep[i]?" · "+esc(it.prep[i]):""}</td><td class="num">${it.n_words[i]}</td><td class="num">${f(a[j])}</td><td class="num">${f(b[j])}</td>`+
+        `<td class="sent"><div>${hl(it.gold[i],sg,it.span_gold[i].length)}</div><div class="g">${hl(it.corrupt[i],sg,it.span_corrupt[i].length)}</div></td></tr>`; });
+    $("#itm-list").innerHTML=h+"</tbody>";
+  }
+  dl.onclick=()=>{
+    const ep=epK(st.ep); const head=["idx","test","sent_id","category","preposition","n_words","pronoun","gold_span","corrupt_span","gold","corrupt"];
+    const sysIds=L1S.map(l=>sid(l,st.cfg)); L1S.forEach(l=>["acc","acc_tot","acc_span"].forEach(m=>head.push(`${l}_${m}`)));
+    const q=v=>'"'+String(v).replace(/"/g,'""')+'"'; const lines=[head.join(",")];
+    idx.forEach(i=>{ const row=[i,TSNAME[it.ts[i]],it.sent_id[i],it.category[i],it.prep[i],it.n_words[i],it.pron[i],it.span_gold[i],it.span_corrupt[i],it.gold[i],it.corrupt[i]].map(q);
+      sysIds.forEach(s=>["acc","acc_tot","acc_span"].forEach(m=>{ const v=score(s,ep,i,m); row.push(v!==v?"":v.toFixed(2)); })); lines.push(row.join(",")); });
+    const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([lines.join("\n")],{type:"text/csv"})); a.download=`items_${st.cfg}_ep${st.ep}.csv`; a.click();
+  };
+  refresh();
+})();
+
+window.__REPORT_READY__ = true;
+$("#loading").remove();
+})().catch(e=>{ document.getElementById("loading").textContent="Error: "+e.message; console.error(e); window.__REPORT_ERROR__=e.message; });
+</script>
+</body>
+</html>
