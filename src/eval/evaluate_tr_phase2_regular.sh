@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --partition preempt
 #SBATCH --gres gpu:1
-#SBATCH --output eval/logs/%j_eval_multiseed_char-tr-de_phase2_nllb.out
+#SBATCH --output eval/logs/%j_eval_multiseed_char-tr-de_phase_2_regular_regular.out
 #SBATCH --time 24:00:00
 
 source ~/.bashrc
@@ -15,7 +15,7 @@ JSON_PATHS="${DATIVE_JSON},${ACCUSATIVE_JSON}"
 OUT_ROOT="${ROOT}/eval_results"
 SEEDS="0,1,2,3,4"
 EPOCHS="1,3,5"
-PHASE_SUBDIR="phase_2/regular/de_nllb/regular"
+PHASE_SUBDIR="phase_2/regular/regular"
 RUN_NAME="char-tr-de_${PHASE_SUBDIR//\//_}"
 
 mkdir -p "${OUT_ROOT}"
@@ -39,6 +39,5 @@ python3 ${ROOT}/src/eval/evaluate_ppl.py \
     --out_dir "${OUT_ROOT}/${RUN_NAME}" \
     --bootstrap_n 0
 
-echo "Finished multi-seed PPL evaluation at $(date)"
 echo "Aggregate CSVs (seed averages):"
 echo "  ${OUT_ROOT}/${RUN_NAME}/"

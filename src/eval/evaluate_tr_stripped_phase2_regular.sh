@@ -1,21 +1,29 @@
 #!/bin/bash
 #SBATCH --partition preempt
 #SBATCH --gres gpu:1
-#SBATCH --output eval/logs/%j_eval_multiseed_char-tr-de_stripped_phase2_regular.out
+#SBATCH --output eval/logs/%j_%x.out
 #SBATCH --time 24:00:00
+
+# Usage (from src/): sbatch -J <job_name> eval/evaluate_tr_stripped_phase2_regular.sh <variant>
+#   variant: stripped_nominal_infl | stripped_postp | stripped_case | stripped_nominal
 
 source ~/.bashrc
 conda activate morph2
 
 ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 cd "${ROOT}"
+MODE="${1:?Usage: sbatch $0 <variant>   (stripped_nominal_infl | stripped_postp | stripped_case | stripped_nominal)}"
+case "${MODE}" in
+    stripped_nominal_infl|stripped_postp|stripped_case|stripped_nominal) ;;
+    *) echo "Unknown variant: ${MODE}"; exit 1 ;;
+esac
 DATIVE_JSON="${ROOT}/src/eval_dataset/testset/dative_accusative_pairs.json"
 ACCUSATIVE_JSON="${ROOT}/src/eval_dataset/testset/accusative_dative_pairs.json"
 JSON_PATHS="${DATIVE_JSON},${ACCUSATIVE_JSON}"
 OUT_ROOT="${ROOT}/eval_results"
 SEEDS="0,1,2,3,4"
 EPOCHS="1,3,5"
-PHASE_SUBDIR="phase_2/stripped/regular/de_nllb/regular"
+PHASE_SUBDIR="phase_2/${MODE}/regular"
 RUN_NAME="char-tr-de_${PHASE_SUBDIR//\//_}"
 
 mkdir -p "${OUT_ROOT}"
@@ -39,6 +47,5 @@ python3 ${ROOT}/src/eval/evaluate_ppl.py \
     --out_dir "${OUT_ROOT}/${RUN_NAME}" \
     --bootstrap_n 0
 
-echo "Finished multi-seed PPL evaluation at $(date)"
 echo "Aggregate CSVs (seed averages):"
 echo "  ${OUT_ROOT}/${RUN_NAME}/"

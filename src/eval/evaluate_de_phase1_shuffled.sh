@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --partition preempt
 #SBATCH --gres gpu:1
-#SBATCH --output eval/logs/%j_eval_multiseed_char-en-de_phase2_reset_embed_shifted.out
+#SBATCH --output eval/logs/%j_eval_multiseed_char-de-de_phase_1_shuffled.out
 #SBATCH --time 24:00:00
 
 source ~/.bashrc
@@ -9,23 +9,23 @@ conda activate morph2
 
 ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 cd "${ROOT}"
-DATIVE_JSON="${ROOT}/src/eval_dataset/dative_accusative_pairs_shifted.json"
-ACCUSATIVE_JSON="${ROOT}/src/eval_dataset/accusative_dative_pairs_shifted.json"
+DATIVE_JSON="${ROOT}/src/eval_dataset/testset/dative_accusative_pairs.json"
+ACCUSATIVE_JSON="${ROOT}/src/eval_dataset/testset/accusative_dative_pairs.json"
 JSON_PATHS="${DATIVE_JSON},${ACCUSATIVE_JSON}"
 OUT_ROOT="${ROOT}/eval_results"
 SEEDS="0,1,2,3,4"
-EPOCHS="1,3,5"
-PHASE_SUBDIR="phase_2/regular/de_nllb/reset_embeddings_shifted"
-RUN_NAME="char-en-de_${PHASE_SUBDIR//\//_}"
+EPOCHS="5"
+PHASE_SUBDIR="phase_1/shuffled"
+RUN_NAME="char-de-de_${PHASE_SUBDIR//\//_}"
 
 mkdir -p "${OUT_ROOT}"
 mkdir -p "${ROOT}/src/eval/logs"
 
 TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 
-echo "=== Evaluating char-en-de | ${PHASE_SUBDIR} | epochs=${EPOCHS} seeds=${SEEDS} | $(date) ==="
+echo "=== Evaluating char-de-de | ${PHASE_SUBDIR} | epochs=${EPOCHS} seeds=${SEEDS} | $(date) ==="
 python3 ${ROOT}/src/eval/evaluate_ppl.py \
-    --model_root "${ROOT}/models/v5/char-en-de" \
+    --model_root "${ROOT}/models/v5/char-de-de" \
     --tokenizer_path "${TOKENIZER}" \
     --run_name "${RUN_NAME}" \
     --phase_subdir "${PHASE_SUBDIR}" \

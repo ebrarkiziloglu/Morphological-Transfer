@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --partition preempt
 #SBATCH --gres gpu:1
-#SBATCH --output eval/logs/%j_eval_multiseed_char-zh-de_phase2_nllb.out
+#SBATCH --output eval/logs/%j_eval_multiseed_char-zh-de_phase_2_regular_regular.out
 #SBATCH --time 24:00:00
 
 source ~/.bashrc
@@ -15,7 +15,7 @@ JSON_PATHS="${DATIVE_JSON},${ACCUSATIVE_JSON}"
 OUT_ROOT="${ROOT}/eval_results"
 SEEDS="0,1,2,3,4"
 EPOCHS="1,3,5"
-PHASE_SUBDIR="phase_2/regular/de_nllb/regular"
+PHASE_SUBDIR="phase_2/regular/regular"
 RUN_NAME="char-zh-de_${PHASE_SUBDIR//\//_}"
 
 mkdir -p "${OUT_ROOT}"
