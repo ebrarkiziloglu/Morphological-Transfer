@@ -12,3 +12,5 @@ data/
 *.zip
 
 src/morphological_analyzer/*/
+# Large per-item eval outputs (hundreds of MB each; exceed GitHub's 100 MB limit)
+eval_results/**/*per_item.csv
