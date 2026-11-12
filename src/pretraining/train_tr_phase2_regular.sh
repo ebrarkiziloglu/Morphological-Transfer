@@ -13,7 +13,7 @@ NGPUS=2   # keep in sync with --gres gpu:N above
 #   - checkpoints after epochs 5
 #   - 5 seeds
 # Phase 2 (German, resume from Phase-1 epoch-5 of the same seed):
-#   - LR = 5e-5, 5 epochs
+#   - LR = 1e-4, 5 epochs
 #   - checkpoint after every epoch
 #   - 5 seeds
 #
@@ -56,7 +56,7 @@ for SEED in "${SEEDS[@]}"; do
         --max_position_embeddings 1024 \
         --batch_size 64 \
         --epochs_phase2 5 \
-        --lr_phase2 1e-4 \
+        --lr 1e-4 \
         --grad_acc 1 \
         --length_bucketing \
         --cpus 8 \

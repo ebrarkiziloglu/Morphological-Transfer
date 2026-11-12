@@ -627,13 +627,7 @@ def parse_args():
         "--lr",
         type=float,
         default=1e-4,
-        help="Learning rate for Phase 1 (default: 1e-4).",
-    )
-    parser.add_argument(
-        "--lr_phase2",
-        type=float,
-        default=5e-5,
-        help="Learning rate for Phase 2 (default: 5e-5).",
+        help="Learning rate for both phases (default: 1e-4).",
     )
     parser.add_argument(
         "--save_epochs_phase1",
@@ -835,19 +829,18 @@ def main():
         batches_per_epoch_p2, args.grad_acc
     )
     total_steps_p2 = args.epochs_phase2 * opt_steps_epoch_p2
-    lr_phase2 = args.lr_phase2 if args.lr_phase2 is not None else args.lr
     logger.info(
         f"[Phase2] Training on {args.l2}: {args.epochs_phase2} epochs "
         f"x {batches_per_epoch_p2} batches/epoch, grad_acc={args.grad_acc} "
         f"-> {opt_steps_epoch_p2} optimizer steps/epoch "
         f"= {total_steps_p2} optimizer steps total "
-        f"(lr={lr_phase2:.2e}, seed={args.seed})"
+        f"(lr={args.lr:.2e}, seed={args.seed})"
     )
     train_one_phase(
         model=model,
         dataloader=train_loader_p2,
         num_epochs=args.epochs_phase2,
-        lr=lr_phase2,
+        lr=args.lr,
         grad_acc=args.grad_acc,
         logging_steps=args.logging_steps,
         device=device,

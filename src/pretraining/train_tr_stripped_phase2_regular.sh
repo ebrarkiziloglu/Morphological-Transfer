@@ -12,7 +12,7 @@
 # (-J sets the job name, which %x puts in the log filename.)
 #
 # Multi-seed Phase 2 (German, resume from TR Phase-1 epoch-5 of the same seed):
-#   - LR = 5e-5, 5 epochs, checkpoint after every epoch, 5 seeds
+#   - LR = 1e-4, 5 epochs, checkpoint after every epoch, 5 seeds
 #
 # Checkpoint layout under --out:
 #   ep{E}/seed_{S}/
@@ -59,7 +59,7 @@ for SEED in "${SEEDS[@]}"; do
         --max_position_embeddings 1024 \
         --batch_size 64 \
         --epochs_phase2 5 \
-        --lr_phase2 1e-4 \
+        --lr 1e-4 \
         --grad_acc 1 \
         --length_bucketing \
         --cpus 8 \

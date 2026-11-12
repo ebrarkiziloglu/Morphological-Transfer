@@ -19,7 +19,7 @@ NGPUS=2   # keep in sync with --gres gpu:N above
 #   - checkpoints after epochs 5
 #   - 5 seeds
 # Phase 2 (German, resume from Phase-1 epoch-5 of the same seed):
-#   - LR = 5e-5, 5 epochs
+#   - LR = 1e-4, 5 epochs
 #   - checkpoint after every epoch
 #   - 5 seeds
 

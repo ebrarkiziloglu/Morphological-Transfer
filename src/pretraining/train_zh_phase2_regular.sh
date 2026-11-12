@@ -51,7 +51,7 @@ for SEED in "${SEEDS[@]}"; do
         --max_position_embeddings 1024 \
         --batch_size 64 \
         --epochs_phase2 5 \
-        --lr_phase2 1e-4 \
+        --lr 1e-4 \
         --grad_acc 1 \
         --length_bucketing \
         --cpus 8 \
