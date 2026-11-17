@@ -30,6 +30,8 @@
 %Including images in your LaTeX document requires adding
 %additional package(s)
 \usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{amssymb}
 
 % If the title and author information does not fit in the area allocated, uncomment the following
 %
@@ -120,13 +122,28 @@
 
 TODO: improve the abstract later:
 - Question: does morphological case knowledge transfer across languages in sequential pretraining?
-- Setup: Phase 1 on TR, EN or ZH, then Phase 2 on German. The probe is Acc$\leftrightarrow$Dat minimal pairs.
+- Setup: Phase 1 on TR, EN or DE, then Phase 2 on German. The probe is Acc$\leftrightarrow$Dat minimal pairs.
 - Interventions: word shuffling, embedding reset and Turkish morpheme stripping.
 - Headline finding: any Phase 1 helps by about 4 pp, but there is no reliable Turkish advantage over English. Equivalence is supported with TOST.
 \end{abstract}
 
 \section{Introduction}
 
+TODO:
+
+- [ ] State explicit hypotheses with predicted outcomes and tie each to a result subsection:
+\begin{itemize}
+    \item H1: any pretraining helps. 
+    \item H2: TR > EN. 
+    \item H3: the effect depends on morphology, not syntax. 
+    \item H4: the effect survives embedding reset
+\end{itemize}
+
+- [ ] Clarify what "transfer" means here (accuracy of the final model on the probe versus faster learning during Phase 2), and make the title match the finding. If the finding is a null, "Does… help…?" is fine, but say so in the abstract.
+
+- [ ] Contributions list: add the released checkpoints and benchmark, and the manipulation toolkit (stripping and shuffling).
+
+  
 Do LMs learn abstract morphological structure that is reusable and transferable across languages, or only language-general statistics? 
 Cross-lingual transfer has been mostly studied through subword tokenization and large multilingual models. Morphological transfer is rarely isolated under controlled conditions. 
 This leaves open which of the two it is.
@@ -138,9 +155,8 @@ This gives us a natural testbed: a language with a rich case system (Turkish), a
 Despite the structural differences, we hypothesise that the morphological case knowledge can transfer from Turkish to German, 
 and the lack of such knowledge shows up in the performances when transferring from English to German.
 We test this hypothesis in a controlled setting.
-We set up a controlled two-phase pre-training, parallel Phase 1 data (English, Turkish, Chinese) and Phase 2 pretraining with German. 
-Chinese serves as a control language: it has no case marking and no lexical similarity to German.
-To find out what drives any transfer we additionally intervene on the Phase 1 data and model.
+We set up a controlled two-phase pre-training, parallel Phase 1 data (English, Turkish, German) and Phase 2 pretraining with German. 
+German serves as a control language. To find out what drives any transfer we additionally intervene on the Phase 1 data and model.
 The contributions of this work are as follows:
 \begin{itemize}
     \item A controlled transfer setup with parallel L1 data and byte-premium matching.
@@ -159,7 +175,7 @@ Some notes for now - will be explored later:
     \item Minimal-pair evaluation of grammaticality (BLiMP, CLAMS, etc.).
     \item Tokenization and morphology: subword segmentation vs. character-level models.
     \item Word order and syntax ablations (shuffling) and how they show what is and isn't learned.
-    \item Cross-lingual measurement fairness: byte premium (Arnett et al. 2024).
+    \item Cross-lingual measurement fairness: byte premium \citep{arnett2024bitproblemmeasurementdisparities}.
     \item Position of this work: sequential, controlled, morphology-specific, with causal ablations on the source language.
 \end{itemize}
 
@@ -167,15 +183,34 @@ Some notes for now - will be explored later:
 
 \subsection{Experimental Design}
 
-We follow a two-phase training paradigm with three model configurations: regular, reset-embedding, and shuffled. Phase 1 consists of pre-training on a single language, L1, which is one of Turkish, English, or Chinese. Phase 2 is always pre-training on German (L2). The Phase 1 data comes from NLLB, which provides parallel sentences across all three Phase 1 languages. We sampled 10M English words and took the corresponding Turkish and Chinese sentences, so that differences between L1 conditions stem from the language rather than from the content. Later, we additionally sampled 100M words from English and Turkish and ran the same experiments at this larger scale. Since only around 23.85M words of English-Turkish-Chinese parallel triplets were available, we dropped Chinese from the 100M experiments.
-
+We follow a two-phase training paradigm with three model configurations: regular, reset-embedding, and shuffled. Phase 1 consists of pre-training on a single language, L1, which is one of Turkish, English, or German. Phase 2 is always pre-training on German (L2). The Phase 1 data comes from NLLB, which provides parallel sentences across all three Phase 1 languages. We sampled 100M English words and took the corresponding Turkish and German sentences, so that differences between L1 conditions stem from the language rather than from the content. We ran the initial experiments with 10M words of pre-training data; and switched to 100M setup later.
 
 \subsubsection{Model Configurations}
 \begin{enumerate}
     \item \textbf{Regular configuration}: Standard Phase 1 pre-training on each L1, followed by standard Phase 2 pre-training on German. No alterations are made between the phases.
     \item \textbf{Reset-embedding configuration}: Standard Phase 1 pre-training on each L1, followed by re-initializing the token embedding matrix (and the tied output head) from $\mathcal{N}(0, 0.02)$. All other weights, including the transformer layers and positional embeddings, are kept. Phase 2 then proceeds with standard pre-training on German. Re-initializing the embeddings removes the lexical knowledge acquired in Phase 1, so any remaining transfer must reside in the non-lexical, structural weights. This separates structural (e.g., morphological) transfer from lexical transfer, which matters especially for English, whose vocabulary overlaps heavily with German.
-    \item \textbf{Shuffled configuration}: The Phase 1 data for each L1 is word-order shuffled, followed by standard Phase 2 pre-training on German. For each line, 30\% of the tokens (whitespace-separated words for English and Turkish, characters for Chinese) are selected. Each selected token is displaced by a distance drawn from a geometric distribution ($p = 0.5$, maximum 20) in a random direction, and the tokens are then re-sorted by their displaced positions. Geometric displacements mimic the distribution of syntactic dependency lengths, so local syntax is destroyed while the vocabulary and the word-internal morphology are preserved. This again reduces syntactic transfer from L1 to German, making it easier to detect morphological transfer.
+    \item \textbf{Shuffled configuration}: The Phase 1 data for each L1 is word-order shuffled, followed by standard Phase 2 pre-training on German. For each line, 30\% of the tokens (whitespace-separated words) are selected. Each selected token is displaced by a distance drawn from a geometric distribution ($p = 0.5$, maximum 20) in a random direction, and the tokens are then re-sorted by their displaced positions. Geometric displacements mimic the distribution of syntactic dependency lengths, so local syntax is destroyed while the vocabulary and the word-internal morphology are preserved. This again reduces syntactic transfer from L1 to German, making it easier to detect morphological transfer.
 \end{enumerate}
+
+
+Table~\ref{tab:design} lists all conditions. Phase 1 regular checkpoints are continued with both regular and reset-embedding Phase 2, whereas Phase 1 shuffled checkpoints are continued with regular Phase 2 only; the combination of shuffling and embedding reset was not run.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lcccc}
+\hline
+ & \multicolumn{2}{c}{P2 regular} & \multicolumn{2}{c}{P2 reset-emb.} \\
+P1 data & reg. & shuf. & reg. & shuf. \\
+\hline
+DE (baseline) & \checkmark & \checkmark & \checkmark & -- \\
+EN & \checkmark & \checkmark & \checkmark & -- \\
+TR & \checkmark & \checkmark & \checkmark & -- \\
+TR-stripped (4 variants) & \checkmark & \checkmark & \checkmark & -- \\
+\hline
+\end{tabular}
+\caption{Experimental conditions. Rows give the Phase 1 (P1) corpus; columns give the Phase 2 (P2) setting crossed with whether the P1 data was word-shuffled (reg./shuf.). The four stripped variants are case, postpositions, nominal inflections, and nominal. All Phase 2 runs train on German. Every cell has 5 seeds.}
+\label{tab:design}
+\end{table}
 
 Figure 1 gives an overview of the experimental pipeline. [TODO: add the figure later].
 
@@ -183,39 +218,73 @@ Figure 1 gives an overview of the experimental pipeline. [TODO: add the figure l
 
 We use a decoder-only model, \texttt{GPT2LMHeadModel}, in a GPT-2-style configuration with 6 layers. In addition, we train a single character-level tokenizer shared across all four languages, with a vocabulary of \num{5328} symbols. Character-level tokenization suits this task for three reasons: it causes no segmentation leakage, since subword boundaries cannot hide or reveal morphology; it avoids vocabulary mismatch between the two phases; and it prevents an unfair vocabulary transfer from English to German that has no counterpart in the Turkish-to-German case.
 
-Phase 1 hyperparameters are as follows:
+The tokenizer was originally built to also cover Chinese, which is no longer used. Of the \num{5328} entries (7 special tokens and \num{4864} CJK-range characters among them), only about \num{1300} occur in the English, Turkish, and German data; the remaining embedding rows are never trained. Characters outside the vocabulary are mapped to \texttt{[UNK]}; they make up only about 0.001--0.002\% of the characters. English, Turkish, and German share most of their character inventory: 135 characters with at least 100 occurrences are common to all three languages and account for 98.6--99.99\% of the characters in each. Turkish adds \textit{ç, ğ, ı, ş} (and \textit{ö, ü}), and German adds \textit{ä, ö, ü, ß}, with \textit{ö} and \textit{ü} shared between the two. Because the character embeddings are shared across languages, Phase 1 can transfer orthographic and lexical knowledge through the embeddings alone. The reset-embedding configuration controls for this.
+
+Both phases use the same hyperparameters:
+
 \begin{itemize}
-    \item max\_seq\_len = 1024.
-    \item max\_position\_embeddings = 1024.
-    \item batch\_size = 64.
-    \item lr = 1e-4.
-    \item 2 X H100 GPUs.
+    \item Architecture: GPT-2 style, 6 layers, hidden size 768, 12 attention heads (about 47M parameters, tied input and output embeddings), \texttt{max\_seq\_len} = \texttt{max\_position\_embeddings} = 1024.
+    \item Optimizer: AdamW ($\beta_1 = 0.9$, $\beta_2 = 0.98$, weight decay 0.1), gradient clipping at 1.0, peak learning rate $10^{-4}$.
+    \item Schedule: linear warmup over the first 1\% of steps, followed by cosine decay to 0. The schedule restarts at the start of Phase 2.
+    \item Batching: 64 lines per GPU on 2 H100 GPUs, i.e., an effective batch of 128 lines, with length bucketing to reduce padding.
+    \item Length: 5 epochs per phase, which gives \num{240500} optimizer steps in Phase 1 and \num{175505} in Phase 2.
+    \item Precision and attention: bf16 with FlashAttention-3. FlashAttention-3 does not support attention dropout, so the attention dropout probability in the GPT-2 configuration was silently ignored. Residual and embedding dropout remain active.
 \end{itemize}
 
-All models were trained and evaluated across 5 seeds (0--4). For each seed, Phase 2 resumes from the Phase 1 checkpoint of the same seed.
+Each training line is a single sentence, so there is no cross-sentence context. Lines are at most 896 characters long (99\% are below roughly 350), so the 1024-token limit never causes truncation, and positions beyond a few hundred are rarely used.
+
+All models were trained and evaluated across 5 seeds (0--4). For each seed, Phase 2 resumes from the Phase 1 checkpoint of the same seed. Seed $s$ fixes the initial weights, which are therefore identical across L1 conditions, and the order of sentences: the Phase 1 corpora are line-aligned, so the same permutation of lines is applied to English, Turkish, German, and the stripped variants, and Phase 2 uses the same file and the same order for every condition. Batches within a length-sorted chunk and dropout masks can still differ between conditions. Seeds are thus paired across conditions, which allows paired tests over seeds.
+
 
 \subsection{Data}
 
 \begin{itemize}
-    \item \textbf{Phase 1:} parallel NLLB English--Turkish--Chinese triples (469k lines, 10M English words), so that differences come from the language and not the content.
-    \item \textbf{Phase 1, larger scale:} parallel NLLB English--Turkish data with 100M English words.
-    \item \textbf{Phase 2:} the German side of NLLB, matched to the English data by UTF-8 byte budget using a byte premium of 1.0537 (TODO: add reference for the byte premium).
+    \item \textbf{Phase 1:} parallel NLLB English--Turkish--German triples (6.16M lines, 100M English words), so that differences come from the language and not the content.
+    \item \textbf{Phase 2:} the German side of NLLB (4.49M lines, 86.4M words), matched to the English data by UTF-8 byte budget using a byte premium of 1.0537 \citep{arnett2024bitproblemmeasurementdisparities}; and it is disjoint (no sentence appears in both) from the German NLLB pre-training data that is used in Phase 1.
 \end{itemize}
 
-[TODO: add a data statistics table (lines, bytes, case counts per corpus).]
+Table~\ref{tab:budget} reports the size of each corpus. All Phase 1 corpora have the same number of lines and are trained for the same number of optimizer steps, but the stripped Turkish variants contain fewer characters per line. The model therefore sees up to 18\% fewer characters (and, for postpositions, fewer words) for the stripped variants than for regular Turkish, even though the number of steps is equal.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{lrrrrr}
+\hline
+Corpus & Words (M) & Chars (M) & Bytes (M) & Chars/line & Chars vs.\ TR \\
+\hline
+Phase 1 EN & 100.0 & 572.8 & 575.9 & 93.0 & -- \\
+Phase 1 DE & 95.9 & 639.9 & 650.2 & 103.9 & -- \\
+Phase 1 TR & 77.8 & 574.4 & 627.2 & 93.3 & -- \\
+Phase 1 TR, case stripped & 77.8 & 536.9 & 585.7 & 87.2 & $-6.5\%$ \\
+Phase 1 TR, postp.\ stripped & 75.3 & 523.5 & 570.8 & 85.0 & $-8.9\%$ \\
+Phase 1 TR, nominal infl.\ stripped & 77.8 & 497.6 & 538.3 & 80.8 & $-13.4\%$ \\
+Phase 1 TR, nominal stripped & 77.8 & 473.2 & 511.4 & 76.9 & $-17.6\%$ \\
+\hline
+Phase 2 DE & 86.4 & 598.9 & 608.8 & 133.3 & -- \\
+\hline
+\end{tabular}
+\caption{Corpus sizes (newlines excluded). Every Phase 1 corpus has \num{6156877} lines (\num{240500} optimizer steps in 5 epochs); the Phase 2 corpus has \num{4492931} lines (\num{175505} steps).}
+\label{tab:budget}
+\end{table*}
+
+[TODO: add per-corpus case counts to the data statistics.]
 
 \subsubsection{Phase 1 Manipulations}
 
 Apart from the shuffled configuration described above, we applied several manipulations to the Turkish NLLB pre-training dataset. Since we study the effect of the morphological structure of Turkish on German training, we also wanted to observe the effect of the \emph{lack} of such morphology. To this end, we created the following four variants of the Turkish pre-training dataset, ordered from the mildest to the most aggressive intervention:
 \begin{enumerate}
-    \item \textbf{Case Stripped}: All case markers (Acc, Dat, Loc, Abl, Gen), the instrumental \textit{-(y)lA}, the equative \textit{-cA}, and the relative \textit{-ki} are removed, including those in the middle of a word. Plural (A3pl) and possessive suffixes are kept. This is the default variant.
+    \item \textbf{Case Stripped}: All case markers (Acc, Dat, Loc, Abl, Gen), the instrumental \textit{-(y)lA}, the equative \textit{-cA}, and the relative \textit{-ki} are removed, including those in the middle of a word. Plural (A3pl) and possessive suffixes are kept.
     \item \textbf{Postpositions Stripped}: In addition to everything removed in the case-stripped variant, we delete the postposition words themselves (e.g., \textit{için}, \textit{ile}, \textit{gibi}, \textit{göre}, \textit{kadar}, \textit{sonra}), i.e., tokens whose selected parse is Zemberek's \texttt{Postp}. Their punctuation stays attached to the neighbouring words. Consequently, the output has fewer tokens per line than the input.
     \item \textbf{Nominal Inflections Stripped}: All nominal inflection is removed, while every derivation is kept. Every nominal inflectional group (including those derived from a verb) loses its case, plural, possessive, \textit{-ki}, and nominal predicate markers (copula, \textit{-DI}, \textit{-mIş}, person), e.g., \textit{evsizlerin} $\rightarrow$ \textit{evsiz}, \textit{gelmesini} $\rightarrow$ \textit{gelme}, \textit{evdeyiz} $\rightarrow$ \textit{ev}. Verbal inflection (finite verbs and converbs) is kept.
     \item \textbf{Nominal Stripped}: All nominal morphology is removed. Nominal roots lose their inflection (case, plural, possessive, \textit{-ki}), their noun/adjective derivation (\textit{-lIk}, \textit{-CI}, \textit{-lI}, \textit{-sIz}, ...), and their nominal predicate markers (e.g., \textit{evdeyiz} $\rightarrow$ \textit{ev}). Nominalised verbs (\textit{-mAk}, \textit{-mA}, \textit{-DIk}, \textit{-(y)An}, ...) are cut back to the verb stem, keeping voice and negation. Noun-to-verb derivation (\textit{-lAş}, \textit{-lAn}), finite verbs, and converbs are kept.
 \end{enumerate}
 
-To strip the Turkish dataset, we first POS-tag each sentence with the TULAP tagger (TODO: add references for the tools). We then analyze every word with the Zemberek morphological analyzer, using the POS tag to disambiguate among candidate parses. Next, we remove the selected morphemes, and finally, we regenerate the surface form of each word with Zemberek's generator. We verify the output against the original files and record per-variant statistics, such as the number of removed morphemes and deleted postpositions. Each stripped variant is also available in a word-shuffled form, which allows us to combine the stripping with the shuffled configuration. 
-     
+To strip the Turkish dataset, we first POS-tag each sentence with the TULAP tagger (TODO: add references for the tools). We then analyze every word with the Zemberek morphological analyzer, using the POS tag to disambiguate among candidate parses. Next, we remove the selected morphemes, and finally, we regenerate the surface form of each word with Zemberek's generator. We verify the output against the original files and record per-variant statistics, such as the number of removed morphemes and deleted postpositions. Each stripped variant is also available in a word-shuffled form, which allows us to combine the stripping with the shuffled configuration.
+
+\subsubsection{Shuffling Procedure}
+\label{sec:shuffle}
+
+The same procedure is applied to the English, Turkish, and German Phase 1 corpora and to the four stripped Turkish variants (stripping is applied first, shuffling second); the Phase 2 German data is never shuffled. Each line is split on whitespace, so punctuation stays attached to its word and each word's internal characters are untouched. For a line of $n$ words, $\mathrm{round}(0.3\,n)$ positions are selected uniformly without replacement; lines with fewer than two words are left unchanged. Each selected word is assigned a displacement $d \sim \mathrm{Geometric}(0.5)$, so $d \ge 1$, $P(d=1)=0.5$, and the mean is 2, truncated at $d_{\max}=20$, and a direction $\pm 1$ with equal probability. Every word receives a sort key: unselected words keep their original index $i$, and selected words get $i \pm d$ plus a small random jitter drawn from $U(-0.25, 0.25)$ that breaks ties. The words are then stably sorted by key and re-joined with single spaces. This realizes all displacements jointly and lets unselected words drift only as selected neighbours move past them. All files are generated with seed 42. Because the random draws depend only on the number of words per line, the regular, case-stripped, nominal-inflection-stripped, and nominal-stripped Turkish corpora, which have identical word counts, receive identical reorderings; the postposition-stripped corpus has fewer words and thus a different one.
+
 \section{Evaluation}
 
 \subsection{Test set Creation}
@@ -241,8 +310,8 @@ As a sanity check, the German-only baseline performs well above chance on both t
 \subsection{Main result}
 * All Phase 1 conditions vs. the German-only baseline (about +4 pp on Acc→Dat). Training dynamics over epochs 1, 3 and 5, with the gap shrinking.
 
-\subsection{TR vs. EN vs. ZH}
-* No reliable Turkish advantage, with TOST equivalence results. Include the ZH results.
+\subsection{TR vs. EN vs. DE}
+* No reliable Turkish advantage, with TOST equivalence results. Include the DE results.
 
 \subsection{Ablations}
 - Shuffling has little effect, so benefit is not syntax-dependent.
@@ -256,7 +325,7 @@ As a sanity check, the German-only baseline performs well above chance on both t
 
 \subsection{Discussion}
 - What the benefit is: general LM pretraining, optimization and positional or structural priors, not language-specific morphology.
-- Why a Turkish effect may not appear: small models, character-level input, 10M-word scale, German case marked mainly on closed-class words, and the large typological gap.
+- Why a Turkish effect may not appear: small models, character-level input, 100M-word scale, German case marked mainly on closed-class words, and the large typological gap.
 - The value of a well-powered null result with equivalence tests.
 - Implications for curriculum or language-choice decisions in low-resource pretraining.
 
