@@ -162,7 +162,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument(
         "--category-mode",
         choices=CATEGORY_MODES,
-        default=CATEGORY_MODE_TR,
+        default=CATEGORY_MODE_DE,
         help="dat2acc: how prepositional datives get their `category`: "
         "preps_in_TR (Turkish case of the translation, default) or preps_in_DE "
         "(dative-only / two-way / other German preposition). acc2dat always uses "
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     args = _parse_args()
     stem = DIRECTIONS[args.direction][3]
     dat2acc = args.direction == "dat2acc"
-    de_suffix = "_preps_in_DE" if dat2acc and args.category_mode == CATEGORY_MODE_DE else ""
+    de_suffix = "_preps_in_TR" if dat2acc and args.category_mode == CATEGORY_MODE_TR else ""
     main(
         direction=args.direction,
         ud_base_path=args.ud_base or os.path.join(_DATA_ROOT, "UD_German-GSD"),
