@@ -910,6 +910,7 @@ def is_genitive_preposition(lemma: Optional[str]) -> bool:
 _COORD_CC_LEMMAS = frozenset({"und", "oder", "sowie", "beziehungsweise"})
 _COORD_NP_CONJUNCT_UPOS = frozenset({"NOUN", "PROPN", "PRON"})
 CONJUNCTION_WITH_COMMA_REASON = "conjunction_with_comma"
+DATIVE_PREP_WITH_ACC_TOKEN_REASON = "dative_only_prep_with_acc_token"
 
 
 def _deprel_base(deprel: Any) -> str:
@@ -1071,7 +1072,9 @@ def expand_coordination_group_span(
 
     conj_spans: List[Tuple[int, ...]] = []
     for head_idx in conj_heads:
-        conj_span = find_nominal_group_indices(tokens, head_idx)
+        conj_span = find_nominal_group_indices(
+            tokens, head_idx, exclude_pp_nmod=source_case == "Acc"
+        )
         if not any(is_source_case_token(tokens[i], source_case) for i in conj_span):
             return span_indices, None
         conj_spans.append(conj_span)
@@ -1151,12 +1154,19 @@ def _case_marker_mit_und_list(
     tokens: List[Dict[str, Any]], span_start: int, span_end: int
 ) -> Optional[str]:
     """``mit X und Y`` — span is *Y*; inherit ``mit`` from the left of ``und``."""
+    span_ids = {
+        tokens[i].get("id") for i in range(span_start, span_end + 1)
+    }
     for cc_i, cc_tok in enumerate(tokens):
         if (cc_tok.get("lemma") or "").lower() != "und":
             continue
         if _deprel_base(cc_tok.get("deprel")) != "cc":
             continue
         if cc_i >= span_start or span_end < cc_i:
+            continue
+        # ``cc`` attaches to the conjunct it introduces: it must belong to this
+        # span, otherwise the ``und`` coordinates something else (e.g. clauses).
+        if cc_tok.get("head") not in span_ids:
             continue
         for j in range(cc_i - 1, -1, -1):
             t = tokens[j]
@@ -1285,6 +1295,67 @@ def case_marker_lemma_for_head(
     tokens: List[Dict[str, Any]], head_idx: int
 ) -> Optional[str]:
     return case_marker_lemma_for_head_id(tokens, tokens[head_idx].get("id"))
+
+
+# Heads a coordinated NP can inherit a preposition from (*mit X und Y*).
+_CONJ_INHERIT_PARENT_UPOS = frozenset({"NOUN", "PROPN", "PRON", "NUM", "ADJ"})
+# Relations in which a nominal can be the complement of an ADP that heads it
+# (GSD: *hält X für "eine böse Verharmlosung"*). ``nsubj`` is deliberately absent:
+# the subject of a small clause is not governed by the ADP.
+_ADP_COMPLEMENT_DEPS = frozenset({"nmod", "obl", "obj"})
+
+
+def _nominal_conj_anchor_chain(
+    tokens: List[Dict[str, Any]], head_idx: int
+) -> List[int]:
+    """``[head_idx, parent, grandparent, …]`` while each step is a nominal ``conj``."""
+    id_to_idx = {_token_id_key(t.get("id")): i for i, t in enumerate(tokens)}
+    chain = [head_idx]
+    seen = {head_idx}
+    cur = head_idx
+    while _deprel_base(tokens[cur].get("deprel")) == "conj":
+        pidx = id_to_idx.get(_token_id_key(tokens[cur].get("head")))
+        if (
+            pidx is None
+            or pidx in seen
+            or tokens[pidx].get("upos") not in _CONJ_INHERIT_PARENT_UPOS
+        ):
+            break
+        chain.append(pidx)
+        seen.add(pidx)
+        cur = pidx
+    return chain
+
+
+def strict_case_marker_lemma(
+    tokens: List[Dict[str, Any]], head_idx: int
+) -> Optional[str]:
+    """Preposition that really governs the NP headed by *head_idx*, else ``None``.
+
+    Unlike :func:`case_marker_lemma_for_span` this never guesses from linear
+    position or from sub-phrases: the ADP must be a ``case`` dependent of the NP
+    head itself, of the nominal it is coordinated with (*mit X und Y*), or the
+    head's parent ADP (GSD ``für`` + ``nmod``). A nominal that merely sits
+    inside someone else's PP (*Eine Woche* in *Eine Woche nach der WM*) or a
+    token after an unrelated ``und`` therefore gets no preposition.
+    """
+    if not 0 <= head_idx < len(tokens):
+        return None
+    chain = _nominal_conj_anchor_chain(tokens, head_idx)
+    for idx in chain:
+        picked = case_marker_lemma_for_head_id(tokens, tokens[idx].get("id"))
+        if picked is not None:
+            return picked
+    id_to_idx = {_token_id_key(t.get("id")): i for i, t in enumerate(tokens)}
+    for idx in chain:
+        pidx = id_to_idx.get(_token_id_key(tokens[idx].get("head")))
+        if (
+            pidx is not None
+            and tokens[pidx].get("upos") == "ADP"
+            and _deprel_base(tokens[idx].get("deprel")) in _ADP_COMPLEMENT_DEPS
+        ):
+            return tokens[pidx].get("lemma") or None
+    return None
 
 
 def is_prepositional_dative_type(dtype: str) -> bool:
@@ -1429,6 +1500,8 @@ def _resolve_raw_case_marker_lemma(
     head_idx = dative_nominal_head_index(
         tokens, span_start, span_end, fallback_idx=seed_idx, case=case
     )
+    if case == "Acc":
+        return strict_case_marker_lemma(tokens, head_idx)
     case_lemma = case_marker_lemma_for_head(tokens, head_idx)
     if case_lemma is None:
         case_lemma = case_marker_lemma_for_span(
@@ -1500,7 +1573,11 @@ def resolve_accusative_type(
     case_lemma = _resolve_raw_case_marker_lemma(
         tokens, span_start, span_end, seed_idx, case="Acc"
     )
-    acc_type = classify_accusative_type(token, case_lemma)
+    # A coordinated conjunct (*… und Katze*) plays the role of its first conjunct.
+    anchor = tokens[_nominal_conj_anchor_chain(tokens, head_idx)[-1]]
+    acc_type = classify_accusative_type(
+        {**token, "deprel": anchor.get("deprel")}, case_lemma
+    )
     preposition = (
         normalize_case_prep_lemma(case_lemma)
         if acc_type == ACCUSATIVE_PREP_TYPE
@@ -1925,7 +2002,9 @@ def iter_case_conversion_pairs(
 
             def _seed_processing_order(idx: int) -> Tuple[int, int]:
                 """Prepositional dative spans before nominal ``nmod`` spans; wider first."""
-                span_indices = find_nominal_group_indices(tokens, idx)
+                span_indices = find_nominal_group_indices(
+                    tokens, idx, exclude_pp_nmod=source_case == "Acc"
+                )
                 gs, ge = span_indices[0], span_indices[-1]
                 phrase_head_idx = dative_nominal_head_index(
                     tokens, gs, ge, fallback_idx=idx
@@ -1951,18 +2030,41 @@ def iter_case_conversion_pairs(
                 if report is not None:
                     report.accusative_seed_tokens_seen += 1
 
-                span_indices = find_nominal_group_indices(tokens, idx)
+                span_indices = find_nominal_group_indices(
+                    tokens, idx, exclude_pp_nmod=source_case == "Acc"
+                )
                 group_start, group_end = span_indices[0], span_indices[-1]
                 phrase_head_idx = dative_nominal_head_index(
-                    tokens, group_start, group_end, fallback_idx=idx
+                    tokens, group_start, group_end, fallback_idx=idx,
+                    case=source_case,
                 )
-                governing_lemma = case_marker_lemma_for_span(
-                    tokens,
-                    group_start,
-                    group_end,
-                    phrase_head_idx=phrase_head_idx,
-                )
+                if source_case == "Acc":
+                    governing_lemma = strict_case_marker_lemma(
+                        tokens, phrase_head_idx
+                    )
+                else:
+                    governing_lemma = case_marker_lemma_for_span(
+                        tokens,
+                        group_start,
+                        group_end,
+                        phrase_head_idx=phrase_head_idx,
+                    )
                 if is_genitive_preposition(governing_lemma):
+                    continue
+                if (
+                    source_case == "Acc"
+                    and normalize_case_prep_lemma(governing_lemma)
+                    in DATIVE_ONLY_PREPS
+                ):
+                    # A dative-only preposition cannot govern a real accusative:
+                    # the ``Case=Acc`` tag is a treebank annotation error, so the
+                    # gold is not a valid accusative item.
+                    _record_unconverted_span(
+                        (group_start, group_end),
+                        span_indices,
+                        DATIVE_PREP_WITH_ACC_TOKEN_REASON,
+                    )
+                    processed_spans.append((group_start, group_end))
                     continue
 
                 span_indices, coord_drop_reason = expand_coordination_group_span(

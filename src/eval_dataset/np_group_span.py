@@ -172,11 +172,22 @@ def _nominal_head_case(
     return None
 
 
+def _has_case_adp_child(tokens: List[Dict[str, Any]], idx: int) -> bool:
+    head_id = tokens[idx].get("id")
+    return any(
+        t.get("head") == head_id
+        and _deprel_base(t.get("deprel")) == "case"
+        and t.get("upos") == "ADP"
+        for t in tokens
+    )
+
+
 def _down_edge_ok(
     tokens: List[Dict[str, Any]],
     child_idx: int,
     parent_idx: int,
     id_to_idx: Dict[str, int],
+    exclude_pp_nmod: bool = False,
 ) -> bool:
     child = tokens[child_idx]
     if child.get("upos") == "PUNCT":
@@ -202,6 +213,10 @@ def _down_edge_ok(
             and tokens[parent_idx].get("upos") in {"NOUN", "PROPN"}
         ):
             return True
+        # Opt-in: a genitive-tagged ``nmod`` that carries its own ``case`` ADP is
+        # a PP (*Ermittlungen wegen X*, *Gebiete nördlich des Y*), not an attribute.
+        if exclude_pp_nmod and _has_case_adp_child(tokens, child_idx):
+            return False
         return _nominal_head_case(tokens, child_idx, id_to_idx) == "Gen"
     return drel in _WALK_UP_DEPS
 
@@ -400,7 +415,9 @@ def _prepend_misattached_pp_prefix(
     return span_indices
 
 
-def _collect_np_indices(tokens: List[Dict[str, Any]], head_idx: int) -> Set[int]:
+def _collect_np_indices(
+    tokens: List[Dict[str, Any]], head_idx: int, exclude_pp_nmod: bool = False
+) -> Set[int]:
     id_to_idx = _id_to_index(tokens)
     collected: Set[int] = {head_idx}
     # ``appos_depth``: 0 at phrase head; 1 under a direct ``appos`` dependent.
@@ -411,7 +428,7 @@ def _collect_np_indices(tokens: List[Dict[str, Any]], head_idx: int) -> Set[int]
         for j, t in enumerate(tokens):
             if j in collected:
                 continue
-            if not _down_edge_ok(tokens, j, p, id_to_idx):
+            if not _down_edge_ok(tokens, j, p, id_to_idx, exclude_pp_nmod):
                 continue
             drel = _deprel_base(t.get("deprel"))
             if drel == "appos" and appos_depth >= 1:
@@ -423,13 +440,16 @@ def _collect_np_indices(tokens: List[Dict[str, Any]], head_idx: int) -> Set[int]
 
 
 def find_nominal_group_indices(
-    tokens: List[Dict[str, Any]], seed_idx: int
+    tokens: List[Dict[str, Any]], seed_idx: int, *, exclude_pp_nmod: bool = False
 ) -> Tuple[int, ...]:
     """
     Sorted token indices in the nominal phrase containing *seed_idx*.
 
     Only indices that are linked to the phrase head via internal nominal deps
     are included (not every token between min and max in linear order).
+
+    ``exclude_pp_nmod`` additionally drops genitive-tagged ``nmod`` dependents that
+    carry their own ``case`` ADP (genitive-preposition PPs such as *wegen X*).
     """
     if not tokens or not (0 <= seed_idx < len(tokens)):
         return (seed_idx,)
@@ -440,6 +460,6 @@ def find_nominal_group_indices(
     if misattached_np is not None:
         return misattached_np
     h = walk_np_head_index(tokens, seed_idx)
-    cluster = _collect_np_indices(tokens, h)
+    cluster = _collect_np_indices(tokens, h, exclude_pp_nmod)
     spanned = _prepend_misattached_pp_prefix(tokens, tuple(sorted(cluster)))
     return _prepend_misattached_article_np_prefix(tokens, spanned)
