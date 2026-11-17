@@ -22,14 +22,19 @@ from datasets import Dataset
 from tqdm import tqdm
 
 
-# this file: Morphological/src/pretraining_dataset/nllb_subset/...
-REPO_ROOT = Path(__file__).resolve().parents[3]
+# this file: Morphological/src/pretraining_dataset/extract_german_phase_2.py
+REPO_ROOT = Path(__file__).resolve().parents[2]
 PRETRAINING_DIR = Path(__file__).resolve().parents[1]
 if str(PRETRAINING_DIR) not in sys.path:
     sys.path.insert(0, str(PRETRAINING_DIR))
 
-NLLB_DE_DIR = REPO_ROOT / "data" / "NLLB" # / "NLLB.de-tr.de"
-TXT_SAVE_DIR = REPO_ROOT / "data" / "NLLB_100M"
+NLLB_DE_DIR = REPO_ROOT / "data" / "trilingual_parallel_data" / "NLLB" / "de"
+# German side of the 100M trilingual subset (extract_100m_en_tr_de.py); these
+# sentences are excluded so phase 2 contains only unseen German.
+TRILINGUAL_DE_PATH = (
+    REPO_ROOT / "data" / "trilingual_100M_en_tr_de" / "trilingual_100M.de"
+)
+TXT_SAVE_DIR = REPO_ROOT / "data" / "NLLB_100M_phase_2"
 DEFAULT_OUTPUT_PATH = TXT_SAVE_DIR / "NLLB_100M.de"
 
 # NLLB is already sentence-segmented. Use the same quality floor as the
@@ -50,14 +55,17 @@ def get_log_normal_pdf(x: float, mu: float, sigma: float) -> float:
     )
 
 
-def iter_german_lines(input_dir: Path):
-    """Yield stripped German sentences from NLLB text files in input_dir."""
+def list_german_files(input_dir: Path) -> list[Path]:
     files = sorted(input_dir.glob("*.de"))
     if not files:
         files = sorted(p for p in input_dir.iterdir() if p.is_file())
     if not files:
         raise FileNotFoundError(f"No German NLLB files found in {input_dir}")
+    return files
 
+
+def iter_german_lines(files: list[Path]):
+    """Yield stripped German sentences from the given NLLB text files."""
     for path in files:
         print(f"Reading {path}...")
         with path.open("r", encoding="utf-8") as f:
@@ -65,6 +73,20 @@ def iter_german_lines(input_dir: Path):
                 text = raw.replace("\n", " ").strip()
                 if text:
                     yield text
+
+
+def load_excluded_hashes(path: Path) -> set[int]:
+    """Hash every German sentence of the trilingual subset."""
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Trilingual German file not found: {path}. "
+            "Run extract_100m_en_tr_de.py first."
+        )
+    print(f"Loading German sentences to exclude from {path}...")
+    with path.open("r", encoding="utf-8") as f:
+        excluded = {hash(line.strip()) for line in f if line.strip()}
+    print(f"Excluding {len(excluded):,} sentences.")
+    return excluded
 
 
 def extract_german_subset(
@@ -76,6 +98,7 @@ def extract_german_subset(
     byte_premium: float,
     input_dir: Path = NLLB_DE_DIR,
     token: str | None = None,
+    exclude_path: Path = TRILINGUAL_DE_PATH,
 ) -> None:
     del token  # accepted for CLI compatibility with the sbatch wrapper
 
@@ -101,6 +124,8 @@ def extract_german_subset(
             f"median={target_median}"
         )
 
+    excluded = load_excluded_hashes(exclude_path)
+
     mu = math.log(target_median)
     sigma = math.sqrt(2 * math.log(target_mean / target_median))
 
@@ -109,12 +134,30 @@ def extract_german_subset(
     pool_total_bytes = 0
     n_seen = 0
     n_kept = 0
+    n_excluded = 0
 
-    for text in tqdm(iter_german_lines(input_dir), desc="Buffering candidates"):
+    # Bernoulli-sample lines uniformly over the WHOLE corpus (instead of
+    # stopping after the first few GB) so the pool is not biased toward the
+    # start of the file. p is chosen so the pool is ~POOL_MULTIPLIER x target.
+    files = list_german_files(input_dir)
+    total_file_bytes = sum(f.stat().st_size for f in files)
+    keep_prob = min(1.0, target_bytes * POOL_MULTIPLIER / total_file_bytes)
+    print(
+        f"Corpus size {total_file_bytes / 1e9:.1f} GB; "
+        f"per-line keep probability {keep_prob:.4f}"
+    )
+    pool_rng = random.Random(SEED)
+
+    for text in tqdm(iter_german_lines(files), desc="Buffering candidates"):
         n_seen += 1
+        if keep_prob < 1.0 and pool_rng.random() >= keep_prob:
+            continue
         char_len = len(text)
         word_count = len(text.split())
         if word_count < MIN_WORDS or char_len > MAX_CHARS:
+            continue
+        if hash(text) in excluded:
+            n_excluded += 1
             continue
 
         line = text + "\n"
@@ -124,15 +167,18 @@ def extract_german_subset(
         pool_total_bytes += line_bytes
         n_kept += 1
 
-        if pool_total_bytes > target_bytes * POOL_MULTIPLIER:
-            break
-
     print(
-        f"\nScanned {n_seen:,} lines, kept {n_kept:,} candidates "
+        f"\nScanned {n_seen:,} lines, excluded {n_excluded:,} trilingual-subset "
+        f"sentences, kept {n_kept:,} candidates "
         f"({pool_total_bytes / 1024 / 1024:.2f} MB). Now sampling..."
     )
     if not pool_bins:
         raise RuntimeError("No candidate sentences remained after length filters.")
+    if pool_total_bytes < 2 * target_bytes:
+        print(
+            f"WARNING: pool ({pool_total_bytes:,} B) is under 2x target; "
+            "raise POOL_MULTIPLIER for better length-distribution matching."
+        )
 
     bin_probs = {}
     for bin_idx in pool_bins:
@@ -343,6 +389,12 @@ def main() -> None:
         help="Directory containing NLLB German text files",
     )
     parser.add_argument(
+        "--exclude-file",
+        type=Path,
+        default=TRILINGUAL_DE_PATH,
+        help="German file from the 100M trilingual subset whose sentences are excluded",
+    )
+    parser.add_argument(
         "--output-path",
         type=Path,
         default=DEFAULT_OUTPUT_PATH,
@@ -363,6 +415,7 @@ def main() -> None:
             args.byte_premium,
             input_dir=args.input_dir,
             token=args.token,
+            exclude_path=args.exclude_file,
         )
 
     if not output_path.exists():

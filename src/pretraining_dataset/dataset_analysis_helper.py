@@ -45,225 +45,219 @@ def tokenize_text(text, lowercase=True):
     return tokens
 
 
-def analyze_dataset(dataset, dataset_name):
-    """Analyze parallel corpus dataset and save visualizations."""
-    print("Extracting data:")
-    # Extract data
-    en_texts = dataset['en']
-    tr_texts = dataset['tr']
-    
-    print("Compute statistics:")
-    # Compute statistics
-    en_word_counts = [word_count(t) for t in en_texts]
-    tr_word_counts = [word_count(t) for t in tr_texts]
-    en_char_counts = [char_count(t) for t in en_texts]
-    tr_char_counts = [char_count(t) for t in tr_texts]
+_LANG_STYLE = {
+    'en': ('English', 'blue', 'lightblue'),
+    'tr': ('Turkish', 'orange', 'wheat'),
+    'de': ('German', 'green', 'lightgreen'),
+}
+_LANG_ORDER = ['en', 'tr', 'de']
 
-    total_en_words = sum(en_word_counts)
-    total_tr_words = sum(tr_word_counts)
-    total_en_chars = sum(en_char_counts)
-    total_tr_chars = sum(tr_char_counts)
+
+def analyze_dataset(dataset, dataset_name):
+    """Analyze a parallel corpus with any number of language columns.
+
+    Every column of `dataset` is treated as a language (en, tr, de first, then
+    any others). Per-language statistics are computed for all of them, and
+    length ratio / correlation / misalignment statistics for every language pair.
+    """
+    from itertools import combinations
+
+    cols = dataset.column_names
+    langs = [l for l in _LANG_ORDER if l in cols] + [c for c in cols if c not in _LANG_ORDER]
+    if len(langs) < 2:
+        raise ValueError(f"Need at least 2 language columns, found: {cols}")
+    pairs = list(combinations(langs, 2))
+
+    def name(l):
+        return _LANG_STYLE.get(l, (l.upper(), 'gray', 'lightgray'))[0]
+
+    def color(l):
+        return _LANG_STYLE.get(l, (l.upper(), 'gray', 'lightgray'))[1]
+
+    def light(l):
+        return _LANG_STYLE.get(l, (l.upper(), 'gray', 'lightgray'))[2]
+
+    print(f"Extracting data (languages: {', '.join(langs)}):")
+    texts = {l: dataset[l] for l in langs}
+
+    print("Compute statistics:")
+    wc = {l: [word_count(t) for t in texts[l]] for l in langs}
+    cc = {l: [char_count(t) for t in texts[l]] for l in langs}
 
     print("Vocabulary analysis:")
-    # Vocabulary analysis (with proper tokenization - removes punctuation, filters digits)
-    en_all_words = []
-    for text in en_texts:
-        en_all_words.extend(tokenize_text(text))
-    tr_all_words = []
-    for text in tr_texts:
-        tr_all_words.extend(tokenize_text(text))
-    en_vocab = set(en_all_words)
-    tr_vocab = set(tr_all_words)
-    en_ttr = len(en_vocab) / len(en_all_words) if en_all_words else 0
-    tr_ttr = len(tr_vocab) / len(tr_all_words) if tr_all_words else 0
+    # Stream tokens (don't keep every token in memory: matters for 100M-word corpora)
+    vocab, n_tokens = {}, {}
+    for l in langs:
+        v, n = set(), 0
+        for t in texts[l]:
+            toks = tokenize_text(t)
+            n += len(toks)
+            v.update(toks)
+        vocab[l], n_tokens[l] = v, n
+    ttr = {l: len(vocab[l]) / n_tokens[l] if n_tokens[l] else 0 for l in langs}
 
     print("Length ratios and correlation:")
-    # Length ratios and correlation
-    length_ratios = [en / tr if tr > 0 else 0 for en, tr in zip(en_char_counts, tr_char_counts)]
-    length_ratios_valid = [r for r in length_ratios if r > 0]
-    correlation = np.corrcoef(en_char_counts, tr_char_counts)[0, 1]
+    ratios, correlation, extreme = {}, {}, {}
+    for a, b in pairs:
+        r = [x / y for x, y in zip(cc[a], cc[b]) if y > 0 and x > 0]
+        ratios[(a, b)] = r
+        extreme[(a, b)] = sum(1 for v in r if v < 0.3 or v > 3.0)
+        correlation[(a, b)] = np.corrcoef(cc[a], cc[b])[0, 1] if len(cc[a]) > 1 else float('nan')
 
     print("Quality indicators:")
-    # Quality indicators
-    empty_en = sum(1 for t in en_texts if len(t.strip()) == 0)
-    empty_tr = sum(1 for t in tr_texts if len(t.strip()) == 0)
-    very_short_en = sum(1 for c in en_char_counts if c < 3)
-    very_short_tr = sum(1 for c in tr_char_counts if c < 3)
-    very_long_en = sum(1 for c in en_char_counts if c > 500)
-    very_long_tr = sum(1 for c in tr_char_counts if c > 500)
-    extreme_ratios = sum(1 for r in length_ratios_valid if r < 0.3 or r > 3.0)
+    empty = {l: sum(1 for t in texts[l] if len(t.strip()) == 0) for l in langs}
+    very_short = {l: sum(1 for c in cc[l] if c < 3) for l in langs}
+    very_long = {l: sum(1 for c in cc[l] if c > 500) for l in langs}
 
     # ============================================================
     # VISUALIZATIONS (save only, no display)
     # ============================================================
     print("VISUALIZATIONS")
-    fig, axes = plt.subplots(2, 3, figsize=(15, 10))
+    ncols = max(len(langs), len(pairs), 2)
+    fig, axes = plt.subplots(4, ncols, figsize=(5 * ncols, 18), squeeze=False)
+    for ax in axes.flat:
+        ax.axis('off')
 
-    # 1. Character length distribution - English
-    axes[0, 0].hist(en_char_counts, bins=50, alpha=0.7, color='blue', edgecolor='black')
-    axes[0, 0].axvline(np.mean(en_char_counts), color='red', linestyle='--', label=f'Mean: {np.mean(en_char_counts):.1f}')
-    axes[0, 0].axvline(np.median(en_char_counts), color='green', linestyle='--', label=f'Median: {np.median(en_char_counts):.1f}')
-    axes[0, 0].set_xlabel('Character Length')
-    axes[0, 0].set_ylabel('Frequency')
-    axes[0, 0].set_title('English - Character Length Distribution')
-    axes[0, 0].legend()
+    def on(row, col):
+        ax = axes[row, col]
+        ax.axis('on')
+        return ax
 
-    # 2. Character length distribution - Turkish
-    axes[0, 1].hist(tr_char_counts, bins=50, alpha=0.7, color='orange', edgecolor='black')
-    axes[0, 1].axvline(np.mean(tr_char_counts), color='red', linestyle='--', label=f'Mean: {np.mean(tr_char_counts):.1f}')
-    axes[0, 1].axvline(np.median(tr_char_counts), color='green', linestyle='--', label=f'Median: {np.median(tr_char_counts):.1f}')
-    axes[0, 1].set_xlabel('Character Length')
-    axes[0, 1].set_ylabel('Frequency')
-    axes[0, 1].set_title('Turkish - Character Length Distribution')
-    axes[0, 1].legend()
+    # Row 0: character length distribution per language
+    for i, l in enumerate(langs):
+        ax = on(0, i)
+        ax.hist(cc[l], bins=50, alpha=0.7, color=color(l), edgecolor='black')
+        ax.axvline(np.mean(cc[l]), color='red', linestyle='--', label=f'Mean: {np.mean(cc[l]):.1f}')
+        ax.axvline(np.median(cc[l]), color='green', linestyle='--', label=f'Median: {np.median(cc[l]):.1f}')
+        ax.set_xlabel('Character Length')
+        ax.set_ylabel('Frequency')
+        ax.set_title(f'{name(l)} - Character Length Distribution')
+        ax.legend()
 
-    # 3. Word count distribution comparison
-    axes[0, 2].hist(en_word_counts, bins=30, alpha=0.5, color='blue', label='English', edgecolor='black')
-    axes[0, 2].hist(tr_word_counts, bins=30, alpha=0.5, color='orange', label='Turkish', edgecolor='black')
-    axes[0, 2].set_xlabel('Words per Sentence')
-    axes[0, 2].set_ylabel('Frequency')
-    axes[0, 2].set_title('Word Count Distribution (EN vs TR)')
-    axes[0, 2].legend()
+    # Row 1: pairwise char-length scatter
+    for i, (a, b) in enumerate(pairs):
+        ax = on(1, i)
+        ax.scatter(cc[a], cc[b], alpha=0.1, s=1)
+        m = max(max(cc[a]), max(cc[b]))
+        ax.plot([0, m], [0, m], 'r--', label='y=x')
+        ax.set_xlabel(f'{name(a)} Character Length')
+        ax.set_ylabel(f'{name(b)} Character Length')
+        ax.set_title(f'{a.upper()} vs {b.upper()} Length (corr={correlation[(a, b)]:.3f})')
+        ax.legend()
 
-    # 4. Scatter plot: EN vs TR character lengths
-    axes[1, 0].scatter(en_char_counts, tr_char_counts, alpha=0.1, s=1)
-    axes[1, 0].plot([0, max(en_char_counts)], [0, max(en_char_counts)], 'r--', label='y=x')
-    axes[1, 0].set_xlabel('English Character Length')
-    axes[1, 0].set_ylabel('Turkish Character Length')
-    axes[1, 0].set_title(f'EN vs TR Length (corr={correlation:.3f})')
-    axes[1, 0].legend()
+    # Row 2: pairwise length ratio distribution
+    for i, (a, b) in enumerate(pairs):
+        ax = on(2, i)
+        r = ratios[(a, b)]
+        if r:
+            ax.hist(r, bins=50, alpha=0.7, color='purple', edgecolor='black')
+            ax.axvline(1.0, color='red', linestyle='--', label='Ratio = 1.0')
+            ax.axvline(np.mean(r), color='green', linestyle='--', label=f'Mean: {np.mean(r):.2f}')
+            ax.legend()
+        ax.set_xlabel(f'Length Ratio ({a.upper()}/{b.upper()})')
+        ax.set_ylabel('Frequency')
+        ax.set_title(f'{a.upper()}/{b.upper()} Length Ratio Distribution')
+        ax.set_xlim(0, 5)
 
-    # 5. Length ratio distribution
-    axes[1, 1].hist(length_ratios_valid, bins=50, alpha=0.7, color='purple', edgecolor='black')
-    axes[1, 1].axvline(1.0, color='red', linestyle='--', label='Ratio = 1.0')
-    axes[1, 1].axvline(np.mean(length_ratios_valid), color='green', linestyle='--', label=f'Mean: {np.mean(length_ratios_valid):.2f}')
-    axes[1, 1].set_xlabel('Length Ratio (EN/TR)')
-    axes[1, 1].set_ylabel('Frequency')
-    axes[1, 1].set_title('Source/Target Length Ratio Distribution')
-    axes[1, 1].set_xlim(0, 5)
-    axes[1, 1].legend()
+    # Row 3: word count comparison + box plot (all languages)
+    ax = on(3, 0)
+    for l in langs:
+        ax.hist(wc[l], bins=30, alpha=0.5, color=color(l), label=name(l), edgecolor='black')
+    ax.set_xlabel('Words per Sentence')
+    ax.set_ylabel('Frequency')
+    ax.set_title(f"Word Count Distribution ({' vs '.join(l.upper() for l in langs)})")
+    ax.legend()
 
-    # 6. Box plots comparison
-    box_data = [en_char_counts, tr_char_counts]
-    bp = axes[1, 2].boxplot(box_data, labels=['English', 'Turkish'], patch_artist=True)
-    bp['boxes'][0].set_facecolor('lightblue')
-    bp['boxes'][1].set_facecolor('wheat')
-    axes[1, 2].set_ylabel('Character Length')
-    axes[1, 2].set_title('Character Length Box Plot')
+    ax = on(3, 1)
+    bp = ax.boxplot([cc[l] for l in langs], labels=[name(l) for l in langs], patch_artist=True)
+    for box, l in zip(bp['boxes'], langs):
+        box.set_facecolor(light(l))
+    ax.set_ylabel('Character Length')
+    ax.set_title('Character Length Box Plot')
 
     plt.tight_layout()
     plot_path = _analysis_plot_path(f"dataset_analysis_{dataset_name}.png")
     plt.savefig(plot_path, dpi=150, bbox_inches="tight")
-    plt.close(fig)  # Close without displaying
-
+    plt.close(fig)
 
     # ============================================================
     # SUMMARY TABLE
     # ============================================================
     print("SUMMARY TABLE")
-    summary_data = {
-        'Metric': [
-            'Total Samples',
-            'Total Words',
-            'Total Characters',
-            'Vocabulary Size',
-            'Type-Token Ratio',
-            'Avg Words/Sentence',
-            'Avg Chars/Sentence',
-            'Median Chars/Sentence',
-            'Std Dev (chars)',
-            'Min Chars',
-            'Max Chars',
-            'Empty Sentences',
-            'Very Short (<3 chars)',
-            'Very Long (>500 chars)',
-            'Potential Misalignments'
-        ],
-        'English': [
+    metrics = [
+        'Total Samples', 'Total Words', 'Total Characters', 'Vocabulary Size',
+        'Type-Token Ratio', 'Avg Words/Sentence', 'Avg Chars/Sentence',
+        'Median Chars/Sentence', 'Std Dev (chars)', 'Min Chars', 'Max Chars',
+        'Empty Sentences', 'Very Short (<3 chars)', 'Very Long (>500 chars)',
+    ]
+    summary_data = {'Metric': metrics}
+    for l in langs:
+        summary_data[name(l)] = [
             f"{len(dataset):,}",
-            f"{total_en_words:,}",
-            f"{total_en_chars:,}",
-            f"{len(en_vocab):,}",
-            f"{en_ttr:.4f}",
-            f"{np.mean(en_word_counts):.2f}",
-            f"{np.mean(en_char_counts):.2f}",
-            f"{np.median(en_char_counts):.2f}",
-            f"{np.std(en_char_counts):.2f}",
-            f"{np.min(en_char_counts)}",
-            f"{np.max(en_char_counts)}",
-            f"{empty_en:,}",
-            f"{very_short_en:,}",
-            f"{very_long_en:,}",
-            f"{extreme_ratios:,} ({100*extreme_ratios/len(length_ratios_valid):.2f}%)"
-        ],
-        'Turkish': [
-            f"{len(dataset):,}",
-            f"{total_tr_words:,}",
-            f"{total_tr_chars:,}",
-            f"{len(tr_vocab):,}",
-            f"{tr_ttr:.4f}",
-            f"{np.mean(tr_word_counts):.2f}",
-            f"{np.mean(tr_char_counts):.2f}",
-            f"{np.median(tr_char_counts):.2f}",
-            f"{np.std(tr_char_counts):.2f}",
-            f"{np.min(tr_char_counts)}",
-            f"{np.max(tr_char_counts)}",
-            f"{empty_tr:,}",
-            f"{very_short_tr:,}",
-            f"{very_long_tr:,}",
-            "-"
+            f"{sum(wc[l]):,}",
+            f"{sum(cc[l]):,}",
+            f"{len(vocab[l]):,}",
+            f"{ttr[l]:.4f}",
+            f"{np.mean(wc[l]):.2f}",
+            f"{np.mean(cc[l]):.2f}",
+            f"{np.median(cc[l]):.2f}",
+            f"{np.std(cc[l]):.2f}",
+            f"{np.min(cc[l])}",
+            f"{np.max(cc[l])}",
+            f"{empty[l]:,}",
+            f"{very_short[l]:,}",
+            f"{very_long[l]:,}",
         ]
-    }
 
     summary_df = pd.DataFrame(summary_data)
     print(f"\n{'=' * 60}")
     print(f"DATASET SUMMARY: {dataset_name}")
     print(f"{'=' * 60}")
     print(summary_df.to_string(index=False))
-    print(f"\nCorrelation (EN vs TR char length): {correlation:.4f}")
-    print(f"Visualization saved to: {plot_path}")
+
+    print(f"\n{'=' * 60}")
+    print("PAIRWISE ALIGNMENT STATS")
+    print(f"{'=' * 60}")
+    for a, b in pairs:
+        n = len(ratios[(a, b)])
+        pct = 100 * extreme[(a, b)] / n if n else 0.0
+        mean_r = np.mean(ratios[(a, b)]) if n else float('nan')
+        print(
+            f"{a.upper()}-{b.upper()}: char-length corr={correlation[(a, b)]:.4f} | "
+            f"mean ratio={mean_r:.2f} | potential misalignments "
+            f"(ratio <0.3 or >3.0)={extreme[(a, b)]:,} ({pct:.2f}%)"
+        )
+    print(f"\nVisualization saved to: {plot_path}")
 
     # ============================================================
     # SAMPLE DATA INSPECTION
     # ============================================================
-    print("\n" + "=" * 60)
-    print("SAMPLE SENTENCE PAIRS")
-    print("=" * 60)
-    # Random samples
-    np.random.seed(42)
-    sample_indices = np.random.choice(len(dataset), 5, replace=False)
+    def show(idx, limit=None):
+        row = dataset[int(idx)]
+        for l in langs:
+            t = row[l] if limit is None else row[l][:limit] + '...'
+            print(f"  {l.upper()}: {t!r}" if limit is not None else f"{l.upper()}: {t}")
 
+    print("\n" + "=" * 60)
+    print("SAMPLE SENTENCE TUPLES")
+    print("=" * 60)
+    np.random.seed(42)
+    sample_indices = np.random.choice(len(dataset), min(5, len(dataset)), replace=False)
     for i, idx in enumerate(sample_indices):
         print(f"\n--- Sample {i+1} (idx={idx}) ---")
-        print(f"EN: {dataset[int(idx)]['en']}")
-        print(f"TR: {dataset[int(idx)]['tr']}")
+        row = dataset[int(idx)]
+        for l in langs:
+            print(f"{l.upper()}: {row[l]}")
 
-    # Show some edge cases
     print("\n" + "=" * 60)
     print("EDGE CASES")
     print("=" * 60)
-
-    # Shortest sentences
-    shortest_en_idx = np.argmin(en_char_counts)
-    shortest_tr_idx = np.argmin(tr_char_counts)
-    longest_en_idx = np.argmax(en_char_counts)
-    longest_tr_idx = np.argmax(tr_char_counts)
-
-    print(f"\nShortest English sentence (idx={shortest_en_idx}):")
-    print(f"  EN: '{dataset[int(shortest_en_idx)]['en']}'")
-    print(f"  TR: '{dataset[int(shortest_en_idx)]['tr']}'")
-
-    print(f"\nShortest Turkish sentence (idx={shortest_tr_idx}):")
-    print(f"  EN: '{dataset[int(shortest_tr_idx)]['en']}'")
-    print(f"  TR: '{dataset[int(shortest_tr_idx)]['tr']}'")
-
-    print(f"\nLongest English sentence (idx={longest_en_idx}):")
-    print(f"  EN: '{dataset[int(longest_en_idx)]['en'][:1000]}...'")
-    print(f"  TR: '{dataset[int(longest_en_idx)]['tr'][:1000]}...'")
-
-    print(f"\nLongest Turkish sentence (idx={longest_tr_idx}):")
-    print(f"  EN: '{dataset[int(longest_tr_idx)]['en'][:1000]}...'")
-    print(f"  TR: '{dataset[int(longest_tr_idx)]['tr'][:1000]}...'")
+    for l in langs:
+        s_idx, l_idx = int(np.argmin(cc[l])), int(np.argmax(cc[l]))
+        print(f"\nShortest {name(l)} sentence (idx={s_idx}):")
+        show(s_idx, limit=1000)
+        print(f"\nLongest {name(l)} sentence (idx={l_idx}):")
+        show(l_idx, limit=1000)
 
 
 def analyze_single_language_dataset(dataset, dataset_name, language='en'):

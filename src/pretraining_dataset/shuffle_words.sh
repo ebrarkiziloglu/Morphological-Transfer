@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --partition preempt
 #SBATCH --gres gpu:1
-#SBATCH --output logs/%j_shuffle-NLLB-100M-TR-Stripped.out
+#SBATCH --output logs/%j_shuffle-trilingual_phase1.out
 #SBATCH --time 24:00:00
 
 source ~/.bashrc
@@ -9,8 +9,8 @@ conda activate morph2
 
 set -euo pipefail
 
-IN_DIR=/hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M
-OUT_DIR=/hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M_shuffled
+IN_DIR=/hnvme/workspace/b279bb15-morph/Morphological/data/trilingual_100M_en_tr_de
+OUT_DIR=/hnvme/workspace/b279bb15-morph/Morphological/data/trilingual_100M_en_tr_de
 
 DIST=geometric
 RATE=0.3
@@ -21,7 +21,7 @@ SEED=42
 mkdir -p "${OUT_DIR}"
 
 python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/shuffle_words.py \
-    --input  "${IN_DIR}/NLLB_100M_stripped_nominal_infl.tr" \
+    --input  "${IN_DIR}/trilingual_100M_stripped_case.tr" \
     --output_dir "${OUT_DIR}" \
     --tokenize       "whitespace" \
     --corruption_rate "${RATE}" \
@@ -33,7 +33,7 @@ python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/sh
 
 
 python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/shuffle_words.py \
-    --input  "${IN_DIR}/NLLB_100M_stripped_postp.tr" \
+    --input  "${IN_DIR}/trilingual_100M_stripped_postp.tr" \
     --output_dir "${OUT_DIR}" \
     --tokenize       "whitespace" \
     --corruption_rate "${RATE}" \
@@ -44,7 +44,7 @@ python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/sh
     --save_config
 
 python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/shuffle_words.py \
-    --input  "${IN_DIR}/NLLB_100M_stripped_case.tr" \
+    --input  "${IN_DIR}/trilingual_100M_stripped_nominal.tr" \
     --output_dir "${OUT_DIR}" \
     --tokenize       "whitespace" \
     --corruption_rate "${RATE}" \
@@ -55,7 +55,7 @@ python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/sh
     --save_config
 
 python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/shuffle_words.py \
-    --input  "${IN_DIR}/NLLB_100M_stripped_nominal.tr" \
+    --input  "${IN_DIR}/trilingual_100M_stripped_nominal_infl.tr" \
     --output_dir "${OUT_DIR}" \
     --tokenize       "whitespace" \
     --corruption_rate "${RATE}" \

@@ -14,11 +14,11 @@ export HF_HUB_DISABLE_XET=1
 
 MODES=(case postp nominal nominal_infl)
 MODE=${MODES[$SLURM_ARRAY_TASK_ID]}
-D=/hnvme/workspace/b279bb15-morph/Morphological/data/NLLB_100M
+D=/hnvme/workspace/b279bb15-morph/Morphological/data/trilingual_100M_en_tr_de
 
 python3 /hnvme/workspace/b279bb15-morph/Morphological/src/pretraining_dataset/remove_cases_from_turkish/remove_cases_from_tr_nllb.py \
-   --input $D/NLLB_100M.tr \
-   --output $D/NLLB_100M_stripped_${MODE}.tr \
+   --input $D/trilingual_100M.tr \
+   --output $D/trilingual_100M_stripped_${MODE}.tr \
    --mode $MODE \
    --num-workers $((SLURM_CPUS_PER_TASK - 2)) \
    --tag-batch-size 128
