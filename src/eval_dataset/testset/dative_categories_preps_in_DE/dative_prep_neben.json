@@ -209,19 +209,6 @@
   },
   {
     "split": "train",
-    "sent_id": "train-s8981",
-    "group_start": 18,
-    "group_end": 18,
-    "group_span_text": "dem",
-    "gold_text": "Der Verteidiger ist bis heute neben Bernie Parent, Wayne Gretzky und Mario Lemieux der einzige Spieler, dem dies gelang.",
-    "corrupted": "Der Verteidiger ist bis heute neben Bernie Parent, Wayne Gretzky und Mario Lemieux der einzige Spieler, den dies gelang.",
-    "is_pronoun": true,
-    "dative_type": "dative_prep_neben",
-    "preposition": "neben",
-    "category": "two_way_prep"
-  },
-  {
-    "split": "train",
     "sent_id": "train-s9239",
     "group_start": 1,
     "group_end": 2,

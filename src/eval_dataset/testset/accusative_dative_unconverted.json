@@ -33,6 +33,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s72",
+    "gold_text": "Ich bin seit fast 5 Jahren auf der Suche nach jemanden gewesen, der mich nicht übers Ohr hauen wollte.",
+    "seed_token_index": 10,
+    "group_start": 10,
+    "group_end": 10,
+    "group_span_text": "jemanden",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s77",
+    "gold_text": "Das Team ist super nett, ich fühle mich sehr gut aufgeboben und der Wohlfühlfaktor ist zu 100 % gegeben.",
+    "seed_token_index": 18,
+    "group_start": 17,
+    "group_end": 18,
+    "group_span_text": "100 %",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s98",
     "gold_text": "Es bietet nette Atmosphäre und eine motivierte und zuvorkommende Bedienung.",
     "seed_token_index": 5,
@@ -136,6 +156,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s267",
+    "gold_text": "Ich war bei Frau Dr.Röder - Dischinger zur Behandlung (2 Monate Wartezeit) meiner Akne, die ich seit 13 Jahre habe.",
+    "seed_token_index": 22,
+    "group_start": 21,
+    "group_end": 22,
+    "group_span_text": "13 Jahre",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -411,6 +441,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s506",
+    "gold_text": "Sind zum Kurzurlaub in Duhnen gewesen und fanden aus Zufall ganz am Ende der Strasse im Hafen dieses tolle Restaurant.",
+    "seed_token_index": 10,
+    "group_start": 10,
+    "group_end": 10,
+    "group_span_text": "Zufall",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s527",
     "gold_text": "Schwestern und Ärzte überzeugen durch Kompetenz, Freundlichkeit und Aufmerksamkeit.",
     "seed_token_index": 5,
@@ -633,6 +673,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s748",
+    "gold_text": "Bei Fahrrad Sondergeld habe ich 2010 einmal und 2005 ein zweites Mal ein Fahrrad gekauft.",
+    "seed_token_index": 1,
+    "group_start": 1,
+    "group_end": 2,
+    "group_span_text": "Fahrrad Sondergeld",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s755",
     "gold_text": "Es gibt auch Vespas und anderes, da kenne ich mich aber nicht aus.",
     "seed_token_index": 3,
@@ -662,6 +712,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s767",
+    "gold_text": "Ab ca. 1 Uhr war das Waschbecken aus unersichtlichem Grund verstopft.",
+    "seed_token_index": 4,
+    "group_start": 3,
+    "group_end": 4,
+    "group_span_text": "1 Uhr",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -1065,13 +1125,17 @@
     "group_start": 8,
     "group_end": 9,
     "group_span_text": "verschiedenen Aufstrich",
-    "reason": "no_Dat_row_matching_number_gender",
-    "first_fail_token_index": 8,
-    "first_fail_form": "verschiedenen",
-    "first_fail_lemma": "verschieden",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s1010",
+    "gold_text": "Frühstück ist okay mit Brötchen, Brot, verschiedenen Aufstrich und Kaffee & Tee.",
+    "seed_token_index": 11,
+    "group_start": 11,
+    "group_end": 11,
+    "group_span_text": "Kaffee",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -1081,13 +1145,7 @@
     "group_start": 3,
     "group_end": 9,
     "group_span_text": "meinen Welsh - Corgi - Cardigan Rüden",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 4,
-    "first_fail_form": "Welsh",
-    "first_fail_lemma": "Welsh",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -1315,6 +1373,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s1192",
+    "gold_text": "Zu diesem Preis echt ein Schnäppchen!",
+    "seed_token_index": 5,
+    "group_start": 1,
+    "group_end": 5,
+    "group_span_text": "diesem Preis echt ein Schnäppchen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s1201",
     "gold_text": "Wer dazu bissigen Humor vertragen kann und seine Kinder gut aufgehoben wissen will, der ist hier genau richtig.",
     "seed_token_index": 2,
@@ -1379,6 +1447,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s1255",
+    "gold_text": "Die direkte Nähe zum Bahnhof und versch. Busverbindungen hat viele Vorteile.",
+    "seed_token_index": 9,
+    "group_start": 7,
+    "group_end": 9,
+    "group_span_text": "versch Busverbindungen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s1257",
     "gold_text": "Die Zimmer sind mit viel Sinn für Design, Optik und Qualität ausgestattet und bieten erstaunlichen Comfort.",
     "seed_token_index": 15,
@@ -1402,6 +1480,26 @@
     "group_end": 11,
     "group_span_text": "Design, Optik und Qualität",
     "reason": "conjunction_with_comma"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s1258",
+    "gold_text": "Das alles bei einem -- wie ich finde -- sehr guten Preis - Leistungsverhältnis.",
+    "seed_token_index": 10,
+    "group_start": 3,
+    "group_end": 13,
+    "group_span_text": "einem -- wie ich finde -- sehr guten Preis - Leistungsverhältnis",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s1275",
+    "gold_text": "Damit bietet es ideale Voraussetzungen für ein gemütliches Sit - In bei Kaffee, Kuchen oder Eis.",
+    "seed_token_index": 16,
+    "group_start": 16,
+    "group_end": 16,
+    "group_span_text": "Eis",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -1553,6 +1651,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s1404",
+    "gold_text": "Ich - als ahnungslose Frau - war von der der Beratung und das Angebot sehr zufrieden!!",
+    "seed_token_index": 13,
+    "group_start": 12,
+    "group_end": 13,
+    "group_span_text": "das Angebot",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s1428",
     "gold_text": "Mir wurde es berichtet und das finde ich ja wohl echt \"Scheiße\".",
     "seed_token_index": 12,
@@ -1649,6 +1757,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s1449",
+    "gold_text": "Herr Hofmann und sein Team haben mit sehr viel Liebe zum Detail ihr Geschäft aufgebaut.",
+    "seed_token_index": 9,
+    "group_start": 8,
+    "group_end": 9,
+    "group_span_text": "viel Liebe",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s1452",
     "gold_text": "Kaffeetraum verkauft aromatisierten Kaffee in verschieden Geschmacksrichtungen.",
     "seed_token_index": 2,
@@ -1678,6 +1796,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s1486",
+    "gold_text": "Nach ca. 15 Minuten bin ich gegangen und überlege nun wo ich wohl am besten mein Geld lasse.",
+    "seed_token_index": 4,
+    "group_start": 3,
+    "group_end": 4,
+    "group_span_text": "15 Minuten",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -2425,6 +2553,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s1863",
+    "gold_text": "In fünf bis acht Jahren will der Familienbetrieb den Auslandsanteil am Umsatz von 15 auf 50 Prozent steigern.",
+    "seed_token_index": 17,
+    "group_start": 14,
+    "group_end": 17,
+    "group_span_text": "15 Prozent",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s1885",
+    "gold_text": "Die Partei war bei den Parlamentswahlen in den vergangenen Jahren von 18 auf neun Prozent der Stimmen zurückgefallen.",
+    "seed_token_index": 14,
+    "group_start": 11,
+    "group_end": 16,
+    "group_span_text": "18 auf neun Prozent der Stimmen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s1924",
     "gold_text": "Wenn einer offen alte stalinistische Parolen vertritt, muß das ein Ausschlußgrund sein.",
     "seed_token_index": 3,
@@ -2654,6 +2802,16 @@
     "group_end": 18,
     "group_span_text": "jedes Opernhaus oder Theater die Bibliotheken",
     "reason": "conjunction_with_comma"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s1992",
+    "gold_text": "Er war am Morgen als erster gekommen, sprach lange mit Wartenden, darunter Bekannte aus alten Tagen wie der verurteilte DDR -- Verteidigungsminister Heinz Keßler.",
+    "seed_token_index": 15,
+    "group_start": 12,
+    "group_end": 15,
+    "group_span_text": "Wartenden Bekannte",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -3407,13 +3565,7 @@
     "group_start": 40,
     "group_end": 45,
     "group_span_text": "ihrem definierten Ausgangspunkt",
-    "reason": "no_Dat_row_matching_number",
-    "first_fail_token_index": 44,
-    "first_fail_form": "definierten",
-    "first_fail_lemma": "definiert",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -3609,6 +3761,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s2363",
+    "gold_text": "Die Hauptindustriezweige in der Rajon sind die Produktion von mineralischen Düngemitteln, Faserstoffe, Möbeln und Energie.",
+    "seed_token_index": 12,
+    "group_start": 12,
+    "group_end": 12,
+    "group_span_text": "Faserstoffe",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s2370",
     "gold_text": "Durch eine kleine in den Kopf eingearbeitete Metallzunge verschließt der Kabelbinder durch Einschneiden der Zunge in den Kabelbinderkörper.",
     "seed_token_index": 1,
@@ -3638,6 +3800,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2376",
+    "gold_text": "Trancecore ist ein Subgenre des Hardcore Techno, der aus der Vermischung von Trance und Hardcore Techno entstand.",
+    "seed_token_index": 16,
+    "group_start": 15,
+    "group_end": 16,
+    "group_span_text": "Hardcore Techno",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -3718,6 +3890,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2390",
+    "gold_text": "Die beiden wichtigsten Arten der Kaffeepflanze sind Coffea arabica (Arabica - Kaffee) und Coffea canephora (Robusta - Kaffee) mit vielen Sorten / Varietäten.",
+    "seed_token_index": 26,
+    "group_start": 26,
+    "group_end": 26,
+    "group_span_text": "Varietäten",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -4099,6 +4281,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s2511",
+    "gold_text": "Rückblickend bezeichnet er diese Periode als persönlich sehr unglücklich, da er auf die Kritik der Studenten nicht angemessen reagiert hat und den Staat zu Hilfe rief, was darin gipfelte, dass die bayerische Polizei das Universitätsgebäude stürmte, um die darin versammelten revolutionären Studenten zu vertreiben.",
+    "seed_token_index": 25,
+    "group_start": 25,
+    "group_end": 25,
+    "group_span_text": "Hilfe",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2521",
+    "gold_text": "In Doldentrauben oder Doldenrispen stehen viele körbchenförmige Blütenstände, die einen Durchmesser von etwa 2 bis 2,5 cm aufweisen.",
+    "seed_token_index": 17,
+    "group_start": 14,
+    "group_end": 17,
+    "group_span_text": "2 bis 2,5 cm",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s2522",
     "gold_text": "Orgon begreift, dass seine Familie in Bezug auf Tartuffe recht hat und dieser ein Heuchler und Betrüger ist.",
     "seed_token_index": 9,
@@ -4137,13 +4339,17 @@
     "group_start": 9,
     "group_end": 16,
     "group_span_text": "dem Canadian Broadcasting Corporation CBC Network",
-    "reason": "no_Dat_row_matching_number",
-    "first_fail_token_index": 16,
-    "first_fail_form": "Network",
-    "first_fail_lemma": "Network",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2538",
+    "gold_text": "Nun gilt es ihn durch einen dritten Klick möglichst genau bei der 0 % - Marke der Leiste zu stoppen, um den Ball möglichst genau in die gewählte Richtung zu spielen.",
+    "seed_token_index": 13,
+    "group_start": 11,
+    "group_end": 17,
+    "group_span_text": "der 0 % - Marke der Leiste",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -4233,13 +4439,7 @@
     "group_start": 23,
     "group_end": 25,
     "group_span_text": "Arno Eugen Fritsche",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 25,
-    "first_fail_form": "Fritsche",
-    "first_fail_lemma": "Fritsche",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -4541,6 +4741,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s2668",
+    "gold_text": "Sie nahm 1983 an den Junioreneuropameisterschaften teil und gewann mit der deutschen 4 - mal - 400 - Meter - Staffel Bronze und wurde mit der 4 - mal - 100 - Meter - Staffel Vierte.",
+    "seed_token_index": 30,
+    "group_start": 25,
+    "group_end": 34,
+    "group_span_text": "der 4 - mal - 100 - Meter - Staffel",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2674",
+    "gold_text": "Nach Veröffentlichung von Embrace The Gutter und ein paar Tournen, verließ Sänger Dennis Miller die Band, um ein normales Leben zu führen.",
+    "seed_token_index": 9,
+    "group_start": 9,
+    "group_end": 9,
+    "group_span_text": "Tournen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s2675",
     "gold_text": "Einige dieser Stein - Katapulte, damals von den englischen Kriegsingenieuren als Warwulf bezeichnet, sind als Nachbauten rund um die heutige Burg platziert und können dort von Besuchern betrachtet werden.",
     "seed_token_index": 12,
@@ -4673,8 +4893,8 @@
     "gold_text": "September 1840 die Giulietta di Kelbar bei der in einem Fiasko endenden Uraufführung von Un giorno di regno von Giuseppe Verdi.",
     "seed_token_index": 2,
     "group_start": 2,
-    "group_end": 12,
-    "group_span_text": "die Giulietta di Kelbar bei der in einem Fiasko endenden Uraufführung",
+    "group_end": 5,
+    "group_span_text": "die Giulietta di Kelbar",
     "reason": "lemma_has_no_Dat_rows",
     "first_fail_token_index": 3,
     "first_fail_form": "Giulietta",
@@ -4974,6 +5194,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2836",
+    "gold_text": "Außer den Haupt - oder Melodiesaiten benutzen die Gadulkaspieler häufig Resonanzsaiten, die unter den Melodiensaiten angebracht sind.",
+    "seed_token_index": 1,
+    "group_start": 1,
+    "group_end": 2,
+    "group_span_text": "den Haupt",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -5583,6 +5813,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s3058",
+    "gold_text": "Nach dem Ende der Kriegshandlungen zerstörten Brände 1945 die Stadt zu 45 %.",
+    "seed_token_index": 12,
+    "group_start": 11,
+    "group_end": 12,
+    "group_span_text": "45 %",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s3059",
     "gold_text": "2001 synthetisierte er ein Ribozym, das wiederum in der Lage ist, einen RNA - Strang zu synthetisieren, der zu einer Vorlage komplementär ist (Replikation).",
     "seed_token_index": 3,
@@ -5612,6 +5852,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3079",
+    "gold_text": "Es können ab Werk bis zu vier Festplatten zu je 2000 GB eingebaut werden, wodurch bis zu 8 Terabyte an Speicher zur Verfügung stehen.",
+    "seed_token_index": 19,
+    "group_start": 18,
+    "group_end": 19,
+    "group_span_text": "8 Terabyte",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -5713,6 +5963,16 @@
     "split": "train",
     "sent_id": "train-s3131",
     "gold_text": "1765 schenkte Johann Erdmann von Promnitz Schloss und Herrschaft Peterswaldau seinem Großneffen Christian Friedrich zu Stolberg - Wernigerode, von dem beides testamentarisch an seinen zweitältesten Sohn Ferdinand zu Stolberg - Wernigerode überging.",
+    "seed_token_index": 27,
+    "group_start": 27,
+    "group_end": 31,
+    "group_span_text": "Ferdinand zu Stolberg - Wernigerode",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3131",
+    "gold_text": "1765 schenkte Johann Erdmann von Promnitz Schloss und Herrschaft Peterswaldau seinem Großneffen Christian Friedrich zu Stolberg - Wernigerode, von dem beides testamentarisch an seinen zweitältesten Sohn Ferdinand zu Stolberg - Wernigerode überging.",
     "seed_token_index": 25,
     "group_start": 24,
     "group_end": 26,
@@ -5724,6 +5984,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3136",
+    "gold_text": "Von den italienisch - faschistischen Behörden aus Italien ausgewiesen, wurde er 1923 Religionslehrer in Innsbruck und 1936 Direktor der Lehrerbildungsanstalt in Innsbruck.",
+    "seed_token_index": 2,
+    "group_start": 1,
+    "group_end": 5,
+    "group_span_text": "den italienisch - faschistischen Behörden",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -5890,6 +6160,22 @@
     "sent_id": "train-s3212",
     "gold_text": "Hans Richter entwarf die an den Bauhausstil angelehnte Flachdachsiedlung entlang der Kopernikus - und Industriestraße und die Laubenganghäuser an der Halleystraße.",
     "seed_token_index": 3,
+    "group_start": 3,
+    "group_end": 8,
+    "group_span_text": "die an den Bauhausstil angelehnte Flachdachsiedlung",
+    "reason": "lemma_has_no_Dat_rows",
+    "first_fail_token_index": 7,
+    "first_fail_form": "angelehnte",
+    "first_fail_lemma": "angelehnt",
+    "first_fail_upos": "ADJ",
+    "first_fail_number": "Sing",
+    "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3212",
+    "gold_text": "Hans Richter entwarf die an den Bauhausstil angelehnte Flachdachsiedlung entlang der Kopernikus - und Industriestraße und die Laubenganghäuser an der Halleystraße.",
+    "seed_token_index": 16,
     "group_start": 3,
     "group_end": 17,
     "group_span_text": "die an den Bauhausstil angelehnte Flachdachsiedlung entlang der Kopernikus - und Industriestraße und die Laubenganghäuser",
@@ -6255,13 +6541,7 @@
     "group_start": 25,
     "group_end": 27,
     "group_span_text": "Hohlkehlen, Trochili",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 27,
-    "first_fail_form": "Trochili",
-    "first_fail_lemma": "Trochili",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -6361,13 +6641,7 @@
     "group_start": 8,
     "group_end": 11,
     "group_span_text": "den Spielern Theo Kaufmann",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 10,
-    "first_fail_form": "Theo",
-    "first_fail_lemma": "Theo",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -6528,6 +6802,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Plur",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3460",
+    "gold_text": "Er ist ein wesentlicher Bestandteil von Aminosäuren und damit von Proteinen, aber auch von Nucleinsäuren, also DNA und RNA.",
+    "seed_token_index": 18,
+    "group_start": 15,
+    "group_end": 18,
+    "group_span_text": "Nucleinsäuren, also DNA",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -6797,13 +7081,7 @@
     "group_start": 1,
     "group_end": 6,
     "group_span_text": "den Autobahnanschlüssen der A 3 Mogendorf",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 6,
-    "first_fail_form": "Mogendorf",
-    "first_fail_lemma": "Mogendorf",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -7090,6 +7368,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3630",
+    "gold_text": "Die zwittrigen, radiärsymmetrischen und dreizähligen Blüten weisen einen Durchmesser von etwa 3 bis 5 cm auf.",
+    "seed_token_index": 15,
+    "group_start": 12,
+    "group_end": 15,
+    "group_span_text": "3 bis 5 cm",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -7503,6 +7791,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s3743",
+    "gold_text": "Als er zu Beginn seiner Karriere mit seinem Teamkollegen Forristall eine Wohnung teilte, achtete er immer darauf, das Appartement sauber zu halten, sowie nicht zu rauchen, zu trinken oder zu später Stunde durch Nachtclubs zu ziehen.",
+    "seed_token_index": 35,
+    "group_start": 34,
+    "group_end": 35,
+    "group_span_text": "später Stunde",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3748",
+    "gold_text": "Auf dem entsprechenden Wegweiserschild am Ende der Kraftfahrstraße wird der Durchgangsverkehr über den Ostring mit Hinweis \"Alle Richtungen\" gelenkt.",
+    "seed_token_index": 18,
+    "group_start": 16,
+    "group_end": 19,
+    "group_span_text": "Hinweis Alle Richtungen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s3763",
     "gold_text": "Die Werke für Cembalo enthalten teilweise für seine Zeit weit fortgeschrittene chromatische Wendungen.",
     "seed_token_index": 10,
@@ -7853,6 +8161,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s3852",
+    "gold_text": "Pim Island besitzt eine kleine Eiskappe und mehrere Teiche, die im Sommer je nach Höhenlage bis zu drei Monate eisfrei sind.",
+    "seed_token_index": 20,
+    "group_start": 19,
+    "group_end": 20,
+    "group_span_text": "drei Monate",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s3854",
     "gold_text": "Bundesliga zur Saison 1998 / 99 blieb der ERSC in die -- nunmehr drittklassige -- 1.",
     "seed_token_index": 11,
@@ -7866,6 +8184,26 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3862",
+    "gold_text": "Die Einwohner Dovers sind zu 95,18 % europäischer Abstammung, zu 3,63 % asiatischer Abstammung und zu 0,41 % afrikanischer Abstammung.",
+    "seed_token_index": 12,
+    "group_start": 11,
+    "group_end": 12,
+    "group_span_text": "3,63 %",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3862",
+    "gold_text": "Die Einwohner Dovers sind zu 95,18 % europäischer Abstammung, zu 3,63 % asiatischer Abstammung und zu 0,41 % afrikanischer Abstammung.",
+    "seed_token_index": 18,
+    "group_start": 17,
+    "group_end": 18,
+    "group_span_text": "0,41 %",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -8205,13 +8543,7 @@
     "group_start": 13,
     "group_end": 14,
     "group_span_text": "Die Räuber",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 14,
-    "first_fail_form": "Räuber",
-    "first_fail_lemma": "Räuber",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -8324,6 +8656,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4001",
+    "gold_text": "Der in den 1980er Jahren aufgebaute Industriebetrieb zur Produktion von Vergasern für den gesamten RGW wurde nach der Wende von einem Filter - und Motorenkomponentenhersteller aus dem westfälischen Münster übernommen und wird bis heute als Zweigstelle weiterbetrieben.",
+    "seed_token_index": 25,
+    "group_start": 25,
+    "group_end": 25,
+    "group_span_text": "Motorenkomponentenhersteller",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -8811,6 +9153,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4135",
+    "gold_text": "Nach Daniels Tod machte Barbara umfangreiche Geldspenden an verschiedene Kirchen.",
+    "seed_token_index": 2,
+    "group_start": 1,
+    "group_end": 2,
+    "group_span_text": "Daniels Tod",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4142",
     "gold_text": "Bekannt ist Gabès auch für die hier produzierte Henna.",
     "seed_token_index": 5,
@@ -9115,6 +9467,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4213",
+    "gold_text": "Manchmal wird hier allerdings auf Drehbücher zugunsten von losen Konzeptpapieren, Storyboards oder Moodboards (die die spätere Stimmung des Films wiedergeben sollen), verzichtet.",
+    "seed_token_index": 11,
+    "group_start": 11,
+    "group_end": 11,
+    "group_span_text": "Storyboards",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4213",
+    "gold_text": "Manchmal wird hier allerdings auf Drehbücher zugunsten von losen Konzeptpapieren, Storyboards oder Moodboards (die die spätere Stimmung des Films wiedergeben sollen), verzichtet.",
+    "seed_token_index": 13,
+    "group_start": 13,
+    "group_end": 13,
+    "group_span_text": "Moodboards",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4219",
     "gold_text": "Während seiner Zeit in Europa praktizierte er Medizin und lernte Französisch, Italienisch und Spanisch.",
     "seed_token_index": 10,
@@ -9218,6 +9590,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4242",
+    "gold_text": "Über den Schluss (mit oder ohne Apotheose) war er sich möglicherweise selbst noch nicht im Klaren.",
+    "seed_token_index": 1,
+    "group_start": 1,
+    "group_end": 2,
+    "group_span_text": "den Schluss",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -9525,6 +9907,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4328",
+    "gold_text": "Als großes Einmaleins gelten alle Multiplikationen von je zwei Zahlen zwischen 1 und 20.",
+    "seed_token_index": 9,
+    "group_start": 8,
+    "group_end": 9,
+    "group_span_text": "zwei Zahlen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4335",
     "gold_text": "Allerdings waren Die Ärzte der Bundesprüfstelle für jugendgefährdende Medien zuvorgekommen und hatten auf der CD einen Aufkleber mit der Aufschrift \"Diese CD darf aus Jugendschutzgründen nicht an Jugendliche unter 18 verkauft und öffentlich nicht beworben werden.\"",
     "seed_token_index": 7,
@@ -9538,6 +9930,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4335",
+    "gold_text": "Allerdings waren Die Ärzte der Bundesprüfstelle für jugendgefährdende Medien zuvorgekommen und hatten auf der CD einen Aufkleber mit der Aufschrift \"Diese CD darf aus Jugendschutzgründen nicht an Jugendliche unter 18 verkauft und öffentlich nicht beworben werden.\"",
+    "seed_token_index": 25,
+    "group_start": 25,
+    "group_end": 25,
+    "group_span_text": "Jugendschutzgründen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -9682,6 +10084,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4372",
+    "gold_text": "Hier führt die alte Fabrikstraße bis zur Provinostraße und dem Staatlichen Textil - und Industriemuseum.",
+    "seed_token_index": 15,
+    "group_start": 15,
+    "group_end": 15,
+    "group_span_text": "Industriemuseum",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -10121,6 +10533,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4517",
+    "gold_text": "Nach 2 ½ Stunden landete sie wieder am Ausgangspunkt.",
+    "seed_token_index": 3,
+    "group_start": 1,
+    "group_end": 3,
+    "group_span_text": "2 ½ Stunden",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4520",
     "gold_text": "Er wünscht sich, dass die Politik beim Ausbau des Fernstraßennetzes öfters ÖPP - Modelle nutzt.",
     "seed_token_index": 13,
@@ -10223,13 +10645,7 @@
     "group_start": 17,
     "group_end": 21,
     "group_span_text": "Mohammed Yusef el - Megarief",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 21,
-    "first_fail_form": "Megarief",
-    "first_fail_lemma": "Megarief",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -10384,6 +10800,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4683",
+    "gold_text": "Nach einem Rückgang der Mitgliederzahlen seit Ende der 1960er Jahre stiegen die Receptionen mit Annahme der Ehrenmitgliedschaft durch den Präsidenten der Universität Theodor Berchem im Jahre 1976 wieder etwas stärker an.",
+    "seed_token_index": 6,
+    "group_start": 6,
+    "group_end": 9,
+    "group_span_text": "Ende der 1960er Jahre",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -10721,6 +11147,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4823",
+    "gold_text": "Weiters durfte der ORF eine 45 - minütige Zusammenfassung von den restlichen vier Partien pro Runde zeigen, was meist im Rahmen der Sendung Sport am Sonntag zusammen mit einem ORF - Fußballexperten gemacht wurde.",
+    "seed_token_index": 13,
+    "group_start": 10,
+    "group_end": 13,
+    "group_span_text": "den restlichen vier Partien",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4825",
     "gold_text": "Dazu gehören der Savannenwald, die trockene Variante des Monsunwaldes und die Dornwälder.",
     "seed_token_index": 5,
@@ -10977,13 +11413,7 @@
     "group_start": 1,
     "group_end": 3,
     "group_span_text": "dem Vorwerk Werben",
-    "reason": "no_Dat_row_matching_number",
-    "first_fail_token_index": 3,
-    "first_fail_form": "Werben",
-    "first_fail_lemma": "Werben",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -11000,6 +11430,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4937",
+    "gold_text": "Die Zahl der Einwohner sank zwischen 1990 und 2007 von 12.679 auf 10.462, was einem Rückgang von knapp 17,5 Prozent entspricht.",
+    "seed_token_index": 20,
+    "group_start": 19,
+    "group_end": 20,
+    "group_span_text": "17,5 Prozent",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -11093,6 +11533,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4973",
+    "gold_text": "Andreae vermachte in seinem Testament 20.000 Mark für den Bau des Bismarck - Denkmals mit der Auflage zu dessen Aufstellung binnen dreier Jahre nach dem Tode des Testators (1879).",
+    "seed_token_index": 22,
+    "group_start": 21,
+    "group_end": 22,
+    "group_span_text": "dreier Jahre",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4974",
     "gold_text": "Amelungsborn verkaufte 1772 die wiederaufgebauten Höfe an die Herren von Hardenberg, die die Höfe nach wenigen Jahrzehnten an private Käufer weiterveräußerten.",
     "seed_token_index": 3,
@@ -11106,6 +11556,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Plur",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4985",
+    "gold_text": "Als Beispiel sei der Verein VALID in Deutschland genannt, der als Ziel die Erarbeitung von gemeinsamen Qualitätsstandards, Überwachung der Qualität der Mitgliedslabore sowie auch die berufspolitische Einflussnahme angibt.",
+    "seed_token_index": 28,
+    "group_start": 26,
+    "group_end": 28,
+    "group_span_text": "die berufspolitische Einflussnahme",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -11519,13 +11979,7 @@
     "group_start": 19,
     "group_end": 22,
     "group_span_text": "der Dissertation Funktionalanalytische Methoden",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 21,
-    "first_fail_form": "Funktionalanalytische",
-    "first_fail_lemma": "Funktionalanalytische",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -11641,13 +12095,7 @@
     "group_start": 1,
     "group_end": 8,
     "group_span_text": "dem braunen, in Slawuta gezogenen Hengst Dardziling",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 6,
-    "first_fail_form": "gezogenen",
-    "first_fail_lemma": "gezogen",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -11664,6 +12112,26 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5216",
+    "gold_text": "Dies waren frühe Formen von Landsgemeinden und Gerichte.",
+    "seed_token_index": 7,
+    "group_start": 7,
+    "group_end": 7,
+    "group_span_text": "Gerichte",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5219",
+    "gold_text": "1901 war Siemens als Nachfolger Johannes von Miquels für das Amt des preußischen Finanzministers im Gespräch, die Verschlechterung von Siemens 'Gesundheitszustand -- Folge einer Krebserkrankung -- vereitelte jedoch die Ernennung.",
+    "seed_token_index": 23,
+    "group_start": 23,
+    "group_end": 27,
+    "group_span_text": "Gesundheitszustand Folge einer Krebserkrankung",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -11782,22 +12250,6 @@
     "sent_id": "train-s5251",
     "gold_text": "Zahlreiche in - und ausländische Kriegsauszeichnungen sowie acht hohe Friedensauszeichnungen werden ihm verliehen, u.a. den preußischen Roten Adler - Orden II.",
     "seed_token_index": 8,
-    "group_start": 7,
-    "group_end": 21,
-    "group_span_text": "acht hohe Friedensauszeichnungen werden ihm verliehen, u.a. den preußischen Roten Adler - Orden II",
-    "reason": "no_Dat_row_matching_number_gender_upos",
-    "first_fail_token_index": 20,
-    "first_fail_form": "Orden",
-    "first_fail_lemma": "Orden",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
-  },
-  {
-    "split": "train",
-    "sent_id": "train-s5251",
-    "gold_text": "Zahlreiche in - und ausländische Kriegsauszeichnungen sowie acht hohe Friedensauszeichnungen werden ihm verliehen, u.a. den preußischen Roten Adler - Orden II.",
-    "seed_token_index": 5,
     "group_start": 0,
     "group_end": 21,
     "group_span_text": "Zahlreiche in - und ausländische Kriegsauszeichnungen sowie acht hohe Friedensauszeichnungen werden ihm verliehen, u.a. den preußischen Roten Adler - Orden II",
@@ -11863,6 +12315,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s5275",
+    "gold_text": "Bekannt sind auch Polyeder, die sich durch eine hohe Regelmäßigkeit auszeichnen, wie die platonischen Körper (oder auch regulären Polyeder) -- die einzigen fünf konvexen Polyeder, die sich nur aus kongruenten (deckungsgleichen) Vielecken zusammensetzen und deren Ecken alle identisch sind.",
+    "seed_token_index": 38,
+    "group_start": 34,
+    "group_end": 38,
+    "group_span_text": "kongruenten (deckungsgleichen) Vielecken",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s5281",
     "gold_text": "Werner und Nanette Bald übernahmen sie 1965;",
     "seed_token_index": 3,
@@ -11892,6 +12354,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5296",
+    "gold_text": "Balleis trat außerdem zunächst für die Südumgehung von Weiher, Uttenreuth und Buckenhof durch den Sebalder Reichswald ein, wurde allerdings im Stadtrat mit den Stimmen von SPD, Grünen, ödp, FDP und einiger CSU - Stadträte überstimmt.",
+    "seed_token_index": 39,
+    "group_start": 36,
+    "group_end": 39,
+    "group_span_text": "einiger CSU Stadträte",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -12125,13 +12597,7 @@
     "group_start": 18,
     "group_end": 18,
     "group_span_text": "Crançot",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 18,
-    "first_fail_form": "Crançot",
-    "first_fail_lemma": "Crançot",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -12289,6 +12755,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s5388",
+    "gold_text": "Eine Zahl aus der Praxis: bei einer Eingangsimpedanz von 50 Ω wurde bei der P - 12 eine Empfängerempfindlichkeit von 4 μV vorgegeben, die bei einem Signal / Rausch - Verhältnis von 4 zu 1 zu messen war.",
+    "seed_token_index": 32,
+    "group_start": 27,
+    "group_end": 32,
+    "group_span_text": "einem Signal / Rausch - Verhältnis",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s5389",
     "gold_text": "Die Polymerfraktionierung für analytische Zwecke (Maßstab: einige mg) erfolgt unter anderem mittels der Gel - Permeations - Chromatographie (GPC), Matrix Assisted Laser Desorption / Ionisation - Time Of Flight (MALDI - TOF) oder der Feld - Fluss - Fraktionierung (FFF).",
     "seed_token_index": 3,
@@ -12311,13 +12787,7 @@
     "group_start": 16,
     "group_end": 16,
     "group_span_text": "Sylvester",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 16,
-    "first_fail_form": "Sylvester",
-    "first_fail_lemma": "Sylvester",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -12829,6 +13299,16 @@
     "split": "train",
     "sent_id": "train-s5680",
     "gold_text": "Die Pflanze kann bis zu 20 % des Trockengewichts die Aminosäure Prolin enthalten als osmotischen Ausgleich zur hohen Salzkonzentration in den Vakuolen.",
+    "seed_token_index": 6,
+    "group_start": 5,
+    "group_end": 8,
+    "group_span_text": "20 % des Trockengewichts",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5680",
+    "gold_text": "Die Pflanze kann bis zu 20 % des Trockengewichts die Aminosäure Prolin enthalten als osmotischen Ausgleich zur hohen Salzkonzentration in den Vakuolen.",
     "seed_token_index": 14,
     "group_start": 14,
     "group_end": 15,
@@ -12898,6 +13378,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Plur",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5716",
+    "gold_text": "Es kam zu einer Wappen - und Namensvereinigung mit dem seiner Frau, Cecilie Gräfin von Elmpt.",
+    "seed_token_index": 7,
+    "group_start": 7,
+    "group_end": 7,
+    "group_span_text": "Namensvereinigung",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -13115,13 +13605,7 @@
     "group_start": 1,
     "group_end": 3,
     "group_span_text": "einer Verletzung Thibaults",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 3,
-    "first_fail_form": "Thibaults",
-    "first_fail_lemma": "Thibaults",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -13138,6 +13622,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5794",
+    "gold_text": "Sie war eine der langlebigsten Herrschaften, da sie bis zum endgültigen Zusammenbruch des Königreichs von Jerusalem 1291 bestand, obwohl oder gerade weil sie nur aus einem schmalen Streifen Mittelmeerküste rund um Beirut bestand.",
+    "seed_token_index": 31,
+    "group_start": 31,
+    "group_end": 31,
+    "group_span_text": "Mittelmeerküste",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -13477,6 +13971,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s5922",
+    "gold_text": "Die Städtische Werke Überlandwerke Coburg GmbH (SÜC) ist das Energieversorgungsunternehmen der Stadt Coburg, das vor allem die Stadt und teilweise den Landkreis Coburg mit Strom, Erdgas, Fernwärme, Trinkwasser und Telekommunikation beliefert aber auch in Coburg die öffentlichen Schwimmbäder und den öffentlichen Personennahverkehr betreibt.",
+    "seed_token_index": 31,
+    "group_start": 31,
+    "group_end": 31,
+    "group_span_text": "Fernwärme",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5922",
+    "gold_text": "Die Städtische Werke Überlandwerke Coburg GmbH (SÜC) ist das Energieversorgungsunternehmen der Stadt Coburg, das vor allem die Stadt und teilweise den Landkreis Coburg mit Strom, Erdgas, Fernwärme, Trinkwasser und Telekommunikation beliefert aber auch in Coburg die öffentlichen Schwimmbäder und den öffentlichen Personennahverkehr betreibt.",
+    "seed_token_index": 33,
+    "group_start": 33,
+    "group_end": 33,
+    "group_span_text": "Trinkwasser",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s5937",
     "gold_text": "Dann behält er jedoch angreifbare Bauern auf b7 und d5.",
     "seed_token_index": 4,
@@ -13759,6 +14273,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s6068",
+    "gold_text": "Seine Fähigkeit zur Navigation und seine Ruhe selbst in bedrohlichen Situationen retten der Mannschaft zweimal das Leben: Einmal verirrt sich der Suchtrupp im Eis.",
+    "seed_token_index": 6,
+    "group_start": 6,
+    "group_end": 7,
+    "group_span_text": "seine Ruhe",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s6076",
     "gold_text": "Auf Humpy Island gibt es den Ridgetop Trail (1,9 km).",
     "seed_token_index": 5,
@@ -13871,6 +14395,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s6174",
+    "gold_text": "Aus der \"Bunker Hill Mine\" bei Kellogg im Shoshone County (Idaho, USA) kennt man Anglesitfunde von bis zu 7,5 cm Länge und in der \"Tsumeb Mine\" in Namibia konnten Kristalle bis etwa 4 cm Größe gefunden werden.",
+    "seed_token_index": 25,
+    "group_start": 24,
+    "group_end": 26,
+    "group_span_text": "7,5 cm Länge",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6179",
+    "gold_text": "Für statistische Zwecke wurden die Distrikte zu Regionen zusammengefasst.",
+    "seed_token_index": 7,
+    "group_start": 7,
+    "group_end": 7,
+    "group_span_text": "Regionen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s6180",
     "gold_text": "Die Amiga - Version folgte 1989, die Atari - ST - Version 1990 und letztendlich eine überarbeitete Fassung für das Mega Drive im Jahr 1991.",
     "seed_token_index": 7,
@@ -13925,13 +14469,7 @@
     "group_start": 24,
     "group_end": 27,
     "group_span_text": "den Professoren Arnold Berney",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 27,
-    "first_fail_form": "Berney",
-    "first_fail_lemma": "Berney",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -14118,6 +14656,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6270",
+    "gold_text": "Ihre Dienste wurden in RAD-Uniform versehen, am linken unteren Ärmel der Jacken wurde ein RAD-Ärmelband mit Dienstgrad und -stellung getragen, zusätzlich mit einer RADwJ-Brosche.",
+    "seed_token_index": 25,
+    "group_start": 25,
+    "group_end": 25,
+    "group_span_text": "stellung",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -14409,6 +14957,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s6347",
+    "gold_text": "Deshalb wurden zwei Boote, deren Kernladung ansonsten kostenaufwändig hätte erneuert werden müssen, direkt außer Dienst gestellt.",
+    "seed_token_index": 16,
+    "group_start": 16,
+    "group_end": 16,
+    "group_span_text": "Dienst",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s6350",
     "gold_text": "Im Jahre 1997 wurde ein durch den Ackerbau gestörter römischer Friedhof gefunden.",
     "seed_token_index": 9,
@@ -14438,6 +14996,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6376",
+    "gold_text": "1,5 Prozent stammten von zwei oder mehr Ethnien ab.",
+    "seed_token_index": 7,
+    "group_start": 4,
+    "group_end": 7,
+    "group_span_text": "zwei oder mehr Ethnien",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -14473,13 +15041,7 @@
     "group_start": 22,
     "group_end": 24,
     "group_span_text": "Naturalien = Kammern",
-    "reason": "no_Dat_row_matching_number_plur",
-    "first_fail_token_index": 24,
-    "first_fail_form": "Kammern",
-    "first_fail_lemma": "Kammer",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -14691,6 +15253,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s6502",
+    "gold_text": "Diese scheiterte mit einer Beteiligung von weniger als 10 %, weit unter der mindestens nötigen Teilnahme der Hälfte der Wahlberechtigten.",
+    "seed_token_index": 9,
+    "group_start": 8,
+    "group_end": 9,
+    "group_span_text": "10 %",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s6504",
     "gold_text": "Neuere Gebläse verwenden einen rotierenden Kolben.",
     "seed_token_index": 3,
@@ -14857,13 +15429,7 @@
     "group_start": 12,
     "group_end": 15,
     "group_span_text": "den Schwenninger Wild Wings",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 13,
-    "first_fail_form": "Schwenninger",
-    "first_fail_lemma": "Schwenninger",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -14973,6 +15539,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s6602",
+    "gold_text": "Auch die anschließende Verfassungsbeschwerde vor dem Bundesverfassungsgericht führte nicht zur erhofften Rückkehr zum konfessionsgebundenen Religionsunterricht, wobei sich das Karlsruher Gericht auf die Beantwortung von Zulässigkeits - und Verfahrensfragen beschränkte.",
+    "seed_token_index": 30,
+    "group_start": 30,
+    "group_end": 30,
+    "group_span_text": "Verfahrensfragen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s6606",
     "gold_text": "In der Saison 2001 / 02 spielte der Finne für den damaligen englischen Zweitligisten Stockport County.",
     "seed_token_index": 10,
@@ -14984,6 +15560,22 @@
     "first_fail_form": "Stockport",
     "first_fail_lemma": "Stockport",
     "first_fail_upos": "PROPN",
+    "first_fail_number": "Sing",
+    "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6609",
+    "gold_text": "In dieser Zeit gründete er mit weiteren Autoren einen hebräischen Verlag namens Moriah, in welchem hebräische Klassiker und Schulbücher herausgegeben wurden.",
+    "seed_token_index": 8,
+    "group_start": 8,
+    "group_end": 10,
+    "group_span_text": "einen hebräischen Verlag",
+    "reason": "no_Dat_row_matching_number_gender",
+    "first_fail_token_index": 9,
+    "first_fail_form": "hebräischen",
+    "first_fail_lemma": "hebräisch",
+    "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
   },
@@ -15172,6 +15764,16 @@
     "group_end": 24,
     "group_span_text": "die Analyse verschiedener Formen von Comics und ihrer Rezeption, grafischer Erzählstrategien und Stilmittel, bestimmte Autoren und Stilrichtungen sowie Untersuchungen",
     "reason": "conjunction_with_comma"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6648",
+    "gold_text": "So kann etwa eine spezifische Handlung im strafrechtlichen Sinn erlaubt sein, gleichzeitig aber gegen zivilrechtliche Normen verstoßen und insofern beispielsweise zu einer Schadensersatzpflicht führen, etwa bei der (nur) fahrlässigen Sachbeschädigung.",
+    "seed_token_index": 34,
+    "group_start": 29,
+    "group_end": 34,
+    "group_span_text": "der fahrlässigen Sachbeschädigung",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -15405,13 +16007,17 @@
     "group_start": 15,
     "group_end": 21,
     "group_span_text": "den angesehenen Johnnie Walker Championship at Gleneagles",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 16,
-    "first_fail_form": "angesehenen",
-    "first_fail_lemma": "angesehen",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6737",
+    "gold_text": "Seine bislang beste Platzierung erzielte er im Juni 2006 mit einem zweiten Platz bei den angesehenen Johnnie Walker Championship at Gleneagles, der ihm ein Preisgeld von rund 178.000 € einbrachte.",
+    "seed_token_index": 30,
+    "group_start": 29,
+    "group_end": 30,
+    "group_span_text": "178.000 €",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -15588,6 +16194,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6778",
+    "gold_text": "Nach De Gaulles Rücktritt 1969 regte sein Nachfolger Georges Pompidou daher eine Gipfelkonferenz auf höchster Ebene an.",
+    "seed_token_index": 3,
+    "group_start": 1,
+    "group_end": 3,
+    "group_span_text": "De Gaulles Rücktritt",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -15793,6 +16409,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s6840",
+    "gold_text": "Inspektor Carter macht sich nach dem Auffinden einer zurückgelassenen Quittung mit Paul Cox 'Namen zu dessen Wohnung auf.",
+    "seed_token_index": 14,
+    "group_start": 14,
+    "group_end": 14,
+    "group_span_text": "Namen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s6842",
     "gold_text": "Dabei genossen die Spieler ein für DDR - Liga - Verhältnisse überragenden Zuschauerzuspruch.",
     "seed_token_index": 4,
@@ -15879,13 +16505,7 @@
     "group_start": 6,
     "group_end": 9,
     "group_span_text": "dem damaligen Amt Vettweiß",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 9,
-    "first_fail_form": "Vettweiß",
-    "first_fail_lemma": "Vettweiß",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -15982,6 +16602,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Plur",
     "first_fail_gender": ""
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6879",
+    "gold_text": "Eine weitere Besonderheit war das für ein Auto dieser Größe relativ geringe Leergewicht von 1.604 kg (Ultra 1.651 kg), was im Zusammenwirken mit dem sehr niedrigen Drezahlniveau für ein bei verhaltener Fahrweise erstaunlich niedrigen Kraftstoffverbrauch sorgte (dies gilt umso mehr für die Modelle ab 1995 mit dem neu konstruierten V6).",
+    "seed_token_index": 19,
+    "group_start": 14,
+    "group_end": 17,
+    "group_span_text": "1.604 kg (Ultra",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -16475,6 +17105,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7034",
+    "gold_text": "Zur Aus - und Weiterbildung von Offizieren und zivilen Kadern war ab 1972 auch ein Hochschulfernstudium möglich.",
+    "seed_token_index": 5,
+    "group_start": 5,
+    "group_end": 5,
+    "group_span_text": "Weiterbildung",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7035",
     "gold_text": "Er erwähnte auch einige Personen, die Essener gewesen seien: einen Weissager, einen Traumdeuter, einen späteren Oberbefehlshaber.",
     "seed_token_index": 17,
@@ -16536,22 +17176,6 @@
     "sent_id": "train-s7051",
     "gold_text": "Die Cranio - Corpo - Graphie (CCG) ist ein vom deutschen Neurootologen Claus - Frenz Claussen im Jahr 1968 entwickeltes medizinisches Untersuchungs - und Messverfahren, um bei Untersuchungsverfahren wie dem Unterberger - Tretversuch, dem Romberg -, dem LOLAVHESLIT - Test, dem NEFERT - Test sowie dem WOFEC - Test Gleichgewichtsfunktionsstörungen zu dokumentieren und auszuwerten.",
     "seed_token_index": 23,
-    "group_start": 10,
-    "group_end": 25,
-    "group_span_text": "ein entwickeltes medizinisches Untersuchungs",
-    "reason": "no_Dat_row_matching_number_gender",
-    "first_fail_token_index": 23,
-    "first_fail_form": "entwickeltes",
-    "first_fail_lemma": "entwickelt",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
-  },
-  {
-    "split": "train",
-    "sent_id": "train-s7051",
-    "gold_text": "Die Cranio - Corpo - Graphie (CCG) ist ein vom deutschen Neurootologen Claus - Frenz Claussen im Jahr 1968 entwickeltes medizinisches Untersuchungs - und Messverfahren, um bei Untersuchungsverfahren wie dem Unterberger - Tretversuch, dem Romberg -, dem LOLAVHESLIT - Test, dem NEFERT - Test sowie dem WOFEC - Test Gleichgewichtsfunktionsstörungen zu dokumentieren und auszuwerten.",
-    "seed_token_index": 28,
     "group_start": 10,
     "group_end": 28,
     "group_span_text": "ein - entwickeltes medizinisches Untersuchungs - und Messverfahren",
@@ -16773,13 +17397,7 @@
     "group_start": 39,
     "group_end": 39,
     "group_span_text": "Terrace",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 39,
-    "first_fail_form": "Terrace",
-    "first_fail_lemma": "Terrace",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -16796,6 +17414,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Plur",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7171",
+    "gold_text": "Um die überwiegend in der Amtszeit von Methlings Vorgängern aufgelaufenen Schulden in Höhe von derzeit rund 200 Millionen Euro zu tilgen, ist der Verkauf von städtischem Eigentum im Gespräch, in der Rostocker Bürgerschaft, dem Stadtparlament, aber umstritten.",
+    "seed_token_index": 17,
+    "group_start": 16,
+    "group_end": 18,
+    "group_span_text": "200 Millionen Euro",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -17039,6 +17667,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7262",
+    "gold_text": "Mit insgesamt sechs Podest - Platzierungen wurde er auch in der Auto GP Vizemeister.",
+    "seed_token_index": 3,
+    "group_start": 2,
+    "group_end": 5,
+    "group_span_text": "sechs Podest - Platzierungen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7267",
     "gold_text": "Im Innenraum der Fortezza wurde die katholische Bischofskirche San Nicolo durch die Sultan - Ibrahim - Moschee ersetzt und eine Anzahl weiterer Häuser gebaut.",
     "seed_token_index": 12,
@@ -17148,6 +17786,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7306",
+    "gold_text": "Bei andere Öle war die Tun mit 236 Gallons festgelegt.",
+    "seed_token_index": 1,
+    "group_start": 1,
+    "group_end": 2,
+    "group_span_text": "andere Öle",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -17263,13 +17911,7 @@
     "group_start": 4,
     "group_end": 9,
     "group_span_text": "den ausgestrahlten Konkurrenzserien Tom Corbett",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 9,
-    "first_fail_form": "Corbett",
-    "first_fail_lemma": "Corbett",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -17787,6 +18429,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7480",
+    "gold_text": "Vielmehr nahm er dabei für sich in Anspruch, entdeckt zu haben, wie die ägyptischen Priester mittels Evokation Kontakt zu den Elementarwesen von Erde, Wasser, Feuer und Luft herstellen konnten, um dieselben für sich dienstbar zu machen, bei einer solchen Beschwörung würden auch verschiedene schemenhafte Figuren sichtbar werden.",
+    "seed_token_index": 30,
+    "group_start": 30,
+    "group_end": 30,
+    "group_span_text": "Luft",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7481",
     "gold_text": "Zunächst war er bis 1986 Assistant Professor, danach bis 1993 Associate Professor.",
     "seed_token_index": 5,
@@ -17794,6 +18446,16 @@
     "group_end": 12,
     "group_span_text": "Assistant Professor, danach bis 1993 Associate Professor",
     "reason": "conjunction_with_comma"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7482",
+    "gold_text": "Typische durch Erhitzen in Konservendosen haltbar gemachte Lebensmittel sind Obst wie Pfirsiche, Birnen und Ananas, Gemüse, insbesondere Hülsenfrüchte wie gekochte Linsen und Bohnen, Fisch wie Sardinen, Makrelen und Heringe sowie Corned Beef, Wurst, Dauerbrot als auch Fertiggerichte mit und ohne Fleisch.",
+    "seed_token_index": 47,
+    "group_start": 47,
+    "group_end": 47,
+    "group_span_text": "Fleisch",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -17840,6 +18502,22 @@
     "first_fail_form": "Pstrowskiego",
     "first_fail_lemma": "Pstrowskiego",
     "first_fail_upos": "PROPN",
+    "first_fail_number": "Sing",
+    "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7501",
+    "gold_text": "Bis 2009 war der Ort in den Tschechowski sowjet (Dorfsowjet Tschechowo (Uderwangen)) eingegliedert und ist seither -- aufgrund einer Struktur - und Verwaltungsreform -- eine als \"Siedlung\" (russisch: possjolok) eingestufte Ortschaft innerhalb der Gwardeiskoje selskoje posselenije (Landgemeinde Gwardeiskoje (Mühlhausen).",
+    "seed_token_index": 38,
+    "group_start": 28,
+    "group_end": 39,
+    "group_span_text": "eine als \"Siedlung\" (russisch: possjolok) eingestufte Ortschaft",
+    "reason": "lemma_has_no_Dat_rows",
+    "first_fail_token_index": 38,
+    "first_fail_form": "eingestufte",
+    "first_fail_lemma": "eingestuft",
+    "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
   },
@@ -18207,6 +18885,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7648",
+    "gold_text": "Von ihm stammen zahlreiche Veröffentlichungen zum Pflanzen - und Ackerbau.",
+    "seed_token_index": 10,
+    "group_start": 10,
+    "group_end": 10,
+    "group_span_text": "Ackerbau",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7655",
     "gold_text": "Wird der Belag unzulässig hoch belastet, wird seine Struktur frühzeitig zerstört, was eine kostspielige Sanierung oder Erneuerung nach sich zieht.",
     "seed_token_index": 14,
@@ -18236,6 +18924,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7661",
+    "gold_text": "Die Anlage besteht aus 103 Wohnungen mit 2 -- bis 3 - Spänner - Typen.",
+    "seed_token_index": 12,
+    "group_start": 7,
+    "group_end": 14,
+    "group_span_text": "2 -- bis 3 - Spänner - Typen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -18469,13 +19167,7 @@
     "group_start": 17,
     "group_end": 24,
     "group_span_text": "dem elektronischen Handel E Commerce",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 24,
-    "first_fail_form": "Commerce",
-    "first_fail_lemma": "Commerce",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -18649,6 +19341,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7795",
+    "gold_text": "Bergsteiger werden besonders von seinen Granit - und Sandsteinformationen angezogen, Wanderer hingegen genießen die Stille.",
+    "seed_token_index": 8,
+    "group_start": 8,
+    "group_end": 8,
+    "group_span_text": "Sandsteinformationen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7812",
     "gold_text": "Während Emily ihre Partnerin verrät, kämpft Alex gegen den Cyborg, der jedoch schier unbesiegbar scheint.",
     "seed_token_index": 9,
@@ -18671,13 +19373,7 @@
     "group_start": 25,
     "group_end": 25,
     "group_span_text": "Co",
-    "reason": "no_Dat_row_matching_number_gender",
-    "first_fail_token_index": 25,
-    "first_fail_form": "Co",
-    "first_fail_lemma": "Co",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -18803,6 +19499,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7847",
+    "gold_text": "Die eiförmig-dreieckigen, spitz zugespitzten bis spitz zulaufenden Brakteen weisen eine Länge von 6,5 bis 7 Millimeter auf und sind 2,5 bis 4 Millimeter breit.",
+    "seed_token_index": 18,
+    "group_start": 15,
+    "group_end": 18,
+    "group_span_text": "6,5 bis 7 Millimeter",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7853",
     "gold_text": "Für ihre Kurzgeschichte Kindred Spirits (veröffentlicht im Magazin Esquire, 1985) erhielt sie den O. - Henry - Preis.",
     "seed_token_index": 16,
@@ -18885,6 +19591,16 @@
     "split": "train",
     "sent_id": "train-s7881",
     "gold_text": "Die Classico - Weine wachsen auf einer Höhe von 70 bis 400 m geschützt vor den kalten Nordwinden durch die Dolomiten und die Monti Lessini.",
+    "seed_token_index": 12,
+    "group_start": 9,
+    "group_end": 12,
+    "group_span_text": "70 bis 400 m",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7881",
+    "gold_text": "Die Classico - Weine wachsen auf einer Höhe von 70 bis 400 m geschützt vor den kalten Nordwinden durch die Dolomiten und die Monti Lessini.",
     "seed_token_index": 22,
     "group_start": 19,
     "group_end": 24,
@@ -18912,6 +19628,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7884",
+    "gold_text": "Zwei ihrer Geschütze waren außer Gefecht gesetzt worden und ihr Schornstein war durchlöchert, was ihre ohnehin niedrige Geschwindigkeit noch weiter verringerte.",
+    "seed_token_index": 5,
+    "group_start": 5,
+    "group_end": 5,
+    "group_span_text": "Gefecht",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -18989,6 +19715,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7910",
+    "gold_text": "Jahrhundert, speziell ab den 60er Jahren, emanzipieren sich daneben mit den Clustern auch zunehmend Gebilde aus nebeneinander liegenden kleinen und großen Sekunden.",
+    "seed_token_index": 19,
+    "group_start": 19,
+    "group_end": 23,
+    "group_span_text": "liegenden kleinen und großen Sekunden",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7911",
     "gold_text": "Seit 1793 war er Mitglied am Institut de France und wurde zum Professor für Naturgeschichte an das École Centrale Paris berufen, womit er auch eine Aufgabe an dem Lycée Charlemagne übernahm.",
     "seed_token_index": 18,
@@ -19027,13 +19763,7 @@
     "group_start": 22,
     "group_end": 27,
     "group_span_text": "Friederike Charlotte zu Stolberg - Schwarza",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 22,
-    "first_fail_form": "Friederike",
-    "first_fail_lemma": "Friederike",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -19114,6 +19844,26 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7951",
+    "gold_text": "Nach dessen Tod 1634 war er Mitglied der Interimsregierung, diente 1636 bis 1641 Georg von Braunschweig - Calenberg als Hofgerichtsassessor, Hof - und Kanzleirat, danach auch Christian Ludwig von Braunschweig - Lüneburg und wurde 1649 Rat von Haus aus, Konsistorialrat und Hofgerichtsassessor bei Georg Wilhelm von Braunschweig - Lüneburg.",
+    "seed_token_index": 2,
+    "group_start": 1,
+    "group_end": 2,
+    "group_span_text": "dessen Tod",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7952",
+    "gold_text": "Scarboroughs konservative Abstimmungsbilanz spiegelt sich auch in dem Umstand wider, dass die American Conservative Union ihm eine Wertung von 95 % gab.",
+    "seed_token_index": 21,
+    "group_start": 20,
+    "group_end": 21,
+    "group_span_text": "95 %",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -19213,6 +19963,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7990",
+    "gold_text": "Spieltag) beim 1:1 - Unentschieden im Spiel bei den Stuttgarter Kickers.",
+    "seed_token_index": 11,
+    "group_start": 11,
+    "group_end": 13,
+    "group_span_text": "den Stuttgarter Kickers",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7997",
     "gold_text": "Für Gregor stand die Freiheit der Kirche, die libertas ecclesiae, im Vordergrund seines Handelns.",
     "seed_token_index": 1,
@@ -19267,13 +20027,7 @@
     "group_start": 14,
     "group_end": 15,
     "group_span_text": "physiologische Aktivierung",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 14,
-    "first_fail_form": "physiologische",
-    "first_fail_lemma": "physiologisch",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -19299,13 +20053,7 @@
     "group_start": 8,
     "group_end": 9,
     "group_span_text": "Dynamo Eisleben",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 9,
-    "first_fail_form": "Eisleben",
-    "first_fail_lemma": "Eisleben",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -19453,13 +20201,7 @@
     "group_start": 4,
     "group_end": 7,
     "group_span_text": "den Al - Sulaim",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 7,
-    "first_fail_form": "Sulaim",
-    "first_fail_lemma": "Sulaim",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -19492,6 +20234,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8070",
+    "gold_text": "1884 wurde die Produktion von Schwarzwälder Uhren nur noch von den drei Firmen W. Lorenz, H. Lorenz und K. Glöckner mit zusammen 14-15 Arbeiter betrieben.",
+    "seed_token_index": 24,
+    "group_start": 23,
+    "group_end": 24,
+    "group_span_text": "14-15 Arbeiter",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -19598,6 +20350,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8086",
+    "gold_text": "Bei der Unterfamilie Brosmophycinae ist die Schwanzflosse getrennt von Rücken - und Afterflosse.",
+    "seed_token_index": 12,
+    "group_start": 12,
+    "group_end": 12,
+    "group_span_text": "Afterflosse",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -19710,6 +20472,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8121",
+    "gold_text": "Ab 1994 / 95 spielte der Torwart für AS Impruneta Tavarnuzze, das 1997 mit dem damaligen Serie - D - Verein Rondinella Marzocco Firenze fusionierte.",
+    "seed_token_index": 24,
+    "group_start": 15,
+    "group_end": 22,
+    "group_span_text": "dem damaligen Serie - D - Verein Rondinella",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -19843,7 +20615,7 @@
     "split": "train",
     "sent_id": "train-s8162",
     "gold_text": "Seck wurde für die Selektion von 1.600 bis 1.700 Juden sowie deren Exekution im Wald von Biķernieki, der sogenannten Aktion Dünamünde durch das Landgericht Hamburg am 29.",
-    "seed_token_index": 3,
+    "seed_token_index": 12,
     "group_start": 3,
     "group_end": 21,
     "group_span_text": "die Selektion sowie deren Exekution der sogenannten Aktion",
@@ -19947,6 +20719,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s8214",
+    "gold_text": "Mit 5.000 bis 6.000 Hektar handelt es sich um eines der größten Waldgebiete Dänemarks.",
+    "seed_token_index": 4,
+    "group_start": 1,
+    "group_end": 4,
+    "group_span_text": "5.000 bis 6.000 Hektar",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s8220",
     "gold_text": "Für Konstantin endet damit nicht mehr als ein Abenteuer, und er lässt Ariane ohne mit der Wimper zu zucken sitzen.",
     "seed_token_index": 1,
@@ -19976,6 +20758,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8236",
+    "gold_text": "Mit verschiedenen Vorschotern an seiner Seite erreichte er bei eine ganzen Reihe bedeutender Regatten Spitzenplatzierungen: Zusammen mit Carsten Witt wurde er 1997 vor Varberg Dritter der Europameisterschaft.",
+    "seed_token_index": 9,
+    "group_start": 9,
+    "group_end": 13,
+    "group_span_text": "eine ganzen Reihe bedeutender Regatten",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -20013,7 +20805,7 @@
     "split": "train",
     "sent_id": "train-s8247",
     "gold_text": "Diese von ihm in Leben gerufene Sendung mit dem anfänglichen Titel Inside the Movies, später in The A - List umbenannt, beschäftigte sich mit der Filmindustrie und konnte zahlreiche Schauspieler, Drehbuchautoren und anderen in der Filmindustrie tätige Persönlichkeiten als Gäste begrüßen.",
-    "seed_token_index": 30,
+    "seed_token_index": 39,
     "group_start": 30,
     "group_end": 40,
     "group_span_text": "zahlreiche Schauspieler, Drehbuchautoren und anderen in der Filmindustrie tätige Persönlichkeiten",
@@ -20127,6 +20919,36 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s8297",
+    "gold_text": "Anders als beim reinen Mäzenatentum, bei dem keine ökonomische Nutzenerwartung besteht, wird vom Gesponserten eine Reihe von konkret definierten Leistungen und Nutzungsrechten angeboten.",
+    "seed_token_index": 23,
+    "group_start": 22,
+    "group_end": 23,
+    "group_span_text": "definierten Leistungen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8297",
+    "gold_text": "Anders als beim reinen Mäzenatentum, bei dem keine ökonomische Nutzenerwartung besteht, wird vom Gesponserten eine Reihe von konkret definierten Leistungen und Nutzungsrechten angeboten.",
+    "seed_token_index": 25,
+    "group_start": 25,
+    "group_end": 25,
+    "group_span_text": "Nutzungsrechten",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8309",
+    "gold_text": "Zugleich gilt sie als Zubringer der westlichen Deutschschweiz, des westlichen Deutschlands und des östlichen Frankreich zur Simplonbahn und Richtung Mailand in Italien.",
+    "seed_token_index": 21,
+    "group_start": 20,
+    "group_end": 21,
+    "group_span_text": "Richtung Mailand",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s8310",
     "gold_text": "Die Bereitstellung der Druckluft erfolgt durch einen drehzahlgeregelten Kompressor.",
     "seed_token_index": 6,
@@ -20181,13 +21003,7 @@
     "group_start": 21,
     "group_end": 26,
     "group_span_text": "dem Trigeminusganglion Rami ganglionares trigeminales",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 26,
-    "first_fail_form": "trigeminales",
-    "first_fail_lemma": "trigeminales",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -20213,13 +21029,7 @@
     "group_start": 4,
     "group_end": 6,
     "group_span_text": "Orville H. Platt",
-    "reason": "no_Dat_row_matching_number_gender_upos",
-    "first_fail_token_index": 6,
-    "first_fail_form": "Platt",
-    "first_fail_lemma": "Platt",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -20236,6 +21046,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8335",
+    "gold_text": "Cassiodor überschreibt einige Auszüge aus Priscian mit der Feststellung, dass er in Konstantinopel zu seiner (Cassiodors) Zeit gelehrt habe (Keil, Gr.",
+    "seed_token_index": 19,
+    "group_start": 15,
+    "group_end": 19,
+    "group_span_text": "seiner (Cassiodors) Zeit",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -20293,13 +21113,7 @@
     "group_start": 17,
     "group_end": 19,
     "group_span_text": "die achteckige Turmspitze",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 18,
-    "first_fail_form": "achteckige",
-    "first_fail_lemma": "achteckig",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -20543,6 +21357,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s8420",
+    "gold_text": "Diese Form der Dehiszenz tritt jedoch nicht eigenständig auf, sondern stets in Kombination mit einer Septizidie oder eine Lokulizidie.",
+    "seed_token_index": 18,
+    "group_start": 18,
+    "group_end": 19,
+    "group_span_text": "eine Lokulizidie",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s8427",
     "gold_text": "In Deutschland wird sie durch die Ständige Impfkommission (STIKO) für alle Kinder ab dem zwölften Lebensmonat und alle Erwachsenen, bei denen keine IgG - Antikörper gegen Rötelnvirus nachweisbar sind (Seronegative), insbesondere bei Frauen, empfohlen (Impfkalender).",
     "seed_token_index": 5,
@@ -20671,6 +21495,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s8453",
+    "gold_text": "Das Kofferwort setzt sich aus der Markenbezeichnung iPod für einen tragbaren MP3 - Spieler und Broadcasting zusammen.",
+    "seed_token_index": 15,
+    "group_start": 15,
+    "group_end": 15,
+    "group_span_text": "Broadcasting",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s8456",
     "gold_text": "Er promovierte mit einer Arbeit über das Thema Die Messen und Motetten Loyset Compères.",
     "seed_token_index": 6,
@@ -20700,6 +21534,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8457",
+    "gold_text": "So ging er nach Australien, wo ihn die Ähnlichkeit der Bodenbeschaffenheit der dortigen Goldfelder mit den ihm bekannten Gegenden in Kalifornien zu weiteren Untersuchungen veranlasste.",
+    "seed_token_index": 16,
+    "group_start": 16,
+    "group_end": 19,
+    "group_span_text": "den ihm bekannten Gegenden",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -20865,6 +21709,22 @@
     "split": "train",
     "sent_id": "train-s8504",
     "gold_text": "Ab 1987 war er 18 Jahre lang Professor für Schauspiel an der Hochschule für Musik und Darstellende Kunst Frankfurt am Main.",
+    "seed_token_index": 18,
+    "group_start": 11,
+    "group_end": 18,
+    "group_span_text": "der Hochschule für Musik und Darstellende Kunst Frankfurt",
+    "reason": "no_Dat_row_matching_number_gender_upos",
+    "first_fail_token_index": 14,
+    "first_fail_form": "Musik",
+    "first_fail_lemma": "Musik",
+    "first_fail_upos": "PROPN",
+    "first_fail_number": "Sing",
+    "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8504",
+    "gold_text": "Ab 1987 war er 18 Jahre lang Professor für Schauspiel an der Hochschule für Musik und Darstellende Kunst Frankfurt am Main.",
     "seed_token_index": 9,
     "group_start": 9,
     "group_end": 9,
@@ -20963,6 +21823,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s8533",
+    "gold_text": "Unter Leitung von Ulrich Nieß verstärkte das Mannheimer Stadtarchiv -- ISG zusammen mit seinen beiden Fördervereinen, dem Mannheimer Architektur - und Bauarchiv und dem Verein der Freunde des Stadtarchivs -- ISG, seine Publikations - und Ausstellungstätigkeit zu Themen über die Geschichte der Stadt Mannheim und der angrenzenden Region.",
+    "seed_token_index": 39,
+    "group_start": 39,
+    "group_end": 39,
+    "group_span_text": "Themen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s8540",
     "gold_text": "2004 erhielt er den Titel FIDE Senior Trainer.",
     "seed_token_index": 3,
@@ -20976,6 +21846,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8542",
+    "gold_text": "In Seilschaft mit Reinhard Patscheider und Reinhard Schiestl erreichte er eine Höhe von.",
+    "seed_token_index": 10,
+    "group_start": 10,
+    "group_end": 11,
+    "group_span_text": "eine Höhe",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -21008,6 +21888,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8570",
+    "gold_text": "Gegründet wurde die Bahamas 1992 in Hamburg durch die damals von der Minderheitsfraktion des aufgelösten Kommunistischen Bundes (KB) gebildete Gruppe K. Sie war hervorgegangen aus den 1990 im KB geführten Auseinandersetzungen um das Verhalten zur sich abzeichnenden Wiedervereinigung Deutschlands: Während die Mehrheitsströmung auf ein Zusammengehen mit der Linken des Ostens (PDS) und eine Ausrichtung auf die von ihr erwartete soziale Opposition gegen die Folgen der Wiederherstellung des Kapitalismus setzte, sah die Minderheit angesichts der angeblichen Marginalisierung der Linken eine radikale Opposition gegen die deutsche Einheit, den neuen Nationalismus, das Wiedererstarken von Rassismus, Antisemitismus und Geschichtsrevisionismus und das neue deutsche Großmachtstreben als geboten an.",
+    "seed_token_index": 32,
+    "group_start": 27,
+    "group_end": 33,
+    "group_span_text": "den geführten Auseinandersetzungen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -21050,6 +21940,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8576",
+    "gold_text": "Ein Unternehmen, welches sein Schwiegersohn Frantisek Ladislav (Franz Ladislaus) Freiherr von Rieger zum Abschluss und Druck brachte.",
+    "seed_token_index": 19,
+    "group_start": 19,
+    "group_end": 19,
+    "group_span_text": "Druck",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -21313,22 +22213,6 @@
     "gold_text": "Blanc de Noirs (franz. wörtlich: \"Weißer aus schwarzen\") ist die französische Bezeichnung für einen aus roten Trauben gekelterten weißen Wein, Champagner oder Crémant.",
     "seed_token_index": 18,
     "group_start": 18,
-    "group_end": 24,
-    "group_span_text": "einen aus roten Trauben gekelterten weißen Wein",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 22,
-    "first_fail_form": "gekelterten",
-    "first_fail_lemma": "gekeltert",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
-  },
-  {
-    "split": "train",
-    "sent_id": "train-s8682",
-    "gold_text": "Blanc de Noirs (franz. wörtlich: \"Weißer aus schwarzen\") ist die französische Bezeichnung für einen aus roten Trauben gekelterten weißen Wein, Champagner oder Crémant.",
-    "seed_token_index": 26,
-    "group_start": 18,
     "group_end": 28,
     "group_span_text": "einen aus roten Trauben gekelterten weißen Wein, Champagner oder Crémant",
     "reason": "conjunction_with_comma"
@@ -21475,6 +22359,16 @@
     "split": "train",
     "sent_id": "train-s8743",
     "gold_text": "Seinen Namen hat Flerke vermutlich von den mittelhochdeutschen Begriffen Vled für Flieder und rike für reich (also etwa \"Fliederreich\") oder vlat und fläke für Schönheit, Sauberkeit und Zierlichkeit.",
+    "seed_token_index": 20,
+    "group_start": 6,
+    "group_end": 9,
+    "group_span_text": "den mittelhochdeutschen Begriffen Vled",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8743",
+    "gold_text": "Seinen Namen hat Flerke vermutlich von den mittelhochdeutschen Begriffen Vled für Flieder und rike für reich (also etwa \"Fliederreich\") oder vlat und fläke für Schönheit, Sauberkeit und Zierlichkeit.",
     "seed_token_index": 28,
     "group_start": 28,
     "group_end": 32,
@@ -21560,6 +22454,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8801",
+    "gold_text": "Sie lieferte somit einen entscheidenden Beitrag bei der Modernisierung Koreas, welches durch die Forderungen der Bauern nach Demokratie, Ausschluss von ausländischen Einflüssen und ein Ende des Feudalismus einher gingen.",
+    "seed_token_index": 25,
+    "group_start": 25,
+    "group_end": 28,
+    "group_span_text": "ein Ende des Feudalismus",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -22027,6 +22931,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s8934",
+    "gold_text": "Gewisse Faktoren lassen jedoch zu, von insgesamt 33.000 Soldaten auszugehen, von denen 6.000 Männer das Stammpersonal stellten.",
+    "seed_token_index": 9,
+    "group_start": 8,
+    "group_end": 9,
+    "group_span_text": "33.000 Soldaten",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s8935",
     "gold_text": "Die orbitalen Parameter weisen darauf hin, dass Prospero zu derselben dynamischen Gruppe wie Sycorax und Setebos gehört und diese Monde daher wahrscheinlich einen gemeinsamen Ursprung haben.",
     "seed_token_index": 16,
@@ -22178,6 +23092,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8979",
+    "gold_text": "Er ist Preisträger von etwa 60 Auszeichnungen für seine Leistungen im Bereich von Kunst und Ausbildung.",
+    "seed_token_index": 6,
+    "group_start": 5,
+    "group_end": 6,
+    "group_span_text": "60 Auszeichnungen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -22673,7 +23597,7 @@
     "split": "train",
     "sent_id": "train-s9148",
     "gold_text": "Dazu benötigt dieser eine integrierte oder mittels USB - Stick nachgerüstete Bluetooth - Hardware sowie einen installierten Bluetooth - Software - Stack (Software Suite).",
-    "seed_token_index": 15,
+    "seed_token_index": 3,
     "group_start": 3,
     "group_end": 24,
     "group_span_text": "eine integrierte oder mittels USB - Stick nachgerüstete Bluetooth - Hardware sowie einen installierten Bluetooth - Software - Stack (Software Suite",
@@ -22684,6 +23608,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9152",
+    "gold_text": "Die Band bestand aus Van Pierszalowski (Gesang, Gitarre), Cambria Goodwin (Banjo, Gesang, Mandoline), Tyson Vogel (Schlagzeug), Ryan Stively (Bass) und Gram Lebron (Gitarre, Keyboard).",
+    "seed_token_index": 4,
+    "group_start": 4,
+    "group_end": 7,
+    "group_span_text": "Van Pierszalowski (Gesang",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -22726,6 +23660,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9162",
+    "gold_text": "Beide Motoren konnten entweder mit Front - oder Allradantrieb geordert werden.",
+    "seed_token_index": 8,
+    "group_start": 8,
+    "group_end": 8,
+    "group_span_text": "Allradantrieb",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -23050,25 +23994,9 @@
     "sent_id": "train-s9272",
     "gold_text": "Er stellt hierbei aber weniger auf konkrete Benimmregeln, als allgemein auf Höflichkeit mit den Mitmenschen ab und fördert somit das allgemein verbreitete Fehlverständnis der Schriften des berühmten Knigge, der zwar über den Umgang mit Menschen schrieb, damit aber keineswegs Benimm im Sinn hatte, sondern viel mehr eine kritische, politisch - aufklärerische Auseinandersetzung mit der zu seinen Lebzeiten herrschenden Gesellschaftsstruktur.",
     "seed_token_index": 52,
-    "group_start": 51,
-    "group_end": 64,
-    "group_span_text": "eine kritische politisch aufklärerische Auseinandersetzung der herrschenden Gesellschaftsstruktur",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 56,
-    "first_fail_form": "aufklärerische",
-    "first_fail_lemma": "aufklärerisch",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
-  },
-  {
-    "split": "train",
-    "sent_id": "train-s9272",
-    "gold_text": "Er stellt hierbei aber weniger auf konkrete Benimmregeln, als allgemein auf Höflichkeit mit den Mitmenschen ab und fördert somit das allgemein verbreitete Fehlverständnis der Schriften des berühmten Knigge, der zwar über den Umgang mit Menschen schrieb, damit aber keineswegs Benimm im Sinn hatte, sondern viel mehr eine kritische, politisch - aufklärerische Auseinandersetzung mit der zu seinen Lebzeiten herrschenden Gesellschaftsstruktur.",
-    "seed_token_index": 42,
     "group_start": 42,
-    "group_end": 64,
-    "group_span_text": "Benimm eine kritische politisch - aufklärerische Auseinandersetzung der herrschenden Gesellschaftsstruktur",
+    "group_end": 57,
+    "group_span_text": "Benimm eine kritische politisch - aufklärerische Auseinandersetzung",
     "reason": "conjunction_with_comma"
   },
   {
@@ -23192,6 +24120,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9345",
+    "gold_text": "Sechs Wasserräder von jeweils 12 Metern Durchmesser und 4 Metern Breite trieben die Pumpen an, die in der Lage waren, 18.000 bis 20.000 Kubikmeter Wasser pro Tag aus der Seine bergauf zu pumpen.",
+    "seed_token_index": 6,
+    "group_start": 6,
+    "group_end": 6,
+    "group_span_text": "Durchmesser",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -23801,6 +24739,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s9572",
+    "gold_text": "Die Sonderpädagogik unterstützt und begleitet die Menschen mit \"besonderem Förderbedarf\" durch individuelle Hilfen, um für diese ein möglichst großes Maß an schulischer und beruflicher Eingliederung, gesellschaftlicher Teilhabe und selbstständiger Lebensgestaltung zu erlangen.",
+    "seed_token_index": 10,
+    "group_start": 9,
+    "group_end": 10,
+    "group_span_text": "besonderem Förderbedarf",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s9575",
     "gold_text": "Eine weitere Möglichkeit, den Verbrauch von Kraftstoff und die damit entstehenden Probleme zu vermeiden, ist auf diesen einfach zu verzichten und andere Energieformen zu verwenden.",
     "seed_token_index": 9,
@@ -24083,13 +25031,7 @@
     "group_start": 28,
     "group_end": 29,
     "group_span_text": "den sog",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 29,
-    "first_fail_form": "sog",
-    "first_fail_lemma": "saugen",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -24519,13 +25461,17 @@
     "group_start": 21,
     "group_end": 23,
     "group_span_text": "den Pittsburgh Steelers",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 23,
-    "first_fail_form": "Steelers",
-    "first_fail_lemma": "Steelers",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9812",
+    "gold_text": "Das Seenotrettungsboot ist mit Funkanlagen, Farb - Kartenplotter, Echolot, Radar, GPS, DGPS, Fremdlenzpumpe und einer Bergungspforte ausgestattet.",
+    "seed_token_index": 18,
+    "group_start": 18,
+    "group_end": 18,
+    "group_span_text": "Fremdlenzpumpe",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -24763,6 +25709,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s9870",
+    "gold_text": "0,41 Prozent stammten von zwei oder mehr Ethnien ab.",
+    "seed_token_index": 7,
+    "group_start": 4,
+    "group_end": 7,
+    "group_span_text": "zwei oder mehr Ethnien",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s9872",
     "gold_text": "Für die Gestaltung griffen sie hierbei auf die landschaftlich geprägten Bauglieder der dorischen und der ionischen Ordnung zurück, zu denen ab dem späten 3.",
     "seed_token_index": 7,
@@ -24811,6 +25767,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s9885",
+    "gold_text": "Nach einer anderen Quelle desselben Autors wurden zwei Attrappen und neun Prototypen gebaut von den die letzten beiden, V6 und V7, nicht mehr fertig wurden.",
+    "seed_token_index": 14,
+    "group_start": 14,
+    "group_end": 14,
+    "group_span_text": "den",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s9887",
     "gold_text": "Im Jahr nach dem Staatsstreich wurde Basilus von seinen eigenen Sklaven getötet, offenbar aus Rache für eine ihnen angetane Verstümmelung.",
     "seed_token_index": 18,
@@ -24824,6 +25790,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9887",
+    "gold_text": "Im Jahr nach dem Staatsstreich wurde Basilus von seinen eigenen Sklaven getötet, offenbar aus Rache für eine ihnen angetane Verstümmelung.",
+    "seed_token_index": 10,
+    "group_start": 9,
+    "group_end": 11,
+    "group_span_text": "seinen eigenen Sklaven",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -24865,13 +25841,7 @@
     "group_start": 1,
     "group_end": 3,
     "group_span_text": "den Tai Situpas",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 2,
-    "first_fail_form": "Tai",
-    "first_fail_lemma": "Tai",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -24929,13 +25899,7 @@
     "group_start": 18,
     "group_end": 21,
     "group_span_text": "den Lehrern Robert Sterl",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 21,
-    "first_fail_form": "Sterl",
-    "first_fail_lemma": "Sterl",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -25231,6 +26195,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s9986",
+    "gold_text": "Ab 1988 formierte sich in der Mongolei eine Opposition aus verschiedensten Kräften, die ein Mehrparteiensystem und Wirtschaftsreformen forderte und auch von Ressentiments gegenüber in der Mongolei lebenden Russen profitierte.",
+    "seed_token_index": 28,
+    "group_start": 27,
+    "group_end": 28,
+    "group_span_text": "lebenden Russen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9990",
+    "gold_text": "Über 200 m Lagen und mit der 4 × 200m - Freistilstaffel trat er bei den Olympischen Sommerspielen 2008 in Peking an.",
+    "seed_token_index": 11,
+    "group_start": 6,
+    "group_end": 11,
+    "group_span_text": "der 4 × 200m - Freistilstaffel",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s9991",
     "gold_text": "Die militärische Abkürzung lautete \"VC\".",
     "seed_token_index": 5,
@@ -25276,6 +26260,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10030",
+    "gold_text": "Des Weiteren installierte man eine neue Elektroanlage samt Beleuchtung und anstelle der Luftheizungs - Anlage aus dem Jahr 1913 wurde eine Gasheizung im Kirchenraum eingebaut.",
+    "seed_token_index": 8,
+    "group_start": 8,
+    "group_end": 8,
+    "group_span_text": "Beleuchtung",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -25340,6 +26334,26 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10053",
+    "gold_text": "Nach der Volkszählung vom November 2004 betrug die Einwohnerzahl rund 555.000 Einwohner und setzte sich aus schätzungsweise 31,9 % Moldauern, 30,3 % Russen und 28,9 % Ukrainern zusammen.",
+    "seed_token_index": 20,
+    "group_start": 20,
+    "group_end": 20,
+    "group_span_text": "Moldauern",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10053",
+    "gold_text": "Nach der Volkszählung vom November 2004 betrug die Einwohnerzahl rund 555.000 Einwohner und setzte sich aus schätzungsweise 31,9 % Moldauern, 30,3 % Russen und 28,9 % Ukrainern zusammen.",
+    "seed_token_index": 24,
+    "group_start": 24,
+    "group_end": 24,
+    "group_span_text": "Russen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -25567,6 +26581,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s10131",
+    "gold_text": "Im gleichen Jahr ging Sun Store mit der Migros eine strategische Partnerschaft ein und beliefert seither den Onlineshop «Le Shop» mit Parfüms sowie Kosmetik - und Körperpflegeprodukte.",
+    "seed_token_index": 29,
+    "group_start": 29,
+    "group_end": 29,
+    "group_span_text": "Körperpflegeprodukte",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s10132",
     "gold_text": "Mitte des Jahres folgte für Thonhofer ein leihweiser Wechsel zum DSV Leoben in die Erste Liga, die zweithöchste Profispielklasse im österreichischen Fußball.",
     "seed_token_index": 5,
@@ -25676,6 +26700,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10159",
+    "gold_text": "Seit 1986 arbeitet sie mit Kunst - Keramik in ihrer eigenen Großwerkstatt \"Lechnerhof\" in Witten - Vormholz, seit 1988 fast ausschließlich mit überlebensgroßen Polystyrol / Beton - Konstruktionen.",
+    "seed_token_index": 30,
+    "group_start": 23,
+    "group_end": 30,
+    "group_span_text": "ausschließlich mit überlebensgroßen Polystyrol / Beton - Konstruktionen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -25795,6 +26829,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s10198",
+    "gold_text": "Er betonte dabei die Beschäftigung mit dramatischer Literatur und ästhetischen Theorien, den Entwurf eines aktuell bezogenen Spielplans und die Reflexion über das Theater an sich.",
+    "seed_token_index": 12,
+    "group_start": 12,
+    "group_end": 17,
+    "group_span_text": "den Entwurf eines aktuell bezogenen Spielplans",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10198",
+    "gold_text": "Er betonte dabei die Beschäftigung mit dramatischer Literatur und ästhetischen Theorien, den Entwurf eines aktuell bezogenen Spielplans und die Reflexion über das Theater an sich.",
+    "seed_token_index": 19,
+    "group_start": 19,
+    "group_end": 20,
+    "group_span_text": "die Reflexion",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s10206",
     "gold_text": "Sie wird vom Deutschen Koordinierungsrat der Gesellschaften für Christlich - Jüdische Zusammenarbeit ausgerichtet.",
     "seed_token_index": 12,
@@ -25875,6 +26929,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s10246",
+    "gold_text": "Die fünf außen kahlen und innen flaumig behaarten Kelchblätter sind bei einer Länge von 4 bis 5 mm höchstens so lang wie der Blütenbecher und dreieckig - eiförmig mit glattem Rand und zugespitztem oder spitzem oberen Ende.",
+    "seed_token_index": 17,
+    "group_start": 14,
+    "group_end": 17,
+    "group_span_text": "4 bis 5 mm",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s10248",
     "gold_text": "Hier lernte sie den US - Amerikaner Norton Lansing kennen, den sie heiratete, und dessen Familiennamen Sherry Lansing nun annahm.",
     "seed_token_index": 3,
@@ -25904,6 +26968,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10252",
+    "gold_text": "Der Asiatische Gabelbart kann bis zu 90 cm lang werden, jedoch bleibt er in den meisten Fällen deutlich kleiner (max. 60 cm).",
+    "seed_token_index": 7,
+    "group_start": 6,
+    "group_end": 7,
+    "group_span_text": "90 cm",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -26016,6 +27090,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10301",
+    "gold_text": "Die Halme erreichen Durchmesser von 8 bis 18 cm, sind grün und bemehlt, die Halmscheiden sind behaart.",
+    "seed_token_index": 8,
+    "group_start": 5,
+    "group_end": 8,
+    "group_span_text": "8 bis 18 cm",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -26179,13 +27263,7 @@
     "group_start": 16,
     "group_end": 16,
     "group_span_text": "Shredder",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 16,
-    "first_fail_form": "Shredder",
-    "first_fail_lemma": "Shredder",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -26228,6 +27306,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10369",
+    "gold_text": "Die Spieler wurden umgehend von Spiel - und Trainingsbetrieb suspendiert.",
+    "seed_token_index": 8,
+    "group_start": 8,
+    "group_end": 8,
+    "group_span_text": "Trainingsbetrieb",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -26324,6 +27412,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10392",
+    "gold_text": "Síugrás - Schanze in Kőszeg besteht aus mehrere Skisprungschanzen.",
+    "seed_token_index": 7,
+    "group_start": 7,
+    "group_end": 8,
+    "group_span_text": "mehrere Skisprungschanzen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -26617,7 +27715,7 @@
     "split": "train",
     "sent_id": "train-s10479",
     "gold_text": "Durch den 50 Tonnen schweren Turm und die verlängerte Wanne stieg das Gesamtgewicht nun auf 140 Tonnen.",
-    "seed_token_index": 7,
+    "seed_token_index": 4,
     "group_start": 1,
     "group_end": 9,
     "group_span_text": "den 50 Tonnen schweren Turm und die verlängerte Wanne",
@@ -26822,14 +27920,8 @@
     "seed_token_index": 14,
     "group_start": 3,
     "group_end": 14,
-    "group_span_text": "des Bundesministeriums BMfFSFJ",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 14,
-    "first_fail_form": "BMfFSFJ",
-    "first_fail_lemma": "BMfFSFJ",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "group_span_text": "des Bundesministeriums Familie Senioren Frauen und Jugend ( BMfFSFJ",
+    "reason": "conjunction_with_comma"
   },
   {
     "split": "train",
@@ -27201,6 +28293,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s10637",
+    "gold_text": "Für das Aktionspotential sind davon nur noch zwei von gewisser (siehe unten) Bedeutung.",
+    "seed_token_index": 14,
+    "group_start": 9,
+    "group_end": 14,
+    "group_span_text": "gewisser (siehe unten) Bedeutung",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s10638",
     "gold_text": "Klopstock verwendet als erster in der deutschen Literaturgeschichte durchgehende Hexameter und lehnt sich somit an die Epen des Homer (Ilias und Odyssee) an.",
     "seed_token_index": 8,
@@ -27297,13 +28399,7 @@
     "group_start": 16,
     "group_end": 21,
     "group_span_text": "deren Unternehmen Sunn Musical Equipment Company",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 18,
-    "first_fail_form": "Sunn",
-    "first_fail_lemma": "Sunn",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -27425,13 +28521,7 @@
     "group_start": 12,
     "group_end": 12,
     "group_span_text": "Euro",
-    "reason": "no_Dat_row_matching_number_gender",
-    "first_fail_token_index": 12,
-    "first_fail_form": "Euro",
-    "first_fail_lemma": "Euro",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -27512,6 +28602,36 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10760",
+    "gold_text": "Das fossile Material, das im November 1989 in Ablagerungen des Jungpleistozäns und Holozäns auf Eua, Lifuka, Uiha und auf Vanuatu entdeckt und 2006 vom Ornithologen David William Steadman beschrieben wurde, besteht aus einem kompletten Oberschenkelknochen sowie fünf Radii, einem Quadratbein, einem Unterkieferknochen, einem Coracoid, zwei Brustbeinknochen, zwei Oberarmknochen, zwei Ulne, zwei Tibiotarsi, einem Carpometacarpus, einem Tarsometatarsus und drei Zehenknochen.",
+    "seed_token_index": 43,
+    "group_start": 38,
+    "group_end": 43,
+    "group_span_text": "einem kompletten Oberschenkelknochen fünf Radii",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10760",
+    "gold_text": "Das fossile Material, das im November 1989 in Ablagerungen des Jungpleistozäns und Holozäns auf Eua, Lifuka, Uiha und auf Vanuatu entdeckt und 2006 vom Ornithologen David William Steadman beschrieben wurde, besteht aus einem kompletten Oberschenkelknochen sowie fünf Radii, einem Quadratbein, einem Unterkieferknochen, einem Coracoid, zwei Brustbeinknochen, zwei Oberarmknochen, zwei Ulne, zwei Tibiotarsi, einem Carpometacarpus, einem Tarsometatarsus und drei Zehenknochen.",
+    "seed_token_index": 55,
+    "group_start": 54,
+    "group_end": 55,
+    "group_span_text": "zwei Brustbeinknochen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10760",
+    "gold_text": "Das fossile Material, das im November 1989 in Ablagerungen des Jungpleistozäns und Holozäns auf Eua, Lifuka, Uiha und auf Vanuatu entdeckt und 2006 vom Ornithologen David William Steadman beschrieben wurde, besteht aus einem kompletten Oberschenkelknochen sowie fünf Radii, einem Quadratbein, einem Unterkieferknochen, einem Coracoid, zwei Brustbeinknochen, zwei Oberarmknochen, zwei Ulne, zwei Tibiotarsi, einem Carpometacarpus, einem Tarsometatarsus und drei Zehenknochen.",
+    "seed_token_index": 73,
+    "group_start": 72,
+    "group_end": 73,
+    "group_span_text": "drei Zehenknochen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -27611,6 +28731,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s10800",
+    "gold_text": "Nach erfolgreichem Abschluss fand er eine Anstellung bei der Tageszeitung The Philadelphia Record als Literatur - und Musikkritiker.",
+    "seed_token_index": 12,
+    "group_start": 8,
+    "group_end": 12,
+    "group_span_text": "der Tageszeitung The Philadelphia Record",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s10806",
     "gold_text": "Dieses gilt insbesondere, wenn es sich um hoheitliche Akte handelt.",
     "seed_token_index": 8,
@@ -27694,22 +28824,6 @@
     "sent_id": "train-s10821",
     "gold_text": "Insbesondere die letzte Bemerkung war eine klare Absage an hindu - nationalistisches und (in geringerem Maße) radikal - muslimisches Gedankengut, aber auch an klassenkämpferische Parolen, wie sie von einem Teil der Oppositionsparteien vertreten worden waren.",
     "seed_token_index": 9,
-    "group_start": 9,
-    "group_end": 21,
-    "group_span_text": "hindu - nationalistisches und (in geringerem Maße) radikal - muslimisches Gedankengut",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 9,
-    "first_fail_form": "hindu",
-    "first_fail_lemma": "hindu",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
-  },
-  {
-    "split": "train",
-    "sent_id": "train-s10821",
-    "gold_text": "Insbesondere die letzte Bemerkung war eine klare Absage an hindu - nationalistisches und (in geringerem Maße) radikal - muslimisches Gedankengut, aber auch an klassenkämpferische Parolen, wie sie von einem Teil der Oppositionsparteien vertreten worden waren.",
-    "seed_token_index": 26,
     "group_start": 9,
     "group_end": 27,
     "group_span_text": "hindu - nationalistisches und (in geringerem Maße) radikal - muslimisches Gedankengut, aber auch an klassenkämpferische Parolen",
@@ -27957,13 +29071,7 @@
     "group_start": 5,
     "group_end": 19,
     "group_span_text": "ein überparteiliches, auf politischen Dialog und Förderung des Nachwuchses für internationale Aufgaben ausgerichtetes Netzwerk",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 6,
-    "first_fail_form": "überparteiliches",
-    "first_fail_lemma": "überparteilich",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "conjunction_with_comma"
   },
   {
     "split": "train",
@@ -28245,13 +29353,7 @@
     "group_start": 5,
     "group_end": 10,
     "group_span_text": "dem ersten ausgerichteten Weltcup",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 9,
-    "first_fail_form": "ausgerichteten",
-    "first_fail_lemma": "ausgerichtet",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -28615,6 +29717,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11089",
+    "gold_text": "Es besaß außer drei Sitzplatzreihen (mit insgesamt nur 33 Plätzen) ausschließlich Stehplätze.",
+    "seed_token_index": 4,
+    "group_start": 3,
+    "group_end": 4,
+    "group_span_text": "drei Sitzplatzreihen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11095",
     "gold_text": "Dieses versetzt die Absolventen in die Lage, Projekte zu leiten, Gebäudekonzepte in Hinblick auf Energie und Technologien zu entwickeln und in allen Phasen der Baumaßnahmen eine beratende Funktion zu übernehmen.",
     "seed_token_index": 27,
@@ -28628,6 +29740,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11103",
+    "gold_text": "Sie wird einige Male von Arthur sehr verletzt, als sie ihn z.",
+    "seed_token_index": 11,
+    "group_start": 11,
+    "group_end": 11,
+    "group_span_text": "ihn",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -28737,6 +29859,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11170",
+    "gold_text": "Ihren bislang größten Erfolg im Straßenlauf erzielte sie Anfang 2009 beim World 's Best 10K, wo sie in 31:12 min die Siegesserie von Lornah Kiplagat beendete.",
+    "seed_token_index": 15,
+    "group_start": 12,
+    "group_end": 16,
+    "group_span_text": "dem Best 10K",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11179",
     "gold_text": "Bilder vom Interieur des Bull & Finch wurden später als architektonische Vorlage für das Filmset der Serie Cheers (Stage 25 in den Paramount Studios in Hollywood) verwendet.",
     "seed_token_index": 23,
@@ -28839,13 +29971,7 @@
     "group_start": 3,
     "group_end": 10,
     "group_span_text": "den Vize - Präsidenten Kelly Weller (Marketing",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 7,
-    "first_fail_form": "Kelly",
-    "first_fail_lemma": "Kelly",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -28979,17 +30105,11 @@
     "split": "train",
     "sent_id": "train-s11272",
     "gold_text": "Dem deutschen Publikum wurde er insbesondere auch durch die dänische Verfilmung von Henry Millers Roman Stille Tage in Clichy im Jahr 1970 bekannt, in der er zwei Nebenrollen spielte.",
-    "seed_token_index": 8,
-    "group_start": 8,
+    "seed_token_index": 16,
+    "group_start": 12,
     "group_end": 16,
-    "group_span_text": "die dänische Verfilmung von Henry Millers Roman Stille Tage",
-    "reason": "no_Dat_row_matching_number_plur",
-    "first_fail_token_index": 16,
-    "first_fail_form": "Tage",
-    "first_fail_lemma": "Tag",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Masc"
+    "group_span_text": "Henry Millers Roman Stille Tage",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -29407,22 +30527,6 @@
     "gold_text": "Bekannt wurde das Unternehmen durch seine in Deutschland drittgrößte Serienmöbelproduktion im früheren Gollnow und den weltweit bekannten Marken WILAGO und WLG.",
     "seed_token_index": 5,
     "group_start": 5,
-    "group_end": 9,
-    "group_span_text": "seine in Deutschland drittgrößte Serienmöbelproduktion",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 8,
-    "first_fail_form": "drittgrößte",
-    "first_fail_lemma": "drittgroß",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
-  },
-  {
-    "split": "train",
-    "sent_id": "train-s11421",
-    "gold_text": "Bekannt wurde das Unternehmen durch seine in Deutschland drittgrößte Serienmöbelproduktion im früheren Gollnow und den weltweit bekannten Marken WILAGO und WLG.",
-    "seed_token_index": 15,
-    "group_start": 5,
     "group_end": 19,
     "group_span_text": "seine drittgrößte Serienmöbelproduktion und den bekannten Marken WILAGO",
     "reason": "lemma_has_no_Dat_rows",
@@ -29679,6 +30783,22 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11484",
+    "gold_text": "\"Käutners düstere Moritat bietet krasse Klischees statt kritischer Ansätze\", urteilte das Lexikon des Internationalen Films.",
+    "seed_token_index": 5,
+    "group_start": 5,
+    "group_end": 6,
+    "group_span_text": "krasse Klischees",
+    "reason": "lemma_has_no_Dat_rows",
+    "first_fail_token_index": 5,
+    "first_fail_form": "krasse",
+    "first_fail_lemma": "kraß",
+    "first_fail_upos": "ADJ",
+    "first_fail_number": "Plur",
+    "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11496",
     "gold_text": "Die Einstellregeln für die Verstärkung K_p, die Nachstellzeit T_n und die Vorhaltzeit T_v lauten wie in folgender Tabelle angegeben.",
     "seed_token_index": 3,
@@ -29686,6 +30806,26 @@
     "group_end": 13,
     "group_span_text": "die Verstärkung K_p, die Nachstellzeit T_n und die Vorhaltzeit T_v",
     "reason": "conjunction_with_comma"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11498",
+    "gold_text": "Die bis zu 200 m tiefen Schluchten auf den Terrassen der Murgia, die sich zum Golf hin absenkt, entstanden durch Erosion, da der Karst den Regen nicht speichern kann und Karren bildet, die sich zu Gravinen erweiterten und Höhlen wie die Grotten von Castallana schufen.",
+    "seed_token_index": 5,
+    "group_start": 0,
+    "group_end": 6,
+    "group_span_text": "Die bis zu 200 m tiefen Schluchten",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11498",
+    "gold_text": "Die bis zu 200 m tiefen Schluchten auf den Terrassen der Murgia, die sich zum Golf hin absenkt, entstanden durch Erosion, da der Karst den Regen nicht speichern kann und Karren bildet, die sich zu Gravinen erweiterten und Höhlen wie die Grotten von Castallana schufen.",
+    "seed_token_index": 4,
+    "group_start": 3,
+    "group_end": 4,
+    "group_span_text": "200 m",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -29737,6 +30877,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11524",
+    "gold_text": "Rotweine werden zu 90 % kultiviert und zählen aufgrund des besonderen Terroirs und des extrem niedrigen Hektar - Ertrages (nur 5 bis 6 hl / ha) zu den berühmtesten und besten Spaniens.",
+    "seed_token_index": 4,
+    "group_start": 3,
+    "group_end": 4,
+    "group_span_text": "90 %",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11526",
     "gold_text": "Der Mühlbach, ein in 135 Metern über NN entstehender Zusammenfluss mehrerer auf dem Lohrberg in Seckbach entspringender Quellen, mündet nach etwa einem Kilometer überwiegend verrohrtem Bachlauf in das Seckbacher Ried und sorgt dort für die nötige Feuchte des Areals.",
     "seed_token_index": 29,
@@ -29750,6 +30900,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11531",
+    "gold_text": "Die Bäume haben ein durchschnittliches Alter von 200 Jahren und eine Höhe von bis zu 7 m, vereinzelte Bäume sollen ein Alter von 300 Jahren haben, diese sind dann bis 10 m hoch.",
+    "seed_token_index": 16,
+    "group_start": 15,
+    "group_end": 16,
+    "group_span_text": "7 m",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -29802,6 +30962,16 @@
     "group_end": 17,
     "group_span_text": "Entscheidungen bundesdeutscher Parlamente, Regierungen und Behörden sowie für Massenmedien",
     "reason": "conjunction_with_comma"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11563",
+    "gold_text": "Der Weser - Skywalk ist eine im Jahr 2011 errichtete Aussichtsplattform aus verzinktem Stahl auf der östlichsten der sieben Hannoverschen Klippen (Wesersandstein), die sich nahe dem Dreiländereck Nordrhein - Westfalen - Niedersachsen - Hessen zwischen den Ortschaften Würgassen und Bad Karlshafen bis zu 80 m über der Weser erheben.",
+    "seed_token_index": 48,
+    "group_start": 47,
+    "group_end": 48,
+    "group_span_text": "80 m",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -30103,6 +31273,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11652",
+    "gold_text": "Es handelt sich dabei um einen für den Spieler transparenten Entwicklungsprozess, der es in besonderem Maße ermöglicht, mit dem Entwickler - Team in Verbindung zu treten (in Form von Verbesserungsvorschlägen, Anregungen, Kritiken, et cetera)",
+    "seed_token_index": 34,
+    "group_start": 34,
+    "group_end": 34,
+    "group_span_text": "Anregungen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11652",
+    "gold_text": "Es handelt sich dabei um einen für den Spieler transparenten Entwicklungsprozess, der es in besonderem Maße ermöglicht, mit dem Entwickler - Team in Verbindung zu treten (in Form von Verbesserungsvorschlägen, Anregungen, Kritiken, et cetera)",
+    "seed_token_index": 36,
+    "group_start": 36,
+    "group_end": 36,
+    "group_span_text": "Kritiken",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11653",
     "gold_text": "Im März 2007 trat Wiesheu von dem Amt zurück, nachdem ihm eine große Mehrheit der Mitglieder eine angestrebte Satzungsänderung -- die zu einer Neustrukturierung der DAG geführt hätte -- nicht bewilligen wollte, und gründete die Deutsch - Arabische Freundschaftsgesellschaft.",
     "seed_token_index": 18,
@@ -30343,6 +31533,26 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11787",
+    "gold_text": "In Runde 123 war für Faulkner das Rennen zu Ende, als seine Kurbelwelle brach.",
+    "seed_token_index": 9,
+    "group_start": 9,
+    "group_end": 9,
+    "group_span_text": "Ende",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11798",
+    "gold_text": "Der natürliche Standort der Bäume sind Hochwälder und Savannen, an Standorten mit durchlässigem Boden und mehr als 1500 mm jährlichen Niederschlag.",
+    "seed_token_index": 20,
+    "group_start": 20,
+    "group_end": 21,
+    "group_span_text": "jährlichen Niederschlag",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11812",
     "gold_text": "Im selben Jahr 1935 erhielt Werner Berg jedoch noch den begehrten Nürnberger Albrecht - Dürer - Preis.",
     "seed_token_index": 10,
@@ -30413,13 +31623,7 @@
     "group_start": 29,
     "group_end": 32,
     "group_span_text": "den Produzent Albhy Galuten",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 31,
-    "first_fail_form": "Albhy",
-    "first_fail_lemma": "Albhy",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -30445,13 +31649,7 @@
     "group_start": 13,
     "group_end": 14,
     "group_span_text": "Morbus Parkinson",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 13,
-    "first_fail_form": "Morbus",
-    "first_fail_lemma": "Morbus",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -30525,13 +31723,7 @@
     "group_start": 20,
     "group_end": 22,
     "group_span_text": "Emilie Berlepsch",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 20,
-    "first_fail_form": "Emilie",
-    "first_fail_lemma": "Emilie",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -30590,6 +31782,22 @@
     "group_end": 12,
     "group_span_text": "die Erzählungen, die Dichtung und das Theater Islands",
     "reason": "conjunction_with_comma"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11877",
+    "gold_text": "Längengrad herum ist Neuseeland die nächstgelegene Landmasse außerhalb der Antarktis.",
+    "seed_token_index": 4,
+    "group_start": 4,
+    "group_end": 6,
+    "group_span_text": "die nächstgelegene Landmasse",
+    "reason": "lemma_has_no_Dat_rows",
+    "first_fail_token_index": 5,
+    "first_fail_form": "nächstgelegene",
+    "first_fail_lemma": "nächstgelegen",
+    "first_fail_upos": "ADJ",
+    "first_fail_number": "Sing",
+    "first_fail_gender": "Fem"
   },
   {
     "split": "train",
@@ -30865,13 +32073,7 @@
     "group_start": 6,
     "group_end": 6,
     "group_span_text": "Hartwein",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 6,
-    "first_fail_form": "Hartwein",
-    "first_fail_lemma": "Hartwein",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -30939,6 +32141,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11970",
+    "gold_text": "Die kugelförmigen bis kurz zylindrischen, dunkelgrünen Triebe erreichen bei Durchmessern von 12 bis 15 Zentimetern Wuchshöhen von bis zu 75 Zentimeter.",
+    "seed_token_index": 21,
+    "group_start": 20,
+    "group_end": 21,
+    "group_span_text": "75 Zentimeter",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11972",
     "gold_text": "Nicht zuletzt ist die Schaffung großzügiger Naherholungsgebiete auf Mülheimer Stadtgebiet als bleibende Leistung zu nennen.",
     "seed_token_index": 11,
@@ -30952,6 +32164,36 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11980",
+    "gold_text": "Pauleta hält mit 47 Treffer den Rekord für die meisten Tore.",
+    "seed_token_index": 4,
+    "group_start": 3,
+    "group_end": 4,
+    "group_span_text": "47 Treffer",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11990",
+    "gold_text": "So besuchte Bischof Gabriel von Kaluga Optina und zeigte sich Abt Moses 'Politik gegenüber günstig eingestellt.",
+    "seed_token_index": 13,
+    "group_start": 13,
+    "group_end": 13,
+    "group_span_text": "Politik",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11992",
+    "gold_text": "Während einer Hochzeitsfeier in New York City lädt ein Mann (Eckhart) eine Frau (Bonham Carter) zu einem Glas Champagner ein, woraufhin sie ihm sagt, dass sie nicht mehr trinke aber rauchen wäre kein Problem.",
+    "seed_token_index": 22,
+    "group_start": 20,
+    "group_end": 22,
+    "group_span_text": "einem Glas Champagner",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -31021,7 +32263,23 @@
     "split": "train",
     "sent_id": "train-s12003",
     "gold_text": "Seit Oktober 2009 wird mit der Breezer B 600 eine strukturell verstärkte Version mit Echo - Zulassung gebaut, der einen elf Zentimeter längereren Rumpf und eine um 68 cm größere Spannweite sowie als Antrieb einen Rotax 912 S besitzt.",
-    "seed_token_index": 26,
+    "seed_token_index": 20,
+    "group_start": 20,
+    "group_end": 24,
+    "group_span_text": "einen elf Zentimeter längereren Rumpf",
+    "reason": "lemma_has_no_Dat_rows",
+    "first_fail_token_index": 23,
+    "first_fail_form": "längereren",
+    "first_fail_lemma": "längereren",
+    "first_fail_upos": "ADJ",
+    "first_fail_number": "Sing",
+    "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12003",
+    "gold_text": "Seit Oktober 2009 wird mit der Breezer B 600 eine strukturell verstärkte Version mit Echo - Zulassung gebaut, der einen elf Zentimeter längereren Rumpf und eine um 68 cm größere Spannweite sowie als Antrieb einen Rotax 912 S besitzt.",
+    "seed_token_index": 35,
     "group_start": 20,
     "group_end": 38,
     "group_span_text": "einen elf Zentimeter längereren Rumpf und eine um 68 cm größere Spannweite sowie als Antrieb einen Rotax 912 S",
@@ -31032,6 +32290,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12003",
+    "gold_text": "Seit Oktober 2009 wird mit der Breezer B 600 eine strukturell verstärkte Version mit Echo - Zulassung gebaut, der einen elf Zentimeter längereren Rumpf und eine um 68 cm größere Spannweite sowie als Antrieb einen Rotax 912 S besitzt.",
+    "seed_token_index": 16,
+    "group_start": 14,
+    "group_end": 16,
+    "group_span_text": "Echo - Zulassung",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -31218,6 +32486,26 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12044",
+    "gold_text": "Stillman war der bis dato erst sechste Spieler, der den Titel mit zwei verschiedenen Teams gewinnen konnte.",
+    "seed_token_index": 15,
+    "group_start": 13,
+    "group_end": 15,
+    "group_span_text": "zwei verschiedenen Teams",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12047",
+    "gold_text": "Er wird aus einer Röhre mit lediglich zwei Fahrspuren bestehen, da sich die vier Fahrspuren der Haupttrasse vor dem Bühltunnel höhenfrei aufteilen (zwei Spuren von / nach Eiserfeld und zwei Spuren durch den Tunnel von / nach Niederschelden).",
+    "seed_token_index": 8,
+    "group_start": 7,
+    "group_end": 8,
+    "group_span_text": "zwei Fahrspuren",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -31445,6 +32733,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12112",
+    "gold_text": "Zuvor zweigte das AKN - Gleis kurz hinter dem Bahnhof vom Streckengleis Richtung Pinneberg ab.",
+    "seed_token_index": 13,
+    "group_start": 11,
+    "group_end": 13,
+    "group_span_text": "dem Streckengleis Richtung",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12118",
     "gold_text": "Auf der Website der PC Games findet man Neuigkeiten über die aktuellen Geschehnisse auf dem PC - Spiele - Markt, neu erscheinende Spieleupdates und Mods sowie ein Forum für PC - Spieler.",
     "seed_token_index": 22,
@@ -31477,13 +32775,7 @@
     "group_start": 12,
     "group_end": 16,
     "group_span_text": "dem Zusatz \"die tageszeitung",
-    "reason": "no_Dat_row_matching_number_gender_upos",
-    "first_fail_token_index": 16,
-    "first_fail_form": "tageszeitung",
-    "first_fail_lemma": "Tageszeitung",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -31601,7 +32893,7 @@
     "split": "train",
     "sent_id": "train-s12169",
     "gold_text": "Dabei stürzten etwa 350.000 Kubikmeter Wasser aus der teilweise gefluteten und noch nicht für die Schifffahrt freigegebenen Kanalhaltung Eibach durch den Ortskern Katzwang und dann weiter in das etwa 25 Meter tiefer als der Kanal liegende Rednitztal.",
-    "seed_token_index": 27,
+    "seed_token_index": 20,
     "group_start": 20,
     "group_end": 36,
     "group_span_text": "den Ortskern Katzwang und dann weiter in das etwa 25 Meter tiefer als der Kanal liegende Rednitztal",
@@ -31961,13 +33253,7 @@
     "group_start": 7,
     "group_end": 14,
     "group_span_text": "WASS -- Whitehead Alenia Sistemi Subacquei (Italien",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 11,
-    "first_fail_form": "Sistemi",
-    "first_fail_lemma": "Sistemi",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": ""
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -32285,6 +33571,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12394",
+    "gold_text": "Es war Basis des Aufblühens von Online - Tauschbörsen (wie Napster) und mobilen Musikabspielgeräten (MP3 - Spieler) auf Basis von Flash - Speicher oder Festplatten.",
+    "seed_token_index": 26,
+    "group_start": 24,
+    "group_end": 26,
+    "group_span_text": "Flash - Speicher",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12401",
     "gold_text": "Die Busfertigung von Magirus - Deutz wurde 1955 von Ulm ins Westwaggon - Werk nach Mainz verlegt.",
     "seed_token_index": 11,
@@ -32567,6 +33863,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12499",
+    "gold_text": "Die Riesen - Glockenblume ist eine ausdauernde, krautige Pflanze, die Wuchshöhen von 40 bis 100 (150) Zentimeter erreicht.",
+    "seed_token_index": 20,
+    "group_start": 14,
+    "group_end": 20,
+    "group_span_text": "40 bis 100 (150) Zentimeter",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12501",
     "gold_text": "Indican selbst ist farblos, Indigo selbst besitzt eine charakteristische blaue Farbe.",
     "seed_token_index": 8,
@@ -32695,6 +34001,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12540",
+    "gold_text": "Groove Metal entstand in der Hochphase des Crossover zum Ende der 1980er und Beginn der 1990er Jahre.",
+    "seed_token_index": 14,
+    "group_start": 14,
+    "group_end": 17,
+    "group_span_text": "Beginn der 1990er Jahre",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12554",
     "gold_text": "Zwischen 1961 und 1966 gab es den Briska, einen Pickup und Lieferwagen mit dem vorn eingebautem Motor der Contessa.",
     "seed_token_index": 6,
@@ -32775,13 +34091,7 @@
     "group_start": 11,
     "group_end": 12,
     "group_span_text": "den Qing",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 12,
-    "first_fail_form": "Qing",
-    "first_fail_lemma": "Qing",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -32849,6 +34159,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12588",
+    "gold_text": "So findet SIMON unter anderem Verwendung in der Ausbildung, Forschung und Spieleentwicklung, im Grid Computing sowie bei diversen Wirtschaftsunternehmen wo es für die klassische Trennung von Front - und Backend eingesetzt wird.",
+    "seed_token_index": 32,
+    "group_start": 32,
+    "group_end": 32,
+    "group_span_text": "Backend",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12596",
     "gold_text": "Man denke sich einen mit der Ladung Q geladenen Körper, der von einer orientierten, geschlossenen Fläche A umgeben ist.",
     "seed_token_index": 3,
@@ -32904,6 +34224,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12601",
+    "gold_text": "Es war mir wichtig Arzu mit einem Strauß Blumen auf ihrer letzten Reise zu geleiten.",
+    "seed_token_index": 8,
+    "group_start": 6,
+    "group_end": 8,
+    "group_span_text": "einem Strauß Blumen",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -32981,6 +34311,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12622",
+    "gold_text": "Die Speicherstadt steht auf der rund 26 Hektar großen Fläche (einschließlich der Fleete) der ehemaligen Elbinseln Kehrwieder und Wandrahm, auf einer Länge von etwa 1,5 Kilometer und 150 bis 250 Metern Breite im nordöstlichen Hamburger Hafen.",
+    "seed_token_index": 28,
+    "group_start": 27,
+    "group_end": 28,
+    "group_span_text": "1,5 Kilometer",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12627",
     "gold_text": "Diese moderne Ausrüstung hinsichtlich Fahrsteuerung und Bremse wurde dann auch in die beiden Hilfsgerätezüge eingebaut, die 1992 und 1993 für die Berliner S - Bahn aus alten \"Stadtbahnern\" gebaut wurden und heute noch (2012) existieren.",
     "seed_token_index": 21,
@@ -33026,6 +34366,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12639",
+    "gold_text": "Eine zeitgleiche Einspeisung gerechnet auf 15 - Minuten - Ebene kann auch vom TÜV Nord zertifiziert werden, so z.B. bei EWS - Schönau.",
+    "seed_token_index": 24,
+    "group_start": 22,
+    "group_end": 24,
+    "group_span_text": "EWS Schönau",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -33253,6 +34603,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12712",
+    "gold_text": "Mit etwa 8-11 Erkrankungen auf 1.000.000 Einwohner sind diese Erkrankungen sehr selten.",
+    "seed_token_index": 3,
+    "group_start": 2,
+    "group_end": 3,
+    "group_span_text": "8-11 Erkrankungen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12713",
     "gold_text": "Für den alten Ekdal selbst gibt es nichts Besseres mehr als Cognac.",
     "seed_token_index": 1,
@@ -33314,6 +34674,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12725",
+    "gold_text": "Die bis zu 20 ungleichen, abstehenden Randdornen weisen eine Länge von bis zu 2,5 Zentimeter auf.",
+    "seed_token_index": 15,
+    "group_start": 14,
+    "group_end": 15,
+    "group_span_text": "2,5 Zentimeter",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -33503,6 +34873,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12835",
+    "gold_text": "In Einzelfällen bilden sich bis zu drei Rosetten, jedoch keine \"Ableger\".",
+    "seed_token_index": 7,
+    "group_start": 6,
+    "group_end": 7,
+    "group_span_text": "drei Rosetten",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12849",
     "gold_text": "Nachhaltigen Einfluss hatte er mit mehr als 20 Dienstjahren auf den Fortgang des Berliner Ägyptischen Museums.",
     "seed_token_index": 0,
@@ -33516,6 +34896,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12849",
+    "gold_text": "Nachhaltigen Einfluss hatte er mit mehr als 20 Dienstjahren auf den Fortgang des Berliner Ägyptischen Museums.",
+    "seed_token_index": 8,
+    "group_start": 7,
+    "group_end": 8,
+    "group_span_text": "20 Dienstjahren",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -33548,6 +34938,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12878",
+    "gold_text": "Der Marquis de Contades hingegen konnte auf 82 Bataillone, 85 Schwadronen und 86 Geschütze mit insgesamt 55.000 Mann zurückgreifen.",
+    "seed_token_index": 18,
+    "group_start": 17,
+    "group_end": 18,
+    "group_span_text": "55.000 Mann",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -33657,6 +35057,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s12963",
+    "gold_text": "So erreichte sie, dass sie sich zur Turn - und Sportlehrerin ausbilden lassen durfte.",
+    "seed_token_index": 12,
+    "group_start": 12,
+    "group_end": 12,
+    "group_span_text": "Sportlehrerin",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s12972",
     "gold_text": "So beschrieb er einen Stammvater Türk, der ein Sohn Japhets und Enkel Noahs gewesen sei.",
     "seed_token_index": 3,
@@ -33711,13 +35121,7 @@
     "group_start": 4,
     "group_end": 7,
     "group_span_text": "dem Amt Mecklenburgische Kleinseenplatte",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 6,
-    "first_fail_form": "Mecklenburgische",
-    "first_fail_lemma": "Mecklenburgische",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -34125,9 +35529,35 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s13110",
+    "gold_text": "Diese grenzüberschreitenden Projekte realisiert er meist zusammen mit dem von ihm und Christian Walter 1999 gegründeten Fagott - Duo satyros.",
+    "seed_token_index": 15,
+    "group_start": 8,
+    "group_end": 19,
+    "group_span_text": "dem von ihm und Christian Walter 1999 gegründeten Fagott - Duo satyros",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s13116",
     "gold_text": "Somit kann man mit diesem Detektor die absorbierte Dosis oder die pro Zeiteinheit absorbierte Dosis, die Dosisleistung messen.",
     "seed_token_index": 10,
+    "group_start": 10,
+    "group_end": 17,
+    "group_span_text": "die pro Zeiteinheit absorbierte Dosis, die Dosisleistung",
+    "reason": "lemma_has_no_Dat_rows",
+    "first_fail_token_index": 13,
+    "first_fail_form": "absorbierte",
+    "first_fail_lemma": "absorbiert",
+    "first_fail_upos": "ADJ",
+    "first_fail_number": "Sing",
+    "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13116",
+    "gold_text": "Somit kann man mit diesem Detektor die absorbierte Dosis oder die pro Zeiteinheit absorbierte Dosis, die Dosisleistung messen.",
+    "seed_token_index": 6,
     "group_start": 6,
     "group_end": 17,
     "group_span_text": "die absorbierte Dosis oder die pro Zeiteinheit absorbierte Dosis, die Dosisleistung",
@@ -34343,13 +35773,7 @@
     "group_start": 4,
     "group_end": 6,
     "group_span_text": "dem Gerichtsbezirk Altstadt",
-    "reason": "no_Dat_row_matching_number_gender_upos",
-    "first_fail_token_index": 6,
-    "first_fail_form": "Altstadt",
-    "first_fail_lemma": "Altstadt",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -34670,6 +36094,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13284",
+    "gold_text": "Der krautig wachsende, verzweigte Stängel ist aufrecht oder bogig aufsteigend und erreicht meist eine Höhe von 60 bis 125 cm.",
+    "seed_token_index": 20,
+    "group_start": 17,
+    "group_end": 20,
+    "group_span_text": "60 bis 125 cm",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -35099,13 +36533,7 @@
     "group_start": 17,
     "group_end": 17,
     "group_span_text": "Bombardier",
-    "reason": "no_Dat_row_matching_number",
-    "first_fail_token_index": 17,
-    "first_fail_form": "Bombardier",
-    "first_fail_lemma": "Bombardier",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -35122,6 +36550,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13432",
+    "gold_text": "Darüber hinaus wurde Balz von der EVP-Fraktion als ordentliches Mitglied in den im Oktober 2009 konstituierten Sonderausschuss des Europäischen Parlaments zur Finanz- Wirtschafts- und Sozialkrise (CRIS) entsandt, gehört der Delegation des Europäischen Parlaments zu den ASEAN-Staaten (DASE) als Vollmitglied und der Delegation des Europäischen Parlaments zur Volksrepublik China (D-CN) als Stellvertretendes Mitglied an.",
+    "seed_token_index": 30,
+    "group_start": 30,
+    "group_end": 30,
+    "group_span_text": "Sozialkrise",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -35663,13 +37101,7 @@
     "group_start": 3,
     "group_end": 7,
     "group_span_text": "den ehemaligen Colmar - Kaserne",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 5,
-    "first_fail_form": "Colmar",
-    "first_fail_lemma": "Colmar",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -35769,6 +37201,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s13627",
+    "gold_text": "Südlich von Saranda und besonders im Gebiet von Ksamil mussten seit Ende der 1990er Jahre viele Orangen - und Olivenhaine Neubauten weichen.",
+    "seed_token_index": 12,
+    "group_start": 12,
+    "group_end": 15,
+    "group_span_text": "Ende der 1990er Jahre",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s13633",
     "gold_text": "Aufgrund des dreieckigen Zuschnitts der Terrassenzunge konnte sich die Siedlung nur nach Westen ausdehnen und reichte mit einer Fläche von maximal 25 ha etwa an die spätere salische Stadtgrenze mit der Stadtmauer heran.",
     "seed_token_index": 25,
@@ -35798,6 +37240,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13635",
+    "gold_text": "Sterngucker ab vier Jahre können im Sternenmärchen Peterchens Mondfahrt zum Mond reisen.",
+    "seed_token_index": 3,
+    "group_start": 2,
+    "group_end": 3,
+    "group_span_text": "vier Jahre",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -35961,6 +37413,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s13704",
+    "gold_text": "Ethnisch betrachtet setzte sich die Bevölkerung zusammen aus 76,73 Prozent Weißen, 0,71 Prozent Afroamerikanern, 1,24 Prozent amerikanischen Ureinwohnern, 0,56 Prozent Asiaten, 0,10 Prozent Bewohnern aus dem pazifischen Inselraum und 18,11 Prozent aus anderen ethnischen Gruppen;",
+    "seed_token_index": 34,
+    "group_start": 33,
+    "group_end": 34,
+    "group_span_text": "18,11 Prozent",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s13705",
     "gold_text": "Shockwave 3D - Darsteller können nicht nur direkt in Adobe Director mit der Programmiersprache Lingo erstellt und verändert werden, sondern auch aus einigen 3D - Programmen wie zum Beispiel 3ds Max, Cinema 4D, Maya oder Lightwave 3D über einen Shockwave 3D - Exporter als W3D - Datei exportiert und in Adobe Director importiert werden.",
     "seed_token_index": 42,
@@ -36044,16 +37506,20 @@
     "sent_id": "train-s13718",
     "gold_text": "Es ist ein mittelgroßer Milchling mit einem dunkel ziegelfarbigen bis orangebraunen Hut und einem blasseren mehr oder weniger gerieften Hutrand.",
     "seed_token_index": 18,
-    "group_start": 6,
+    "group_start": 13,
     "group_end": 19,
-    "group_span_text": "einem dunkel ziegelfarbigen bis orangebraunen Hut und einem blasseren mehr oder weniger gerieften Hutrand",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 18,
-    "first_fail_form": "gerieften",
-    "first_fail_lemma": "gerieften",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "group_span_text": "einem blasseren mehr oder weniger gerieften Hutrand",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13718",
+    "gold_text": "Es ist ein mittelgroßer Milchling mit einem dunkel ziegelfarbigen bis orangebraunen Hut und einem blasseren mehr oder weniger gerieften Hutrand.",
+    "seed_token_index": 11,
+    "group_start": 6,
+    "group_end": 11,
+    "group_span_text": "einem dunkel ziegelfarbigen bis orangebraunen Hut",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -36307,6 +37773,36 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s13805",
+    "gold_text": "Mit Wärmebehandlung (auch Flüssigvergütung), Adjustage, Gewindeschneidanlagen und Muffenverschraubung werden die einzelnen Rohre vergütet.",
+    "seed_token_index": 7,
+    "group_start": 7,
+    "group_end": 7,
+    "group_span_text": "Adjustage",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13805",
+    "gold_text": "Mit Wärmebehandlung (auch Flüssigvergütung), Adjustage, Gewindeschneidanlagen und Muffenverschraubung werden die einzelnen Rohre vergütet.",
+    "seed_token_index": 9,
+    "group_start": 9,
+    "group_end": 9,
+    "group_span_text": "Gewindeschneidanlagen",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13805",
+    "gold_text": "Mit Wärmebehandlung (auch Flüssigvergütung), Adjustage, Gewindeschneidanlagen und Muffenverschraubung werden die einzelnen Rohre vergütet.",
+    "seed_token_index": 11,
+    "group_start": 11,
+    "group_end": 11,
+    "group_span_text": "Muffenverschraubung",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s13808",
     "gold_text": "Die Strecke beginnt am Knotenpunkt Hauptbahnhof (U) und unterquert in einer Kurve den Zentralen Omnibusbahnhof und den Kaiserplatz.",
     "seed_token_index": 15,
@@ -36345,13 +37841,7 @@
     "group_start": 12,
     "group_end": 17,
     "group_span_text": "dem Ligue 1 Klub UC",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 17,
-    "first_fail_form": "UC",
-    "first_fail_lemma": "UC",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -36441,13 +37931,7 @@
     "group_start": 6,
     "group_end": 11,
     "group_span_text": "dem UNESCO Welterbe Oberes Mittelrheintal",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 11,
-    "first_fail_form": "Mittelrheintal",
-    "first_fail_lemma": "Mittelrheintal",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -36480,6 +37964,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13870",
+    "gold_text": "Martina Stoof wohnt heute mit ihrem Mann, dem ehemaligen Beachvolleyballspieler Andreas Scheuerpflug, zwei Töchtern und einem Sohn in Potsdam und ist Rechtsanwältin.",
+    "seed_token_index": 15,
+    "group_start": 14,
+    "group_end": 15,
+    "group_span_text": "zwei Töchtern",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -36729,6 +38223,16 @@
     "split": "train",
     "sent_id": "train-s13946",
     "gold_text": "Durch die Fusion der Bayernwerk AG mit PreussenElektra im Jahr 2000 gehört die RMD - AG heute mit 77,49 % zum E.ON - Konzern, die Lechwerke gehören zu knapp 90 % zum RWE - Konzern.",
+    "seed_token_index": 33,
+    "group_start": 32,
+    "group_end": 33,
+    "group_span_text": "90 %",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13946",
+    "gold_text": "Durch die Fusion der Bayernwerk AG mit PreussenElektra im Jahr 2000 gehört die RMD - AG heute mit 77,49 % zum E.ON - Konzern, die Lechwerke gehören zu knapp 90 % zum RWE - Konzern.",
     "seed_token_index": 28,
     "group_start": 28,
     "group_end": 28,
@@ -36807,6 +38311,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s13976",
+    "gold_text": "Nach bestandenem Abitur 1951 und Absolvierung seines Studiums von 1951 bis 1957 bei Kurt Robbel, Arno Mohr, Bert Heller und Toni Mau an der Hochschule für bildende und angewandte Kunst Berlin - Weißensee arbeitet er seit 1957 freischaffend als Maler und Grafiker in Berlin.",
+    "seed_token_index": 5,
+    "group_start": 5,
+    "group_end": 7,
+    "group_span_text": "Absolvierung seines Studiums",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s13981",
     "gold_text": "Hier werden mehrere Referenzstationen vernetzt und Korrekturdaten an den Rover im Vermessungsgebiet über Mobil - Telefon übermittelt (SAPOS - Vernetzung).",
     "seed_token_index": 8,
@@ -36855,6 +38369,16 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s14005",
+    "gold_text": "Rostingen gehörte zur Honschaft Oberhau, einer von zuletzt fünf Honschaften, aus denen sich das Kirchspiel Oberpleis im Amt Blankenberg bis zur Auflösung des Herzogtums Berg im Jahre 1806 zusammensetzte.",
+    "seed_token_index": 11,
+    "group_start": 10,
+    "group_end": 11,
+    "group_span_text": "fünf Honschaften",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s14008",
     "gold_text": "Da er jedoch weniger populär ist, haben weniger Kryptologen versucht, Schwächen zu finden, was wiederum die Wahrscheinlichkeit für unentdeckte Sicherheitslücken steigen lässt.",
     "seed_token_index": 21,
@@ -36893,13 +38417,7 @@
     "group_start": 28,
     "group_end": 28,
     "group_span_text": "Mobile",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 28,
-    "first_fail_form": "Mobile",
-    "first_fail_lemma": "Mobile",
-    "first_fail_upos": "PROPN",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Neut"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -36958,6 +38476,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Sing",
     "first_fail_gender": ""
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s14062",
+    "gold_text": "Die lineale Schote besitzt meist einen runden Querschnitt, eine Länge von 1 bis 2 cm und einen Durchmesser von 1,5 bis 2 mm.",
+    "seed_token_index": 15,
+    "group_start": 12,
+    "group_end": 15,
+    "group_span_text": "1 bis 2 cm",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -37037,6 +38565,16 @@
     "split": "train",
     "sent_id": "train-s14073",
     "gold_text": "Seit Ende der 2000er Jahre stand er für alle Langfilme Kulkarnis vor der Kamera.",
+    "seed_token_index": 1,
+    "group_start": 1,
+    "group_end": 4,
+    "group_span_text": "Ende der 2000er Jahre",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s14073",
+    "gold_text": "Seit Ende der 2000er Jahre stand er für alle Langfilme Kulkarnis vor der Kamera.",
     "seed_token_index": 10,
     "group_start": 10,
     "group_end": 10,
@@ -37073,13 +38611,7 @@
     "group_start": 3,
     "group_end": 8,
     "group_span_text": "dem in diesem Album dokumentierten Auftritt",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 7,
-    "first_fail_form": "dokumentierten",
-    "first_fail_lemma": "dokumentiert",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": "Masc"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "train",
@@ -37122,6 +38654,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s14112",
+    "gold_text": "Brănişteanu wirkte u.a. bei den Luzerner Festspielen 1974, Glyndebourne Festival 1977, Ludwigsburger Festspielen 1981, Wexford Festival 1973, Athener Festspielen 1979, bei den Münchner Opernfestspielen 1978 und bei den Zürcher Festspielen 1980 und 1981 mit.",
+    "seed_token_index": 18,
+    "group_start": 17,
+    "group_end": 18,
+    "group_span_text": "Wexford Festival",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "dev",
@@ -37349,6 +38891,16 @@
   },
   {
     "split": "dev",
+    "sent_id": "dev-s130",
+    "gold_text": "Der Grundriss unseres Hauses aus den den 70er ist etwas kompliziert, aber Herr Walther hatte sofort die Lösung für unser Problem.",
+    "seed_token_index": 6,
+    "group_start": 5,
+    "group_end": 7,
+    "group_span_text": "den den 70er",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "dev",
     "sent_id": "dev-s140",
     "gold_text": "Wir haben uns im November für ein Terrassendach entschieden und fanden die schnelle Angebotserstellung und zeitnahe Arbeitsausführung sehr positiv.",
     "seed_token_index": 12,
@@ -37378,16 +38930,6 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
-  },
-  {
-    "split": "dev",
-    "sent_id": "dev-s148",
-    "gold_text": "Viel Ärger und viel Stress, statt eines Wintergartenparadies!",
-    "seed_token_index": 4,
-    "group_start": 0,
-    "group_end": 8,
-    "group_span_text": "Viel Ärger und viel Stress, statt eines Wintergartenparadies",
-    "reason": "conjunction_with_comma"
   },
   {
     "split": "dev",
@@ -37461,13 +39003,7 @@
     "group_start": 25,
     "group_end": 27,
     "group_span_text": "schöne leuchtende Farben",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 26,
-    "first_fail_form": "leuchtende",
-    "first_fail_lemma": "leuchtend",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Plur",
-    "first_fail_gender": "Fem"
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "dev",
@@ -37516,6 +39052,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Sing",
     "first_fail_gender": "Fem"
+  },
+  {
+    "split": "dev",
+    "sent_id": "dev-s258",
+    "gold_text": "Frische leckere Zutaten, ganz wie bei den Mutter - Restaurants Block - Haus.",
+    "seed_token_index": 11,
+    "group_start": 7,
+    "group_end": 13,
+    "group_span_text": "den Mutter - Restaurants Block - Haus",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "dev",
@@ -37571,6 +39117,16 @@
   },
   {
     "split": "dev",
+    "sent_id": "dev-s305",
+    "gold_text": "Vier Wochen später ging unser Hund mit und ohne Leine bei Fuß, Sitz und Platz aus dem Laufen heraus waren kein Problem.",
+    "seed_token_index": 9,
+    "group_start": 9,
+    "group_end": 9,
+    "group_span_text": "Leine",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "dev",
     "sent_id": "dev-s308",
     "gold_text": "Und ganz wichtig, die Kommunikation mit dem Hund einfach ohne Sprache, nur über den Körper.",
     "seed_token_index": 15,
@@ -37620,6 +39176,16 @@
     "first_fail_upos": "ADJ",
     "first_fail_number": "Plur",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "dev",
+    "sent_id": "dev-s363",
+    "gold_text": "Hier wird wirklich gut beraten, freundlich und zuvorkommend und zu fairen Beiträge.",
+    "seed_token_index": 12,
+    "group_start": 11,
+    "group_end": 12,
+    "group_span_text": "fairen Beiträge",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "dev",
@@ -38507,6 +40073,16 @@
   },
   {
     "split": "test",
+    "sent_id": "test-s139",
+    "gold_text": "Es fing mit einer Wartezeit von ca 20 Minuten an, zu welcher mir jedoch ein Kaffee angeboten wurde.",
+    "seed_token_index": 8,
+    "group_start": 7,
+    "group_end": 8,
+    "group_span_text": "20 Minuten",
+    "reason": "dative_only_prep_with_acc_token"
+  },
+  {
+    "split": "test",
     "sent_id": "test-s154",
     "gold_text": "Fuer ein 3-sterne hotel und fuer den Preis TOP.",
     "seed_token_index": 10,
@@ -38642,6 +40218,16 @@
     "first_fail_upos": "ADV",
     "first_fail_number": "Sing",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "test",
+    "sent_id": "test-s255",
+    "gold_text": "Sicherlich gibt es viele Banken, die billigere Konzepte zu Finanzen, KOnten uvm anbieten, aber der persönlich Service und die Hilfe, die einem in finanziellen Fragen gegeben wird, bietet nur die Sparkasse.",
+    "seed_token_index": 12,
+    "group_start": 12,
+    "group_end": 12,
+    "group_span_text": "KOnten",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "test",
@@ -38991,10 +40577,10 @@
     "split": "test",
     "sent_id": "test-s444",
     "gold_text": "Wenige Jahre später beschrieb Daniel Bell die post-industrielle Gesellschaft durch Wissensarbeit, Ressourcenschonung und die Verschiebung der Arbeit vom Produktions- in den Dienstleistungssektor.",
-    "seed_token_index": 12,
+    "seed_token_index": 16,
     "group_start": 12,
-    "group_end": 22,
-    "group_span_text": "Wissensarbeit Ressourcenschonung und die Verschiebung der Arbeit dem Produktions",
+    "group_end": 17,
+    "group_span_text": "Wissensarbeit, Ressourcenschonung und die Verschiebung",
     "reason": "conjunction_with_comma"
   },
   {
@@ -39031,25 +40617,19 @@
   },
   {
     "split": "test",
-    "sent_id": "test-s466",
-    "gold_text": "Patricia Madigan und ihr Forschungsteam vom Nationalen Krebs-Institut der USA in Bethesda zählt dazu Kinderlosigkeit, die Geburt des ersten Kindes nach dem 19. Lebensjahr, ein hohes Einkommen und ein an Krebs erkrankter Verwandter ersten Grades.",
-    "seed_token_index": 33,
-    "group_start": 33,
-    "group_end": 39,
-    "group_span_text": "ein erkrankter Verwandter ersten Grades",
-    "reason": "lemma_has_no_Dat_rows",
-    "first_fail_token_index": 36,
-    "first_fail_form": "erkrankter",
-    "first_fail_lemma": "erkrankt",
-    "first_fail_upos": "ADJ",
-    "first_fail_number": "Sing",
-    "first_fail_gender": ""
+    "sent_id": "test-s462",
+    "gold_text": "Die Lastwagenkolonne wurde von rund zehn Polizeifahrzeugen zu ihrem Ziel 335 Kilometer westlich von Tokio eskortiert.",
+    "seed_token_index": 11,
+    "group_start": 8,
+    "group_end": 11,
+    "group_span_text": "ihrem Ziel 335 Kilometer",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "test",
     "sent_id": "test-s466",
     "gold_text": "Patricia Madigan und ihr Forschungsteam vom Nationalen Krebs-Institut der USA in Bethesda zählt dazu Kinderlosigkeit, die Geburt des ersten Kindes nach dem 19. Lebensjahr, ein hohes Einkommen und ein an Krebs erkrankter Verwandter ersten Grades.",
-    "seed_token_index": 19,
+    "seed_token_index": 33,
     "group_start": 17,
     "group_end": 39,
     "group_span_text": "Kinderlosigkeit die Geburt des ersten Kindes ein hohes Einkommen und ein erkrankter Verwandter ersten Grades",
@@ -39176,6 +40756,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Neut"
+  },
+  {
+    "split": "test",
+    "sent_id": "test-s533",
+    "gold_text": "Fünf Tage nach dem Mordanschlag auf Israels Ministerpräsidenten Yitzhak Rabin hat die Polizei zwei weitere Verdächtige festgenommen.",
+    "seed_token_index": 1,
+    "group_start": 1,
+    "group_end": 4,
+    "group_span_text": "Tage nach dem Mordanschlag",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "test",
@@ -39650,6 +41240,16 @@
     "first_fail_upos": "PROPN",
     "first_fail_number": "Plur",
     "first_fail_gender": "Masc"
+  },
+  {
+    "split": "test",
+    "sent_id": "test-s846",
+    "gold_text": "Ja, man hat mich mal außer Gefecht gesetzt.",
+    "seed_token_index": 7,
+    "group_start": 7,
+    "group_end": 7,
+    "group_span_text": "Gefecht",
+    "reason": "dative_only_prep_with_acc_token"
   },
   {
     "split": "test",

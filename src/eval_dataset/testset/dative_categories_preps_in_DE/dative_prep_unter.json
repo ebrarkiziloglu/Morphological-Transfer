@@ -898,19 +898,6 @@
   },
   {
     "split": "train",
-    "sent_id": "train-s7833",
-    "group_start": 15,
-    "group_end": 15,
-    "group_span_text": "ihm",
-    "gold_text": "Man glaubt, dass der Monarch um 1268 dieses Gebiet unter seine Protektion stellte und ihm den Namen Real de Manzanares gab.",
-    "corrupted": "Man glaubt, dass der Monarch um 1268 dieses Gebiet unter seine Protektion stellte und ihn den Namen Real de Manzanares gab.",
-    "is_pronoun": true,
-    "dative_type": "dative_prep_unter",
-    "preposition": "unter",
-    "category": "two_way_prep"
-  },
-  {
-    "split": "train",
     "sent_id": "train-s7972",
     "group_start": 1,
     "group_end": 1,

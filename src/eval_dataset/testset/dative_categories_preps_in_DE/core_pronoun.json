@@ -169,6 +169,30 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s279",
+    "group_start": 16,
+    "group_end": 16,
+    "group_span_text": "mir",
+    "gold_text": "Bei meinem ersten Termin wurde mir alles erklärt, ich habe einen persönlichen Trainingsplan bekommen und mir wurden die Geräte gezeigt.",
+    "corrupted": "Bei meinem ersten Termin wurde mir alles erklärt, ich habe einen persönlichen Trainingsplan bekommen und mich wurden die Geräte gezeigt.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s306",
+    "group_start": 15,
+    "group_end": 15,
+    "group_span_text": "mir",
+    "gold_text": "Nachdem an meinem Fahrrad die Kette gerissen ist, habe ich es dahin gebracht und mir wurde versichert, dass es innerhalb von 5 Tagen repariert ist.",
+    "corrupted": "Nachdem an meinem Fahrrad die Kette gerissen ist, habe ich es dahin gebracht und mich wurde versichert, dass es innerhalb von 5 Tagen repariert ist.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s314",
     "group_start": 5,
     "group_end": 5,
@@ -613,6 +637,18 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s1417",
+    "group_start": 17,
+    "group_end": 17,
+    "group_span_text": "mir",
+    "gold_text": "Nach mehrmaliger Antibiotikergabe und Aufbauspritzen erkannte ich keine Besserung und fuhr zu einem Anderen Arzt, welcher mir dann mitteilte das mein kater nie Würmer gehabt hat!",
+    "corrupted": "Nach mehrmaliger Antibiotikergabe und Aufbauspritzen erkannte ich keine Besserung und fuhr zu einem Anderen Arzt, welcher mich dann mitteilte das mein kater nie Würmer gehabt hat!",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s1428",
     "group_start": 0,
     "group_end": 0,
@@ -721,6 +757,18 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s1780",
+    "group_start": 12,
+    "group_end": 12,
+    "group_span_text": "ihm",
+    "gold_text": "Wenige Tage später hätten sie einen Kameraden in ein Waldstück gelockt und ihm mit einem Schnellfeuergewehr in den Kopf geschossen.",
+    "corrupted": "Wenige Tage später hätten sie einen Kameraden in ein Waldstück gelockt und ihn mit einem Schnellfeuergewehr in den Kopf geschossen.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s1803",
     "group_start": 2,
     "group_end": 2,
@@ -787,6 +835,30 @@
     "group_span_text": "ihnen",
     "gold_text": "Gleichwohl können ihnen auch sonstige Aufgaben der anderen Laufbahngruppen übertragen werden.",
     "corrupted": "Gleichwohl können sie auch sonstige Aufgaben der anderen Laufbahngruppen übertragen werden.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2264",
+    "group_start": 18,
+    "group_end": 18,
+    "group_span_text": "ihm",
+    "gold_text": "Seine guten Kontakte zu den ehemaligen Kollegen im Aufsichtsrat, Brandi, Haniel und Reusch, verschafften ihm lukrative Anzeigenaufträge, die für einen reinen Anzeigenverkäufer unerreichbar gewesen wären.",
+    "corrupted": "Seine guten Kontakte zu den ehemaligen Kollegen im Aufsichtsrat, Brandi, Haniel und Reusch, verschafften ihn lukrative Anzeigenaufträge, die für einen reinen Anzeigenverkäufer unerreichbar gewesen wären.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2436",
+    "group_start": 48,
+    "group_end": 48,
+    "group_span_text": "ihnen",
+    "gold_text": "\"Als nun die... Genuesen sahen, wie [die Muslime] mit all ihrem Hausgerät auszogen und ihre... Schätze mit sich schleppten, wurden sie von Geiz und Habsucht verblendet...,... brachen... in die Stadt ein, erschlugen die Bürger und raubten ihnen Gold, Silber, Purpurstoffe und andere Kostbarkeiten.\"",
+    "corrupted": "\"Als nun die... Genuesen sahen, wie [die Muslime] mit all ihrem Hausgerät auszogen und ihre... Schätze mit sich schleppten, wurden sie von Geiz und Habsucht verblendet...,... brachen... in die Stadt ein, erschlugen die Bürger und raubten sie Gold, Silber, Purpurstoffe und andere Kostbarkeiten.\"",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -877,12 +949,36 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s2763",
+    "group_start": 54,
+    "group_end": 54,
+    "group_span_text": "ihm",
+    "gold_text": "Bastian ist jedoch der Meinung, dass dies nicht stimme, da sich die Landschaft geändert habe, und lässt sich mehr und mehr auf Xayide ein, die natürlich nach wie vor ihre Ziele nicht aufgegeben hat und stattdessen versucht, Bastian zu einem albernen Wunsch nach dem nächsten zu überreden, um ihm seine Erinnerungen zu stehlen.",
+    "corrupted": "Bastian ist jedoch der Meinung, dass dies nicht stimme, da sich die Landschaft geändert habe, und lässt sich mehr und mehr auf Xayide ein, die natürlich nach wie vor ihre Ziele nicht aufgegeben hat und stattdessen versucht, Bastian zu einem albernen Wunsch nach dem nächsten zu überreden, um ihn seine Erinnerungen zu stehlen.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s2815",
     "group_start": 2,
     "group_end": 2,
     "group_span_text": "ihm",
     "gold_text": "1960 wurde ihm der Villa - Romana - Preis und 1963 der Ruhrpreis für Kunst und Wissenschaft verliehen.",
     "corrupted": "1960 wurde ihn der Villa - Romana - Preis und 1963 der Ruhrpreis für Kunst und Wissenschaft verliehen.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s2825",
+    "group_start": 41,
+    "group_end": 41,
+    "group_span_text": "der",
+    "gold_text": "Der \"Opportunismus von Gewerkschaftsfunktionären und Sozialdemokraten\", deren Fixierung auf eine rein materielle Besserung der Arbeiterlage über Forderungen nach mehr Freiheit stehe, wird ebenso schonungslos kritisiert, wie der in seinen Augen \"Ungeist der Bourgeoisie\", der er sich selbst zugehörig fühlte und zu deren \"positiven Werten, Leistungs - und Bildungswillen\" er sich auch bekannte.",
+    "corrupted": "Der \"Opportunismus von Gewerkschaftsfunktionären und Sozialdemokraten\", deren Fixierung auf eine rein materielle Besserung der Arbeiterlage über Forderungen nach mehr Freiheit stehe, wird ebenso schonungslos kritisiert, wie der in seinen Augen \"Ungeist der Bourgeoisie\", die er sich selbst zugehörig fühlte und zu deren \"positiven Werten, Leistungs - und Bildungswillen\" er sich auch bekannte.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -967,6 +1063,18 @@
     "group_span_text": "ihm",
     "gold_text": "In diesem Moment erscheint Zapparoni, um ihm zu helfen.",
     "corrupted": "In diesem Moment erscheint Zapparoni, um ihn zu helfen.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s3438",
+    "group_start": 18,
+    "group_end": 18,
+    "group_span_text": "ihm",
+    "gold_text": "Der zuständige Bundesminister hat dem Nationalrat nach der Abstimmung in der Europäischen Union unverzüglich Bericht zu erstatten und ihm gegebenenfalls die Gründe mitzuteilen, aus denen er von der Stellungnahme abgewichen ist.",
+    "corrupted": "Der zuständige Bundesminister hat dem Nationalrat nach der Abstimmung in der Europäischen Union unverzüglich Bericht zu erstatten und ihn gegebenenfalls die Gründe mitzuteilen, aus denen er von der Stellungnahme abgewichen ist.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -1117,6 +1225,18 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4199",
+    "group_start": 12,
+    "group_end": 12,
+    "group_span_text": "ihm",
+    "gold_text": "1963 in Moskau traf er im Viertelfinale auf Tamulis und war ihm auch in diesem Kampf unterlegen.",
+    "corrupted": "1963 in Moskau traf er im Viertelfinale auf Tamulis und war ihn auch in diesem Kampf unterlegen.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4214",
     "group_start": 6,
     "group_end": 6,
@@ -1141,6 +1261,18 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4305",
+    "group_start": 20,
+    "group_end": 20,
+    "group_span_text": "dem",
+    "gold_text": "Er verliebt sich in sie und findet heraus, dass sie die Witwe eines Offiziers der US Army ist, dem die Medal of Honor verliehen werden sollte.",
+    "corrupted": "Er verliebt sich in sie und findet heraus, dass sie die Witwe eines Offiziers der US Army ist, den die Medal of Honor verliehen werden sollte.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4441",
     "group_start": 8,
     "group_end": 8,
@@ -1159,6 +1291,18 @@
     "group_span_text": "ihm",
     "gold_text": "Besonders im Umgang mit ihm anvertrauten Tieren zeigte er sich vorbildlich.",
     "corrupted": "Besonders im Umgang mit ihn anvertrauten Tieren zeigte er sich vorbildlich.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s4566",
+    "group_start": 11,
+    "group_end": 11,
+    "group_span_text": "ihnen",
+    "gold_text": "Nach verlustreichem Kampf können die Invasionstruppen besiegt werden und müssen den ihnen fremden Mond Pandora verlassen.",
+    "corrupted": "Nach verlustreichem Kampf können die Invasionstruppen besiegt werden und müssen den sie fremden Mond Pandora verlassen.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -1345,6 +1489,18 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s5474",
+    "group_start": 16,
+    "group_end": 16,
+    "group_span_text": "ihnen",
+    "gold_text": "Er lässt aus Soras Erinnerungen und denen seine Freunden ein Vorrat an Karten entstehen und sagt ihnen, dass alles, was sie in diesem Schloss begegnen auf ihren Erinnerungen basieren wird.",
+    "corrupted": "Er lässt aus Soras Erinnerungen und denen seine Freunden ein Vorrat an Karten entstehen und sagt sie, dass alles, was sie in diesem Schloss begegnen auf ihren Erinnerungen basieren wird.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s5511",
     "group_start": 3,
     "group_end": 3,
@@ -1387,6 +1543,30 @@
     "group_span_text": "dem",
     "gold_text": "Dort verteilte die Zeitung Daily Herald eine große Menge von Kameras, dem weitere Tageszeitungen und auch Zigarettenfabrikanten folgten.",
     "corrupted": "Dort verteilte die Zeitung Daily Herald eine große Menge von Kameras, den weitere Tageszeitungen und auch Zigarettenfabrikanten folgten.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5755",
+    "group_start": 11,
+    "group_end": 11,
+    "group_span_text": "ihnen",
+    "gold_text": "1659 schickte er eine freundliche Botschaft an die Wormser und bot ihnen an, \"Alles zu tun, um der Stadt aufzuhelfen und ihren Handel zu heben, ja er wollte Residenz und Universität nach dem alten Nibelungensitze verlegen und eine Citadelle am Rhein, zum Schutze der Stadt, auf eigene Kosten erbauen.\"",
+    "corrupted": "1659 schickte er eine freundliche Botschaft an die Wormser und bot sie an, \" Alles zu tun, um der Stadt aufzuhelfen und ihren Handel zu heben, ja er wollte Residenz und Universität nach dem alten Nibelungensitze verlegen und eine Citadelle am Rhein, zum Schutze der Stadt, auf eigene Kosten erbauen. \"",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5779",
+    "group_start": 59,
+    "group_end": 59,
+    "group_span_text": "ihr",
+    "gold_text": "Sie hebt hervor, dass sich aus Sidonies Perspektive der Blick auf die einfachen Mitglieder des Hofes und deren liederliches Treiben ergebe, und führt kritisch an, \"dass Jacquot sie [die Perspektive] im zweiten Teil eine Weile aufgibt, um Marie Antoinette nach Gabrielle de Polignac (Virginie Ledoyen) schmachten zu lassen und ihr bei ihrem letzten Auftritt im Hof in die Arme zu fallen.\"",
+    "corrupted": "Sie hebt hervor, dass sich aus Sidonies Perspektive der Blick auf die einfachen Mitglieder des Hofes und deren liederliches Treiben ergebe, und führt kritisch an, \"dass Jacquot sie [die Perspektive] im zweiten Teil eine Weile aufgibt, um Marie Antoinette nach Gabrielle de Polignac (Virginie Ledoyen) schmachten zu lassen und euch bei ihrem letzten Auftritt im Hof in die Arme zu fallen.\"",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -1561,6 +1741,18 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s6771",
+    "group_start": 20,
+    "group_end": 20,
+    "group_span_text": "denen",
+    "gold_text": "Auch Coco Chanel bekämpfte zeitweise ihre eigene Duftikone, denn sie fühlte sich von Theophilus Bader und Ernest Wertheimer, denen sie 1924 mit der Gründung von Parfums Chanel alle Rechte an ihren Düften abgetreten hatte, benachteiligt.",
+    "corrupted": "Auch Coco Chanel bekämpfte zeitweise ihre eigene Duftikone, denn sie fühlte sich von Theophilus Bader und Ernest Wertheimer, die sie 1924 mit der Gründung von Parfums Chanel alle Rechte an ihren Düften abgetreten hatte, benachteiligt.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s6787",
     "group_start": 10,
     "group_end": 10,
@@ -1579,6 +1771,18 @@
     "group_span_text": "ihr",
     "gold_text": "Auch der Gefahr wegen, welche ihr von Ananus und Ben Gioras droht, schreibt sie an Lucius Flavus.",
     "corrupted": "Auch der Gefahr wegen, welche sie von Ananus und Ben Gioras droht, schreibt sie an Lucius Flavus.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6891",
+    "group_start": 43,
+    "group_end": 43,
+    "group_span_text": "ihnen",
+    "gold_text": "Hatte bereits Kaiser Justinian I. im Codex Iustinianus (can. 45) die Kinder aus solchen \"Construpationen\" mit den außerehelichen und blutschänderisch gezeugten Kindern gleichgestellt, versetzte die neunte Synode von Toledo von 655 sie in den Sklavenstand, entzog ihnen also das Erbrecht.",
+    "corrupted": "Hatte bereits Kaiser Justinian I. im Codex Iustinianus (can. 45) die Kinder aus solchen \"Construpationen\" mit den außerehelichen und blutschänderisch gezeugten Kindern gleichgestellt, versetzte die neunte Synode von Toledo von 655 sie in den Sklavenstand, entzog sie also das Erbrecht.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -1609,12 +1813,36 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7182",
+    "group_start": 50,
+    "group_end": 50,
+    "group_span_text": "ihm",
+    "gold_text": "Durch Konzerte beim Jazz Festival Montreux (1975 und 1978), in Castellet (1976), in Antibes und bei den Donaueschinger Musiktagen (1978), Auftritte mit der eigenen Rock - Gruppe Surya und mit Jazzmusikern wie Grappelli einem breiteren Publikum bekannt geworden, gelang ihm Ende der 1970er Jahre der internationale Durchbruch.",
+    "corrupted": "Durch Konzerte beim Jazz Festival Montreux ( 1975 und 1978), in Castellet ( 1976), in Antibes und bei den Donaueschinger Musiktagen ( 1978), Auftritte mit der eigenen Rock - Gruppe Surya und mit Jazzmusikern wie Grappelli einem breiteren Publikum bekannt geworden, gelang ihn Ende der 1970er Jahre der internationale Durchbruch.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7209",
     "group_start": 3,
     "group_end": 3,
     "group_span_text": "ihm",
     "gold_text": "Manche Aktivisten warfen ihm vor, \"der Atomlobby auf den Leim gegangen\" zu sein und nannten ihn einen Überläufer.",
     "corrupted": "Manche Aktivisten warfen ihn vor, \"der Atomlobby auf den Leim gegangen\" zu sein und nannten ihn einen Überläufer.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7210",
+    "group_start": 19,
+    "group_end": 19,
+    "group_span_text": "dem",
+    "gold_text": "Dabei unterschied man zwischen den Corregidores de Indios, die den Indianergemeinden vorstanden und den Corregidores de Españoles, dem die spanischen Städte zugeteilt waren (siehe Stadtverwaltung weiter unten).",
+    "corrupted": "Dabei unterschied man zwischen den Corregidores de Indios, die den Indianergemeinden vorstanden und den Corregidores de Españoles, den die spanischen Städte zugeteilt waren (siehe Stadtverwaltung weiter unten).",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -1717,12 +1945,36 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7568",
+    "group_start": 12,
+    "group_end": 12,
+    "group_span_text": "dem",
+    "gold_text": "Auf dem Familienclan scheinen dunkle Geheimnisse zu lasten, und Maigret, dem man von allen Seiten deutlich zu verstehen gibt, dass seine Anwesenheit unerwünscht ist, regt sich auf, dass er den Auftrag überhaupt angenommen hat.",
+    "corrupted": "Auf dem Familienclan scheinen dunkle Geheimnisse zu lasten, und Maigret, den man von allen Seiten deutlich zu verstehen gibt, dass seine Anwesenheit unerwünscht ist, regt sich auf, dass er den Auftrag überhaupt angenommen hat.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s7727",
     "group_start": 17,
     "group_end": 17,
     "group_span_text": "dem",
     "gold_text": "Er beseitigte die organisatorische Selbständigkeit der Kriminalpolizei der deutschen Länder, regelte die Gründung des Reichskriminalpolizeiamtes, dem als Punkt i des Erlasses eine \"Reichszentrale zur Bekämpfung des Zigeunerunwesens\" eingegliedert wurde.",
     "corrupted": "Er beseitigte die organisatorische Selbständigkeit der Kriminalpolizei der deutschen Länder, regelte die Gründung des Reichskriminalpolizeiamtes, das als Punkt i des Erlasses eine \" Reichszentrale zur Bekämpfung des Zigeunerunwesens \" eingegliedert wurde.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7833",
+    "group_start": 15,
+    "group_end": 15,
+    "group_span_text": "ihm",
+    "gold_text": "Man glaubt, dass der Monarch um 1268 dieses Gebiet unter seine Protektion stellte und ihm den Namen Real de Manzanares gab.",
+    "corrupted": "Man glaubt, dass der Monarch um 1268 dieses Gebiet unter seine Protektion stellte und ihn den Namen Real de Manzanares gab.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -1807,6 +2059,18 @@
     "group_span_text": "ihm",
     "gold_text": "Sadistische Handlungen stellen dabei oft das Vorspiel für den Geschlechtsverkehr dar oder der Geschlechtsverkehr selbst wird in einer Weise praktiziert, die den Partner herabwürdigt, demütigt oder ihm Schmerzen bereitet.",
     "corrupted": "Sadistische Handlungen stellen dabei oft das Vorspiel für den Geschlechtsverkehr dar oder der Geschlechtsverkehr selbst wird in einer Weise praktiziert, die den Partner herabwürdigt, demütigt oder ihn Schmerzen bereitet.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8444",
+    "group_start": 19,
+    "group_end": 19,
+    "group_span_text": "ihr",
+    "gold_text": "[..] Ihre Lebenslust und Glaubwürdigkeit vereinigen sich zu einer angenehmen Persönlichkeit, die jede Kritik entwaffnet und ihr die Zuneigung der Massen sichert.",
+    "corrupted": "[..] Ihre Lebenslust und Glaubwürdigkeit vereinigen sich zu einer angenehmen Persönlichkeit, die jede Kritik entwaffnet und sie die Zuneigung der Massen sichert.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -1915,6 +2179,18 @@
     "group_span_text": "dem",
     "gold_text": "In ersten Meldungen bezeichnete der Übergangsrat diese als Anhänger Gaddafis, ein Standpunkt, dem der Libyen - Beauftragte der UNO Ian Martin widersprach.",
     "corrupted": "In ersten Meldungen bezeichnete der Übergangsrat diese als Anhänger Gaddafis, ein Standpunkt, den der Libyen - Beauftragte der UNO Ian Martin widersprach.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s8981",
+    "group_start": 18,
+    "group_end": 18,
+    "group_span_text": "dem",
+    "gold_text": "Der Verteidiger ist bis heute neben Bernie Parent, Wayne Gretzky und Mario Lemieux der einzige Spieler, dem dies gelang.",
+    "corrupted": "Der Verteidiger ist bis heute neben Bernie Parent, Wayne Gretzky und Mario Lemieux der einzige Spieler, den dies gelang.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -2047,6 +2323,42 @@
     "group_span_text": "ihr",
     "gold_text": "Marie Antoinette gibt ihr den Befehl, sich in Sicherheit zu bringen.",
     "corrupted": "Marie Antoinette gibt sie den Befehl, sich in Sicherheit zu bringen.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10353",
+    "group_start": 20,
+    "group_end": 20,
+    "group_span_text": "ihm",
+    "gold_text": "In derselben Nacht kehrt er zu einem weiteren Gespräch mit Splinter zurück, wird aber von Shredder gestellt und verrät ihm (diesmal ungewollt) die Rückkehr der Turtles.",
+    "corrupted": "In derselben Nacht kehrt er zu einem weiteren Gespräch mit Splinter zurück, wird aber von Shredder gestellt und verrät ihn (diesmal ungewollt) die Rückkehr der Turtles.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10362",
+    "group_start": 19,
+    "group_end": 19,
+    "group_span_text": "dem",
+    "gold_text": "Mit der Landtagswahl 1978 schied er aus dem Bundestag aus und wurde in den Landtag von Niedersachsen gewählt, dem er bis 1990 angehörte.",
+    "corrupted": "Mit der Landtagswahl 1978 schied er aus dem Bundestag aus und wurde in den Landtag von Niedersachsen gewählt, das er bis 1990 angehörte.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s10519",
+    "group_start": 27,
+    "group_end": 27,
+    "group_span_text": "ihnen",
+    "gold_text": "Petja, Kostja und Ljocha fuhren ratlos weiter, bis sie einen Krankenwagen auf dem Weg entdeckten, der aber nur von einem Markthändler gefahren wird und ihnen keine ärztliche Hilfe anbieten konnte.",
+    "corrupted": "Petja, Kostja und Ljocha fuhren ratlos weiter, bis sie einen Krankenwagen auf dem Weg entdeckten, der aber nur von einem Markthändler gefahren wird und sie keine ärztliche Hilfe anbieten konnte.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -2209,6 +2521,18 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11586",
+    "group_start": 15,
+    "group_end": 15,
+    "group_span_text": "ihm",
+    "gold_text": "Nach den Plänen seiner Pflegeeltern sollte er einmal den Bauernhof übernehmen, und so wurde ihm der Besuch des Gymnasiums verwehrt.",
+    "corrupted": "Nach den Plänen seiner Pflegeeltern sollte er einmal den Bauernhof übernehmen, und so wurde ihn der Besuch des Gymnasiums verwehrt.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11611",
     "group_start": 3,
     "group_end": 3,
@@ -2227,6 +2551,18 @@
     "group_span_text": "ihm",
     "gold_text": "Im März 2007 trat Wiesheu von dem Amt zurück, nachdem ihm eine große Mehrheit der Mitglieder eine angestrebte Satzungsänderung -- die zu einer Neustrukturierung der DAG geführt hätte -- nicht bewilligen wollte, und gründete die Deutsch - Arabische Freundschaftsgesellschaft.",
     "corrupted": "Im März 2007 trat Wiesheu von dem Amt zurück, nachdem ihn eine große Mehrheit der Mitglieder eine angestrebte Satzungsänderung -- die zu einer Neustrukturierung der DAG geführt hätte -- nicht bewilligen wollte, und gründete die Deutsch - Arabische Freundschaftsgesellschaft.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11660",
+    "group_start": 15,
+    "group_end": 15,
+    "group_span_text": "ihm",
+    "gold_text": "Die Kriegsschäden und die Trennung der Sammlung in eine Ost - und Westberliner Sammlung bereiteten ihm bis zu seinem Tod Schmerzen.",
+    "corrupted": "Die Kriegsschäden und die Trennung der Sammlung in eine Ost - und Westberliner Sammlung bereiteten ihn bis zu seinem Tod Schmerzen.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -2275,6 +2611,18 @@
     "group_span_text": "ihm",
     "gold_text": "Aufgrund seiner herausragenden Verdienste und seiner immer noch medaillenreifen Schießresultate erhielt er daraufhin von der ISSF eine Wildcard, die ihm einen Start in Athen ohne Qualifikation ermöglicht hätte.",
     "corrupted": "Aufgrund seiner herausragenden Verdienste und seiner immer noch medaillenreifen Schießresultate erhielt er daraufhin von der ISSF eine Wildcard, die ihn einen Start in Athen ohne Qualifikation ermöglicht hätte.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11950",
+    "group_start": 11,
+    "group_end": 11,
+    "group_span_text": "dem",
+    "gold_text": "Dezember 1987 wechselte Prinz in den Wiener Landtag und Gemeinderat, dem er bis 1996 angehörte.",
+    "corrupted": "Dezember 1987 wechselte Prinz in den Wiener Landtag und Gemeinderat, den er bis 1996 angehörte.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -2449,6 +2797,18 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s13118",
+    "group_start": 26,
+    "group_end": 26,
+    "group_span_text": "ihm",
+    "gold_text": "Obwohl er nicht an den militärischen Verteidigungsmaßnahmen vor dem Sechstagekrieg beteiligt war (dies fiel in den Verantwortungsbereich Ezer Weizmanns und Jitzhak Rabins), wurde ihm wegen seines charismatischen Auftretens, das die Soldaten an der Front motivierte, und wegen seiner kurzfristigen Veränderungen an dem Plan eine wichtige Rolle zugeschrieben.",
+    "corrupted": "Obwohl er nicht an den militärischen Verteidigungsmaßnahmen vor dem Sechstagekrieg beteiligt war (dies fiel in den Verantwortungsbereich Ezer Weizmanns und Jitzhak Rabins), wurde ihn wegen seines charismatischen Auftretens, das die Soldaten an der Front motivierte, und wegen seiner kurzfristigen Veränderungen an dem Plan eine wichtige Rolle zugeschrieben.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s13203",
     "group_start": 17,
     "group_end": 17,
@@ -2533,6 +2893,30 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s13681",
+    "group_start": 8,
+    "group_end": 8,
+    "group_span_text": "ihm",
+    "gold_text": "Sara drängt ihn zur Flucht und gibt ihm einen bestickten Schal als Liebespfand mit auf den Weg.",
+    "corrupted": "Sara drängt ihn zur Flucht und gibt ihn einen bestickten Schal als Liebespfand mit auf den Weg.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13745",
+    "group_start": 29,
+    "group_end": 29,
+    "group_span_text": "dem",
+    "gold_text": "Vor allem der Zentralrat Deutscher Sinti und Roma habe sich, so Yaron Matras, der damalige Hauptverantwortliche für die Pressearbeit sowie für Beziehungen zu internationalen Organisationen, sich dem entschieden entgegengestellt.",
+    "corrupted": "Vor allem der Zentralrat Deutscher Sinti und Roma habe sich, so Yaron Matras, der damalige Hauptverantwortliche für die Pressearbeit sowie für Beziehungen zu internationalen Organisationen, sich das entschieden entgegengestellt.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s13814",
     "group_start": 3,
     "group_end": 3,
@@ -2581,6 +2965,18 @@
   },
   {
     "split": "dev",
+    "sent_id": "dev-s88",
+    "group_start": 36,
+    "group_end": 36,
+    "group_span_text": "mir",
+    "gold_text": "Ich weiß nicht, ob es daran lag, dass ich weiblich war, aber er war sehr nervös, sah mich kaum an, auch als er mit mir sprach, und die Untersuchung kam mir sehr kurz gefasst vor.",
+    "corrupted": "Ich weiß nicht, ob es daran lag, dass ich weiblich war, aber er war sehr nervös, sah mich kaum an, auch als er mit mir sprach, und die Untersuchung kam mich sehr kurz gefasst vor.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "dev",
     "sent_id": "dev-s106",
     "group_start": 8,
     "group_end": 8,
@@ -2605,6 +3001,18 @@
   },
   {
     "split": "dev",
+    "sent_id": "dev-s206",
+    "group_start": 10,
+    "group_end": 10,
+    "group_span_text": "mir",
+    "gold_text": "Er hat sich auf meine Angst eingestellt und versucht sie mir zu nehmen, was zum Teil auch geklappt hat.",
+    "corrupted": "Er hat sich auf meine Angst eingestellt und versucht sie mich zu nehmen, was zum Teil auch geklappt hat.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "dev",
     "sent_id": "dev-s209",
     "group_start": 2,
     "group_end": 2,
@@ -2623,6 +3031,18 @@
     "group_span_text": "mir",
     "gold_text": "Eine Bekannte empfahl mir dann Herr Dr. Sieben und wie sich herausstellte, war der Preis, den ich dort bezahlte 70 % unter dem der anderen beiden Zahnärzte!!!!",
     "corrupted": "Eine Bekannte empfahl mich dann Herr Dr. Sieben und wie sich herausstellte, war der Preis, den ich dort bezahlte 70 % unter dem der anderen beiden Zahnärzte!!!!",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "dev",
+    "sent_id": "dev-s238",
+    "group_start": 14,
+    "group_end": 14,
+    "group_span_text": "mir",
+    "gold_text": "Herr Prommersberger fühlt sich sehr gut in den Menschen / Patienten ein und konnte mir sehr gut helfen.",
+    "corrupted": "Herr Prommersberger fühlt sich sehr gut in den Menschen / Patienten ein und konnte mich sehr gut helfen.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"
@@ -2724,6 +3144,18 @@
     "category": "core_pronoun"
   },
   {
+    "split": "dev",
+    "sent_id": "dev-s710",
+    "group_start": 18,
+    "group_end": 18,
+    "group_span_text": "ihm",
+    "gold_text": "Claus Peymann ist in blendender Verfassung und relativ guter Dinge, das jugendliche Lachen der frühen Zeit ist ihm während seines Wiener Jahrzehnts nicht vergangen.",
+    "corrupted": "Claus Peymann ist in blendender Verfassung und relativ guter Dinge, das jugendliche Lachen der frühen Zeit ist ihn während seines Wiener Jahrzehnts nicht vergangen.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
     "split": "test",
     "sent_id": "test-s2",
     "group_start": 9,
@@ -2749,12 +3181,48 @@
   },
   {
     "split": "test",
+    "sent_id": "test-s18",
+    "group_start": 17,
+    "group_end": 17,
+    "group_span_text": "mir",
+    "gold_text": "Also wurde von der Vodafone - Seite das Update für den Schneeleoparden auf eine CD gebrannt und mir in die Hand gedrückt -- gratis.",
+    "corrupted": "Also wurde von der Vodafone - Seite das Update für den Schneeleoparden auf eine CD gebrannt und mich in die Hand gedrückt -- gratis.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "test",
     "sent_id": "test-s59",
     "group_start": 2,
     "group_end": 2,
     "group_span_text": "mir",
     "gold_text": "Dabei signalisierte mir das Fahrzeug, dass sich kein Wasser mehr im Kühlkreislauf befinden würde.",
     "corrupted": "Dabei signalisierte mich das Fahrzeug, dass sich kein Wasser mehr im Kühlkreislauf befinden würde.",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "test",
+    "sent_id": "test-s60",
+    "group_start": 23,
+    "group_end": 23,
+    "group_span_text": "mir",
+    "gold_text": "Danach haben wir uns von der netten Bedienung das Angebot der Tages empfehlen lassen und zwar Atun a la malaguena (habe ich mir extra aufgeschrieben).",
+    "corrupted": "Danach haben wir uns von der netten Bedienung das Angebot der Tages empfehlen lassen und zwar Atun a la malaguena (habe ich mich extra aufgeschrieben).",
+    "is_pronoun": true,
+    "dative_type": "core_dative_argument",
+    "category": "core_pronoun"
+  },
+  {
+    "split": "test",
+    "sent_id": "test-s76",
+    "group_start": 16,
+    "group_end": 16,
+    "group_span_text": "mir",
+    "gold_text": "Das letzte Mal war ich vor ein paar Wochen dort und muss sagen, dass es mir sehr gut gefallen hat.",
+    "corrupted": "Das letzte Mal war ich vor ein paar Wochen dort und muss sagen, dass es mich sehr gut gefallen hat.",
     "is_pronoun": true,
     "dative_type": "core_dative_argument",
     "category": "core_pronoun"

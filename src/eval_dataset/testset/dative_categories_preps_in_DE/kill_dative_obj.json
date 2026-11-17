@@ -1,6 +1,28 @@
 [
   {
     "split": "train",
+    "sent_id": "train-s506",
+    "group_start": 20,
+    "group_end": 22,
+    "group_span_text": "dieses tolle Restaurant",
+    "gold_text": "Sind zum Kurzurlaub in Duhnen gewesen und fanden aus Zufall ganz am Ende der Strasse im Hafen dieses tolle Restaurant.",
+    "corrupted": "Sind zum Kurzurlaub in Duhnen gewesen und fanden aus Zufall ganz am Ende der Strasse im Hafen dies tolle Restaurant.",
+    "is_pronoun": false,
+    "dative_type": "kill_dative_obj"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s1266",
+    "group_start": 16,
+    "group_end": 17,
+    "group_span_text": "den Kunden",
+    "gold_text": "Im Empfang eine Dame die sich wie die zweite Cheffin aufführt, nicht zuhört und den Kunden nicht ausreden lässt.",
+    "corrupted": "Im Empfang eine Dame die sich wie die zweite Cheffin aufführt, nicht zuhört und die Kunden nicht ausreden lässt.",
+    "is_pronoun": false,
+    "dative_type": "kill_dative_obj"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s2218",
     "group_start": 0,
     "group_end": 3,
@@ -56,12 +78,45 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s7768",
+    "group_start": 10,
+    "group_end": 11,
+    "group_span_text": "seinen Schülern",
+    "gold_text": "Er legte sich auf kein Spezialgebiet fest und empfahl auch seinen Schülern, die bildende Kunst im Laufe der Jahrtausende umfassend zu studieren.",
+    "corrupted": "Er legte sich auf kein Spezialgebiet fest und empfahl auch seine Schüler, die bildende Kunst im Laufe der Jahrtausende umfassend zu studieren.",
+    "is_pronoun": false,
+    "dative_type": "kill_dative_obj"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9267",
+    "group_start": 15,
+    "group_end": 17,
+    "group_span_text": "ihren höchsten Punkt",
+    "gold_text": "Nach Süden erstreckt sich die Gemeinde auf die Kette von Saulcy und hat hier mit ihren höchsten Punkt.",
+    "corrupted": "Nach Süden erstreckt sich die Gemeinde auf die Kette von Saulcy und hat hier mit ihre hohe Punkt.",
+    "is_pronoun": false,
+    "dative_type": "kill_dative_obj"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s9271",
     "group_start": 26,
     "group_end": 30,
     "group_span_text": "den sieben Jahre jüngeren Foreman",
     "gold_text": "Als sein früherer Gegner George Foreman 1994 sensationell nach 20 Jahren wieder einen WM - Titel gewann, kündigte der 52 - jährige Ali an, den sieben Jahre jüngeren Foreman noch einmal wie schon 1974 schlagen zu wollen.",
     "corrupted": "Als sein früherer Gegner George Foreman 1994 sensationell nach 20 Jahren wieder einen WM - Titel gewann, kündigte der 52 - jährige Ali an, die sieben Jahre jüngeren Foreman noch einmal wie schon 1974 schlagen zu wollen.",
+    "is_pronoun": false,
+    "dative_type": "kill_dative_obj"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9651",
+    "group_start": 28,
+    "group_end": 31,
+    "group_span_text": "ihr bislang bestes Ergebnis",
+    "gold_text": "Bei der Landtagswahl 2009 verzeichnete die FDP mit einem Plus von 3,9 % den größten Stimmenzuwachs aller Parteien und zog mit einem Ergebnis von 7,2 %, das ihr bislang bestes Ergebnis in Brandenburg überhaupt darstellt, erstmals seit den Wahlen von 1990 wieder in den Landtag ein, in dem sie seitdem mit sieben Abgeordneten vertreten ist.",
+    "corrupted": "Bei der Landtagswahl 2009 verzeichnete die FDP mit einem Plus von 3,9 % den größten Stimmenzuwachs aller Parteien und zog mit einem Ergebnis von 7,2 %, das ihre bislang bestes Ergebnis in Brandenburg überhaupt darstellt, erstmals seit den Wahlen von 1990 wieder in den Landtag ein, in dem sie seitdem mit sieben Abgeordneten vertreten ist.",
     "is_pronoun": false,
     "dative_type": "kill_dative_obj"
   },

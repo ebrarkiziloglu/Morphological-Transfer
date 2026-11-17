@@ -664,19 +664,6 @@
   },
   {
     "split": "train",
-    "sent_id": "train-s9440",
-    "group_start": 15,
-    "group_end": 16,
-    "group_span_text": "dem Verfall",
-    "gold_text": "Im Jahre 1996 war es noch unversehrt, seit 2007 ist es leer und dem Verfall preisgegeben, obwohl es unter Denkmalschutz steht.",
-    "corrupted": "Im Jahre 1996 war es noch unversehrt, seit 2007 ist es leer und den Verfall preisgegeben, obwohl es unter Denkmalschutz steht.",
-    "is_pronoun": false,
-    "dative_type": "dative_prep_seit",
-    "preposition": "seit",
-    "category": "dative_only_prep"
-  },
-  {
-    "split": "train",
     "sent_id": "train-s9651",
     "group_start": 39,
     "group_end": 40,

@@ -254,6 +254,17 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s3776",
+    "group_start": 26,
+    "group_end": 26,
+    "group_span_text": "dem",
+    "gold_text": "Nachdem der Nachbarbahnhof Brandenburger Tor Mitte 2009 fertiggestellt worden war, konnte die BVG den Drei - Stationen - Betrieb zwischen Hauptbahnhof und Brandenburger Tor am 8.",
+    "corrupted": "Nachdem der Nachbarbahnhof Brandenburger Tor Mitte 2009 fertiggestellt worden war, konnte die BVG den Drei - Stationen - Betrieb zwischen Hauptbahnhof und Brandenburger Tor ans 8.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s3796",
     "group_start": 7,
     "group_end": 9,
@@ -309,6 +320,17 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s3893",
+    "group_start": 23,
+    "group_end": 23,
+    "group_span_text": "dem",
+    "gold_text": "Zur Saison 2010 / 11 gelang ihm der sofortige Sprung in den NHL - Kader der Edmonton Oilers und er debütierte am 7.",
+    "corrupted": "Zur Saison 2010 / 11 gelang ihm der sofortige Sprung in den NHL - Kader der Edmonton Oilers und er debütierte ans 7.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s4149",
     "group_start": 0,
     "group_end": 0,
@@ -342,12 +364,34 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s4978",
+    "group_start": 25,
+    "group_end": 25,
+    "group_span_text": "dem",
+    "gold_text": "Der Kommandant der Blue Boys, Colonel Abraham Curtis, hat nach 25 Jahren Alienjagd keine moralischen Skrupel mehr und erklärt das gesamte Gebiet zum militärischen Sperrgebiet.",
+    "corrupted": "Der Kommandant der Blue Boys, Colonel Abraham Curtis, hat nach 25 Jahren Alienjagd keine moralischen Skrupel mehr und erklärt das gesamte Gebiet zu das militärischen Sperrgebiet.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s5151",
     "group_start": 22,
     "group_end": 25,
     "group_span_text": "bester Torschütze der Leipziger",
     "gold_text": "1977 wurde er, nachdem er in der Saison teilweise wieder als Mittelstürmer eingesetzt worden war, mit sieben Treffern noch einmal bester Torschütze der Leipziger.",
     "corrupted": "1977 wurde er, nachdem er in der Saison teilweise wieder als Mittelstürmer eingesetzt worden war, mit sieben Treffern noch einmal gute Torschütze der Leipziger.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s5198",
+    "group_start": 13,
+    "group_end": 15,
+    "group_span_text": "Der Verlorene Sohn",
+    "gold_text": "An der Untersicht der Orgelempore Christus und die Samariterin am Jakobsbrunnen, Der Verlorene Sohn und Christus lehrend.",
+    "corrupted": "An der Untersicht der Orgelempore Christus und die Samariterin am Jakobsbrunnen, Die Verlorene Sohn und Christus lehrend.",
     "is_pronoun": false,
     "dative_type": "ignore_dative_other"
   },
@@ -382,6 +426,17 @@
     "gold_text": "In der von Martin Luther in seinen beiden Katechismen (1529) gewählten Reihenfolge stehen der Dekalog vor dem Symbolum und das Vaterunser vor den zwei Sakramenten.",
     "corrupted": "In die von Martin Luther in seinen beiden Katechismen (1529) gewählten Reihenfolge stehen der Dekalog vor dem Symbolum und das Vaterunser vor den zwei Sakramenten.",
     "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s6007",
+    "group_start": 23,
+    "group_end": 23,
+    "group_span_text": "der",
+    "gold_text": "Der Major, der selbstsüchtige alte Mann, der nicht mit seiner jungen Frau allein sein möchte, der Großvater werden will und der Anna weder versteht noch liebt, hat eine blendende Idee.",
+    "corrupted": "Der Major, der selbstsüchtige alte Mann, der nicht mit seiner jungen Frau allein sein möchte, der Großvater werden will und die Anna weder versteht noch liebt, hat eine blendende Idee.",
+    "is_pronoun": true,
     "dative_type": "ignore_dative_other"
   },
   {
@@ -425,6 +480,17 @@
     "group_span_text": "dem",
     "gold_text": "Aero Asia wurde 1993 gegründet und hob am 4.",
     "corrupted": "Aero Asia wurde 1993 gegründet und hob ans 4.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s7781",
+    "group_start": 17,
+    "group_end": 17,
+    "group_span_text": "dem",
+    "gold_text": "2004 formiert sich Brötzmann mit Michael Wertmüller (dr) und Marino Pliakas (b) zum Trio Full Blast.",
+    "corrupted": "2004 formiert sich Brötzmann mit Michael Wertmüller ( dr) und Marino Pliakas ( b) zu das Trio Full Blast.",
     "is_pronoun": false,
     "dative_type": "ignore_dative_other"
   },
@@ -507,12 +573,34 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s8907",
+    "group_start": 47,
+    "group_end": 47,
+    "group_span_text": "dem",
+    "gold_text": "Er besuchte die Schule in Schwerin, Stade und Arnstadt und studierte ab 1666 Pharmazie und Medizin an den Universitäten Erfurt, Jena und -- nach einer durch eine Verletzung seines Vaters bedingten Unterbrechung -- ab 1670 in Kiel und 1671 in Leiden, wo er am 9.",
+    "corrupted": "Er besuchte die Schule in Schwerin, Stade und Arnstadt und studierte ab 1666 Pharmazie und Medizin an den Universitäten Erfurt, Jena und -- nach einer durch eine Verletzung seines Vaters bedingten Unterbrechung -- ab 1670 in Kiel und 1671 in Leiden, wo er ans 9.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s9005",
     "group_start": 0,
     "group_end": 0,
     "group_span_text": "Jahrhunderts",
     "gold_text": "Jahrhunderts wurde die Marke von 2 Millionen Einwohnern überschritten, und wenige Jahre vor der Wirtschaftskrise 1929 erreichte die Stadt eine Bevölkerungszahl von 3 Millionen Einwohnern.",
     "corrupted": "Jahrhunderte wurde die Marke von 2 Millionen Einwohnern überschritten, und wenige Jahre vor der Wirtschaftskrise 1929 erreichte die Stadt eine Bevölkerungszahl von 3 Millionen Einwohnern.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9098",
+    "group_start": 8,
+    "group_end": 13,
+    "group_span_text": "ihm schlicht 'Der dreißigjährige Krieg",
+    "gold_text": "Was zwischen 1914 und 1945 geschah, ist ihm schlicht 'Der dreißigjährige Krieg gegen Deutschland'.",
+    "corrupted": "Was zwischen 1914 und 1945 geschah, ist ihn schlicht 'Der dreißigjährige Krieg gegen Deutschland'.",
     "is_pronoun": false,
     "dative_type": "ignore_dative_other"
   },
@@ -529,12 +617,34 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s9670",
+    "group_start": 40,
+    "group_end": 42,
+    "group_span_text": "die äußeren beiden",
+    "gold_text": "Zwischen dem Dreieck Bonn - Nordost und Bonn - Beuel ist die Autobahn sechsstreifig und im weiteren Verlauf bis Bonn - Auerberg sowie zwischen Bonn - Auerberg und dem Kreuz Bonn - Nord existieren ebenfalls 6 Fahrstreifen, wovon die äußeren beiden jedoch als überlange Beschleunigungs - und Verzögerungsspuren für die Anschlussstellen ausgelegt sind.",
+    "corrupted": "Zwischen dem Dreieck Bonn - Nordost und Bonn - Beuel ist die Autobahn sechsstreifig und im weiteren Verlauf bis Bonn - Auerberg sowie zwischen Bonn - Auerberg und dem Kreuz Bonn - Nord existieren ebenfalls 6 Fahrstreifen, wovon die äußere beide jedoch als überlange Beschleunigungs - und Verzögerungsspuren für die Anschlussstellen ausgelegt sind.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s9839",
     "group_start": 6,
     "group_end": 7,
     "group_span_text": "neuen Alben",
     "gold_text": "Bis 1990 erschienen im Jahresrhythmus neuen Alben.",
     "corrupted": "Bis 1990 erschienen im Jahresrhythmus neues Album.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9885",
+    "group_start": 15,
+    "group_end": 19,
+    "group_span_text": "die letzten beiden, V6",
+    "gold_text": "Nach einer anderen Quelle desselben Autors wurden zwei Attrappen und neun Prototypen gebaut von den die letzten beiden, V6 und V7, nicht mehr fertig wurden.",
+    "corrupted": "Nach einer anderen Quelle desselben Autors wurden zwei Attrappen und neun Prototypen gebaut von den die letzten beide, V6 und V7, nicht mehr fertig wurden.",
     "is_pronoun": false,
     "dative_type": "ignore_dative_other"
   },
@@ -617,6 +727,17 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s11252",
+    "group_start": 16,
+    "group_end": 16,
+    "group_span_text": "ihr",
+    "gold_text": "Sie versucht, Stella an ihre Herkunft zu erinnern und sie Stanley zu entfremden, was ihr auch ansatzweise immer wieder gelingt.",
+    "corrupted": "Sie versucht, Stella an ihre Herkunft zu erinnern und sie Stanley zu entfremden, was sie auch ansatzweise immer wieder gelingt.",
+    "is_pronoun": true,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s11253",
     "group_start": 21,
     "group_end": 21,
@@ -656,6 +777,28 @@
     "group_span_text": "der",
     "gold_text": "Zwei Töchter und ein Sohn machten das Paar schnell zur Familie, die es zu ernähren galt.",
     "corrupted": "Zwei Töchter und ein Sohn machten das Paar schnell zu die Familie, die es zu ernähren galt.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s11936",
+    "group_start": 11,
+    "group_end": 12,
+    "group_span_text": "den Jahren",
+    "gold_text": "Die Glasmalerei stammt von Ostermann und Hartwein aus München und wurde den Jahren 1897 und 1898 ausgeführt.",
+    "corrupted": "Die Glasmalerei stammt von Ostermann und Hartwein aus München und wurde die Jahre 1897 und 1898 ausgeführt.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s12025",
+    "group_start": 17,
+    "group_end": 17,
+    "group_span_text": "dem",
+    "gold_text": "Er gab sein Einverständnis für ein Funkspiel, gab an die Zentrale ein Alarmsignal und floh am 18.",
+    "corrupted": "Er gab sein Einverständnis für ein Funkspiel, gab an die Zentrale ein Alarmsignal und floh ans 18.",
     "is_pronoun": false,
     "dative_type": "ignore_dative_other"
   },
@@ -782,12 +925,34 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s13316",
+    "group_start": 11,
+    "group_end": 11,
+    "group_span_text": "dem",
+    "gold_text": "Das Album wurde zwischen Frühling und Sommer 2005 produziert und am 4.",
+    "corrupted": "Das Album wurde zwischen Frühling und Sommer 2005 produziert und ans 4.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s13406",
     "group_start": 12,
     "group_end": 12,
     "group_span_text": "dem",
     "gold_text": "Beim 1:1 - Unentschieden gegen eine südafrikanische Auswahl debütierte er am 22.",
     "corrupted": "Beim 1:1 - Unentschieden gegen eine südafrikanische Auswahl debütierte er ans 22.",
+    "is_pronoun": false,
+    "dative_type": "ignore_dative_other"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s13538",
+    "group_start": 44,
+    "group_end": 45,
+    "group_span_text": "seiner Sendung",
+    "gold_text": "Das für Jesus reserviert gebliebene Wort \"Menschensohn\" drückt eine neue, das ganze Neue Testament prägende Vision des Einsseins von Gott und Mensch aus: \"im Rätselwort vom Menschensohn begegnet uns ganz dicht das Ureigene der Gestalt Jesu, seiner Sendung und seines Seins.",
+    "corrupted": "Das für Jesus reserviert gebliebene Wort \"Menschensohn\" drückt eine neue, das ganze Neue Testament prägende Vision des Einsseins von Gott und Mensch aus: \"im Rätselwort vom Menschensohn begegnet uns ganz dicht das Ureigene der Gestalt Jesu, seine Sendung und seines Seins.",
     "is_pronoun": false,
     "dative_type": "ignore_dative_other"
   },

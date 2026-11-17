@@ -105,6 +105,32 @@
   },
   {
     "split": "train",
+    "sent_id": "train-s9872",
+    "group_start": 22,
+    "group_end": 22,
+    "group_span_text": "dem",
+    "gold_text": "Für die Gestaltung griffen sie hierbei auf die landschaftlich geprägten Bauglieder der dorischen und der ionischen Ordnung zurück, zu denen ab dem späten 3.",
+    "corrupted": "Für die Gestaltung griffen sie hierbei auf die landschaftlich geprägten Bauglieder der dorischen und der ionischen Ordnung zurück, zu denen ab das späten 3.",
+    "is_pronoun": false,
+    "dative_type": "dative_prep_ab",
+    "preposition": "ab",
+    "category": "other_prep"
+  },
+  {
+    "split": "train",
+    "sent_id": "train-s9872",
+    "group_start": 23,
+    "group_end": 23,
+    "group_span_text": "späten",
+    "gold_text": "Für die Gestaltung griffen sie hierbei auf die landschaftlich geprägten Bauglieder der dorischen und der ionischen Ordnung zurück, zu denen ab dem späten 3.",
+    "corrupted": "Für die Gestaltung griffen sie hierbei auf die landschaftlich geprägten Bauglieder der dorischen und der ionischen Ordnung zurück, zu denen ab dem späteres 3.",
+    "is_pronoun": false,
+    "dative_type": "dative_prep_ab",
+    "preposition": "ab",
+    "category": "other_prep"
+  },
+  {
+    "split": "train",
     "sent_id": "train-s10606",
     "group_start": 1,
     "group_end": 2,

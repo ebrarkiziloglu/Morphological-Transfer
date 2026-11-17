@@ -2055,19 +2055,6 @@
   },
   {
     "split": "train",
-    "sent_id": "train-s13745",
-    "group_start": 29,
-    "group_end": 29,
-    "group_span_text": "dem",
-    "gold_text": "Vor allem der Zentralrat Deutscher Sinti und Roma habe sich, so Yaron Matras, der damalige Hauptverantwortliche für die Pressearbeit sowie für Beziehungen zu internationalen Organisationen, sich dem entschieden entgegengestellt.",
-    "corrupted": "Vor allem der Zentralrat Deutscher Sinti und Roma habe sich, so Yaron Matras, der damalige Hauptverantwortliche für die Pressearbeit sowie für Beziehungen zu internationalen Organisationen, sich das entschieden entgegengestellt.",
-    "is_pronoun": true,
-    "dative_type": "dative_prep_vor",
-    "preposition": "vor",
-    "category": "two_way_prep"
-  },
-  {
-    "split": "train",
     "sent_id": "train-s13868",
     "group_start": 1,
     "group_end": 1,
@@ -2322,19 +2309,6 @@
     "gold_text": "Bin 4:20 Minuten vor dem Termin.",
     "corrupted": "Bin 4:20 Minuten vor den Termin.",
     "is_pronoun": false,
-    "dative_type": "dative_prep_vor",
-    "preposition": "vor",
-    "category": "two_way_prep"
-  },
-  {
-    "split": "test",
-    "sent_id": "test-s76",
-    "group_start": 16,
-    "group_end": 16,
-    "group_span_text": "mir",
-    "gold_text": "Das letzte Mal war ich vor ein paar Wochen dort und muss sagen, dass es mir sehr gut gefallen hat.",
-    "corrupted": "Das letzte Mal war ich vor ein paar Wochen dort und muss sagen, dass es mich sehr gut gefallen hat.",
-    "is_pronoun": true,
     "dative_type": "dative_prep_vor",
     "preposition": "vor",
     "category": "two_way_prep"

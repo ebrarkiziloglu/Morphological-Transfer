@@ -40,19 +40,6 @@
   },
   {
     "split": "train",
-    "sent_id": "train-s9193",
-    "group_start": 54,
-    "group_end": 55,
-    "group_span_text": "der Natur",
-    "gold_text": "ProGenesis vertritt den Standpunkt, dass \"die Evolutionslehre nach wie vor eine unbewiesene Theorie\" sei, die \"Heilige Schrift\" entgegen den \"Behauptungen moderner liberaler Theologen und evolutionsgläubigen Wissenschaftlern\" auch historisch relevant sei und Gott \"weder ein mythologisches Märchen\" noch eine \"mystische Erfahrung und auch kein der Natur innewohnendes Urprinzip\" sei, sondern eine \"erfahrbare Realität\".",
-    "corrupted": "ProGenesis vertritt den Standpunkt, dass \"die Evolutionslehre nach wie vor eine unbewiesene Theorie\" sei, die \"Heilige Schrift\" entgegen den \"Behauptungen moderner liberaler Theologen und evolutionsgläubigen Wissenschaftlern\" auch historisch relevant sei und Gott \"weder ein mythologisches Märchen\" noch eine \"mystische Erfahrung und auch kein die Natur innewohnendes Urprinzip\" sei, sondern eine \"erfahrbare Realität\".",
-    "is_pronoun": false,
-    "dative_type": "dative_prep_remaining",
-    "preposition": "entgegen",
-    "category": "other_prep"
-  },
-  {
-    "split": "train",
     "sent_id": "train-s9226",
     "group_start": 6,
     "group_end": 9,
