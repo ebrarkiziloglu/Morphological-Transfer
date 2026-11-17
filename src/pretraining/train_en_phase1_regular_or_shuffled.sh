@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --partition h100
 #SBATCH --gres gpu:2
-#SBATCH --output logs/%j_en_phase1_shuffled.out
+#SBATCH --output logs/%A_%a_en_phase1_shuffled.out
 #SBATCH --time 24:00:00
-SEEDS=(0 1 2 3 4)
+#SBATCH --array=0-4   # one job per seed (seed = SLURM_ARRAY_TASK_ID)
 NGPUS=2   # keep in sync with --gres gpu:N above
 
 # Multi-seed two-phase pretraining
@@ -26,7 +26,7 @@ NGPUS=2   # keep in sync with --gres gpu:N above
 source ~/.bashrc
 conda activate morph2
 
-echo "Starting multi-seed pre-training at $(date)"
+echo "Starting pre-training | seed=${SEED} at $(date)"
  
 ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
@@ -36,14 +36,15 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 # ---------------------------------------------------------------------------
 
 # REGULAR:
-# EN_P1="${ROOT}/data/NLLB_100M/NLLB_100M.en"
+# EN_P1="${ROOT}/data/trilingual_100M_en_tr_de/trilingual_100M.en"
 # EN_OUT="${ROOT}/models/v5/char-en-de/phase_1/regular/"
 
 # SHUFFLED:
-EN_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_shuffled_geometric_r0.3.en"
+EN_P1="${ROOT}/data/trilingual_100M_en_tr_de/trilingual_100M_shuffled_geometric_r0.3.en"
 EN_OUT="${ROOT}/models/v5/char-en-de/phase_1/shuffled/"
 
-for SEED in "${SEEDS[@]}"; do
+SEED="${SLURM_ARRAY_TASK_ID:?submit with sbatch (array job); seed = array task id}"
+if [ -z "${EVAL_ONLY}" ]; then
     echo "=== Phase 1 English | seed=${SEED} | $(date) ==="
     torchrun --standalone --nproc_per_node="${NGPUS}" pretraining/train.py \
         --tokenizer_path "${TOKENIZER}" \
@@ -65,6 +66,6 @@ for SEED in "${SEEDS[@]}"; do
         --seed "${SEED}" \
         --attn_implementation flash_attention_3 \
         --bf16
-done
+fi
 
-echo "Finished multi-seed pre-training at $(date)"
+echo "Finished seed ${SEED} at $(date)"

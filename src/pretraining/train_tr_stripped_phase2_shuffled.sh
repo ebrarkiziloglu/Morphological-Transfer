@@ -1,10 +1,11 @@
 #!/bin/bash
 #SBATCH --partition h100
 #SBATCH --gres gpu:2
-#SBATCH --output logs/%j_%x.out
+#SBATCH --output logs/%A_%a_%x.out
 #SBATCH --time 24:00:00
+#SBATCH --array=0-4   # one job per seed (seed = SLURM_ARRAY_TASK_ID)
 
-# Usage (run from the repo root, so that logs/ exists):
+# Usage (run from src/, so that logs/ exists and train.py resolves):
 #   sbatch -J tr_phase2_nominal_infl pretraining/train_tr_stripped_phase2_shuffled.sh stripped_nominal_infl
 #   sbatch -J tr_phase2_postp        pretraining/train_tr_stripped_phase2_shuffled.sh stripped_postp
 #   sbatch -J tr_phase2_case         pretraining/train_tr_stripped_phase2_shuffled.sh stripped_case
@@ -23,7 +24,6 @@ case "${MODE}" in
     *) echo "Unknown mode: ${MODE}"; exit 1 ;;
 esac
 
-SEEDS=(0 1 2 3 4)
 NGPUS=2   # keep in sync with --gres gpu:N above
 
 source ~/.bashrc
@@ -31,21 +31,22 @@ conda activate morph2
 
 ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
-PHASE2_DATA="${ROOT}/data/NLLB_100M/NLLB_100M.de"
+PHASE2_DATA="${ROOT}/data/NLLB_100M_phase_2/NLLB_100M.de"
 TR_OUT="${ROOT}/models/v5/char-tr-de"
 
-# From shuffled Phase 1 (for SHUFFLED Phase 1, change "regular" to "shuffled" in CKPT only):
+# From SHUFFLED Phase 1 (CKPT below reads phase_1/${MODE}/shuffled):
 TR_OUT_PHASE2="${TR_OUT}/phase_2/${MODE}/shuffled/"
 PHASE_SUBDIR="phase_2/${MODE}/shuffled"
 RUN_NAME="char-tr-de_${PHASE_SUBDIR//\//_}"
 
 cd "${ROOT}/src"
-echo "Starting multi-seed pre-training | mode=${MODE} | $(date)"
+echo "Starting pre-training | seed=${SLURM_ARRAY_TASK_ID} | mode=${MODE} | $(date)"
 
 # ---------------------------------------------------------------------------
 # Phase 2 — German from TR Phase-1 epoch 5 (same seed)
 # ---------------------------------------------------------------------------
-for SEED in "${SEEDS[@]}"; do
+SEED="${SLURM_ARRAY_TASK_ID:?submit with sbatch (array job); seed = array task id}"
+if [ -z "${EVAL_ONLY}" ]; then
     CKPT="${TR_OUT}/phase_1/${MODE}/shuffled/ep5/seed_${SEED}/"
     echo "=== Phase 2 DE from TR ep5 | mode=${MODE} | seed=${SEED} | ckpt=${CKPT} | $(date) ==="
     torchrun --standalone --nproc_per_node="${NGPUS}" "${ROOT}/src/pretraining/train.py" \
@@ -67,9 +68,14 @@ for SEED in "${SEEDS[@]}"; do
         --seed "${SEED}" \
         --attn_implementation flash_attention_3 \
         --bf16 || { echo "TRAINING FAILED seed=${SEED}"; exit 1; }
-done
+fi
 
-echo "Finished multi-seed pre-training at $(date)"
+echo "Finished seed ${SEED} at $(date)"
+# Evaluation covers ALL seeds, so it must run once after the whole array is
+# done, not inside each task:
+#   sbatch --dependency=afterok:<ARRAY_JOBID> --array=0 --gres=gpu:1 \
+#          --export=ALL,EVAL_ONLY=1 <this script> [args]
+[ -z "${EVAL_ONLY}" ] && exit 0
 
 # ---------------------------------------------------------------------------
 # Evaluation

@@ -8,6 +8,7 @@ import logging
 import math
 import os
 import sys
+import time
 from typing import List, Optional, Tuple
 
 import numpy as np
@@ -83,10 +84,48 @@ def build_token_cache(tokenizer, file_path: str, max_seq_len: int, prefix: str, 
     offsets = np.zeros(sum(len(x) for x in len_chunks) + 1, dtype=np.int64)
     np.cumsum(np.concatenate(len_chunks), out=offsets[1:])
 
+    # offsets last: the cache counts as complete only once both files exist.
     for arr, suffix in ((ids, "ids"), (offsets, "offsets")):
-        tmp = f"{prefix}.{suffix}.tmp.npy"
+        tmp = f"{prefix}.{suffix}.{os.getpid()}.tmp.npy"  # unique per process
         np.save(tmp, arr)
         os.replace(tmp, f"{prefix}.{suffix}.npy")
+
+
+def ensure_token_cache(tokenizer, file_path: str, max_seq_len: int, prefix: str,
+                       stale_after_s: float = 4 * 3600, poll_s: float = 20.0):
+    """Make sure the token cache exists, building it in at most one process.
+
+    The first process to create `<prefix>.lock` (atomic O_EXCL) builds the cache;
+    all others poll until both cache files appear and then just reuse them. A lock
+    older than `stale_after_s` (builder was killed) is removed and taken over."""
+    ids_path, offsets_path = f"{prefix}.ids.npy", f"{prefix}.offsets.npy"
+    lock_path = f"{prefix}.lock"
+    done = lambda: os.path.isfile(ids_path) and os.path.isfile(offsets_path)
+
+    while not done():
+        try:
+            fd = os.open(lock_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            try:
+                if time.time() - os.path.getmtime(lock_path) > stale_after_s:
+                    logger.warning(f"[Data] Removing stale cache lock {lock_path}")
+                    os.remove(lock_path)
+                    continue
+            except FileNotFoundError:
+                continue  # lock vanished: builder finished or gave up, re-check
+            logger.info(f"[Data] Another job is building {prefix}.*; waiting...")
+            time.sleep(poll_s)
+            continue
+        try:
+            os.write(fd, f"{os.uname().nodename} pid={os.getpid()}\n".encode())
+            os.close(fd)
+            if not done():  # may have been finished between our check and the lock
+                build_token_cache(tokenizer, file_path, max_seq_len, prefix)
+        finally:
+            try:
+                os.remove(lock_path)
+            except FileNotFoundError:
+                pass
 
 
 class TokenizedDataset(Dataset):
@@ -99,9 +138,11 @@ class TokenizedDataset(Dataset):
         prefix = _cache_prefix(tokenizer, file_path, max_seq_len, cache_dir)
         ids_path, offsets_path = f"{prefix}.ids.npy", f"{prefix}.offsets.npy"
 
-        # Only rank 0 tokenizes; the other ranks wait and then read the cache.
-        if is_main_process() and not (os.path.isfile(ids_path) and os.path.isfile(offsets_path)):
-            build_token_cache(tokenizer, file_path, max_seq_len, prefix)
+        # Only rank 0 of each job touches the cache; the other ranks wait at the
+        # barrier. Across concurrent jobs (e.g. a seed array) a lock file makes
+        # exactly one job build the cache while the others wait and then reuse it.
+        if is_main_process():
+            ensure_token_cache(tokenizer, file_path, max_seq_len, prefix)
         if dist.is_available() and dist.is_initialized():
             dist.barrier()
 
@@ -666,6 +707,13 @@ def parse_args():
         "to remove lexical knowledge acquired during Phase 1.",
     )
 
+    parser.add_argument(
+        "--save_epoch0_after_reset",
+        action="store_true",
+        help="With --reset_embeddings: save the weights right after the reset "
+        "(before any Phase-2 training) as {out}/ep0/seed_{seed}.",
+    )
+
     parser.add_argument("--hidden_size", type=int, default=768)
     parser.add_argument("--num_layers", type=int, default=6)
     parser.add_argument("--num_heads", type=int, default=12)
@@ -810,6 +858,14 @@ def main():
             "to remove lexical knowledge from Phase 1."
         )
         reset_embedding_weights(model)
+        if args.save_epoch0_after_reset:
+            ep0_dir = os.path.join(args.out, "ep0", f"seed_{args.seed}")
+            if is_main_process():
+                os.makedirs(ep0_dir, exist_ok=True)
+                logger.info(f"[ResetEmb] Saving epoch-0 (post-reset) weights to {ep0_dir}")
+                model.save_pretrained(ep0_dir)
+            if dist.is_available() and dist.is_initialized():
+                dist.barrier()
 
     # Phase 2: continue pretraining on L2 (typically German)
     logger.info(

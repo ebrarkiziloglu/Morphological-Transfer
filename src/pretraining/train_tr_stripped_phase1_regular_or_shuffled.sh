@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --partition h100
 #SBATCH --gres gpu:2
-#SBATCH --output logs/%j_tr_phase1_stripped_shuffled.out
+#SBATCH --output logs/%A_%a_tr_phase1_stripped_regular.out
 #SBATCH --time 24:00:00
-SEEDS=(0 1 2 3 4)
+#SBATCH --array=0-4   # one job per seed (seed = SLURM_ARRAY_TASK_ID)
 NGPUS=2   # keep in sync with --gres gpu:N above
 
 # Multi-seed two-phase pretraining
@@ -26,7 +26,7 @@ NGPUS=2   # keep in sync with --gres gpu:N above
 source ~/.bashrc
 conda activate morph2
 
-echo "Starting multi-seed pre-training at $(date)"
+echo "Starting pre-training | seed=${SLURM_ARRAY_TASK_ID} at $(date)"
  
 ROOT="/hnvme/workspace/b279bb15-morph/Morphological"
 TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
@@ -35,29 +35,28 @@ TOKENIZER="${ROOT}/src/tokenizer/tokenizer_char/"
 # Phase 1 — Turkish (NLLB 10M)
 # ---------------------------------------------------------------------------
 
-# REGULAR:
-# TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M_stripped_nominal_infl.tr"
-# TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M_stripped_postp.tr"
-# TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M_stripped_case.tr"
-# TR_P1="${ROOT}/data/NLLB_100M/NLLB_100M_stripped_nominal.tr"
+# Usage: sbatch --output="logs/%A_%a_tr_phase1_stripped_<mode>_regular.out" \
+#              train_tr_stripped_phase1_regular_or_shuffled.sh <mode>
+#   <mode> in: nominal | post | case | nominal_infl
+# (#SBATCH --output can't expand shell variables, so the mode-specific log name
+#  must be passed on the sbatch command line; the #SBATCH line is the fallback.)
+MODE="${1:?usage: $0 <mode: nominal|post|case|nominal_infl>}"
+case "${MODE}" in
+    nominal|case|nominal_infl) MODE_TAG="${MODE}" ;;
+    post|postp)                MODE_TAG="postp" ;;   # data/model dirs use "postp"
+    *) echo "Invalid mode '${MODE}'; expected one of: nominal post case nominal_infl" >&2; exit 1 ;;
+esac
 
-# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_nominal_infl/regular/"
-# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_postp/regular/"
-# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_case/regular/"
-# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_nominal/regular/"
+# REGULAR:
+# TR_P1="${ROOT}/data/trilingual_100M_en_tr_de/trilingual_100M_stripped_${MODE_TAG}.tr"
+# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_${MODE_TAG}/regular/"
 
 # SHUFFLED:
-# TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_stripped_nominal_infl_shuffled_geometric_r0.3.tr"
-# TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_stripped_postp_shuffled_geometric_r0.3.tr"
-# TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_stripped_case_shuffled_geometric_r0.3.tr"
-TR_P1="${ROOT}/data/NLLB_100M_shuffled/NLLB_100M_stripped_nominal_shuffled_geometric_r0.3.tr"
+TR_P1="${ROOT}/data/trilingual_100M_en_tr_de/trilingual_100M_stripped_${MODE_TAG}_shuffled_geometric_r0.3.tr"
+TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_${MODE_TAG}/shuffled/"
 
-# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_nominal_infl/shuffled/"
-# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_postp/shuffled/"
-# TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_case/shuffled/"
-TR_OUT="${ROOT}/models/v5/char-tr-de/phase_1/stripped_nominal/shuffled/"
-
-for SEED in "${SEEDS[@]}"; do
+SEED="${SLURM_ARRAY_TASK_ID:?submit with sbatch (array job); seed = array task id}"
+if [ -z "${EVAL_ONLY}" ]; then
     echo "=== Phase 1 Turkish | seed=${SEED} | $(date) ==="
     torchrun --standalone --nproc_per_node="${NGPUS}" pretraining/train.py \
         --tokenizer_path "${TOKENIZER}" \
@@ -79,6 +78,6 @@ for SEED in "${SEEDS[@]}"; do
         --seed "${SEED}" \
         --attn_implementation flash_attention_3 \
         --bf16
-done
+fi
 
-echo "Finished multi-seed pre-training at $(date)"
+echo "Finished seed ${SEED} at $(date)"
